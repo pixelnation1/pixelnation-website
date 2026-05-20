@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* PixelNation palette */
+  --background: #041427;
+  --card: #0a2342;
+  --foreground: #ffffff;
+  --muted: #bfd6e8;
+  --card-border: #b8860b;
+  --accent: #f4c542;
+  --accent-hover: #ffd966;
+  --accent-muted: rgba(244, 197, 66, 0.14);
+  --accent-secondary: #38ddf8;
+  --accent-secondary-hover: #5ee9ff;
+  --accent-secondary-muted: rgba(56, 221, 248, 0.12);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-secondary-hover: var(--accent-secondary-hover);
+  --color-accent-secondary-muted: var(--accent-secondary-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Prevent flex/grid children from forcing horizontal scroll */
+main {
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* CTA button groups — full-width taps on mobile, inline on desktop */
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .cta-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+  }
+}
+
+/* Responsive data tables */
+.table-scroll {
+  -webkit-overflow-scrolling: touch;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 100vw;
+}
+
+@media (min-width: 768px) {
+  .table-scroll {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+@keyframes shop-hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.shop-hero-float {
+  animation: shop-hero-float 5s ease-in-out infinite;
 }
