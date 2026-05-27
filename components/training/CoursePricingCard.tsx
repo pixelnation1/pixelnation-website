@@ -96,7 +96,7 @@ export function CoursePricingCard({ course }: CoursePricingCardProps) {
 
         <div className="mt-8">
           <Link
-            href="/shop"
+            href="/contact"
             className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-background transition hover:bg-accent-hover"
           >
             Book This Course

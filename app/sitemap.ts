@@ -12,7 +12,6 @@ const staticRoutes = [
   "/board-repair",
   "/training",
   "/training-courses",
-  "/shop",
   "/contact",
   "/about",
 ];

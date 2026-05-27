@@ -16,7 +16,6 @@ export const SITE = {
     opens: "09:00",
     closes: "15:00",
   },
-  shopUrl: "https://pixelnations.myshopify.com/",
 } as const;
 
 export const MAIN_MESSAGE =
@@ -24,8 +23,7 @@ export const MAIN_MESSAGE =
 
 export const PRIMARY_NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
-  { label: "About", href: "/about" },
+  { label: "Track Repair", href: "/track-repair" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -53,7 +51,6 @@ export const FOOTER_COMPANY_LINKS = [
 export const FOOTER_SERVICE_LINKS = [
   ...REPAIRS_DROPDOWN_LINKS,
   ...TRAINING_DROPDOWN_LINKS,
-  { label: "Shop", href: "/shop" },
 ] as const;
 
 const REPAIR_ACTIVE_PATHS = [
@@ -91,6 +88,9 @@ export function isNavLinkActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
   if (href === "/repairs") return pathname === "/repairs";
   if (href === "/training") return pathname === "/training";
+  if (href === "/track-repair") {
+    return pathname === "/track-repair" || pathname === "/contact";
+  }
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

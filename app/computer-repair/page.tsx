@@ -261,7 +261,7 @@ export default function ComputerRepairPage() {
           <Button href="/repairs" variant="secondary">
             All repair services
           </Button>
-          <Button href="/shop">Visit the shop</Button>
+          <Button href="/contact">Contact us</Button>
         </div>
       </Section>
 

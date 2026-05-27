@@ -36,7 +36,7 @@ export function TrainingCoursesStructuredData() {
       "@type": "Offer",
       price: course.price,
       priceCurrency: "USD",
-      url: `${SITE.domain}/shop`,
+      url: `${SITE.domain}/contact`,
       availability: "https://schema.org/LimitedAvailability",
     },
     url: pageUrl,

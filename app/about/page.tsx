@@ -240,8 +240,8 @@ export default function AboutPage() {
           sharing expertise with the broader repair community.
         </p>
         <div className="cta-group mt-8">
-          <Button href="/shop" variant="secondary">
-            Visit the shop
+          <Button href="/training" variant="secondary">
+            Explore training
           </Button>
           <Button href="/contact" variant="outline">
             Get in touch

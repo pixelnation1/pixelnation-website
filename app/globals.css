@@ -90,17 +90,3 @@ main {
   background: var(--accent);
   color: var(--background);
 }
-
-@keyframes shop-hero-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.shop-hero-float {
-  animation: shop-hero-float 5s ease-in-out infinite;
-}

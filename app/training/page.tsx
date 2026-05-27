@@ -80,7 +80,7 @@ export default function TrainingPage() {
             </ul>
             <div className="cta-group mt-8">
               <Button href="/training-courses">View Courses & Pricing</Button>
-              <Button href="/shop" variant="secondary">
+              <Button href="/contact" variant="secondary">
                 Book Training
               </Button>
               <Button href="#course-options" variant="outline">
@@ -407,7 +407,7 @@ export default function TrainingPage() {
           </p>
           <div className="cta-group mt-8 justify-center">
             <Button href="/training-courses">View Courses & Pricing</Button>
-            <Button href="/shop">Book Training</Button>
+            <Button href="/contact">Book Training</Button>
             <Button href="/contact" variant="secondary">
               Contact for Custom Training
             </Button>

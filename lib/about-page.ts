@@ -65,12 +65,6 @@ export const WHAT_WE_OFFER = [
     href: "/training-courses",
     keyword: "Microsoldering Training",
   },
-  {
-    title: "Gaming & Technology Products",
-    description: "Shop gaming gear, accessories, and technology products.",
-    href: "/shop",
-    keyword: "Gaming and tech products",
-  },
 ] as const;
 
 export const WHY_CHOOSE = [

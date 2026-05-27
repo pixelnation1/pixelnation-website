@@ -54,7 +54,7 @@ export function TrainingStructuredData() {
     offers: {
       "@type": "Offer",
       category: "Paid",
-      url: `${SITE.domain}/shop`,
+      url: `${SITE.domain}/contact`,
       availability: "https://schema.org/LimitedAvailability",
     },
   };

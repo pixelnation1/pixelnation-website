@@ -158,8 +158,8 @@ export default function ContactPage() {
               <Link href="/repairs" className="text-accent-secondary hover:underline">
                 Repairs overview
               </Link>
-              <Link href="/shop" className="text-accent-secondary hover:underline">
-                Shop
+              <Link href="/track-repair" className="text-accent-secondary hover:underline">
+                Track repair
               </Link>
             </nav>
           </div>
@@ -330,9 +330,6 @@ export default function ContactPage() {
             </Link>
             <Link href="/training" className="hover:text-accent">
               Training
-            </Link>
-            <Link href="/shop" className="hover:text-accent">
-              Shop
             </Link>
           </nav>
         </div>
