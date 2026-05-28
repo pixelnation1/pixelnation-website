@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FAQ } from "@/components/FAQ";
+import { FaqSection } from "@/components/faq/FaqSection";
+import { resolveRepairPageFaqs, toSchemaFaqs } from "@/lib/faq";
 import { PhoneRepairStructuredData } from "@/components/services/PhoneRepairStructuredData";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
@@ -101,38 +102,7 @@ const devices = [
   "OnePlus",
 ];
 
-const faqItems = [
-  {
-    question: "How long does phone repair take?",
-    answer:
-      "Many common phone repairs can be completed the same business day when parts are available. Advanced board-level phone repair, water damage recovery, and data recovery may take longer because the device needs careful testing before and after repair.",
-  },
-  {
-    question: "Do you repair charging ports?",
-    answer:
-      "Yes. PixelNation handles charging port repair in Emporia, KS for iPhone, Samsung Galaxy, Google Pixel, Motorola, OnePlus, and other smartphones. If the issue is not the port itself, we can test the battery, cable path, charging circuit, and board-level components.",
-  },
-  {
-    question: "Can you fix water-damaged phones?",
-    answer:
-      "PixelNation works on water-damaged phones and liquid-exposed devices. Results depend on corrosion, power damage, and how long the phone has been exposed, but proper diagnostics can often identify a repair or data recovery path.",
-  },
-  {
-    question: "Do you perform board-level repair?",
-    answer:
-      "Yes. PixelNation performs board-level phone repair and microsoldering for shorted lines, failed charging ICs, damaged connectors, torn pads, broken traces, and no-power faults.",
-  },
-  {
-    question: "Can you recover photos from a dead phone?",
-    answer:
-      "Often, yes. If the storage is intact, PixelNation may be able to recover photos, videos, contacts, and documents by repairing the phone enough to access data or by using a recovery-focused repair approach.",
-  },
-  {
-    question: "Do you repair iPhones and Samsung devices?",
-    answer:
-      "Yes. PixelNation repairs iPhone and Samsung devices, along with Google Pixel, Motorola, OnePlus, iPad, tablets, and other smartphones.",
-  },
-];
+const faqItems = resolveRepairPageFaqs("phone-repair", 8);
 
 function CheckList({ items }: { items: readonly string[] }) {
   return (
@@ -184,7 +154,7 @@ export default function PhoneRepairPage() {
   return (
     <>
       <PhoneRepairStructuredData
-        faq={faqItems}
+        faq={toSchemaFaqs(faqItems)}
         serviceOffers={services.map((s) => ({ name: s.title, description: s.body }))}
       />
 
@@ -389,7 +359,13 @@ export default function PhoneRepairPage() {
           title="Phone Repair FAQ"
           subtitle="Straight answers to common questions about iPhone repair, Samsung repair, charging port repair, water damage, data recovery, and board-level repair in Emporia, KS."
         >
-          <FAQ items={faqItems} id="phone-repair-faq" heading="Phone repair FAQ" />
+          <FaqSection
+            items={faqItems}
+            id="phone-repair-faq"
+            title="Phone repair FAQ"
+            showPeopleAlsoAsk
+            initialVisible={6}
+          />
         </Section>
 
         <section className="border-t border-card-border py-14 md:py-20">

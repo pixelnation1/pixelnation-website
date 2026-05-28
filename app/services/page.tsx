@@ -6,7 +6,10 @@ import { Button } from "@/components/ui/Button";
 import { SeoBreadcrumbs } from "@/components/seo/local/SeoBreadcrumbs";
 import { SeoFinalCta } from "@/components/seo/local/SeoFinalCta";
 import { InternalLinksHub } from "@/components/seo/local/InternalLinksHub";
+import { FaqSection } from "@/components/faq/FaqSection";
 import { LocalStructuredData } from "@/components/seo/local/LocalStructuredData";
+import { SERVICES_HUB_FAQS } from "@/lib/faq/global";
+import { toSchemaFaqs } from "@/lib/faq/utils";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { servicesHubBreadcrumbs } from "@/lib/locations/breadcrumbs";
 import { SERVICES, SERVICE_SLUGS } from "@/lib/locations/services";
@@ -19,18 +22,6 @@ export const metadata: Metadata = createPageMetadata({
   path: "/services",
 });
 
-const HUB_FAQ = [
-  {
-    question: "What repair services does PixelNation offer?",
-    answer:
-      "iPhone repair, PS5 HDMI repair, Xbox repair, computer repair, data recovery, microsoldering, board repair, liquid damage, charging port repair, and HDMI repair—plus related console and phone work.",
-  },
-  {
-    question: "Are these services available by mail-in?",
-    answer: "Yes. Most listed services support mail-in repair to our Emporia, Kansas bench.",
-  },
-];
-
 export default function ServicesHubPage() {
   const breadcrumbs = servicesHubBreadcrumbs();
 
@@ -38,7 +29,7 @@ export default function ServicesHubPage() {
     <article>
       <LocalStructuredData
         breadcrumbs={breadcrumbs}
-        faqs={HUB_FAQ}
+        faqs={toSchemaFaqs(SERVICES_HUB_FAQS)}
         areaServed={{ cityName: "Emporia", stateName: "Kansas" }}
       />
 
@@ -85,6 +76,10 @@ export default function ServicesHubPage() {
       </Section>
 
       <InternalLinksHub title="Locations & resources" links={getKnowledgeHubLinks()} />
+
+      <Section id="faq" title="Service FAQ" alt>
+        <FaqSection items={SERVICES_HUB_FAQS} initialVisible={6} showPeopleAlsoAsk />
+      </Section>
 
       <SeoFinalCta headline="Need help choosing a service?" />
     </article>

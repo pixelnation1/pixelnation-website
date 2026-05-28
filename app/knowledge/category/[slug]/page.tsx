@@ -6,6 +6,9 @@ import { PageStructuredData } from "@/components/seo/PageStructuredData";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import { ArticleCard } from "@/components/knowledge/ArticleCard";
+import { FaqSection } from "@/components/faq/FaqSection";
+import { resolveCategoryFaqs, toSchemaFaqs } from "@/lib/faq";
+import type { FaqCategoryId } from "@/lib/faq/types";
 import { pageHeroSection } from "@/components/layout/responsive";
 import {
   KNOWLEDGE_CATEGORIES,
@@ -45,10 +48,14 @@ export default async function KnowledgeCategoryPage({ params }: PageProps) {
 
   const articles = getArticlesByCategory(category.slug);
   const breadcrumbs = knowledgeCategoryBreadcrumbs(category.slug);
+  const faqCategory = (
+    category.slug === "training-education" ? "training" : category.slug
+  ) as FaqCategoryId;
+  const categoryFaqs = resolveCategoryFaqs(faqCategory, 8);
 
   return (
     <article>
-      <PageStructuredData breadcrumbs={breadcrumbs} />
+      <PageStructuredData breadcrumbs={breadcrumbs} faq={toSchemaFaqs(categoryFaqs)} />
 
       <section className={pageHeroSection} aria-labelledby="category-heading">
         <div className="mx-auto max-w-6xl px-4">
@@ -93,6 +100,12 @@ export default async function KnowledgeCategoryPage({ params }: PageProps) {
           </p>
         )}
       </Section>
+
+      {categoryFaqs.length > 0 ? (
+        <Section id="faq" title={`${category.name} FAQ`} alt>
+          <FaqSection items={categoryFaqs} initialVisible={6} showPeopleAlsoAsk />
+        </Section>
+      ) : null}
 
       {category.relatedTopics.length > 0 ? (
         <Section title="Related topics" alt>

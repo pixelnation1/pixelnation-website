@@ -1,6 +1,7 @@
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageStructuredData } from "@/components/seo/PageStructuredData";
-import { AEO_ANSWERS, ABOUT_FAQ, ABOUT_METADATA } from "@/lib/about-page";
+import { ABOUT_FAQ, ABOUT_METADATA } from "@/lib/about-page";
+import { toSchemaFaqs } from "@/lib/faq/utils";
 import { organizationSchema } from "@/lib/seo/schema";
 
 export function AboutStructuredData() {
@@ -27,7 +28,7 @@ export function AboutStructuredData() {
           { name: "Home", path: "/" },
           { name: "About", path: "/about" },
         ]}
-        faq={[...ABOUT_FAQ, ...AEO_ANSWERS]}
+        faq={toSchemaFaqs(ABOUT_FAQ)}
         includeLocalBusiness={false}
       />
     </>

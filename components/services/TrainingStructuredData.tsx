@@ -1,16 +1,15 @@
 import { PageStructuredData } from "@/components/seo/PageStructuredData";
-import {
-  AEO_ANSWERS,
-  TRAINING_FAQ,
-  TRAINING_METADATA,
-} from "@/lib/training-page";
+import { TRAINING_METADATA } from "@/lib/training-page";
+import { getTrainingFaqBundle } from "@/lib/faq/page-helpers";
 import { trainingBreadcrumbs } from "@/lib/seo/schema";
+
+const { schema: trainingFaqSchema } = getTrainingFaqBundle();
 
 export function TrainingStructuredData() {
   return (
     <PageStructuredData
       breadcrumbs={trainingBreadcrumbs("Training Overview", "/training")}
-      faq={[...TRAINING_FAQ, ...AEO_ANSWERS]}
+      faq={trainingFaqSchema}
       courses={[
         {
           name: "Hands-On Microsoldering & Board Repair Training",

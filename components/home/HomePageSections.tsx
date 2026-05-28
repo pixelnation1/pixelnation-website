@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FAQ } from "@/components/FAQ";
+import { FaqPreview } from "@/components/faq/FaqPreview";
+import { FaqSection as FaqSectionBlock } from "@/components/faq/FaqSection";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import {
@@ -8,7 +9,7 @@ import {
   COMMON_PROBLEMS,
   DATA_RECOVERY_DEVICES,
   HERO_BULLETS,
-  HOME_FAQ,
+  HOME_FAQS,
   HOME_SERVICES,
   HOME_TRUST_ITEMS,
   MAIL_IN_STEPS,
@@ -373,7 +374,10 @@ export function FAQSection() {
       subtitle="Answers about repair times, board work, data recovery, mail-in service, training, and appliances."
       alt
     >
-      <FAQ items={HOME_FAQ} />
+      <FaqPreview items={HOME_FAQS.slice(0, 4)} viewAllHref="#faq-full" />
+      <div id="faq-full" className="mt-10">
+        <FaqSectionBlock items={HOME_FAQS} initialVisible={6} showPeopleAlsoAsk />
+      </div>
     </Section>
   );
 }

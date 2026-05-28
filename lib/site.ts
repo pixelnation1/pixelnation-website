@@ -233,6 +233,7 @@ export const REPAIR_SERVICE_CARDS = [
   },
 ] as const;
 
+/** @deprecated Use HOME_FAQS from @/lib/faq/global */
 export const FAQ_ITEMS = [
   {
     question: "How does PixelNation evaluate my device?",

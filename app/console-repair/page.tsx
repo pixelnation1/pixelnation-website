@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
-import { FAQ } from "@/components/FAQ";
+import { RepairPageFaq } from "@/components/faq/RepairPageFaq";
 import { ConsoleRepairStructuredData } from "@/components/services/ConsoleRepairStructuredData";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
@@ -10,7 +10,6 @@ import {
   AEO_ANSWERS,
   BOARD_REPAIR_POINTS,
   COMMON_PROBLEMS,
-  CONSOLE_FAQ,
   CONSOLE_REPAIR_METADATA,
   CONSOLES_WE_REPAIR,
   HDMI_REPAIR_ITEMS,
@@ -304,7 +303,7 @@ export default function ConsoleRepairPage() {
         title="Console repair FAQ"
         subtitle="Questions about PS5 HDMI, Xbox, Switch, Steam Deck, and repair timing."
       >
-        <FAQ items={CONSOLE_FAQ} />
+        <RepairPageFaq page="console-repair" />
       </Section>
 
       {/* Final CTA */}

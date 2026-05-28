@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { FAQ } from "@/components/FAQ";
+import { FaqSection } from "@/components/faq/FaqSection";
+import { getServiceFaqs, toSchemaFaqs } from "@/lib/faq";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import {
@@ -73,11 +74,15 @@ export function LocalSeoPage({
       }
     : undefined;
 
+  const schemaFaqs = service
+    ? toSchemaFaqs(getServiceFaqs(service.slug))
+    : content.faqs;
+
   return (
     <article>
       <LocalStructuredData
         breadcrumbs={breadcrumbs}
-        faqs={content.faqs}
+        faqs={schemaFaqs}
         areaServed={areaServed}
         keywords={service?.keywords ?? city?.geoKeywords}
         service={schemaService}
@@ -210,7 +215,12 @@ export function LocalSeoPage({
       ) : null}
 
       <Section id="faq" title="Frequently asked questions" alt>
-        <FAQ items={content.faqs} />
+        <FaqSection
+          items={content.faqs}
+          id="local-faq"
+          showPeopleAlsoAsk={Boolean(service)}
+          initialVisible={6}
+        />
       </Section>
 
       <SeoFinalCta

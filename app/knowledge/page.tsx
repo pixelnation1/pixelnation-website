@@ -1,9 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { AeoSection } from "@/components/seo/AeoSection";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { PageStructuredData } from "@/components/seo/PageStructuredData";
-import { FAQ } from "@/components/FAQ";
+import { FaqPreview } from "@/components/faq/FaqPreview";
+import { FaqSection } from "@/components/faq/FaqSection";
+import { KNOWLEDGE_HUB_FAQS } from "@/lib/faq/global";
+import { toSchemaFaqs } from "@/lib/faq/utils";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import { ArticleCard } from "@/components/knowledge/ArticleCard";
@@ -12,7 +14,6 @@ import { KnowledgeSearch } from "@/components/knowledge/KnowledgeSearch";
 import { pageHeroSection } from "@/components/layout/responsive";
 import { knowledgeHubBreadcrumbs } from "@/lib/knowledge/breadcrumbs";
 import {
-  KNOWLEDGE_HUB_FAQ,
   KNOWLEDGE_HUB_HERO,
   KNOWLEDGE_HUB_METADATA,
   getHubFeaturedArticles,
@@ -46,7 +47,7 @@ export default function KnowledgeHubPage() {
 
   return (
     <article>
-      <PageStructuredData breadcrumbs={breadcrumbs} faq={KNOWLEDGE_HUB_FAQ} />
+      <PageStructuredData breadcrumbs={breadcrumbs} faq={toSchemaFaqs(KNOWLEDGE_HUB_FAQS)} />
 
       <section className={pageHeroSection} aria-labelledby="knowledge-hub-heading">
         <div className="mx-auto max-w-6xl px-4">
@@ -165,11 +166,11 @@ export default function KnowledgeHubPage() {
       </Section>
 
       <Section title="FAQ highlights" alt>
-        <FAQ items={KNOWLEDGE_HUB_FAQ.slice(0, 4)} id="hub-faq" />
+        <FaqPreview items={KNOWLEDGE_HUB_FAQS.slice(0, 4)} viewAllHref="#hub-faq" />
       </Section>
 
-      <Section title="Quick answers">
-        <AeoSection items={KNOWLEDGE_HUB_FAQ} title="Quick answers" />
+      <Section id="hub-faq" title="Frequently asked questions" alt>
+        <FaqSection items={KNOWLEDGE_HUB_FAQS} initialVisible={6} showPeopleAlsoAsk />
       </Section>
 
       <section className="border-t border-card-border bg-gradient-to-r from-accent-muted to-accent-secondary-muted py-12 sm:py-16">

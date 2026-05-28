@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FAQ } from "@/components/FAQ";
+import { RepairPageFaq } from "@/components/faq/RepairPageFaq";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { ComputerRepairStructuredData } from "@/components/services/ComputerRepairStructuredData";
@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/Button";
 import {
   AEO_ANSWERS,
   COMMON_PROBLEMS,
-  COMPUTER_FAQ,
   COMPUTERS_WE_REPAIR,
   COMPUTER_REPAIR_METADATA,
   GAMING_PC_ITEMS,
@@ -312,7 +311,7 @@ export default function ComputerRepairPage() {
         title="Computer repair FAQ"
         subtitle="Questions about laptops, Macs, viruses, SSD upgrades, and data recovery."
       >
-        <FAQ items={COMPUTER_FAQ} />
+        <RepairPageFaq page="computer-repair" />
       </Section>
 
       {/* Final CTA */}

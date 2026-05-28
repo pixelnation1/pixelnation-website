@@ -10,7 +10,10 @@ import { locationsHubBreadcrumbs } from "@/lib/locations/breadcrumbs";
 import { CITIES, CITY_SLUGS } from "@/lib/locations/cities";
 import { getKnowledgeHubLinks } from "@/lib/seo/location-links";
 import { InternalLinksHub } from "@/components/seo/local/InternalLinksHub";
+import { FaqSection } from "@/components/faq/FaqSection";
 import { LocalStructuredData } from "@/components/seo/local/LocalStructuredData";
+import { LOCATIONS_HUB_FAQS } from "@/lib/faq/global";
+import { toSchemaFaqs } from "@/lib/faq/utils";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata({
@@ -20,18 +23,6 @@ export const metadata: Metadata = createPageMetadata({
   path: "/locations",
 });
 
-const HUB_FAQ = [
-  {
-    question: "Where is PixelNation located?",
-    answer: `Our repair bench is in ${SITE.address.region}. We serve Kansas statewide through walk-in and mail-in repair.`,
-  },
-  {
-    question: "Do you offer mail-in repair outside Emporia?",
-    answer:
-      "Yes. Customers in Wichita, Topeka, KC, Manhattan, Lawrence, Salina, and beyond ship devices to our Emporia shop with tracking.",
-  },
-];
-
 export default function LocationsHubPage() {
   const breadcrumbs = locationsHubBreadcrumbs();
 
@@ -39,7 +30,7 @@ export default function LocationsHubPage() {
     <article>
       <LocalStructuredData
         breadcrumbs={breadcrumbs}
-        faqs={HUB_FAQ}
+        faqs={toSchemaFaqs(LOCATIONS_HUB_FAQS)}
         areaServed={CITY_SLUGS.map((slug) => ({
           cityName: CITIES[slug].name,
           stateName: CITIES[slug].state,
@@ -93,6 +84,10 @@ export default function LocationsHubPage() {
         title="Repair knowledge hub"
         links={getKnowledgeHubLinks()}
       />
+
+      <Section id="faq" title="Locations FAQ" alt>
+        <FaqSection items={LOCATIONS_HUB_FAQS} initialVisible={6} showPeopleAlsoAsk />
+      </Section>
 
       <SeoFinalCta headline="Not sure which location page fits?" subtext="Call or contact us—we serve all listed Kansas areas." />
     </article>

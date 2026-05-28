@@ -165,35 +165,9 @@ export const DATA_RECOVERY_DEVICES = [
   "Consoles",
 ] as const;
 
-export const HOME_FAQ = [
-  {
-    question: "How long do repairs take?",
-    answer:
-      "Many common repairs finish within a business day when parts are available. Board-level work, data recovery, and mail-in jobs may need additional time—we outline timing before you approve the repair.",
-  },
-  {
-    question: "Do you repair boards?",
-    answer:
-      "Yes. PixelNation performs board-level repair and microsoldering, including charging circuits, HDMI ports, trace work, and power faults on phones, consoles, and computers.",
-  },
-  {
-    question: "Can you recover data?",
-    answer:
-      "Often, yes. We assess storage health and device condition, then recommend the safest recovery approach for phones, SSDs, hard drives, USB drives, and other media.",
-  },
-  {
-    question: "Do you accept mail-in repairs?",
-    answer:
-      "Yes. Mail-in repair is available nationwide. Start online, ship your device, and receive diagnostics and repair updates before your device is returned.",
-  },
-  {
-    question: "Do you offer training?",
-    answer:
-      "Yes. PixelNation offers hands-on repair and board-level training courses. Contact us for current schedules and course details.",
-  },
-  {
-    question: "Do you repair appliances?",
-    answer:
-      "Yes. Appliance diagnostics and repair are a core service—we troubleshoot power, control, and mechanical faults on eligible units.",
-  },
-] as const;
+import { HOME_FAQS as HOME_FAQS_DATA } from "@/lib/faq/global";
+
+export { HOME_FAQS_DATA as HOME_FAQS };
+
+/** @deprecated Import HOME_FAQS from @/lib/faq */
+export const HOME_FAQ = HOME_FAQS_DATA;

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
-import { FAQ } from "@/components/FAQ";
+import { TrainingPageFaq } from "@/components/faq/RepairPageFaq";
 import { TrainingCoursesStructuredData } from "@/components/services/TrainingCoursesStructuredData";
 import { CoursePricingCard } from "@/components/training/CoursePricingCard";
 import { Section } from "@/components/Section";
@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/Button";
 import {
   AEO_ANSWERS,
   ALL_COURSES,
-  COURSES_FAQ,
   INVESTIGATOR_TRACK_COURSES,
   PAYMENT_POLICY,
   REPAIR_TRACK_COURSES,
@@ -328,7 +327,7 @@ export default function TrainingCoursesPage() {
 
       {/* FAQ */}
       <Section id="faq" title="Training courses FAQ" subtitle="Booking, tools, and what is included.">
-        <FAQ items={COURSES_FAQ} />
+        <TrainingPageFaq title="Training courses FAQ" />
       </Section>
 
       {/* Final CTA */}

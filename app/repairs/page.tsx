@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
-import { FAQ } from "@/components/FAQ";
+import { RepairPageFaq } from "@/components/faq/RepairPageFaq";
 import { RepairsStructuredData } from "@/components/services/RepairsStructuredData";
 import { Section } from "@/components/Section";
 import { ServiceCardImage } from "@/components/ServiceCardImage";
@@ -11,7 +11,6 @@ import {
   AEO_ANSWERS,
   COMMON_PROBLEMS,
   POPULAR_REPAIRS,
-  REPAIRS_FAQ,
   REPAIRS_METADATA,
   REPAIRS_SERVICE_CARDS,
 } from "@/lib/repairs-page";
@@ -279,7 +278,7 @@ export default function RepairsPage() {
         title="Repair FAQ"
         subtitle="Services, devices, data recovery, board repair, and tracking your repair."
       >
-        <FAQ items={REPAIRS_FAQ} />
+        <RepairPageFaq page="repairs" />
       </Section>
 
       {/* Final CTA */}

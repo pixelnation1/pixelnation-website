@@ -2,13 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
-import { FAQ } from "@/components/FAQ";
+import { RepairPageFaq } from "@/components/faq/RepairPageFaq";
 import { ApplianceRepairStructuredData } from "@/components/services/ApplianceRepairStructuredData";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import {
   AEO_ANSWERS,
-  APPLIANCE_FAQ,
   APPLIANCES_WE_REPAIR,
   APPLIANCE_REPAIR_METADATA,
   COMMON_PROBLEMS,
@@ -259,7 +258,7 @@ export default function ApplianceRepairPage() {
         title="Appliance repair FAQ"
         subtitle="Questions about refrigerators, washers, control boards, and repair timing."
       >
-        <FAQ items={APPLIANCE_FAQ} />
+        <RepairPageFaq page="appliance-repair" />
       </Section>
 
       {/* Final CTA */}

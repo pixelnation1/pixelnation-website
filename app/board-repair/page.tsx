@@ -2,13 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
-import { FAQ } from "@/components/FAQ";
+import { RepairPageFaq } from "@/components/faq/RepairPageFaq";
 import { BoardRepairStructuredData } from "@/components/services/BoardRepairStructuredData";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import {
   AEO_ANSWERS,
-  BOARD_REPAIR_FAQ,
   BOARD_REPAIR_METADATA,
   BOARD_REPAIR_PRICING,
   BOARD_REPAIR_PRICING_INTRO,
@@ -379,7 +378,7 @@ export default function BoardRepairPage() {
         title="Board repair FAQ"
         subtitle="Questions about microsoldering, HDMI, charging ports, liquid damage, and no power."
       >
-        <FAQ items={BOARD_REPAIR_FAQ} />
+        <RepairPageFaq page="board-repair" />
       </Section>
 
       {/* Final CTA */}

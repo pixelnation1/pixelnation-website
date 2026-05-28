@@ -1,10 +1,8 @@
 import { PageStructuredData } from "@/components/seo/PageStructuredData";
-import {
-  AEO_ANSWERS,
-  REPAIRS_FAQ,
-  REPAIRS_METADATA,
-  REPAIRS_SERVICE_CARDS,
-} from "@/lib/repairs-page";
+import { REPAIRS_METADATA, REPAIRS_SERVICE_CARDS } from "@/lib/repairs-page";
+import { getRepairPageFaqBundle } from "@/lib/faq/page-helpers";
+
+const { schema: repairsFaqSchema } = getRepairPageFaqBundle("repairs");
 
 export function RepairsStructuredData() {
   return (
@@ -13,7 +11,7 @@ export function RepairsStructuredData() {
         { name: "Home", path: "/" },
         { name: "Repair Services", path: "/repairs" },
       ]}
-      faq={[...REPAIRS_FAQ, ...AEO_ANSWERS]}
+      faq={repairsFaqSchema}
       service={{
         name: "Repair Services",
         serviceType: "Electronics and Appliance Repair",

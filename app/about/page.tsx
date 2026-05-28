@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
-import { FAQ } from "@/components/FAQ";
+import { FaqSection } from "@/components/faq/FaqSection";
+import { toSchemaFaqs } from "@/lib/faq/utils";
 import { AboutStructuredData } from "@/components/services/AboutStructuredData";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
@@ -273,7 +274,7 @@ export default function AboutPage() {
 
       {/* FAQ */}
       <Section id="faq" title="About PixelNation FAQ" subtitle="History, services, and training.">
-        <FAQ items={ABOUT_FAQ} />
+        <FaqSection items={ABOUT_FAQ} initialVisible={6} showPeopleAlsoAsk />
       </Section>
 
       {/* Final CTA */}

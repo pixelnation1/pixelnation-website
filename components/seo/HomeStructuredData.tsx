@@ -1,8 +1,9 @@
 import { JsonLd } from "@/components/seo/JsonLd";
-import { HOME_FAQ } from "@/lib/homepage";
+import { HOME_FAQS } from "@/lib/faq/global";
+import { toSchemaFaqs } from "@/lib/faq/utils";
 import { faqPageSchema } from "@/lib/seo/schema";
 
 /** Homepage-only FAQ schema (not duplicated on every route). */
 export function HomeStructuredData() {
-  return <JsonLd data={faqPageSchema(HOME_FAQ)} />;
+  return <JsonLd data={faqPageSchema(toSchemaFaqs(HOME_FAQS))} />;
 }

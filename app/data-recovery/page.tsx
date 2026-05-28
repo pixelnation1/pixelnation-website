@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
-import { FAQ } from "@/components/FAQ";
+import { RepairPageFaq } from "@/components/faq/RepairPageFaq";
 import { DataRecoveryStructuredData } from "@/components/services/DataRecoveryStructuredData";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
@@ -10,7 +10,6 @@ import {
   AEO_ANSWERS,
   BOARD_RECOVERY_POINTS,
   DATA_LOSS_SITUATIONS,
-  DATA_RECOVERY_FAQ,
   DATA_RECOVERY_METADATA,
   DEVICES_WE_RECOVER,
   HERO_BULLETS,
@@ -318,7 +317,7 @@ export default function DataRecoveryPage() {
         title="Data recovery FAQ"
         subtitle="Questions about phones, drives, water damage, and recovery timing."
       >
-        <FAQ items={DATA_RECOVERY_FAQ} />
+        <RepairPageFaq page="data-recovery" />
       </Section>
 
       {/* Final CTA */}

@@ -1,11 +1,23 @@
 import Image from "next/image";
-import { FAQ } from "@/components/FAQ";
+import { FaqSection } from "@/components/faq/FaqSection";
 import { PageStructuredData } from "@/components/seo/PageStructuredData";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { Button } from "@/components/ui/Button";
-import { FAQ_ITEMS, SITE, type ServicePageData } from "@/lib/site";
+import { resolveRepairPageFaqs, toSchemaFaqs } from "@/lib/faq";
+import type { RepairPageId } from "@/lib/faq/repair-pages";
+import { SITE, type ServicePageData } from "@/lib/site";
 import { repairBreadcrumbs } from "@/lib/seo/schema";
+
+const SHORT_PATH_TO_REPAIR_PAGE: Record<string, RepairPageId> = {
+  "/phone-repair": "phone-repair",
+  "/computer-repair": "computer-repair",
+  "/console-repair": "console-repair",
+  "/data-recovery": "data-recovery",
+  "/board-repair": "board-repair",
+  "/microsoldering-emporia-ks": "microsoldering",
+  "/appliance-repair-emporia-ks": "appliance-repair",
+};
 
 type Props = {
   service: ServicePageData;
@@ -13,12 +25,14 @@ type Props = {
 
 export function ServicePageTemplate({ service }: Props) {
   const crumbs = repairBreadcrumbs(service.title, service.shortPath);
+  const repairPage = SHORT_PATH_TO_REPAIR_PAGE[service.shortPath] ?? "repairs";
+  const faqItems = resolveRepairPageFaqs(repairPage, 8);
 
   return (
     <article>
       <PageStructuredData
         breadcrumbs={crumbs}
-        faq={FAQ_ITEMS}
+        faq={toSchemaFaqs(faqItems)}
         service={{
           name: service.title,
           serviceType: service.title,
@@ -87,14 +101,14 @@ export function ServicePageTemplate({ service }: Props) {
             <RelatedLinks currentPath={service.shortPath} />
           </div>
 
-          <section className="mt-12" aria-labelledby="service-faq-heading">
-            <h2 id="service-faq-heading" className="text-2xl font-bold sm:text-3xl">
-              Frequently asked questions
-            </h2>
-            <div className="mt-6">
-              <FAQ items={FAQ_ITEMS} id="service-faq" />
-            </div>
-          </section>
+          <div className="mt-12">
+            <FaqSection
+              items={faqItems}
+              id="service-faq"
+              showPeopleAlsoAsk
+              initialVisible={6}
+            />
+          </div>
 
           <div className="mt-12 rounded-2xl border border-card-border bg-card p-8 text-center">
             <h3 className="text-xl font-semibold">Ready to get started?</h3>

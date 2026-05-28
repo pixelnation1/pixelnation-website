@@ -1,16 +1,15 @@
 import { PageStructuredData } from "@/components/seo/PageStructuredData";
-import {
-  AEO_ANSWERS,
-  COMPUTER_FAQ,
-  COMPUTER_REPAIR_METADATA,
-} from "@/lib/computer-repair";
+import { COMPUTER_REPAIR_METADATA } from "@/lib/computer-repair";
+import { getRepairPageFaqBundle } from "@/lib/faq/page-helpers";
 import { repairBreadcrumbs } from "@/lib/seo/schema";
+
+const { schema: computerFaqSchema } = getRepairPageFaqBundle("computer-repair");
 
 export function ComputerRepairStructuredData() {
   return (
     <PageStructuredData
       breadcrumbs={repairBreadcrumbs("Computer Repair", "/computer-repair")}
-      faq={[...COMPUTER_FAQ, ...AEO_ANSWERS]}
+      faq={computerFaqSchema}
       service={{
         name: "Computer Repair",
         serviceType: "Computer Repair",

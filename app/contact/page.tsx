@@ -3,13 +3,12 @@ import Link from "next/link";
 
 import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { FAQ } from "@/components/FAQ";
+import { RepairPageFaq } from "@/components/faq/RepairPageFaq";
 import { ContactStructuredData } from "@/components/services/ContactStructuredData";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import {
   AEO_ANSWERS,
-  CONTACT_FAQ,
   CONTACT_METADATA,
   CONTACT_SERVICES,
   GOOGLE_MAPS_LINK,
@@ -271,7 +270,7 @@ export default function ContactPage() {
         title="Common questions"
         subtitle="Starting a repair, mail-in service, response times, and tracking."
       >
-        <FAQ items={CONTACT_FAQ} />
+        <RepairPageFaq page="contact" title="Contact & mail-in FAQ" />
       </Section>
 
       {/* Final CTA */}

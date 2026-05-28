@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
-import { FAQ } from "@/components/FAQ";
+import { TrainingPageFaq } from "@/components/faq/RepairPageFaq";
 import { TrainingStructuredData } from "@/components/services/TrainingStructuredData";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
@@ -14,7 +14,6 @@ import {
   SKILL_LEVELS,
   STUDENT_LEARNING,
   TOOLS_EQUIPMENT,
-  TRAINING_FAQ,
   TRAINING_FORMATS,
   TRAINING_METADATA,
   WHATS_PROVIDED,
@@ -379,7 +378,7 @@ export default function TrainingPage() {
         title="Training FAQ"
         subtitle="Experience, tools, booking, and what to expect."
       >
-        <FAQ items={TRAINING_FAQ} />
+        <TrainingPageFaq />
       </Section>
 
       {/* Booking */}

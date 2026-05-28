@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { PageStructuredData } from "@/components/seo/PageStructuredData";
-import { FAQ } from "@/components/FAQ";
+import { FaqSection } from "@/components/faq/FaqSection";
+import { resolveArticleFaqs, toSchemaFaqs } from "@/lib/faq";
 import { ArticleContent } from "@/components/knowledge/ArticleContent";
 import { ArticleCTA } from "@/components/knowledge/ArticleCTA";
 import { ArticleSidebar } from "@/components/knowledge/ArticleSidebar";
@@ -25,12 +26,13 @@ export function ArticlePage({ article }: ArticlePageProps) {
   const toc = extractTocFromContent(article.content);
   const category = getCategoryBySlug(article.category);
   const relatedArticles = getRelatedArticles(article, 3);
+  const articleFaqs = resolveArticleFaqs(article.slug, article.faq);
 
   return (
     <article>
       <PageStructuredData
         breadcrumbs={breadcrumbs}
-        faq={article.faq}
+        faq={toSchemaFaqs(articleFaqs)}
         article={{
           headline: article.title,
           description: article.description,
@@ -93,15 +95,17 @@ export function ArticlePage({ article }: ArticlePageProps) {
               <ArticleCTA />
             </div>
 
-            {article.faq.length > 0 ? (
-              <section className="mt-14" aria-labelledby="article-faq-heading">
-                <h2 id="article-faq-heading" className="text-2xl font-bold sm:text-3xl">
-                  Frequently asked questions
-                </h2>
-                <div className="mt-6">
-                  <FAQ items={article.faq} />
-                </div>
-              </section>
+            {articleFaqs.length > 0 ? (
+              <div className="mt-14">
+                <FaqSection
+                  items={articleFaqs}
+                  id="article-faq"
+                  showPeopleAlsoAsk
+                  conversationalQueries={article.conversationalQueries}
+                  featuredAnswer={article.featuredAnswer}
+                  initialVisible={6}
+                />
+              </div>
             ) : null}
 
             {relatedArticles.length > 0 ? (
