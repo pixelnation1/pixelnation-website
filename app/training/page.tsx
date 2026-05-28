@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
+
+import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { FAQ } from "@/components/FAQ";
 import { TrainingStructuredData } from "@/components/services/TrainingStructuredData";
 import { Section } from "@/components/Section";
@@ -23,17 +24,7 @@ import {
 } from "@/lib/training-page";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: TRAINING_METADATA.title,
-  description: TRAINING_METADATA.description,
-  alternates: { canonical: TRAINING_METADATA.canonical },
-  openGraph: {
-    title: TRAINING_METADATA.title,
-    description: TRAINING_METADATA.description,
-    type: "website",
-    url: TRAINING_METADATA.canonical,
-  },
-};
+export const metadata = createPageMetadataFromLegacy(TRAINING_METADATA);
 
 export default function TrainingPage() {
   return (

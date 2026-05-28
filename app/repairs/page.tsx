@@ -1,5 +1,6 @@
 import Link from "next/link";
-import type { Metadata } from "next";
+
+import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { FAQ } from "@/components/FAQ";
 import { RepairsStructuredData } from "@/components/services/RepairsStructuredData";
 import { Section } from "@/components/Section";
@@ -16,17 +17,7 @@ import {
 } from "@/lib/repairs-page";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: REPAIRS_METADATA.title,
-  description: REPAIRS_METADATA.description,
-  alternates: { canonical: REPAIRS_METADATA.canonical },
-  openGraph: {
-    title: REPAIRS_METADATA.title,
-    description: REPAIRS_METADATA.description,
-    type: "website",
-    url: REPAIRS_METADATA.canonical,
-  },
-};
+export const metadata = createPageMetadataFromLegacy(REPAIRS_METADATA);
 
 export default function RepairsPage() {
   return (

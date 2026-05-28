@@ -90,3 +90,19 @@ main {
   background: var(--accent);
   color: var(--background);
 }
+
+/* Knowledge Hub article readability */
+.knowledge-prose {
+  max-width: 65ch;
+}
+
+.knowledge-prose h2,
+.knowledge-prose h3 {
+  color: var(--foreground);
+}
+
+@media (min-width: 1024px) {
+  .knowledge-prose {
+    max-width: none;
+  }
+}

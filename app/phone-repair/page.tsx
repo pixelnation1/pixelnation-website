@@ -1,36 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
+import { FAQ } from "@/components/FAQ";
+import { PhoneRepairStructuredData } from "@/components/services/PhoneRepairStructuredData";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { Button } from "@/components/ui/Button";
+import { createPageMetadata } from "@/lib/seo/metadata";
+import { repairBreadcrumbs } from "@/lib/seo/schema";
 import { SITE } from "@/lib/site";
 
-const pageUrl = `${SITE.domain}/phone-repair`;
-
-export const metadata: Metadata = {
-  title: {
-    absolute:
-      "Phone Repair in Emporia, KS | iPhone, Samsung & Charging Port Repair | PixelNation",
-  },
+export const metadata = createPageMetadata({
+  title:
+    "Phone Repair in Emporia, KS | iPhone, Samsung & Charging Port Repair | PixelNation",
   description:
     "Professional phone repair in Emporia, KS for iPhone, Samsung, and other smartphones. Screen replacement, battery replacement, charging port repair, water damage, and board-level diagnostics.",
-  alternates: {
-    canonical: "/phone-repair",
-  },
-  openGraph: {
-    title:
-      "Phone Repair in Emporia, KS | iPhone, Samsung & Charging Port Repair | PixelNation",
-    description:
-      "Professional phone repair in Emporia, KS for iPhone, Samsung, and other smartphones. Screen replacement, battery replacement, charging port repair, water damage, and board-level diagnostics.",
-    url: pageUrl,
-    type: "website",
-    images: [
-      {
-        url: "/images/phonerepairlogo.png",
-        alt: "Professional phone repair in Emporia, KS at PixelNation",
-      },
-    ],
-  },
-};
+  path: "/phone-repair",
+  ogImage: "/images/phonerepairlogo.png",
+  titleAbsolute: true,
+});
 
 const heroBullets = [
   "Screen replacement",
@@ -147,15 +134,6 @@ const faqItems = [
   },
 ];
 
-function JsonLdScript({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
-
 function CheckList({ items }: { items: readonly string[] }) {
   return (
     <ul className="grid gap-3 sm:grid-cols-2">
@@ -202,134 +180,19 @@ function Section({
   );
 }
 
-function phoneRepairSchema() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqItems.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
-
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": `${SITE.domain}/#localbusiness`,
-    name: SITE.name,
-    url: SITE.domain,
-    image: `${SITE.domain}/images/pixellogo.png`,
-    telephone: SITE.phone,
-    email: SITE.email,
-    description:
-      "Professional phone repair, board-level repair, microsoldering, charging port repair, and data recovery in Emporia, Kansas.",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: SITE.address.city,
-      addressRegion: SITE.address.state,
-      addressCountry: "US",
-    },
-    areaServed: {
-      "@type": "City",
-      name: "Emporia",
-      addressRegion: "KS",
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: SITE.openingHours.opens,
-        closes: SITE.openingHours.closes,
-      },
-    ],
-    priceRange: "$$",
-    knowsAbout: [
-      "Phone Repair Emporia KS",
-      "iPhone Repair Emporia KS",
-      "Samsung Repair Emporia KS",
-      "Screen Repair Emporia KS",
-      "Battery Replacement Emporia KS",
-      "Charging Port Repair Emporia KS",
-      "Water Damage Repair Emporia KS",
-      "Board-Level Phone Repair",
-      "Microsoldering Phone Repair",
-    ],
-  };
-
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${pageUrl}#service`,
-    name: "Phone Repair",
-    serviceType: "Phone Repair",
-    description:
-      "Phone repair in Emporia, Kansas for iPhone, Samsung, and other smartphones, including screen replacement, battery replacement, charging port repair, water damage recovery, data recovery, and board-level diagnostics.",
-    provider: {
-      "@id": `${SITE.domain}/#localbusiness`,
-    },
-    areaServed: {
-      "@type": "City",
-      name: "Emporia",
-      addressRegion: "KS",
-      addressCountry: "US",
-    },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Phone Repair Services",
-      itemListElement: services.map((service) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: service.title,
-          description: service.body,
-        },
-      })),
-    },
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: SITE.domain,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Repairs",
-        item: `${SITE.domain}/repairs`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Phone Repair",
-        item: pageUrl,
-      },
-    ],
-  };
-
-  return [localBusinessSchema, serviceSchema, faqSchema, breadcrumbSchema];
-}
-
 export default function PhoneRepairPage() {
   return (
     <>
-      {phoneRepairSchema().map((schema) => (
-        <JsonLdScript key={schema["@type"]} data={schema} />
-      ))}
+      <PhoneRepairStructuredData
+        faq={faqItems}
+        serviceOffers={services.map((s) => ({ name: s.title, description: s.body }))}
+      />
 
       <article>
         <section className="border-b border-card-border bg-gradient-to-b from-accent-muted via-accent-secondary-muted to-background py-12 sm:py-16 md:py-24">
           <div className="mx-auto grid max-w-6xl min-w-0 items-center gap-8 px-4 sm:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="min-w-0 order-1">
+              <Breadcrumbs items={repairBreadcrumbs("Phone Repair", "/phone-repair")} />
               <p className="text-sm font-semibold uppercase tracking-wide text-accent">
                 Phone Repair Emporia KS
               </p>
@@ -518,30 +381,15 @@ export default function PhoneRepairPage() {
           </div>
         </Section>
 
+        <Section title="Related services" subtitle="More repair options at PixelNation.">
+          <RelatedLinks currentPath="/phone-repair" />
+        </Section>
+
         <Section
           title="Phone Repair FAQ"
           subtitle="Straight answers to common questions about iPhone repair, Samsung repair, charging port repair, water damage, data recovery, and board-level repair in Emporia, KS."
         >
-          <div className="space-y-3">
-            {faqItems.map((item) => (
-              <details
-                key={item.question}
-                className="group rounded-lg border border-card-border bg-card"
-              >
-                <summary className="cursor-pointer list-none px-5 py-4 text-sm font-semibold marker:content-none [&::-webkit-details-marker]:hidden">
-                  <span className="flex items-center justify-between gap-4">
-                    {item.question}
-                    <span className="text-accent-secondary transition group-open:rotate-45">
-                      +
-                    </span>
-                  </span>
-                </summary>
-                <p className="border-t border-card-border px-5 py-4 text-sm leading-relaxed text-muted">
-                  {item.answer}
-                </p>
-              </details>
-            ))}
-          </div>
+          <FAQ items={faqItems} id="phone-repair-faq" heading="Phone repair FAQ" />
         </Section>
 
         <section className="border-t border-card-border py-14 md:py-20">

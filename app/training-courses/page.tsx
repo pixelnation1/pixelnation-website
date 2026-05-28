@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
+
+import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { FAQ } from "@/components/FAQ";
 import { TrainingCoursesStructuredData } from "@/components/services/TrainingCoursesStructuredData";
 import { CoursePricingCard } from "@/components/training/CoursePricingCard";
@@ -20,17 +21,7 @@ import {
 } from "@/lib/training-courses-page";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: TRAINING_COURSES_METADATA.title,
-  description: TRAINING_COURSES_METADATA.description,
-  alternates: { canonical: TRAINING_COURSES_METADATA.canonical },
-  openGraph: {
-    title: TRAINING_COURSES_METADATA.title,
-    description: TRAINING_COURSES_METADATA.description,
-    type: "website",
-    url: TRAINING_COURSES_METADATA.canonical,
-  },
-};
+export const metadata = createPageMetadataFromLegacy(TRAINING_COURSES_METADATA);
 
 const HERO_BULLETS = [
   "Beginner to advanced training",

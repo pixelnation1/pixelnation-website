@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   AdvancedRepairSection,
   CommonProblemsSection,
@@ -13,21 +12,22 @@ import {
   WhatWeRepairSection,
   WhyChooseSection,
 } from "@/components/home/HomePageSections";
+import { HomeStructuredData } from "@/components/seo/HomeStructuredData";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { HOME_METADATA } from "@/lib/homepage";
+import { createPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: HOME_METADATA.title,
   description: HOME_METADATA.description,
-  openGraph: {
-    title: HOME_METADATA.title,
-    description: HOME_METADATA.description,
-    type: "website",
-  },
-};
+  path: HOME_METADATA.path,
+  titleAbsolute: true,
+});
 
 export default function HomePage() {
   return (
     <>
+      <HomeStructuredData />
       <HeroSection />
       <TrustBar />
       <WhatWeRepairSection />
@@ -39,6 +39,11 @@ export default function HomePage() {
       <DataRecoveryHomeSection />
       <TrainingHomeSection />
       <FAQSection />
+      <section className="border-t border-card-border py-12 sm:py-16">
+        <div className="mx-auto max-w-6xl min-w-0 px-4">
+          <RelatedLinks currentPath="/" title="Explore PixelNation" />
+        </div>
+      </section>
       <FinalCTASection />
     </>
   );

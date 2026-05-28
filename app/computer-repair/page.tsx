@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
 import { FAQ } from "@/components/FAQ";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { ComputerRepairStructuredData } from "@/components/services/ComputerRepairStructuredData";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
@@ -16,19 +17,11 @@ import {
   REPAIR_SERVICES,
   SERVICE_PROCESS,
 } from "@/lib/computer-repair";
+import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
+import { repairBreadcrumbs } from "@/lib/seo/schema";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: COMPUTER_REPAIR_METADATA.title,
-  description: COMPUTER_REPAIR_METADATA.description,
-  alternates: { canonical: COMPUTER_REPAIR_METADATA.canonical },
-  openGraph: {
-    title: COMPUTER_REPAIR_METADATA.title,
-    description: COMPUTER_REPAIR_METADATA.description,
-    type: "website",
-    url: COMPUTER_REPAIR_METADATA.canonical,
-  },
-};
+export const metadata = createPageMetadataFromLegacy(COMPUTER_REPAIR_METADATA);
 
 export default function ComputerRepairPage() {
   return (
@@ -42,17 +35,7 @@ export default function ComputerRepairPage() {
       >
         <div className="mx-auto grid max-w-6xl min-w-0 items-center gap-8 px-4 sm:gap-10 lg:grid-cols-2 lg:items-center">
           <div className="min-w-0 order-1">
-            <nav className="mb-3 text-xs text-muted" aria-label="Breadcrumb">
-              <Link href="/" className="hover:text-accent">
-                Home
-              </Link>
-              <span className="mx-2">/</span>
-              <Link href="/repairs" className="hover:text-accent">
-                Repairs
-              </Link>
-              <span className="mx-2">/</span>
-              <span className="text-foreground">Computer Repair</span>
-            </nav>
+            <Breadcrumbs items={repairBreadcrumbs("Computer Repair", "/computer-repair")} />
             <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-accent">
               Computer Repair Emporia KS
             </p>
@@ -317,6 +300,10 @@ export default function ComputerRepairPage() {
             </article>
           ))}
         </div>
+      </Section>
+
+      <Section id="related" title="Related services" subtitle="More repair options at PixelNation.">
+        <RelatedLinks currentPath="/computer-repair" />
       </Section>
 
       {/* FAQ */}

@@ -1,7 +1,7 @@
 export const SITE = {
   name: "PixelNation",
   tagline: "Advanced Tech Repair Specialists",
-  domain: "https://pixelnation.co",
+  domain: "https://www.pixelnation.co",
   phone: "620-591-0083",
   phoneHref: "tel:+16205910083",
   email: "support@pixelnation.co",
@@ -23,6 +23,7 @@ export const MAIN_MESSAGE =
 
 export const PRIMARY_NAV_LINKS = [
   { label: "Home", href: "/" },
+  { label: "Knowledge", href: "/knowledge" },
   { label: "Track Repair", href: "/track-repair" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -34,6 +35,8 @@ export const TRAINING_DROPDOWN_LINKS = [
 
 export const REPAIRS_DROPDOWN_LINKS = [
   { label: "Repairs Overview", href: "/repairs" },
+  { label: "Kansas Locations", href: "/locations" },
+  { label: "Repair Services", href: "/services" },
   { label: "Phone Repair", href: "/phone-repair" },
   { label: "Computer Repair", href: "/computer-repair" },
   { label: "Appliance Repair", href: "/appliance-repair" },
@@ -44,6 +47,9 @@ export const REPAIRS_DROPDOWN_LINKS = [
 
 export const FOOTER_COMPANY_LINKS = [
   { label: "About", href: "/about" },
+  { label: "Knowledge Hub", href: "/knowledge" },
+  { label: "Locations", href: "/locations" },
+  { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -55,6 +61,8 @@ export const FOOTER_SERVICE_LINKS = [
 
 const REPAIR_ACTIVE_PATHS = [
   "/repairs",
+  "/locations",
+  "/services",
   "/phone-repair",
   "/computer-repair",
   "/appliance-repair",
@@ -86,6 +94,9 @@ export function isTrainingNavActive(pathname: string): boolean {
 
 export function isNavLinkActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
+  if (href === "/knowledge") {
+    return pathname === "/knowledge" || pathname.startsWith("/knowledge/");
+  }
   if (href === "/repairs") return pathname === "/repairs";
   if (href === "/training") return pathname === "/training";
   if (href === "/track-repair") {

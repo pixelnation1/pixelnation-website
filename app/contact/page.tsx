@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
+
+import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { FAQ } from "@/components/FAQ";
 import { ContactStructuredData } from "@/components/services/ContactStructuredData";
@@ -16,17 +17,7 @@ import {
 } from "@/lib/contact-page";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: CONTACT_METADATA.title,
-  description: CONTACT_METADATA.description,
-  alternates: { canonical: CONTACT_METADATA.canonical },
-  openGraph: {
-    title: CONTACT_METADATA.title,
-    description: CONTACT_METADATA.description,
-    type: "website",
-    url: CONTACT_METADATA.canonical,
-  },
-};
+export const metadata = createPageMetadataFromLegacy(CONTACT_METADATA);
 
 export default function ContactPage() {
   return (

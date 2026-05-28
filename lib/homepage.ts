@@ -4,6 +4,7 @@ export const HOME_METADATA = {
   title: "PixelNation | Phone, Computer, Console & Appliance Repair in Emporia, KS",
   description:
     "Professional phone, computer, console, appliance, data recovery, and board-level repair in Emporia, Kansas. Start your repair online today.",
+  path: "/",
 } as const;
 
 export const HERO_BULLETS = [

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
+
+import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { FAQ } from "@/components/FAQ";
 import { DataRecoveryStructuredData } from "@/components/services/DataRecoveryStructuredData";
 import { Section } from "@/components/Section";
@@ -18,17 +19,7 @@ import {
 } from "@/lib/data-recovery-page";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: DATA_RECOVERY_METADATA.title,
-  description: DATA_RECOVERY_METADATA.description,
-  alternates: { canonical: DATA_RECOVERY_METADATA.canonical },
-  openGraph: {
-    title: DATA_RECOVERY_METADATA.title,
-    description: DATA_RECOVERY_METADATA.description,
-    type: "website",
-    url: DATA_RECOVERY_METADATA.canonical,
-  },
-};
+export const metadata = createPageMetadataFromLegacy(DATA_RECOVERY_METADATA);
 
 export default function DataRecoveryPage() {
   return (

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
+
+import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { FAQ } from "@/components/FAQ";
 import { BoardRepairStructuredData } from "@/components/services/BoardRepairStructuredData";
 import { Section } from "@/components/Section";
@@ -22,17 +23,7 @@ import {
 } from "@/lib/board-repair-page";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: BOARD_REPAIR_METADATA.title,
-  description: BOARD_REPAIR_METADATA.description,
-  alternates: { canonical: BOARD_REPAIR_METADATA.canonical },
-  openGraph: {
-    title: BOARD_REPAIR_METADATA.title,
-    description: BOARD_REPAIR_METADATA.description,
-    type: "website",
-    url: BOARD_REPAIR_METADATA.canonical,
-  },
-};
+export const metadata = createPageMetadataFromLegacy(BOARD_REPAIR_METADATA);
 
 export default function BoardRepairPage() {
   return (

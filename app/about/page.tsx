@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
+
+import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { FAQ } from "@/components/FAQ";
 import { AboutStructuredData } from "@/components/services/AboutStructuredData";
 import { Section } from "@/components/Section";
@@ -15,19 +16,10 @@ import {
 } from "@/lib/about-page";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: ABOUT_METADATA.title,
-  },
-  description: ABOUT_METADATA.description,
-  alternates: { canonical: ABOUT_METADATA.canonical },
-  openGraph: {
-    title: ABOUT_METADATA.title,
-    description: ABOUT_METADATA.description,
-    type: "website",
-    url: ABOUT_METADATA.canonical,
-  },
-};
+export const metadata = createPageMetadataFromLegacy({
+  ...ABOUT_METADATA,
+  titleAbsolute: true,
+});
 
 export default function AboutPage() {
   return (

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
+
+import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { FAQ } from "@/components/FAQ";
 import { ApplianceRepairStructuredData } from "@/components/services/ApplianceRepairStructuredData";
 import { Section } from "@/components/Section";
@@ -17,17 +18,7 @@ import {
 } from "@/lib/appliance-repair";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: APPLIANCE_REPAIR_METADATA.title,
-  description: APPLIANCE_REPAIR_METADATA.description,
-  alternates: { canonical: APPLIANCE_REPAIR_METADATA.canonical },
-  openGraph: {
-    title: APPLIANCE_REPAIR_METADATA.title,
-    description: APPLIANCE_REPAIR_METADATA.description,
-    type: "website",
-    url: APPLIANCE_REPAIR_METADATA.canonical,
-  },
-};
+export const metadata = createPageMetadataFromLegacy(APPLIANCE_REPAIR_METADATA);
 
 export default function ApplianceRepairPage() {
   return (

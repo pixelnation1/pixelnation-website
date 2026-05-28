@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
+
+import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { FAQ } from "@/components/FAQ";
 import { ConsoleRepairStructuredData } from "@/components/services/ConsoleRepairStructuredData";
 import { Section } from "@/components/Section";
@@ -18,17 +19,7 @@ import {
 } from "@/lib/console-repair";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: CONSOLE_REPAIR_METADATA.title,
-  description: CONSOLE_REPAIR_METADATA.description,
-  alternates: { canonical: CONSOLE_REPAIR_METADATA.canonical },
-  openGraph: {
-    title: CONSOLE_REPAIR_METADATA.title,
-    description: CONSOLE_REPAIR_METADATA.description,
-    type: "website",
-    url: CONSOLE_REPAIR_METADATA.canonical,
-  },
-};
+export const metadata = createPageMetadataFromLegacy(CONSOLE_REPAIR_METADATA);
 
 export default function ConsoleRepairPage() {
   return (

@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
+import { createPageMetadata } from "@/lib/seo/metadata";
 import {
   SERVICE_PAGES,
   type ServiceSlug,
@@ -18,15 +18,16 @@ export function generateStaticParams() {
   return Object.keys(SERVICE_PAGES).map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   if (!isServiceSlug(slug)) return {};
   const service = SERVICE_PAGES[slug];
-  return {
+  return createPageMetadata({
     title: service.metaTitle,
     description: service.metaDescription,
-    alternates: { canonical: `/${slug}` },
-  };
+    path: service.shortPath,
+    noIndex: true,
+  });
 }
 
 export default async function ServicePage({ params }: Props) {
