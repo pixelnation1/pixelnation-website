@@ -10,6 +10,9 @@ export const articleCommonCausesLaptopNoDisplay: KnowledgeArticle = {
     "A laptop that powers on with fans but shows a black screen can fail at the RAM, display assembly, GPU, or motherboard power stage—each with different repair paths.",
   category: "computer-repair",
   datePublished: PUBLISHED_2025_03,
+  image: "/images/laptopdisplay.png",
+  imageAlt:
+    "Laptop with display failure caused by damaged display cable or motherboard issue",
   featured: true,
   keywords: [
     "laptop no display",
@@ -86,8 +89,10 @@ export const articleCommonCausesLaptopNoDisplay: KnowledgeArticle = {
     },
     {
       type: "image",
-      src: "/images/pixellogo.png",
-      alt: "Laptop diagnostic repair — no display troubleshooting at PixelNation",
+      src: "/images/laptopdisplay.png",
+      alt: "Laptop with display failure caused by damaged display cable or motherboard issue",
+      caption:
+        "No-display laptops often trace to a damaged display cable at the hinge, a failed panel or backlight, or motherboard power to the GPU—each needs different diagnostics.",
     },
     {
       type: "heading",

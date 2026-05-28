@@ -1,5 +1,5 @@
 import { KNOWLEDGE_CATEGORIES } from "@/lib/knowledge/categories";
-import { KNOWLEDGE_ARTICLES } from "@/lib/knowledge/articles";
+import { KNOWLEDGE_ARTICLES, PREPARED_KNOWLEDGE_ARTICLES } from "@/lib/knowledge/articles";
 import type { InternalLink } from "@/lib/seo/internal-links";
 import type { KnowledgeArticle, KnowledgeCategorySlug } from "@/lib/knowledge/types";
 
@@ -24,7 +24,7 @@ export function getRelatedArticles(
   article: KnowledgeArticle,
   limit = 4,
 ): KnowledgeArticle[] {
-  const scored = KNOWLEDGE_ARTICLES.filter((a) => a.slug !== article.slug).map(
+  const scored = PREPARED_KNOWLEDGE_ARTICLES.filter((a) => a.slug !== article.slug).map(
     (candidate) => {
       let score = 0;
       if (candidate.category === article.category) score += 3;
@@ -103,7 +103,7 @@ export function getRelatedCategoryLinks(
 }
 
 export function getArticlesByCategory(category: KnowledgeCategorySlug): KnowledgeArticle[] {
-  return KNOWLEDGE_ARTICLES.filter((a) => a.category === category);
+  return PREPARED_KNOWLEDGE_ARTICLES.filter((a) => a.category === category);
 }
 
 export function searchArticles(query: string): KnowledgeArticle[] {

@@ -149,8 +149,8 @@ export default function ContactPage() {
               <Link href="/repairs" className="text-accent-secondary hover:underline">
                 Repairs overview
               </Link>
-              <Link href="/track-repair" className="text-accent-secondary hover:underline">
-                Track repair
+              <Link href="/knowledge" className="text-accent-secondary hover:underline">
+                Knowledge hub
               </Link>
             </nav>
           </div>

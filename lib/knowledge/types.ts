@@ -49,6 +49,8 @@ export type KnowledgeArticle = {
   datePublished: string;
   dateModified?: string;
   image?: string;
+  /** Alt text for hero/card image and Open Graph preview */
+  imageAlt?: string;
   keywords: string[];
   /** Conversational / voice-search queries this article answers */
   conversationalQueries: string[];

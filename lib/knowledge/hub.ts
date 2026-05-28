@@ -1,8 +1,8 @@
 import { KNOWLEDGE_CATEGORIES } from "@/lib/knowledge/categories";
 import {
   FEATURED_ARTICLES,
-  KNOWLEDGE_ARTICLES,
   POPULAR_ARTICLES,
+  PREPARED_KNOWLEDGE_ARTICLES,
   RECENT_ARTICLES,
 } from "@/lib/knowledge/articles";
 import type { FaqItem } from "@/lib/seo/types";
@@ -44,16 +44,30 @@ export const KNOWLEDGE_HUB_HERO = {
     "Authoritative repair guides on microsoldering, board damage, HDMI failure, liquid damage, and data recovery—built for search, answer engines, and real-world troubleshooting.",
 };
 
+function preparedBySlug(slug: string) {
+  return PREPARED_KNOWLEDGE_ARTICLES.find((a) => a.slug === slug);
+}
+
 export function getHubFeaturedArticles() {
-  return FEATURED_ARTICLES.length > 0
-    ? FEATURED_ARTICLES
-    : KNOWLEDGE_ARTICLES.slice(0, 3);
+  const slugs = (
+    FEATURED_ARTICLES.length > 0
+      ? FEATURED_ARTICLES
+      : PREPARED_KNOWLEDGE_ARTICLES.slice(0, 3)
+  ).map((a) => a.slug);
+  return slugs
+    .map((slug) => preparedBySlug(slug))
+    .filter((a): a is NonNullable<typeof a> => a !== undefined);
 }
 
 export function getHubPopularArticles() {
-  return POPULAR_ARTICLES.length > 0
-    ? POPULAR_ARTICLES
-    : KNOWLEDGE_ARTICLES.slice(0, 4);
+  const slugs = (
+    POPULAR_ARTICLES.length > 0
+      ? POPULAR_ARTICLES
+      : PREPARED_KNOWLEDGE_ARTICLES.slice(0, 4)
+  ).map((a) => a.slug);
+  return slugs
+    .map((slug) => preparedBySlug(slug))
+    .filter((a): a is NonNullable<typeof a> => a !== undefined);
 }
 
 export function getHubRecentArticles(limit = 5) {

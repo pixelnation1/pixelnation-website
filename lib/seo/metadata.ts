@@ -29,7 +29,7 @@ export function createPageMetadata(input: PageMetadataInput): Metadata {
       images: [
         {
           url: ogImage,
-          alt: `${SEO_DEFAULTS.siteName} — ${input.title}`,
+          alt: input.ogImageAlt ?? `${SEO_DEFAULTS.siteName} — ${input.title}`,
         },
       ],
     },

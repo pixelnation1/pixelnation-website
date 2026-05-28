@@ -11,6 +11,7 @@ export function createArticleMetadata(article: KnowledgeArticle): Metadata {
     titleAbsolute: true,
     keywords: article.keywords,
     ogImage: article.image,
+    ogImageAlt: article.imageAlt,
   });
 
   return {

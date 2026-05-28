@@ -1,5 +1,10 @@
-import Image from "next/image";
 import type { ContentBlock } from "@/lib/knowledge/types";
+import { KnowledgeArticleImage } from "@/components/knowledge/KnowledgeArticleImage";
+import {
+  isApprovedYouTubeBlock,
+  isPlaceholderContentImage,
+  parseApprovedYouTubeVideoId,
+} from "@/lib/knowledge/media";
 import { BeforeAfterGallery } from "./BeforeAfterGallery";
 import { HighlightedAnswer } from "./HighlightedAnswer";
 import { PullQuote } from "./PullQuote";
@@ -8,6 +13,17 @@ import { YouTubeEmbed } from "./YouTubeEmbed";
 type ArticleContentProps = {
   content: readonly ContentBlock[];
 };
+
+function isValidGalleryBlock(
+  block: Extract<ContentBlock, { type: "gallery" }>,
+): boolean {
+  return block.items.some(
+    (item) =>
+      item.before !== item.after &&
+      !isPlaceholderContentImage(item.before) &&
+      !isPlaceholderContentImage(item.after),
+  );
+}
 
 export function ArticleContent({ content }: ArticleContentProps) {
   return (
@@ -81,30 +97,35 @@ export function ArticleContent({ content }: ArticleContentProps) {
               />
             );
           case "image":
+            if (isPlaceholderContentImage(block.src)) return null;
             return (
-              <figure key={index} className="overflow-hidden rounded-2xl border border-card-border">
-                <div className="relative aspect-video w-full bg-background">
-                  <Image
-                    src={block.src}
-                    alt={block.alt}
-                    fill
-                    className="object-contain p-4"
-                    sizes="(max-width: 768px) 100vw, 720px"
-                  />
-                </div>
-                {block.caption ? (
-                  <figcaption className="border-t border-card-border px-4 py-2 text-sm text-muted">
-                    {block.caption}
-                  </figcaption>
-                ) : null}
-              </figure>
+              <KnowledgeArticleImage
+                key={index}
+                src={block.src}
+                alt={block.alt}
+                caption={block.caption}
+                variant="content"
+              />
             );
           case "youtube":
+            if (!isApprovedYouTubeBlock(block)) return null;
+            if (!parseApprovedYouTubeVideoId(block.videoId)) return null;
             return (
               <YouTubeEmbed key={index} videoId={block.videoId} title={block.title} />
             );
           case "gallery":
-            return <BeforeAfterGallery key={index} items={block.items} />;
+            if (!isValidGalleryBlock(block)) return null;
+            return (
+              <BeforeAfterGallery
+                key={index}
+                items={block.items.filter(
+                  (item) =>
+                    item.before !== item.after &&
+                    !isPlaceholderContentImage(item.before) &&
+                    !isPlaceholderContentImage(item.after),
+                )}
+              />
+            );
           default:
             return null;
         }

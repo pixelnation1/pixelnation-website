@@ -92,16 +92,6 @@ export const articleSignsPhoneBoardDamage: KnowledgeArticle = {
       text: "A failing battery usually still boots the phone and may swell. Board damage often kills boot entirely or causes erratic behavior that does not match battery wear patterns. Technicians measure charge current and rail voltages to tell the difference in minutes.",
     },
     {
-      type: "gallery",
-      items: [
-        {
-          before: "/images/pixellogo.png",
-          after: "/images/pixellogo.png",
-          alt: "Board-level phone repair — diagnostic and microsoldering workflow",
-        },
-      ],
-    },
-    {
       type: "heading",
       level: 2,
       id: "next-steps",

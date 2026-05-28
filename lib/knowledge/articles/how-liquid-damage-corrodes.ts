@@ -89,10 +89,5 @@ export const articleHowLiquidDamageCorrodes: KnowledgeArticle = {
       type: "paragraph",
       text: "Shops with board experience disassemble to the board, clean under shields, measure shorts, and replace corroded components. Consumer 'water damage kits' rarely reach failed areas under ICs.",
     },
-    {
-      type: "youtube",
-      videoId: "dQw4w9WgXcQ",
-      title: "Understanding liquid damage on logic boards",
-    },
   ],
 };

@@ -24,7 +24,6 @@ export const MAIN_MESSAGE =
 export const PRIMARY_NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Knowledge", href: "/knowledge" },
-  { label: "Track Repair", href: "/track-repair" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -99,9 +98,6 @@ export function isNavLinkActive(pathname: string, href: string): boolean {
   }
   if (href === "/repairs") return pathname === "/repairs";
   if (href === "/training") return pathname === "/training";
-  if (href === "/track-repair") {
-    return pathname === "/track-repair" || pathname === "/contact";
-  }
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

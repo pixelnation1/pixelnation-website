@@ -10,7 +10,8 @@ export const articleWhyPs5HdmiPortsFail: KnowledgeArticle = {
     "The PS5 HDMI port is a common failure point—often from repeated cable insertion, angled strain, or shipping damage—not always from the console itself overheating.",
   category: "hdmi-repair",
   datePublished: PUBLISHED_2025_02,
-  image: "/images/pixellogo.png",
+  image: "/images/ps5hdmiport.png",
+  imageAlt: "Damaged PS5 HDMI port requiring microsoldering repair",
   keywords: [
     "PS5 HDMI port",
     "PS5 no signal",
@@ -84,9 +85,10 @@ export const articleWhyPs5HdmiPortsFail: KnowledgeArticle = {
     },
     {
       type: "image",
-      src: "/images/pixellogo.png",
-      alt: "Console HDMI repair at PixelNation — PS5 and Xbox port replacement",
-      caption: "HDMI port damage is often visible under inspection—bent pins or a loose connector housing.",
+      src: "/images/ps5hdmiport.png",
+      alt: "Damaged PS5 HDMI port requiring microsoldering repair",
+      caption:
+        "A damaged PS5 HDMI port often shows bent pins, a loose housing, or lifted solder joints—visible under bench inspection before microsoldering repair.",
     },
     {
       type: "heading",

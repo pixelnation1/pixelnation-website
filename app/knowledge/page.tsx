@@ -20,7 +20,7 @@ import {
   getHubRecentArticles,
   KNOWLEDGE_CATEGORIES,
 } from "@/lib/knowledge/hub";
-import { KNOWLEDGE_ARTICLES } from "@/lib/knowledge/articles";
+import { PREPARED_KNOWLEDGE_ARTICLES } from "@/lib/knowledge/articles";
 import { POPULAR_SERVICES } from "@/lib/site";
 import { createPageMetadata } from "@/lib/seo/metadata";
 
@@ -64,7 +64,7 @@ export default function KnowledgeHubPage() {
             {KNOWLEDGE_HUB_HERO.subtitle}
           </p>
           <div className="mt-8 max-w-xl">
-            <KnowledgeSearch articles={KNOWLEDGE_ARTICLES} />
+            <KnowledgeSearch articles={PREPARED_KNOWLEDGE_ARTICLES} />
           </div>
         </div>
       </section>

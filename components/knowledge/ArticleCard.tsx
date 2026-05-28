@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { KnowledgeArticleImage } from "@/components/knowledge/KnowledgeArticleImage";
 import { getCategoryBySlug } from "@/lib/knowledge/categories";
 import { getArticlePath } from "@/lib/knowledge/linking";
 import type { KnowledgeArticle } from "@/lib/knowledge/types";
@@ -11,8 +12,18 @@ type ArticleCardProps = {
 export function ArticleCard({ article, showCategory = true }: ArticleCardProps) {
   const category = getCategoryBySlug(article.category);
 
+  const cardImageAlt = article.imageAlt ?? article.title;
+
   return (
-    <article className="group relative flex h-full flex-col rounded-2xl border border-card-border bg-card p-5 transition hover:border-accent-secondary/40 hover:shadow-lg hover:shadow-accent-secondary/5">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-card-border bg-card transition hover:border-accent-secondary/40 hover:shadow-lg hover:shadow-accent-secondary/5">
+      {article.image ? (
+        <KnowledgeArticleImage
+          src={article.image}
+          alt={cardImageAlt}
+          variant="card"
+        />
+      ) : null}
+      <div className="flex flex-1 flex-col p-5">
       <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
         {showCategory && category ? (
           <Link
@@ -33,6 +44,7 @@ export function ArticleCard({ article, showCategory = true }: ArticleCardProps) 
       <p className="mt-4 text-sm font-medium text-accent">
         Read guide <span aria-hidden>→</span>
       </p>
+      </div>
     </article>
   );
 }

@@ -10,7 +10,7 @@ export const articleWhatIsMicrosoldering: KnowledgeArticle = {
     "Microsoldering is precision board-level repair that fixes power, charging, and display faults when parts replacement alone cannot restore a device.",
   category: "microsoldering",
   datePublished: PUBLISHED_2025_01,
-  image: "/images/pixellogo.png",
+  image: "/images/microsoldering.png",
   keywords: [
     "microsoldering",
     "board level repair",
@@ -118,11 +118,6 @@ export const articleWhatIsMicrosoldering: KnowledgeArticle = {
         "DC power supply with current limiting for safe bring-up",
         "Multimeter and board-view schematics for rail tracing",
       ],
-    },
-    {
-      type: "youtube",
-      videoId: "dQw4w9WgXcQ",
-      title: "Introduction to board-level repair concepts",
     },
     {
       type: "heading",

@@ -40,6 +40,7 @@ export type PageMetadataInput = {
   /** App route, e.g. `/computer-repair` */
   path: string;
   ogImage?: string;
+  ogImageAlt?: string;
   /** Use when title should not use the layout template suffix */
   titleAbsolute?: boolean;
   noIndex?: boolean;
