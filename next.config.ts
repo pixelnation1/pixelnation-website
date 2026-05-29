@@ -26,7 +26,6 @@ const nextConfig: NextConfig = {
       permanent: true,
     },
     { source: "/track-repair", destination: "/contact", permanent: true },
-    { source: "/shop", destination: "/repairs", permanent: true },
   ],
 };
 

@@ -89,7 +89,11 @@ export default function KnowledgeHubPage() {
       <Section title="Popular repairs" alt>
         <p className="-mt-4 mb-6 max-w-2xl text-muted">
           Start a repair with PixelNation—these are our most requested services, linked
-          to in-depth guides in the Knowledge Hub.
+          to in-depth guides in the Knowledge Hub. Shopping for TCG products?{" "}
+          <Link href="/shop" className="text-accent-secondary hover:underline">
+            Browse the PixelNation Shop
+          </Link>
+          .
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {POPULAR_SERVICES.slice(0, 6).map((service) => (

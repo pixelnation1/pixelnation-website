@@ -25,6 +25,7 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
     { label: "Repairs Overview", href: "/repairs", description: "All PixelNation repair services" },
   ],
   "/console-repair": [
+    { label: "PixelNation Shop", href: "/shop", description: "Magic, Pokémon & gaming TCG products" },
     { label: "Board Repair", href: "/board-repair", description: "HDMI port and power rail console repair" },
     { label: "Data Recovery", href: "/data-recovery", description: "Console storage and save data recovery" },
     { label: "Phone Repair", href: "/phone-repair", description: "Handheld and mobile gaming devices" },
@@ -61,12 +62,20 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
   ],
   "/": [
     { label: "Repairs", href: "/repairs" },
+    { label: "Shop", href: "/shop", description: "Magic, Pokémon & sealed TCG products" },
     { label: "Knowledge Hub", href: "/knowledge" },
     { label: "Phone Repair", href: "/phone-repair" },
     { label: "Training", href: "/training" },
     { label: "Contact", href: "/contact" },
   ],
+  "/shop": [
+    { label: "Console Repair", href: "/console-repair", description: "PS5, Xbox & Switch repair" },
+    { label: "Repairs Overview", href: "/repairs", description: "All PixelNation repair services" },
+    { label: "Knowledge Hub", href: "/knowledge", description: "Repair and gaming guides" },
+    { label: "Contact", href: "/contact", description: "Visit our Emporia, KS shop" },
+  ],
   "/knowledge": [
+    { label: "PixelNation Shop", href: "/shop", description: "Magic, Pokémon & sealed TCG products" },
     { label: "What Is Microsoldering?", href: "/knowledge/what-is-microsoldering", description: "Board-level repair basics" },
     { label: "PS5 HDMI Port Failure", href: "/knowledge/why-ps5-hdmi-ports-fail", description: "Console video troubleshooting" },
     { label: "Dead Phone Data Recovery", href: "/knowledge/can-data-be-recovered-from-a-dead-phone", description: "When recovery is possible" },

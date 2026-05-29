@@ -26,6 +26,7 @@ export const PUBLIC_ROUTES: SitemapEntry[] = [
   { path: "/training-courses", changeFrequency: "monthly", priority: 0.85 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/shop", changeFrequency: "weekly", priority: 0.88 },
   { path: "/knowledge", changeFrequency: "weekly", priority: 0.88 },
   { path: "/locations", changeFrequency: "weekly", priority: 0.85 },
   { path: "/services", changeFrequency: "weekly", priority: 0.85 },

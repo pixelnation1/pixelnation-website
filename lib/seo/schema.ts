@@ -253,6 +253,72 @@ export function locationBreadcrumbs(
   return [{ name: "Home", path: "/" }, ...crumbs];
 }
 
+export function shopBreadcrumbs(): BreadcrumbItem[] {
+  return [
+    { name: "Home", path: "/" },
+    { name: "Shop", path: "/shop" },
+  ];
+}
+
+const SHOPIFY_STORE_URL = "https://pixelnations.myshopify.com/";
+
+export function shopWebPageSchema() {
+  const pageUrl = buildCanonical("/shop");
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    name: "Shop Magic: The Gathering, Pokémon & TCG Products | PixelNation",
+    description:
+      "Shop Magic: The Gathering, Pokémon, sealed trading card products, playmats, collector boxes, and gaming accessories from PixelNation.",
+    url: pageUrl,
+    isPartOf: { "@id": `${CANONICAL_ORIGIN}/#website` },
+    about: { "@id": `${pageUrl}#store` },
+    inLanguage: "en-US",
+  };
+}
+
+export function shopStoreSchema(
+  productItems: {
+    "@type": "ListItem";
+    position: number;
+    name: string;
+    description: string;
+  }[],
+) {
+  const pageUrl = buildCanonical("/shop");
+  return {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "@id": `${pageUrl}#store`,
+    name: "PixelNation Shop",
+    description:
+      "Magic: The Gathering, Pokémon, sealed trading card products, playmats, collector boxes, and gaming accessories from PixelNation in Emporia, Kansas.",
+    url: SHOPIFY_STORE_URL,
+    image: LOGO,
+    parentOrganization: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: SITE.address.city,
+      addressRegion: SITE.address.state,
+      addressCountry: "US",
+    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: SITE.address.city,
+        containedInPlace: { "@type": "State", name: "Kansas" },
+      },
+      { "@type": "Country", name: "United States" },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "PixelNation TCG Products",
+      itemListElement: productItems,
+    },
+  };
+}
+
 /** LocalBusiness overrides for city/service landing pages */
 export function localBusinessForArea(
   areas: AreaServedInput | readonly AreaServedInput[],
