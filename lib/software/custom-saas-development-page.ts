@@ -31,8 +31,6 @@ export const HERO = {
     "MVP builds for validated ideas",
     "Scalable modern architecture",
   ],
-  image: "/images/computerrepair.png",
-  imageAlt: "Custom SaaS platform and web application development by PixelNation",
 } as const;
 
 export const SAAS_PRODUCTS = [

@@ -1,4 +1,5 @@
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { PortfolioProjectCard } from "@/components/portfolio/PortfolioProjectCard";
 import {
   SoftwareServiceCta,
   SoftwareServiceFaq,
@@ -11,12 +12,13 @@ import {
 } from "@/components/software/SoftwareServiceSections";
 import { SoftwareServiceLinks } from "@/components/software/SoftwareServiceLinks";
 import { Section } from "@/components/Section";
+import { Button } from "@/components/ui/Button";
+import { getPortfolioProject } from "@/lib/portfolio";
 import {
   CONVERSATIONAL_QUERIES,
   CUSTOM_SAAS_FAQ,
   CUSTOM_SAAS_KEYWORDS,
   CUSTOM_SAAS_METADATA,
-  FEATURED_SAAS_PROJECTS,
   GEO_COPY,
   HERO,
   SAAS_PROCESS,
@@ -30,13 +32,16 @@ export const metadata = createPageMetadata({
   path: CUSTOM_SAAS_METADATA.path,
   titleAbsolute: true,
   keywords: [...CUSTOM_SAAS_KEYWORDS],
-  ogImage: HERO.image,
-  ogImageAlt: HERO.imageAlt,
 });
 
 const PAGE_NAME = "Custom SaaS Development";
 
+const FEATURED_SAAS_SLUGS = ["repairforge", "reconforge"] as const;
+
 export default function CustomSaasDevelopmentPage() {
+  const featuredProjects = FEATURED_SAAS_SLUGS.map((slug) => getPortfolioProject(slug)).filter(
+    (project) => project !== undefined,
+  );
   return (
     <article>
       <SoftwareServiceStructuredData
@@ -62,9 +67,7 @@ export default function CustomSaasDevelopmentPage() {
         headline={HERO.headline}
         subheadline={HERO.subheadline}
         bullets={HERO.bullets}
-        image={HERO.image}
-        imageAlt={HERO.imageAlt}
-        secondaryCta={{ label: "View Software Services", href: "/software-development" }}
+        secondaryCta={{ label: "View Portfolio", href: "/portfolio" }}
       />
 
       <Section
@@ -108,48 +111,16 @@ export default function CustomSaasDevelopmentPage() {
         alt
       >
         <div className="grid gap-6 lg:grid-cols-2">
-          {FEATURED_SAAS_PROJECTS.map((project) => (
-            <article
-              key={project.name}
-              className="rounded-2xl border border-card-border bg-card p-6"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <h3 className="text-xl font-semibold text-foreground">{project.name}</h3>
-                <span className="shrink-0 rounded-full border border-card-border bg-background px-2.5 py-0.5 text-xs font-medium text-muted">
-                  {project.status}
-                </span>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{project.description}</p>
-              <h4 className="mt-4 text-xs font-semibold uppercase tracking-wide text-foreground">
-                Features
-              </h4>
-              <ul className="mt-2 flex flex-wrap gap-2">
-                {project.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="rounded-full border border-card-border bg-background px-3 py-1 text-xs text-muted"
-                  >
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <h4 className="mt-4 text-xs font-semibold uppercase tracking-wide text-foreground">
-                Technologies
-              </h4>
-              <ul className="mt-2 flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <li
-                    key={tech}
-                    className="rounded-full border border-card-border bg-background px-3 py-1 text-xs text-muted"
-                  >
-                    {tech}
-                  </li>
-                ))}
-              </ul>
-            </article>
+          {featuredProjects.map((project) => (
+            <PortfolioProjectCard key={project.slug} project={project} compact />
           ))}
         </div>
         <p className="mt-8 max-w-3xl leading-relaxed text-muted">{GEO_COPY}</p>
+        <div className="mt-6">
+          <Button href="/portfolio" variant="secondary">
+            View full portfolio
+          </Button>
+        </div>
       </Section>
 
       <SoftwareServiceLinks excludeHref={CUSTOM_SAAS_METADATA.path} />

@@ -271,6 +271,80 @@ export function softwareServiceBreadcrumbs(
   ];
 }
 
+export function portfolioBreadcrumbs(): BreadcrumbItem[] {
+  return [
+    { name: "Home", path: "/" },
+    { name: "Portfolio", path: "/portfolio" },
+  ];
+}
+
+export function portfolioCaseStudyBreadcrumbs(
+  projectName: string,
+  path: string,
+): BreadcrumbItem[] {
+  return [
+    { name: "Home", path: "/" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: projectName, path },
+  ];
+}
+
+export function portfolioItemListSchema(
+  items: {
+    position: number;
+    name: string;
+    description: string;
+    path: string;
+  }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "PixelNation Software Development Portfolio",
+    description:
+      "Websites, SaaS platforms, automation systems, dashboards, and custom software built by PixelNation.",
+    itemListElement: items.map((item) => ({
+      "@type": "ListItem",
+      position: item.position,
+      name: item.name,
+      description: item.description,
+      url: buildCanonical(item.path),
+    })),
+  };
+}
+
+export function portfolioProjectSchema(project: {
+  name: string;
+  tagline: string;
+  description: string;
+  slug: string;
+  screenshot: string;
+  projectUrl?: string;
+  technologies: readonly string[];
+  industry: string;
+}) {
+  const pageUrl = buildCanonical(`/portfolio/${project.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": `${pageUrl}#project`,
+    name: project.name,
+    headline: project.name,
+    description: project.description,
+    url: pageUrl,
+    image: buildCanonical(project.screenshot),
+    creator: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+    about: project.industry,
+    keywords: project.technologies.join(", "),
+    ...(project.projectUrl
+      ? {
+          isBasedOn: project.projectUrl,
+          mainEntityOfPage: project.projectUrl,
+        }
+      : {}),
+  };
+}
+
 /** LocalBusiness overrides for city/service landing pages */
 export function localBusinessForArea(
   areas: AreaServedInput | readonly AreaServedInput[],

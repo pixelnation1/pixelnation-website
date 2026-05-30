@@ -63,31 +63,42 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
   "/": [
     { label: "Repairs", href: "/repairs" },
     { label: "Software Development", href: "/software-development", description: "Custom SaaS, websites & automation" },
-    { label: "Website Development", href: "/software-development/website-development", description: "Business websites & landing pages" },
+    { label: "Portfolio", href: "/portfolio", description: "Websites, SaaS & automation case studies" },
     { label: "Knowledge Hub", href: "/knowledge" },
     { label: "Training", href: "/training" },
     { label: "Contact", href: "/contact" },
   ],
   "/software-development": [
+    { label: "Portfolio", href: "/portfolio", description: "Websites, SaaS & automation case studies" },
     { label: "Website Development", href: "/software-development/website-development", description: "Business websites, landing pages & nonprofits" },
     { label: "Custom SaaS Development", href: "/software-development/custom-saas-development", description: "Portals, dashboards & subscription platforms" },
     { label: "Business Automation", href: "/software-development/business-automation", description: "CRM, workflows & reporting systems" },
-    { label: "Repairs Overview", href: "/repairs", description: "Device and board-level repair services" },
     { label: "Contact", href: "/contact", description: "Schedule a software consultation" },
   ],
+  "/portfolio": [
+    { label: "RepairForge Case Study", href: "/portfolio/repairforge", description: "Repair shop management SaaS" },
+    { label: "ReconForge Case Study", href: "/portfolio/reconforge", description: "Automotive recon platform" },
+    { label: "Website Development", href: "/software-development/website-development", description: "Business website services" },
+    { label: "Custom SaaS Development", href: "/software-development/custom-saas-development", description: "SaaS and web app development" },
+    { label: "Software Overview", href: "/software-development", description: "All PixelNation software services" },
+  ],
   "/software-development/website-development": [
+    { label: "Portfolio", href: "/portfolio", description: "Website and software case studies" },
     { label: "Custom SaaS Development", href: "/software-development/custom-saas-development", description: "Client portals and subscription software" },
     { label: "Business Automation", href: "/software-development/business-automation", description: "Workflow and CRM automation" },
     { label: "Software Overview", href: "/software-development", description: "All PixelNation software services" },
     { label: "Contact", href: "/contact", description: "Request a website consultation" },
   ],
   "/software-development/custom-saas-development": [
+    { label: "Portfolio", href: "/portfolio", description: "SaaS and platform case studies" },
+    { label: "RepairForge", href: "/portfolio/repairforge", description: "Repair shop SaaS case study" },
     { label: "Website Development", href: "/software-development/website-development", description: "Business and service company websites" },
     { label: "Business Automation", href: "/software-development/business-automation", description: "Workflow and dashboard automation" },
     { label: "Software Overview", href: "/software-development", description: "All PixelNation software services" },
     { label: "Contact", href: "/contact", description: "Discuss your SaaS project" },
   ],
   "/software-development/business-automation": [
+    { label: "Portfolio", href: "/portfolio", description: "Automation and dashboard projects" },
     { label: "Website Development", href: "/software-development/website-development", description: "Modern business websites" },
     { label: "Custom SaaS Development", href: "/software-development/custom-saas-development", description: "Portals, dashboards & internal tools" },
     { label: "Software Overview", href: "/software-development", description: "All PixelNation software services" },
@@ -151,5 +162,8 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
 };
 
 export function getRelatedRepairLinks(path: string): InternalLink[] {
+  if (path.startsWith("/portfolio/")) {
+    return RELATED_REPAIR_LINKS["/portfolio"] ?? [];
+  }
   return RELATED_REPAIR_LINKS[path] ?? RELATED_REPAIR_LINKS["/repairs"] ?? [];
 }

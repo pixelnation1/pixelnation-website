@@ -1,6 +1,7 @@
 import { BLOG_POSTS } from "@/lib/seo/blog";
 import { KNOWLEDGE_CATEGORIES } from "@/lib/knowledge/categories";
 import { KNOWLEDGE_ARTICLES } from "@/lib/knowledge/articles";
+import { PORTFOLIO_SLUGS } from "@/lib/portfolio";
 import { CITY_SLUGS } from "@/lib/locations/cities";
 import { SERVICE_SLUGS } from "@/lib/locations/services";
 import { getAllCityServiceParams } from "@/lib/locations/content";
@@ -28,6 +29,7 @@ export const PUBLIC_ROUTES: SitemapEntry[] = [
   { path: "/software-development/website-development", changeFrequency: "monthly", priority: 0.86 },
   { path: "/software-development/custom-saas-development", changeFrequency: "monthly", priority: 0.86 },
   { path: "/software-development/business-automation", changeFrequency: "monthly", priority: 0.86 },
+  { path: "/portfolio", changeFrequency: "monthly", priority: 0.87 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.8 },
   { path: "/knowledge", changeFrequency: "weekly", priority: 0.88 },
@@ -75,6 +77,14 @@ function knowledgeSitemapEntries(): SitemapEntry[] {
   return categoryEntries.concat(articleEntries);
 }
 
+function portfolioSitemapEntries(): SitemapEntry[] {
+  return PORTFOLIO_SLUGS.map((slug) => ({
+    path: `/portfolio/${slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.82,
+  }));
+}
+
 export function getAllSitemapEntries(): SitemapEntry[] {
   const blogEntries: SitemapEntry[] = BLOG_POSTS.map((post) => ({
     path: `/blog/${post.slug}`,
@@ -86,6 +96,7 @@ export function getAllSitemapEntries(): SitemapEntry[] {
     ...PUBLIC_ROUTES,
     ...locationSitemapEntries(),
     ...knowledgeSitemapEntries(),
+    ...portfolioSitemapEntries(),
     ...blogEntries,
   ];
 }

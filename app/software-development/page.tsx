@@ -1,14 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { FaqSection } from "@/components/faq/FaqSection";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { SoftwareDevelopmentStructuredData } from "@/components/services/SoftwareDevelopmentStructuredData";
 import { SoftwareServiceLinks } from "@/components/software/SoftwareServiceLinks";
-import { PortfolioProjectCard } from "@/components/software/PortfolioProjectCard";
+import { PortfolioProjectCard } from "@/components/portfolio/PortfolioProjectCard";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { getFeaturedProjects } from "@/lib/portfolio";
 import { SITE } from "@/lib/site";
 import {
   AEO_ANSWERS,
@@ -16,7 +16,6 @@ import {
   GEO_COPY,
   HERO_BULLETS,
   INDUSTRIES,
-  PORTFOLIO_PROJECTS,
   SERVICE_OFFERINGS,
   SOFTWARE_DEV_FAQ,
   SOFTWARE_DEV_KEYWORDS,
@@ -30,12 +29,11 @@ export const metadata = createPageMetadata({
   path: SOFTWARE_DEV_METADATA.path,
   titleAbsolute: true,
   keywords: [...SOFTWARE_DEV_KEYWORDS],
-  ogImage: "/images/computerrepair.png",
-  ogImageAlt: "Custom software development and website design by PixelNation",
 });
 
 export default function SoftwareDevelopmentPage() {
   const faqItems = SOFTWARE_DEV_FAQ.map((item) => ({ ...item }));
+  const featuredProjects = getFeaturedProjects();
 
   return (
     <article>
@@ -43,59 +41,47 @@ export default function SoftwareDevelopmentPage() {
 
       {/* Hero */}
       <section
-        className="border-b border-card-border bg-gradient-to-b from-accent-muted via-accent-secondary-muted to-background py-12 sm:py-16 md:py-24"
+        className="border-b border-card-border bg-gradient-to-b from-accent-muted via-accent-secondary-muted to-background py-14 sm:py-16 md:py-24"
         aria-labelledby="software-dev-heading"
       >
-        <div className="mx-auto grid max-w-6xl min-w-0 items-center gap-8 px-4 sm:gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="min-w-0 order-1">
-            <nav className="mb-3 text-xs text-muted" aria-label="Breadcrumb">
-              <Link href="/" className="hover:text-accent">
-                Home
-              </Link>
-              <span className="mx-2">/</span>
-              <span className="text-foreground">Software Development</span>
-            </nav>
-            <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-accent">
-              Custom Software · SaaS · Web Applications · Nationwide
-            </p>
-            <h1
-              id="software-dev-heading"
-              className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
-            >
-              Custom Software Development &amp; Modern Websites
-            </h1>
-            <p className="mt-4 text-lg leading-relaxed text-muted">
-              We help businesses grow with custom software, SaaS platforms, automation
-              tools, client portals, dashboards, and high-performance websites built
-              specifically for their needs.
-            </p>
-            <ul className="mt-6 space-y-2 text-sm text-muted">
-              {HERO_BULLETS.map((item) => (
-                <li key={item} className="flex gap-2">
-                  <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
-                    aria-hidden
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="cta-group mt-8">
-              <Button href="/contact">Request a Consultation</Button>
-              <Button href="#portfolio" variant="secondary">
-                View Our Portfolio
-              </Button>
-            </div>
-          </div>
-          <div className="relative order-2 mx-auto aspect-square w-full max-w-md min-w-0 lg:max-w-none">
-            <Image
-              src="/images/computerrepair.png"
-              alt="Custom software development, SaaS platforms, and website design by PixelNation"
-              fill
-              className="object-contain"
-              priority
-              sizes="(max-width: 1024px) 80vw, 40vw"
-            />
+        <div className="mx-auto max-w-4xl min-w-0 px-4">
+          <nav className="mb-3 text-xs text-muted" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-accent">
+              Home
+            </Link>
+            <span className="mx-2">/</span>
+            <span className="text-foreground">Software Development</span>
+          </nav>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-accent">
+            Custom Software · SaaS · Web Applications · Nationwide
+          </p>
+          <h1
+            id="software-dev-heading"
+            className="max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-tight"
+          >
+            Custom Software Development &amp; Modern Websites
+          </h1>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted sm:text-xl">
+            We help businesses grow with custom software, SaaS platforms, automation
+            tools, client portals, dashboards, and high-performance websites built
+            specifically for their needs.
+          </p>
+          <ul className="mt-8 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+            {HERO_BULLETS.map((item) => (
+              <li key={item} className="flex gap-2 text-sm text-muted sm:text-base">
+                <span
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                  aria-hidden
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="cta-group mt-10">
+            <Button href="/contact">Request a Consultation</Button>
+            <Button href="/portfolio" variant="secondary">
+              View Our Portfolio
+            </Button>
           </div>
         </div>
       </section>
@@ -167,16 +153,20 @@ export default function SoftwareDevelopmentPage() {
       <Section
         id="portfolio"
         title="Featured projects"
-        subtitle="A growing portfolio of SaaS platforms, business tools, and custom web applications—more case studies coming soon."
+        subtitle="A growing portfolio of SaaS platforms, business tools, and custom web applications."
       >
         <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-          {PORTFOLIO_PROJECTS.map((project, index) => (
+          {featuredProjects.slice(0, 6).map((project, index) => (
             <PortfolioProjectCard
-              key={project.name}
+              key={project.slug}
               project={project}
               priorityImage={index < 2}
+              compact
             />
           ))}
+        </div>
+        <div className="mt-8">
+          <Button href="/portfolio">View full portfolio</Button>
         </div>
       </Section>
 

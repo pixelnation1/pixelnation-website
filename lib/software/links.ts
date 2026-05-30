@@ -8,6 +8,7 @@ export const SOFTWARE_SERVICE_PATHS = {
 
 export const SOFTWARE_DEV_DROPDOWN_LINKS = [
   { label: "Software Overview", href: SOFTWARE_SERVICE_PATHS.overview },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Website Development", href: SOFTWARE_SERVICE_PATHS.websiteDevelopment },
   { label: "Custom SaaS Development", href: SOFTWARE_SERVICE_PATHS.customSaas },
   { label: "Business Automation", href: SOFTWARE_SERVICE_PATHS.businessAutomation },

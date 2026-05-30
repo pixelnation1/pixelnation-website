@@ -32,8 +32,6 @@ export const HERO = {
     "Scalable on modern web stacks",
     "Nationwide remote delivery",
   ],
-  image: "/images/computerrepair.png",
-  imageAlt: "Modern business website development by PixelNation",
 } as const;
 
 export const WHO_THIS_IS_FOR = [

@@ -28,8 +28,6 @@ export const metadata = createPageMetadata({
   path: BUSINESS_AUTOMATION_METADATA.path,
   titleAbsolute: true,
   keywords: [...BUSINESS_AUTOMATION_KEYWORDS],
-  ogImage: HERO.image,
-  ogImageAlt: HERO.imageAlt,
 });
 
 const PAGE_NAME = "Business Automation";
@@ -60,9 +58,7 @@ export default function BusinessAutomationPage() {
         headline={HERO.headline}
         subheadline={HERO.subheadline}
         bullets={HERO.bullets}
-        image={HERO.image}
-        imageAlt={HERO.imageAlt}
-        secondaryCta={{ label: "View Software Services", href: "/software-development" }}
+        secondaryCta={{ label: "View Portfolio", href: "/portfolio" }}
       />
 
       <Section

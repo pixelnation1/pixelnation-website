@@ -51,6 +51,7 @@ export const REPAIRS_DROPDOWN_LINKS = [
 export const FOOTER_COMPANY_LINKS = [
   { label: "About", href: "/about" },
   { label: "Software Development", href: "/software-development" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Knowledge Hub", href: "/knowledge" },
   { label: "Training", href: "/training" },
   { label: "Locations", href: "/locations" },
@@ -91,6 +92,7 @@ const SOFTWARE_ACTIVE_PATHS = [
   "/software-development/website-development",
   "/software-development/custom-saas-development",
   "/software-development/business-automation",
+  "/portfolio",
 ] as const;
 
 export function isRepairsNavActive(pathname: string): boolean {
@@ -118,6 +120,9 @@ export function isNavLinkActive(pathname: string, href: string): boolean {
   }
   if (href === "/software-development") {
     return pathname === "/software-development" || pathname.startsWith("/software-development/");
+  }
+  if (href === "/portfolio") {
+    return pathname === "/portfolio" || pathname.startsWith("/portfolio/");
   }
   if (href === "/repairs") return pathname === "/repairs";
   if (href === "/training") return pathname === "/training";

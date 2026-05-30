@@ -31,8 +31,6 @@ export const HERO = {
     "Employee and scheduling tools",
     "Integrations across your stack",
   ],
-  image: "/images/computerrepair.png",
-  imageAlt: "Business automation systems and workflow software by PixelNation",
 } as const;
 
 export const PROBLEMS_WE_SOLVE = [

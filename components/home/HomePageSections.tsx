@@ -400,7 +400,10 @@ export function SoftwareDevelopmentHomeSection() {
           </ul>
           <div className="cta-group mt-8">
             <Button href="/software-development">Software development services</Button>
-            <Button href="/contact" variant="secondary">
+            <Button href="/portfolio" variant="secondary">
+              View portfolio
+            </Button>
+            <Button href="/contact" variant="outline">
               Request a consultation
             </Button>
           </div>

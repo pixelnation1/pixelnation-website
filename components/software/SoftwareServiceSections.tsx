@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { PageStructuredData } from "@/components/seo/PageStructuredData";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
@@ -17,8 +15,6 @@ type SoftwareServiceHeroProps = {
   headline: string;
   subheadline: string;
   bullets?: readonly string[];
-  image: string;
-  imageAlt: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
 };
@@ -30,8 +26,6 @@ export function SoftwareServiceHero({
   headline,
   subheadline,
   bullets,
-  image,
-  imageAlt,
   primaryCta = { label: "Request a Consultation", href: "/contact" },
   secondaryCta,
 }: SoftwareServiceHeroProps) {
@@ -39,53 +33,43 @@ export function SoftwareServiceHero({
 
   return (
     <section
-      className="border-b border-card-border bg-gradient-to-b from-accent-muted via-accent-secondary-muted to-background py-12 sm:py-16 md:py-24"
+      className="border-b border-card-border bg-gradient-to-b from-accent-muted via-accent-secondary-muted to-background py-14 sm:py-16 md:py-24"
       aria-labelledby="software-service-heading"
     >
-      <div className="mx-auto grid max-w-6xl min-w-0 items-center gap-8 px-4 sm:gap-10 lg:grid-cols-2 lg:items-center">
-        <div className="min-w-0 order-1">
-          <Breadcrumbs items={crumbs} />
-          <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-accent">
-            {eyebrow}
-          </p>
-          <h1
-            id="software-service-heading"
-            className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
-          >
-            {headline}
-          </h1>
-          <p className="mt-4 text-lg leading-relaxed text-muted">{subheadline}</p>
-          {bullets?.length ? (
-            <ul className="mt-6 space-y-2 text-sm text-muted">
-              {bullets.map((item) => (
-                <li key={item} className="flex gap-2">
-                  <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
-                    aria-hidden
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
+      <div className="mx-auto max-w-4xl min-w-0 px-4">
+        <Breadcrumbs items={crumbs} />
+        <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-accent">
+          {eyebrow}
+        </p>
+        <h1
+          id="software-service-heading"
+          className="max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-tight"
+        >
+          {headline}
+        </h1>
+        <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted sm:text-xl">
+          {subheadline}
+        </p>
+        {bullets?.length ? (
+          <ul className="mt-8 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+            {bullets.map((item) => (
+              <li key={item} className="flex gap-2 text-sm text-muted sm:text-base">
+                <span
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                  aria-hidden
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        <div className="cta-group mt-10">
+          <Button href={primaryCta.href}>{primaryCta.label}</Button>
+          {secondaryCta ? (
+            <Button href={secondaryCta.href} variant="secondary">
+              {secondaryCta.label}
+            </Button>
           ) : null}
-          <div className="cta-group mt-8">
-            <Button href={primaryCta.href}>{primaryCta.label}</Button>
-            {secondaryCta ? (
-              <Button href={secondaryCta.href} variant="secondary">
-                {secondaryCta.label}
-              </Button>
-            ) : null}
-          </div>
-        </div>
-        <div className="relative order-2 mx-auto aspect-square w-full max-w-md min-w-0 lg:max-w-none">
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            className="object-contain"
-            priority
-            sizes="(max-width: 1024px) 80vw, 40vw"
-          />
         </div>
       </div>
     </section>

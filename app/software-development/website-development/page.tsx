@@ -31,8 +31,6 @@ export const metadata = createPageMetadata({
   path: WEBSITE_DEV_METADATA.path,
   titleAbsolute: true,
   keywords: [...WEBSITE_DEV_KEYWORDS],
-  ogImage: HERO.image,
-  ogImageAlt: HERO.imageAlt,
 });
 
 const PAGE_NAME = "Website Development";
@@ -63,9 +61,7 @@ export default function WebsiteDevelopmentPage() {
         headline={HERO.headline}
         subheadline={HERO.subheadline}
         bullets={HERO.bullets}
-        image={HERO.image}
-        imageAlt={HERO.imageAlt}
-        secondaryCta={{ label: "View Software Services", href: "/software-development" }}
+        secondaryCta={{ label: "View Portfolio", href: "/portfolio" }}
       />
 
       <Section
