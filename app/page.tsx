@@ -8,6 +8,7 @@ import {
   HeroSection,
   MailInRepairSection,
   TrainingHomeSection,
+  SoftwareDevelopmentHomeSection,
   TrustBar,
   WhatWeRepairSection,
   WhyChooseSection,
@@ -38,6 +39,7 @@ export default function HomePage() {
       <MailInRepairSection />
       <DataRecoveryHomeSection />
       <TrainingHomeSection />
+      <SoftwareDevelopmentHomeSection />
       <FAQSection />
       <section className="border-t border-card-border py-12 sm:py-16">
         <div className="mx-auto max-w-6xl min-w-0 px-4">

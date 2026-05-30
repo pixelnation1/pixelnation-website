@@ -7,9 +7,11 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import {
   isNavLinkActive,
   isRepairsNavActive,
+  isSoftwareNavActive,
   isTrainingNavActive,
   PRIMARY_NAV_LINKS,
   REPAIRS_DROPDOWN_LINKS,
+  SOFTWARE_DEV_DROPDOWN_LINKS,
   TRAINING_DROPDOWN_LINKS,
   SITE,
 } from "@/lib/site";
@@ -52,22 +54,28 @@ export function Header() {
   const pathname = usePathname();
   const repairsMenuId = useId();
   const trainingMenuId = useId();
+  const softwareMenuId = useId();
   const repairsNavRef = useRef<HTMLDivElement>(null);
   const trainingNavRef = useRef<HTMLDivElement>(null);
+  const softwareNavRef = useRef<HTMLDivElement>(null);
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileRepairsOpen, setMobileRepairsOpen] = useState(false);
   const [mobileTrainingOpen, setMobileTrainingOpen] = useState(false);
+  const [mobileSoftwareOpen, setMobileSoftwareOpen] = useState(false);
   const [desktopRepairsOpen, setDesktopRepairsOpen] = useState(false);
   const [desktopTrainingOpen, setDesktopTrainingOpen] = useState(false);
+  const [desktopSoftwareOpen, setDesktopSoftwareOpen] = useState(false);
 
   const repairsActive = isRepairsNavActive(pathname);
   const trainingActive = isTrainingNavActive(pathname);
+  const softwareActive = isSoftwareNavActive(pathname);
 
   const closeMobile = useCallback(() => {
     setMobileOpen(false);
     setMobileRepairsOpen(false);
     setMobileTrainingOpen(false);
+    setMobileSoftwareOpen(false);
   }, []);
 
   useEffect(() => {
@@ -75,6 +83,7 @@ export function Header() {
       closeMobile();
       setDesktopRepairsOpen(false);
       setDesktopTrainingOpen(false);
+      setDesktopSoftwareOpen(false);
     }, 0);
 
     return () => window.clearTimeout(timeout);
@@ -243,6 +252,67 @@ export function Header() {
             </div>
           </div>
 
+          {/* Software Development dropdown */}
+          <div
+            ref={softwareNavRef}
+            className="group relative"
+            onMouseEnter={() => setDesktopSoftwareOpen(true)}
+            onMouseLeave={() => setDesktopSoftwareOpen(false)}
+          >
+            <div className="flex items-center">
+              <Link
+                href="/software-development"
+                className={`${navLinkClass(softwareActive)} rounded-r-none pr-1`}
+                aria-current={pathname === "/software-development" ? "page" : undefined}
+              >
+                Software Development
+              </Link>
+              <button
+                type="button"
+                className={`${navLinkClass(softwareActive)} flex items-center rounded-l-none pl-0.5 pr-1.5`}
+                aria-expanded={desktopSoftwareOpen}
+                aria-controls={softwareMenuId}
+                aria-haspopup="true"
+                aria-label="Show software development menu"
+                onClick={() => setDesktopSoftwareOpen((v) => !v)}
+                onFocus={() => setDesktopSoftwareOpen(true)}
+              >
+                <ChevronIcon open={desktopSoftwareOpen} />
+              </button>
+            </div>
+
+            <div
+              id={softwareMenuId}
+              role="menu"
+              className={`absolute left-0 top-full z-50 pt-2 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
+                desktopSoftwareOpen
+                  ? "visible translate-y-0 opacity-100 pointer-events-auto"
+                  : "invisible translate-y-1 opacity-0 pointer-events-none"
+              }`}
+              onFocus={() => setDesktopSoftwareOpen(true)}
+              onBlur={(e) => {
+                if (!softwareNavRef.current?.contains(e.relatedTarget as Node)) {
+                  setDesktopSoftwareOpen(false);
+                }
+              }}
+            >
+              <ul className="min-w-[240px] overflow-hidden rounded-xl border border-card-border bg-card py-1.5 shadow-lg shadow-black/30">
+                {SOFTWARE_DEV_DROPDOWN_LINKS.map((link) => (
+                  <li key={link.href} role="none">
+                    <Link
+                      href={link.href}
+                      role="menuitem"
+                      className={dropdownLinkClass(isNavLinkActive(pathname, link.href))}
+                      onClick={() => setDesktopSoftwareOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
           {primaryLinksAfterRepairs.map((link) => (
             <Link
               key={link.href}
@@ -364,6 +434,44 @@ export function Header() {
                   className="mt-1 space-y-0.5 rounded-lg border border-card-border bg-card py-1.5 pl-2"
                 >
                   {TRAINING_DROPDOWN_LINKS.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className={dropdownLinkClass(isNavLinkActive(pathname, link.href))}
+                        onClick={closeMobile}
+                        aria-current={
+                          isNavLinkActive(pathname, link.href) ? "page" : undefined
+                        }
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </li>
+
+            <li>
+              <button
+                type="button"
+                className={`flex min-h-11 w-full items-center justify-between rounded-lg px-3 py-3 text-left text-sm font-medium transition-colors duration-200 ${
+                  softwareActive
+                    ? "text-accent"
+                    : "text-muted hover:bg-card hover:text-accent"
+                }`}
+                aria-expanded={mobileSoftwareOpen}
+                aria-controls={`${softwareMenuId}-mobile`}
+                onClick={() => setMobileSoftwareOpen((v) => !v)}
+              >
+                Software Development
+                <ChevronIcon open={mobileSoftwareOpen} />
+              </button>
+              {mobileSoftwareOpen ? (
+                <ul
+                  id={`${softwareMenuId}-mobile`}
+                  className="mt-1 space-y-0.5 rounded-lg border border-card-border bg-card py-1.5 pl-2"
+                >
+                  {SOFTWARE_DEV_DROPDOWN_LINKS.map((link) => (
                     <li key={link.href}>
                       <Link
                         href={link.href}

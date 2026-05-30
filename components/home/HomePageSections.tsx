@@ -366,6 +366,60 @@ export function TrainingHomeSection() {
   );
 }
 
+export function SoftwareDevelopmentHomeSection() {
+  return (
+    <Section
+      id="software-development"
+      title="Software & web development"
+      subtitle="Custom websites, SaaS platforms, business automation, client portals, and dashboards for businesses nationwide."
+    >
+      <div className="grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <p className="text-muted leading-relaxed">
+            PixelNation builds modern technology solutions—not just repair benches.
+            From high-performance business websites to subscription platforms and
+            internal automation tools, we help operators replace manual workflows with
+            software built around how their business actually runs.
+          </p>
+          <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+            {[
+              { label: "Website development", href: "/software-development/website-development" },
+              { label: "Custom SaaS platforms", href: "/software-development/custom-saas-development" },
+              { label: "Business automation", href: "/software-development/business-automation" },
+              { label: "Client portals & dashboards", href: "/software-development/custom-saas-development" },
+            ].map((item) => (
+              <li key={item.href + item.label}>
+                <Link
+                  href={item.href}
+                  className="block rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted transition hover:border-accent/40 hover:text-accent"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="cta-group mt-8">
+            <Button href="/software-development">Software development services</Button>
+            <Button href="/contact" variant="secondary">
+              Request a consultation
+            </Button>
+          </div>
+        </div>
+        <div className="relative flex aspect-[4/3] min-h-[220px] items-center justify-center overflow-hidden rounded-2xl border border-card-border bg-background p-2 sm:min-h-[260px]">
+          <Image
+            src="/images/computerrepair.png"
+            alt="Custom software development, SaaS platforms, and website design by PixelNation"
+            fill
+            className="object-contain object-center"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 export function FAQSection() {
   return (
     <Section

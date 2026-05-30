@@ -65,6 +65,20 @@ export const WHAT_WE_OFFER = [
     href: "/training-courses",
     keyword: "Microsoldering Training",
   },
+  {
+    title: "Software & Web Development",
+    description:
+      "Custom websites, SaaS platforms, business automation, client portals, and dashboards.",
+    href: "/software-development",
+    keyword: "Custom Software Development",
+  },
+  {
+    title: "Website Development",
+    description:
+      "Modern, mobile-friendly business websites, landing pages, and nonprofit sites.",
+    href: "/software-development/website-development",
+    keyword: "Website Development Services",
+  },
 ] as const;
 
 export const WHY_CHOOSE = [

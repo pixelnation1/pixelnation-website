@@ -253,6 +253,24 @@ export function locationBreadcrumbs(
   return [{ name: "Home", path: "/" }, ...crumbs];
 }
 
+export function softwareDevelopmentBreadcrumbs(): BreadcrumbItem[] {
+  return [
+    { name: "Home", path: "/" },
+    { name: "Software Development", path: "/software-development" },
+  ];
+}
+
+export function softwareServiceBreadcrumbs(
+  pageName: string,
+  path: string,
+): BreadcrumbItem[] {
+  return [
+    { name: "Home", path: "/" },
+    { name: "Software Development", path: "/software-development" },
+    { name: pageName, path },
+  ];
+}
+
 /** LocalBusiness overrides for city/service landing pages */
 export function localBusinessForArea(
   areas: AreaServedInput | readonly AreaServedInput[],

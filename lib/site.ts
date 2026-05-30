@@ -1,3 +1,5 @@
+import { SOFTWARE_DEV_DROPDOWN_LINKS } from "@/lib/software/links";
+
 export const SITE = {
   name: "PixelNation",
   tagline: "Advanced Tech Repair Specialists",
@@ -20,6 +22,8 @@ export const SITE = {
 
 export const MAIN_MESSAGE =
   "PixelNation is a professional repair company in Emporia, KS specializing in phones, computers, consoles, appliances, data recovery, diagnostics, and board-level repair.";
+
+export { SOFTWARE_DEV_DROPDOWN_LINKS };
 
 export const PRIMARY_NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -46,6 +50,7 @@ export const REPAIRS_DROPDOWN_LINKS = [
 
 export const FOOTER_COMPANY_LINKS = [
   { label: "About", href: "/about" },
+  { label: "Software Development", href: "/software-development" },
   { label: "Knowledge Hub", href: "/knowledge" },
   { label: "Training", href: "/training" },
   { label: "Locations", href: "/locations" },
@@ -57,6 +62,7 @@ export const FOOTER_COMPANY_LINKS = [
 export const FOOTER_SERVICE_LINKS = [
   ...REPAIRS_DROPDOWN_LINKS,
   ...TRAINING_DROPDOWN_LINKS,
+  ...SOFTWARE_DEV_DROPDOWN_LINKS,
 ] as const;
 
 const REPAIR_ACTIVE_PATHS = [
@@ -80,6 +86,13 @@ const REPAIR_ACTIVE_PATHS = [
 
 const TRAINING_ACTIVE_PATHS = ["/training", "/training-courses"] as const;
 
+const SOFTWARE_ACTIVE_PATHS = [
+  "/software-development",
+  "/software-development/website-development",
+  "/software-development/custom-saas-development",
+  "/software-development/business-automation",
+] as const;
+
 export function isRepairsNavActive(pathname: string): boolean {
   return REPAIR_ACTIVE_PATHS.some(
     (path) => pathname === path || pathname.startsWith(`${path}/`),
@@ -92,10 +105,19 @@ export function isTrainingNavActive(pathname: string): boolean {
   );
 }
 
+export function isSoftwareNavActive(pathname: string): boolean {
+  return SOFTWARE_ACTIVE_PATHS.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
+}
+
 export function isNavLinkActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
   if (href === "/knowledge") {
     return pathname === "/knowledge" || pathname.startsWith("/knowledge/");
+  }
+  if (href === "/software-development") {
+    return pathname === "/software-development" || pathname.startsWith("/software-development/");
   }
   if (href === "/repairs") return pathname === "/repairs";
   if (href === "/training") return pathname === "/training";
