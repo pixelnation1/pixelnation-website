@@ -23,7 +23,6 @@ export const MAIN_MESSAGE =
 
 export const PRIMARY_NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
   { label: "Knowledge", href: "/knowledge" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -47,8 +46,8 @@ export const REPAIRS_DROPDOWN_LINKS = [
 
 export const FOOTER_COMPANY_LINKS = [
   { label: "About", href: "/about" },
-  { label: "Shop", href: "/shop" },
   { label: "Knowledge Hub", href: "/knowledge" },
+  { label: "Training", href: "/training" },
   { label: "Locations", href: "/locations" },
   { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
@@ -98,7 +97,6 @@ export function isNavLinkActive(pathname: string, href: string): boolean {
   if (href === "/knowledge") {
     return pathname === "/knowledge" || pathname.startsWith("/knowledge/");
   }
-  if (href === "/shop") return pathname === "/shop";
   if (href === "/repairs") return pathname === "/repairs";
   if (href === "/training") return pathname === "/training";
   return pathname === href || pathname.startsWith(`${href}/`);

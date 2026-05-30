@@ -393,7 +393,7 @@ export default function TrainingPage() {
           </h2>
           <p className="mt-3 text-muted">
             Seats are limited to ensure individual instruction. Reserve your spot through
-            the shop or contact us for private and custom training in Emporia, Kansas.
+            our training courses page or contact us for private and custom training in Emporia, Kansas.
           </p>
           <div className="cta-group mt-8 justify-center">
             <Button href="/training-courses">View Courses & Pricing</Button>

@@ -252,7 +252,7 @@ export const COURSES_FAQ = [
   {
     question: "How do I reserve my spot?",
     answer:
-      "Reserve through the PixelNation shop or contact us at 620-591-0083 or support@pixelnation.co. Seats are limited to ensure individual instruction.",
+      "Reserve through our training courses page or contact us at 620-591-0083 or support@pixelnation.co. Seats are limited to ensure individual instruction.",
   },
 ] as const;
 

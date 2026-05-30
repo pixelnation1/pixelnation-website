@@ -89,9 +89,13 @@ export default function KnowledgeHubPage() {
       <Section title="Popular repairs" alt>
         <p className="-mt-4 mb-6 max-w-2xl text-muted">
           Start a repair with PixelNation—these are our most requested services, linked
-          to in-depth guides in the Knowledge Hub. Shopping for TCG products?{" "}
-          <Link href="/shop" className="text-accent-secondary hover:underline">
-            Browse the PixelNation Shop
+          to in-depth guides in the Knowledge Hub. Need board-level work or training?{" "}
+          <Link href="/board-repair" className="text-accent-secondary hover:underline">
+            Explore board repair
+          </Link>{" "}
+          or{" "}
+          <Link href="/training" className="text-accent-secondary hover:underline">
+            view training courses
           </Link>
           .
         </p>

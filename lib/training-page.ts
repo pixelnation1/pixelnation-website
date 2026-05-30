@@ -259,7 +259,7 @@ export const TRAINING_FAQ = [
   {
     question: "How do I book training?",
     answer:
-      "Reserve your seat through the PixelNation shop or contact us for private training, custom schedules, and course availability in Emporia, Kansas.",
+      "Reserve your seat through our training courses page or contact us for private training, custom schedules, and course availability in Emporia, Kansas.",
   },
 ] as const;
 
