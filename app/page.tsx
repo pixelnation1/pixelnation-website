@@ -2,13 +2,16 @@ import {
   AdvancedRepairSection,
   CommonProblemsSection,
   DataRecoveryHomeSection,
+  DivisionSelectorSection,
   EducationalSection,
+  EventsPreviewHomeSection,
   FAQSection,
   FinalCTASection,
   HeroSection,
   MailInRepairSection,
   TrainingHomeSection,
   SoftwareDevelopmentHomeSection,
+  TradingCardsHomeSection,
   TrustBar,
   WhatWeRepairSection,
   WhyChooseSection,
@@ -30,8 +33,11 @@ export default function HomePage() {
     <>
       <HomeStructuredData />
       <HeroSection />
+      <DivisionSelectorSection />
       <TrustBar />
       <WhatWeRepairSection />
+      <TradingCardsHomeSection />
+      <EventsPreviewHomeSection />
       <CommonProblemsSection />
       <WhyChooseSection />
       <EducationalSection />
@@ -43,7 +49,7 @@ export default function HomePage() {
       <FAQSection />
       <section className="border-t border-card-border py-12 sm:py-16">
         <div className="mx-auto max-w-6xl min-w-0 px-4">
-          <RelatedLinks currentPath="/" title="Explore PixelNation" />
+          <RelatedLinks currentPath="/" title="More from PixelNation" />
         </div>
       </section>
       <FinalCTASection />

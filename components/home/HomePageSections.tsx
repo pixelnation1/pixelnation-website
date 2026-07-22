@@ -9,12 +9,18 @@ import {
   COMMON_PROBLEMS,
   DATA_RECOVERY_DEVICES,
   HERO_BULLETS,
+  HERO_HEADLINE,
+  HERO_SUPPORT,
+  HOME_DIVISIONS,
   HOME_FAQS,
   HOME_SERVICES,
   HOME_TRUST_ITEMS,
   MAIL_IN_STEPS,
   WHY_CHOOSE,
 } from "@/lib/homepage";
+import { TCG_GAME_LIST } from "@/lib/tcg/games";
+import { TCG_LAUNCH } from "@/lib/tcg/launch";
+import { GameCard } from "@/components/tcg/GameCard";
 import { SITE } from "@/lib/site";
 
 export function HeroSection() {
@@ -33,12 +39,10 @@ export function HeroSection() {
             id="hero-heading"
             className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-tight"
           >
-            Phone, Computer, Console &amp; Appliance Repair in Emporia, KS
+            {HERO_HEADLINE}
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-muted">
-            PixelNation provides professional diagnostics and repair for phones,
-            computers, game consoles, appliances, data recovery, and advanced
-            board-level electronics.
+            {HERO_SUPPORT}
           </p>
           <ul className="mt-6 space-y-2 text-sm text-muted">
             {HERO_BULLETS.map((item) => (
@@ -50,15 +54,18 @@ export function HeroSection() {
           </ul>
           <div className="cta-group mt-8">
             <Button href="/contact">Start a Repair</Button>
-            <Button href={SITE.phoneHref} variant="secondary" external>
-              Call {SITE.phone}
+            <Button href="/trading-cards" variant="secondary">
+              Explore Trading Cards
+            </Button>
+            <Button href="/events" variant="outline">
+              View Gaming Events
             </Button>
           </div>
         </div>
         <div className="relative order-2 mx-auto aspect-square w-full max-w-md min-w-0 lg:max-w-none">
           <Image
             src="/images/coverlogo.png"
-            alt="PixelNation tech repair in Emporia, Kansas"
+            alt="PixelNation electronics repair, trading cards, and gaming in Emporia, Kansas"
             fill
             className="object-contain"
             priority
@@ -67,6 +74,75 @@ export function HeroSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+export function DivisionSelectorSection() {
+  return (
+    <Section
+      id="explore-pixelnation"
+      title="Explore PixelNation"
+      subtitle="Two primary divisions—professional repairs and trading cards & gaming—under one local Emporia brand."
+    >
+      <div className="grid gap-6 md:grid-cols-2">
+        {HOME_DIVISIONS.map((division) => (
+          <article
+            key={division.href}
+            className="flex flex-col rounded-2xl border border-card-border bg-card p-6 sm:p-8"
+          >
+            <h3 className="text-xl font-semibold text-foreground">
+              {division.title}
+            </h3>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-muted sm:text-base">
+              {division.description}
+            </p>
+            <div className="mt-6">
+              <Button href={division.href}>{division.cta}</Button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+export function TradingCardsHomeSection() {
+  return (
+    <Section
+      id="trading-cards"
+      title="Trading Cards & Gaming in Emporia"
+      subtitle="PixelNation is expanding into a full local destination for trading card games, sealed products, singles, accessories, organized events, and community play. Follow our progress as we prepare for a larger retail and gaming location."
+      alt
+    >
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        {TCG_GAME_LIST.map((game) => (
+          <GameCard key={game.slug} game={game} />
+        ))}
+      </div>
+      <div className="cta-group mt-8">
+        <Button href="/trading-cards">Explore Trading Cards</Button>
+        <Button href="/buy-sell-trade" variant="secondary">
+          Buy, Sell &amp; Trade
+        </Button>
+      </div>
+    </Section>
+  );
+}
+
+export function EventsPreviewHomeSection() {
+  return (
+    <Section
+      id="events-preview"
+      title="Gaming events"
+      subtitle={TCG_LAUNCH.eventsComing}
+    >
+      <div className="cta-group">
+        <Button href="/events">View Events</Button>
+        <Button href="/gaming" variant="secondary">
+          Explore Gaming
+        </Button>
+      </div>
+    </Section>
   );
 }
 
@@ -447,15 +523,18 @@ export function FinalCTASection() {
     >
       <div className="mx-auto max-w-3xl px-4 text-center">
         <h2 id="final-cta-heading" className="text-2xl font-bold sm:text-3xl">
-          Ready to get your device fixed?
+          Ready to repair, play, or explore?
         </h2>
         <p className="mt-3 text-muted">
-          Start online or call our Emporia shop.
+          Start a repair, browse trading cards, or ask about gaming events in Emporia.
         </p>
         <div className="cta-group mt-8 justify-center">
           <Button href="/contact">Start a Repair</Button>
-          <Button href="/contact" variant="secondary" ariaLabel="Contact PixelNation">
-            Call Now
+          <Button href="/trading-cards" variant="secondary">
+            Explore Trading Cards
+          </Button>
+          <Button href="/events" variant="outline">
+            View Events
           </Button>
         </div>
       </div>

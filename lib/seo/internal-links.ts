@@ -61,11 +61,37 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
     { label: "Contact", href: "/contact" },
   ],
   "/": [
-    { label: "Repairs", href: "/repairs" },
+    { label: "Repairs", href: "/repairs", description: "Phones, computers, consoles & more" },
+    { label: "Trading Cards", href: "/trading-cards", description: "TCG products, singles & accessories" },
+    { label: "Gaming & Events", href: "/gaming", description: "Community play and upcoming events" },
     { label: "Software Development", href: "/software-development", description: "Custom SaaS, websites & automation" },
-    { label: "Portfolio", href: "/portfolio", description: "Websites, SaaS & automation case studies" },
-    { label: "Knowledge Hub", href: "/knowledge" },
     { label: "Training", href: "/training" },
+    { label: "Contact", href: "/contact" },
+  ],
+  "/trading-cards": [
+    { label: "Pokémon", href: "/trading-cards/pokemon" },
+    { label: "Magic: The Gathering", href: "/trading-cards/magic-the-gathering" },
+    { label: "Yu-Gi-Oh!", href: "/trading-cards/yu-gi-oh" },
+    { label: "Disney Lorcana", href: "/trading-cards/lorcana" },
+    { label: "One Piece", href: "/trading-cards/one-piece" },
+    { label: "Buy, Sell & Trade", href: "/buy-sell-trade" },
+    { label: "Gaming", href: "/gaming" },
+    { label: "Events", href: "/events" },
+  ],
+  "/buy-sell-trade": [
+    { label: "Trading Cards", href: "/trading-cards" },
+    { label: "Gaming", href: "/gaming" },
+    { label: "Contact", href: "/contact", description: "Request a collection review" },
+  ],
+  "/gaming": [
+    { label: "Events", href: "/events" },
+    { label: "Trading Cards", href: "/trading-cards" },
+    { label: "Buy, Sell & Trade", href: "/buy-sell-trade" },
+    { label: "Console Repair", href: "/console-repair" },
+  ],
+  "/events": [
+    { label: "Gaming", href: "/gaming" },
+    { label: "Trading Cards", href: "/trading-cards" },
     { label: "Contact", href: "/contact" },
   ],
   "/software-development": [
@@ -164,6 +190,9 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
 export function getRelatedRepairLinks(path: string): InternalLink[] {
   if (path.startsWith("/portfolio/")) {
     return RELATED_REPAIR_LINKS["/portfolio"] ?? [];
+  }
+  if (path.startsWith("/trading-cards/")) {
+    return RELATED_REPAIR_LINKS["/trading-cards"] ?? [];
   }
   return RELATED_REPAIR_LINKS[path] ?? RELATED_REPAIR_LINKS["/repairs"] ?? [];
 }

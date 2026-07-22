@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FOOTER_COMPANY_LINKS, FOOTER_SERVICE_LINKS, SITE } from "@/lib/site";
+import { FOOTER_TCG_LINKS } from "@/lib/tcg/links";
 
 export function Footer() {
   return (
     <footer className="border-t border-card-border bg-card">
       <div className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          <div>
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="sm:col-span-2 lg:col-span-1 xl:col-span-1">
             <Image
               src="/images/pixellogo.png"
               alt={`${SITE.name} logo`}
@@ -16,8 +17,9 @@ export function Footer() {
               className="mb-4 h-10 w-auto"
             />
             <p className="text-sm leading-relaxed text-muted">
-              Professional repair in {SITE.address.region}—phones, computers,
-              consoles, appliances, data recovery, and board-level work.
+              Electronics repair, trading cards, and gaming in {SITE.address.region}
+              —phones, computers, consoles, appliances, TCG products, and community
+              events.
             </p>
           </div>
 
@@ -25,16 +27,29 @@ export function Footer() {
             <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-foreground">
               Services
             </h2>
+            <ul className="columns-1 space-y-2 text-sm text-muted sm:columns-1">
+              {FOOTER_SERVICE_LINKS.map((link) => (
+                <li key={link.href} className="break-inside-avoid">
+                  <Link href={link.href} className="hover:text-accent-secondary">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-foreground">
+              Trading Cards &amp; Gaming
+            </h2>
             <ul className="space-y-2 text-sm text-muted">
-              {FOOTER_SERVICE_LINKS.map(
-                (link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="hover:text-accent-secondary">
-                      {link.label}
-                    </Link>
-                  </li>
-                ),
-              )}
+              {FOOTER_TCG_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:text-accent-secondary">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -80,6 +95,12 @@ export function Footer() {
                 className="inline-flex min-h-11 items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-center text-sm font-semibold text-background hover:bg-accent-hover"
               >
                 Start a Repair
+              </Link>
+              <Link
+                href="/trading-cards"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg border border-accent-secondary/40 bg-card px-4 py-2.5 text-center text-sm font-semibold text-foreground hover:border-accent-secondary hover:text-accent-secondary"
+              >
+                Explore Trading Cards
               </Link>
             </div>
           </div>

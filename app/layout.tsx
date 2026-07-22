@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(CANONICAL_ORIGIN),
   title: {
-    default: `${SITE.name} | Tech Repair in Emporia, KS`,
+    default: `${SITE.name} | Electronics Repair, Trading Cards & Gaming in Emporia, KS`,
     template: `%s | ${SITE.name}`,
   },
   description: MAIN_MESSAGE,

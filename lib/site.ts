@@ -21,13 +21,12 @@ export const SITE = {
 } as const;
 
 export const MAIN_MESSAGE =
-  "PixelNation is a professional repair company in Emporia, KS specializing in phones, computers, consoles, appliances, data recovery, diagnostics, and board-level repair.";
+  "PixelNation provides electronics repair, trading cards, and gaming in Emporia, KS—phones, computers, consoles, appliances, data recovery, board-level repair, TCG products, and community events.";
 
 export { SOFTWARE_DEV_DROPDOWN_LINKS };
 
 export const PRIMARY_NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Knowledge", href: "/knowledge" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -126,6 +125,8 @@ export function isNavLinkActive(pathname: string, href: string): boolean {
   }
   if (href === "/repairs") return pathname === "/repairs";
   if (href === "/training") return pathname === "/training";
+  if (href === "/trading-cards") return pathname === "/trading-cards";
+  if (href === "/gaming") return pathname === "/gaming";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

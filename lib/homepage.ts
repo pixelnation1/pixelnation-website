@@ -1,27 +1,51 @@
 import { SITE } from "@/lib/site";
 
 export const HOME_METADATA = {
-  title: "PixelNation | Phone, Computer, Console & Appliance Repair in Emporia, KS",
+  title:
+    "PixelNation | Electronics Repair, Trading Cards & Gaming in Emporia, KS",
   description:
-    "Professional phone, computer, console, appliance, data recovery, and board-level repair in Emporia, Kansas. Start your repair online today.",
+    "Professional device repair, trading cards, gaming products, community events, and advanced electronics services in Emporia, Kansas—all from one local PixelNation location.",
   path: "/",
 } as const;
 
+export const HERO_HEADLINE =
+  "Electronics Repair, Trading Cards & Gaming in Emporia, Kansas";
+
+export const HERO_SUPPORT =
+  "Professional device repair, trading cards, gaming products, community events, and advanced electronics services—all from one local PixelNation location.";
+
 export const HERO_BULLETS = [
-  "Charging port, screen, and battery replacement",
-  "Laptop and desktop diagnostics and repair",
-  "PS5 and Xbox HDMI repair",
-  "Appliance troubleshooting and repair",
-  "Data recovery from phones, SSDs, and hard drives",
-  "Microsoldering and board-level repair",
+  "Phone, computer, console & appliance repair",
+  "Trading cards, sealed products & singles",
+  "Gaming community & upcoming events",
+  "Data recovery and board-level repair",
+  "Mail-in repair accepted nationwide",
+  "Training and software development available",
+] as const;
+
+export const HOME_DIVISIONS = [
+  {
+    title: "Electronics Repair",
+    description:
+      "Phone, computer, game console, appliance, data recovery, and board-level repair.",
+    href: "/repairs",
+    cta: "Explore Repairs",
+  },
+  {
+    title: "Trading Cards & Gaming",
+    description:
+      "Trading cards, sealed products, singles, accessories, organized play, and community gaming.",
+    href: "/trading-cards",
+    cta: "Explore Trading Cards",
+  },
 ] as const;
 
 export const HOME_TRUST_ITEMS = [
   "Located in Emporia, Kansas",
+  "Electronics repair & trading cards",
   "Same-day repairs available on select services",
   "Mail-in repair accepted nationwide",
-  "Advanced board-level diagnostics",
-  "Professional training courses available",
+  "Gaming events coming with expanded location",
 ] as const;
 
 export const HOME_SERVICES = [
