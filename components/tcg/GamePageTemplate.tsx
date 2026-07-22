@@ -69,9 +69,30 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
       </section>
 
       <Section
+        id="products"
+        title="Products we carry or plan to carry"
+        subtitle={`${game.name} products at PixelNation, subject to release timing and current inventory.`}
+      >
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {game.productsCarried.map((item) => (
+            <li
+              key={item}
+              className="rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 max-w-3xl text-sm text-muted">
+          {TCG_LAUNCH.availabilityNote}
+        </p>
+      </Section>
+
+      <Section
         id="categories"
         title="Product categories"
         subtitle={`What we support for ${game.name} as inventory expands.`}
+        alt
       >
         <ul className="grid gap-4 sm:grid-cols-2">
           {game.productCategories.map((category) => (
@@ -89,17 +110,61 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
       </Section>
 
       <Section
+        id="play"
+        title="Learn to play & casual games"
+        subtitle="New players are welcome—no experience required."
+      >
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-xl border border-card-border bg-card p-6">
+            <h3 className="font-semibold text-foreground">Learn to play</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              {game.learnToPlay}
+            </p>
+          </div>
+          <div className="rounded-xl border border-card-border bg-card p-6">
+            <h3 className="font-semibold text-foreground">Casual play</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              {game.casualPlay}
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      <Section
+        id="events"
+        title="Organized events"
+        subtitle={`${game.name} event types planned for the expanded location—schedules will be announced when confirmed.`}
+        alt
+      >
+        <ul className="flex flex-wrap gap-2">
+          {game.plannedEventTypes.map((eventType) => (
+            <li
+              key={eventType}
+              className="rounded-full border border-card-border bg-card px-4 py-2 text-sm text-muted"
+            >
+              {eventType}
+            </li>
+          ))}
+        </ul>
+        <div className="cta-group mt-8">
+          <Button href="/events">View Events</Button>
+          <Button href="/gaming" variant="secondary">
+            Explore Gaming
+          </Button>
+        </div>
+      </Section>
+
+      <Section
         id="availability"
         title="Availability & services"
         subtitle="Honest launch-stage details—no invented stock or schedules."
-        alt
       >
         <dl className="grid gap-4 sm:grid-cols-2">
           {[
             { term: "Sealed products", detail: game.sealedStatus },
             { term: "Singles", detail: game.singlesStatus },
             { term: "Accessories", detail: game.accessoriesStatus },
-            { term: "Preorders", detail: game.preorderStatus },
+            { term: "Preorders & new releases", detail: game.preorderStatus },
             { term: "Organized play", detail: game.organizedPlayStatus },
             { term: "Buy, sell & trade", detail: game.buySellTradeStatus },
           ].map((item) => (
@@ -114,6 +179,20 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
             </div>
           ))}
         </dl>
+      </Section>
+
+      <Section
+        id="preorders"
+        title="New releases & preorders"
+        subtitle={game.preorderStatus}
+        alt
+      >
+        <div className="cta-group">
+          <Button href="/preorders-new-releases">Preorders &amp; New Releases</Button>
+          <Button href="/contact" variant="secondary">
+            Ask about a release
+          </Button>
+        </div>
       </Section>
 
       <Section id="faq" title="Frequently asked questions">

@@ -23,6 +23,49 @@ export const HERO_BULLETS = [
   "Training and software development available",
 ] as const;
 
+/** Broad product categories for the homepage "What we carry" strip. */
+export const HOME_CARRY_CATEGORIES = [
+  {
+    label: "Sealed products",
+    href: "/what-we-carry#sealed",
+    description: "Booster packs, boxes, bundles, decks, and special releases.",
+  },
+  {
+    label: "Singles",
+    href: "/what-we-carry#singles",
+    description: "Playable and collectible cards—availability varies.",
+  },
+  {
+    label: "Accessories",
+    href: "/what-we-carry#supplies",
+    description: "Sleeves, deck boxes, binders, playmats, and storage.",
+  },
+  {
+    label: "Video games",
+    href: "/what-we-carry#gaming",
+    description: "Planned for the expanded location.",
+  },
+  {
+    label: "Consoles",
+    href: "/what-we-carry#gaming",
+    description: "Planned alongside our console repair expertise.",
+  },
+] as const;
+
+/** Expansion announcement — no address or opening date claims. */
+export const HOME_EXPANSION = {
+  title: "A larger PixelNation location is coming",
+  body: "PixelNation is moving toward a larger Emporia location with more room for everything we do. Details like the address and opening date will be announced when confirmed.",
+  items: [
+    "Expanded inventory",
+    "Electronics repair",
+    "Gaming tables",
+    "Events and organized play",
+    "Customer browsing space",
+    "Community play",
+  ],
+} as const;
+
 export const HOME_DIVISIONS = [
   {
     title: "Electronics Repair",

@@ -11,7 +11,9 @@ import {
   HERO_BULLETS,
   HERO_HEADLINE,
   HERO_SUPPORT,
+  HOME_CARRY_CATEGORIES,
   HOME_DIVISIONS,
+  HOME_EXPANSION,
   HOME_FAQS,
   HOME_SERVICES,
   HOME_TRUST_ITEMS,
@@ -129,19 +131,103 @@ export function TradingCardsHomeSection() {
   );
 }
 
+export function WhatWeCarryHomeSection() {
+  return (
+    <Section
+      id="what-we-carry"
+      title="What we carry"
+      subtitle="Broad product categories at PixelNation—availability varies as inventory expands."
+    >
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        {HOME_CARRY_CATEGORIES.map((category) => (
+          <li key={category.label}>
+            <Link
+              href={category.href}
+              className="flex h-full flex-col rounded-xl border border-card-border bg-card p-5 transition hover:border-accent-secondary/50"
+            >
+              <span className="font-semibold text-foreground">
+                {category.label}
+              </span>
+              <span className="mt-2 text-sm leading-relaxed text-muted">
+                {category.description}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <div className="mt-8">
+        <Button href="/what-we-carry">Full product guide</Button>
+      </div>
+    </Section>
+  );
+}
+
 export function EventsPreviewHomeSection() {
   return (
     <Section
       id="events-preview"
-      title="Gaming events"
+      title="Events & play space"
       subtitle={TCG_LAUNCH.eventsComing}
+      alt
     >
+      <p className="-mt-4 mb-8 max-w-3xl text-muted leading-relaxed">
+        Community gaming nights, learn-to-play sessions, and organized play are all
+        part of the plan for our expanded location—alongside dedicated tables and
+        play space for trading-card and tabletop gaming.
+      </p>
       <div className="cta-group">
         <Button href="/events">View Events</Button>
         <Button href="/gaming" variant="secondary">
           Explore Gaming
         </Button>
       </div>
+    </Section>
+  );
+}
+
+export function BuySellTradeHomeSection() {
+  return (
+    <Section
+      id="buy-sell-trade"
+      title="Buy, sell & trade"
+      subtitle="Bring in trading cards, collections, sealed products, video games, and consoles for review."
+    >
+      <p className="-mt-4 mb-8 max-w-3xl text-muted leading-relaxed">
+        Our staff evaluates condition, authenticity, and market value in person, then
+        makes an offer as cash, store credit, or trade value. No obligation—you can
+        always decline.
+      </p>
+      <div className="cta-group">
+        <Button href="/buy-sell-trade">How it works</Button>
+        <Button href="/contact" variant="secondary">
+          Request a Collection Review
+        </Button>
+      </div>
+    </Section>
+  );
+}
+
+export function ExpansionAnnouncementSection() {
+  return (
+    <Section
+      id="expansion"
+      title={HOME_EXPANSION.title}
+      subtitle={HOME_EXPANSION.body}
+    >
+      <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {HOME_EXPANSION.items.map((item) => (
+          <li
+            key={item}
+            className="flex gap-2 rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted"
+          >
+            <span
+              className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+              aria-hidden
+            />
+            {item}
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }

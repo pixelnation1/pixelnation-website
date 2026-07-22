@@ -45,6 +45,12 @@ export const PUBLIC_ROUTES: SitemapEntry[] = [
     priority: 0.9,
   },
   { path: "/buy-sell-trade", changeFrequency: "weekly", priority: 0.88 },
+  { path: "/what-we-carry", changeFrequency: "weekly", priority: 0.88 },
+  {
+    path: "/preorders-new-releases",
+    changeFrequency: "weekly",
+    priority: 0.86,
+  },
   { path: "/gaming", changeFrequency: "weekly", priority: 0.9 },
   { path: "/events", changeFrequency: "weekly", priority: 0.9 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },

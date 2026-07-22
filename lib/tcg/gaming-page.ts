@@ -70,6 +70,37 @@ export const GAMING_INTRO = {
   body: `PixelNation is preparing a larger physical location that brings electronics repair together with a local game store experience—community play, trading cards, and organized events under one roof. ${TCG_LAUNCH.gamingForwardLooking}`,
 } as const;
 
+/** Planned play-space environment — no capacity claims. */
+export const PLAY_SPACE_FEATURES = [
+  "Tables and seating for card and tabletop play",
+  "A clean, organized play area",
+  "Space for both casual and organized play",
+  "A comfortable environment for longer sessions",
+  "An accessible setup for all customers",
+  "Family-friendly options",
+  "Staff on hand to help",
+] as const;
+
+/** Possible console gaming offerings — planned, not launched. */
+export const CONSOLE_GAMING_FEATURES = [
+  "Current-generation consoles",
+  "Retro gaming",
+  "Multiplayer games",
+  "New game demonstrations",
+  "Local tournaments",
+  "Casual free-play or paid sessions",
+] as const;
+
+/** New players welcome — support available. */
+export const NEW_PLAYER_SUPPORT = [
+  "Staff help choosing a game or product",
+  "Learn-to-play sessions",
+  "Beginner-friendly events",
+  "Product recommendations for your budget",
+  "Rules guidance at the table",
+  "Casual practice opportunities",
+] as const;
+
 export const GAMING_FAQS: readonly FaqItem[] = [
   {
     question: "Is a gaming lounge open right now?",

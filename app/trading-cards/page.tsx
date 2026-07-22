@@ -7,8 +7,11 @@ import { GameCard } from "@/components/tcg/GameCard";
 import { TcgPageStructuredData } from "@/components/tcg/TcgStructuredData";
 import { TCG_GAME_LIST } from "@/lib/tcg/games";
 import { TCG_LAUNCH } from "@/lib/tcg/launch";
+import { TCG_GENERAL_FAQS } from "@/lib/tcg/faqs";
 import {
-  TRADING_CARDS_FAQS,
+  TRADING_CARDS_CARRY_ITEMS,
+  TRADING_CARDS_CARRY_NOTICE,
+  TRADING_CARDS_COMMUNITY,
   TRADING_CARDS_HERO,
   TRADING_CARDS_METADATA,
   TRADING_CARDS_SECTIONS,
@@ -39,7 +42,7 @@ export default function TradingCardsPage() {
     <article>
       <TcgPageStructuredData
         breadcrumbs={breadcrumbs}
-        faq={TRADING_CARDS_FAQS}
+        faq={TCG_GENERAL_FAQS}
         pagePath="/trading-cards"
         pageName="Trading Cards & Gaming"
         pageDescription={TRADING_CARDS_METADATA.description}
@@ -68,21 +71,47 @@ export default function TradingCardsPage() {
             {TCG_LAUNCH.availabilityNote}
           </p>
           <div className="cta-group mt-8">
-            <Button href="/contact">Ask about availability</Button>
-            <Button href="/buy-sell-trade" variant="secondary">
-              Buy, Sell &amp; Trade
-            </Button>
-            <Button href="/events" variant="outline">
+            <Button href="#games">Explore Supported Games</Button>
+            <Button href="/events" variant="secondary">
               View Events
+            </Button>
+            <Button href="/buy-sell-trade" variant="outline">
+              Buy, Sell &amp; Trade
             </Button>
           </div>
         </div>
       </section>
 
       <Section
+        id="what-we-carry"
+        title="What we carry"
+        subtitle="PixelNation carries or plans to carry a broad range of trading-card products and supplies."
+      >
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {TRADING_CARDS_CARRY_ITEMS.map((item) => (
+            <li
+              key={item}
+              className="rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 max-w-3xl text-sm text-muted">
+          {TRADING_CARDS_CARRY_NOTICE}
+        </p>
+        <div className="mt-6">
+          <Button href="/what-we-carry" variant="secondary">
+            Full product guide
+          </Button>
+        </div>
+      </Section>
+
+      <Section
         id="games"
         title="Supported games"
         subtitle="Explore dedicated pages for each trading card game we support."
+        alt
       >
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {TCG_GAME_LIST.map((game) => (
@@ -95,7 +124,6 @@ export default function TradingCardsPage() {
         id="sealed"
         title={TRADING_CARDS_SECTIONS.sealed.title}
         subtitle={TRADING_CARDS_SECTIONS.sealed.body}
-        alt
       >
         <p className="max-w-3xl text-sm text-muted">
           {TCG_LAUNCH.contactAvailability}
@@ -106,20 +134,10 @@ export default function TradingCardsPage() {
         id="singles"
         title={TRADING_CARDS_SECTIONS.singles.title}
         subtitle={TRADING_CARDS_SECTIONS.singles.body}
-      >
-        <p className="max-w-3xl text-sm text-muted">
-          Browse game pages for singles interest, or contact us with specific requests.
-        </p>
-      </Section>
-
-      <Section
-        id="accessories"
-        title={TRADING_CARDS_SECTIONS.accessories.title}
-        subtitle={TRADING_CARDS_SECTIONS.accessories.body}
         alt
       >
         <p className="max-w-3xl text-sm text-muted">
-          {TCG_LAUNCH.contactAvailability}
+          Browse game pages for singles interest, or contact us with specific requests.
         </p>
       </Section>
 
@@ -128,7 +146,12 @@ export default function TradingCardsPage() {
         title={TRADING_CARDS_SECTIONS.preorders.title}
         subtitle={TRADING_CARDS_SECTIONS.preorders.body}
       >
-        <Button href="/contact">Contact about preorders</Button>
+        <div className="cta-group">
+          <Button href="/preorders-new-releases">Preorders &amp; New Releases</Button>
+          <Button href="/contact" variant="secondary">
+            Contact about preorders
+          </Button>
+        </div>
       </Section>
 
       <Section
@@ -142,10 +165,24 @@ export default function TradingCardsPage() {
 
       <Section
         id="community"
-        title={TRADING_CARDS_SECTIONS.community.title}
-        subtitle={TRADING_CARDS_SECTIONS.community.body}
+        title={TRADING_CARDS_COMMUNITY.title}
+        subtitle={TRADING_CARDS_COMMUNITY.intro}
       >
-        <div className="cta-group">
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {TRADING_CARDS_COMMUNITY.audiences.map((audience) => (
+            <li
+              key={audience}
+              className="flex gap-2 rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted"
+            >
+              <span
+                className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-secondary"
+                aria-hidden
+              />
+              {audience}
+            </li>
+          ))}
+        </ul>
+        <div className="cta-group mt-8">
           <Button href="/gaming">Explore Gaming</Button>
           <Button href="/events" variant="secondary">
             View Events
@@ -163,7 +200,7 @@ export default function TradingCardsPage() {
       </Section>
 
       <Section id="faq" title="Frequently asked questions">
-        <FAQ items={TRADING_CARDS_FAQS} showHeading={false} />
+        <FAQ items={TCG_GENERAL_FAQS} showHeading={false} initialVisible={8} />
       </Section>
 
       <section

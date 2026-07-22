@@ -11,9 +11,49 @@ export const TRADING_CARDS_METADATA = {
 
 export const TRADING_CARDS_HERO = {
   eyebrow: `${SITE.address.region} · Trading Cards & Gaming`,
-  headline: "Trading Cards & Gaming in Emporia, Kansas",
+  headline: "Trading Cards, Gaming and Community in Emporia",
   intro:
-    "PixelNation is expanding into a full local destination for trading card games, sealed products, singles, accessories, organized events, and community play—alongside the electronics repair services Emporia already trusts.",
+    "PixelNation is expanding into a local destination for trading cards, sealed products, accessories, organized play, casual gaming, and community events.",
+} as const;
+
+/** Broad product list for the "What we carry" section on /trading-cards. */
+export const TRADING_CARDS_CARRY_ITEMS = [
+  "Booster packs",
+  "Booster boxes",
+  "Elite Trainer Boxes",
+  "Collection boxes",
+  "Starter decks",
+  "Commander decks",
+  "Theme decks",
+  "Bundles",
+  "Gift sets",
+  "Trading-card singles",
+  "Card sleeves",
+  "Deck boxes",
+  "Binders",
+  "Playmats",
+  "Storage boxes",
+  "Dice and counters",
+  "Gaming accessories",
+] as const;
+
+export const TRADING_CARDS_CARRY_NOTICE =
+  "Products and availability vary by release, distributor allocation, and current inventory. Contact PixelNation for current availability.";
+
+/** Who the local community is for — welcoming, not competitive-first. */
+export const TRADING_CARDS_COMMUNITY = {
+  title: "A welcoming local community",
+  intro:
+    "PixelNation’s goal is a friendly, accessible place to play, collect, and learn—no matter where you are starting from.",
+  audiences: [
+    "New players picking up their first deck",
+    "Experienced players looking for regular games",
+    "Collectors building and protecting collections",
+    "Families and kids learning together",
+    "Casual groups who just want a fun night",
+    "Competitive players preparing for organized play",
+    "Anyone learning a new game for the first time",
+  ],
 } as const;
 
 export const TRADING_CARDS_SECTIONS = {

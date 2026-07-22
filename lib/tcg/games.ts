@@ -16,6 +16,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     keywords: [
       "Pokémon cards Emporia KS",
       "Pokémon TCG Emporia",
+      "Pokémon events Emporia",
       "Buy Pokémon cards Emporia",
       "Sell Pokémon cards Kansas",
     ],
@@ -50,6 +51,28 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     organizedPlayStatus: TCG_LAUNCH.organizedPlayStatus,
     buySellTradeStatus:
       "Eligible Pokémon collections, sealed products, and singles may be reviewed for purchase or trade. Identification may be required.",
+    productsCarried: [
+      "Booster packs",
+      "Elite Trainer Boxes",
+      "Collection boxes",
+      "Tins",
+      "Booster bundles",
+      "Starter products",
+      "Singles",
+      "Sleeves",
+      "Binders",
+      "Playmats",
+    ],
+    learnToPlay:
+      "New to the Pokémon TCG? Learn-to-play opportunities are planned for the expanded location, and our staff can point new trainers toward starter products and beginner-friendly resources today.",
+    casualPlay:
+      "Pokémon is one of the most family-friendly trading card games, and casual, all-ages play is a core part of our community plans—bring your deck or start a new one.",
+    plannedEventTypes: [
+      "Pokémon casual play",
+      "Learn-to-play sessions",
+      "Family gaming events",
+      "Release events",
+    ],
     faqs: [
       {
         question: "Can I buy Pokémon cards at PixelNation in Emporia?",
@@ -83,8 +106,9 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "MTG cards in Emporia, Kansas. PixelNation supports Magic: The Gathering sealed products, singles, Commander interest, and upcoming Magic events. Ask about availability.",
     keywords: [
       "Magic the Gathering Emporia KS",
+      "MTG Emporia",
       "MTG cards Emporia",
-      "Commander Emporia KS",
+      "Commander night Emporia",
       "Magic events Emporia",
     ],
     accent: "#38ddf8",
@@ -119,6 +143,29 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Magic events in Emporia are in preparation—including plans for casual and Commander-friendly play as the location expands.",
     buySellTradeStatus:
       "Eligible MTG singles, collections, and sealed products may be evaluated for cash or store credit.",
+    productsCarried: [
+      "Play boosters",
+      "Collector boosters",
+      "Commander decks",
+      "Bundles",
+      "Booster boxes",
+      "Starter kits",
+      "Singles",
+      "Sleeves",
+      "Deck boxes",
+      "Playmats",
+    ],
+    learnToPlay:
+      "Never played Magic? Learn-to-play opportunities and starter kit recommendations are part of our plans—ask our staff where to begin, whether you want Commander or a simpler starting point.",
+    casualPlay:
+      "Commander nights, casual constructed play, and draft nights are planned for the expanded location. Until schedules are announced, ask us about product availability and informal play.",
+    plannedEventTypes: [
+      "Commander nights",
+      "Draft nights",
+      "Prerelease events",
+      "Learn-to-play sessions",
+      "Casual play",
+    ],
     faqs: [
       {
         question: "Where can I find MTG cards in Emporia?",
@@ -181,6 +228,26 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     organizedPlayStatus: TCG_LAUNCH.organizedPlayStatus,
     buySellTradeStatus:
       "Eligible Yu-Gi-Oh! singles, collections, and sealed products may be reviewed for purchase or trade.",
+    productsCarried: [
+      "Booster packs",
+      "Booster boxes",
+      "Structure decks",
+      "Tins",
+      "Special collections",
+      "Singles",
+      "Card sleeves",
+      "Deck boxes",
+    ],
+    learnToPlay:
+      "Structure decks are a great entry point for new duelists. Learn-to-play guidance and beginner-friendly play are part of our community plans—ask our staff where to start.",
+    casualPlay:
+      "Casual dueling and local Yu-Gi-Oh! events are planned as the expanded location comes online. Bring your deck or build a new one from structure decks and singles.",
+    plannedEventTypes: [
+      "Yu-Gi-Oh! casual play",
+      "Learn-to-play sessions",
+      "Local events",
+      "Trade nights",
+    ],
     faqs: [
       {
         question: "Do you sell Yu-Gi-Oh! products in Emporia?",
@@ -238,6 +305,26 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     organizedPlayStatus: TCG_LAUNCH.organizedPlayStatus,
     buySellTradeStatus:
       "Eligible Lorcana products and collections may be considered for buy or trade.",
+    productsCarried: [
+      "Booster packs",
+      "Booster boxes",
+      "Starter decks",
+      "Gift sets",
+      "Troves",
+      "Singles",
+      "Sleeves",
+      "Binders",
+    ],
+    learnToPlay:
+      "Lorcana is welcoming for new players and families. Starter decks make it easy to begin, and learn-to-play opportunities are planned for the expanded location.",
+    casualPlay:
+      "Family-friendly Lorcana play and community events are part of our roadmap. Casual games are a great way to learn the ink system and meet local players.",
+    plannedEventTypes: [
+      "Lorcana casual play",
+      "Learn-to-play sessions",
+      "Family-friendly events",
+      "Release events",
+    ],
     faqs: [
       {
         question: "Where can I get Lorcana cards in Emporia?",
@@ -296,6 +383,26 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     organizedPlayStatus: TCG_LAUNCH.organizedPlayStatus,
     buySellTradeStatus:
       "Eligible One Piece sealed products, singles, and collections may be reviewed for purchase or trade.",
+    productsCarried: [
+      "Booster packs",
+      "Booster boxes",
+      "Starter decks",
+      "Double packs",
+      "Special collections",
+      "Singles",
+      "Card sleeves",
+      "Deck boxes",
+    ],
+    learnToPlay:
+      "Starter decks are the easiest way into the One Piece Card Game. Learn-to-play guidance is planned as our community programs launch—ask our staff where to begin.",
+    casualPlay:
+      "Casual One Piece play and local events are planned for the expanded location. Meet other players and test decks in a relaxed setting.",
+    plannedEventTypes: [
+      "One Piece casual play",
+      "Learn-to-play sessions",
+      "Local events",
+      "Release events",
+    ],
     faqs: [
       {
         question: "Do you sell One Piece cards in Emporia?",

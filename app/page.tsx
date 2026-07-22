@@ -1,10 +1,12 @@
 import {
   AdvancedRepairSection,
+  BuySellTradeHomeSection,
   CommonProblemsSection,
   DataRecoveryHomeSection,
   DivisionSelectorSection,
   EducationalSection,
   EventsPreviewHomeSection,
+  ExpansionAnnouncementSection,
   FAQSection,
   FinalCTASection,
   HeroSection,
@@ -13,6 +15,7 @@ import {
   SoftwareDevelopmentHomeSection,
   TradingCardsHomeSection,
   TrustBar,
+  WhatWeCarryHomeSection,
   WhatWeRepairSection,
   WhyChooseSection,
 } from "@/components/home/HomePageSections";
@@ -37,7 +40,10 @@ export default function HomePage() {
       <TrustBar />
       <WhatWeRepairSection />
       <TradingCardsHomeSection />
+      <WhatWeCarryHomeSection />
       <EventsPreviewHomeSection />
+      <BuySellTradeHomeSection />
+      <ExpansionAnnouncementSection />
       <CommonProblemsSection />
       <WhyChooseSection />
       <EducationalSection />

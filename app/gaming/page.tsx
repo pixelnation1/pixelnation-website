@@ -4,11 +4,14 @@ import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import { TcgPageStructuredData } from "@/components/tcg/TcgStructuredData";
 import {
+  CONSOLE_GAMING_FEATURES,
   GAMING_FAQS,
   GAMING_FEATURES,
   GAMING_INTRO,
   GAMING_METADATA,
   gamingStatusLabel,
+  NEW_PLAYER_SUPPORT,
+  PLAY_SPACE_FEATURES,
 } from "@/lib/tcg/gaming-page";
 import { TCG_LAUNCH } from "@/lib/tcg/launch";
 import { createPageMetadata } from "@/lib/seo/metadata";
@@ -103,15 +106,83 @@ export default function GamingPage() {
       </Section>
 
       <Section
+        id="play-space"
+        title="Play space"
+        subtitle="The planned environment at the larger location—details like seating capacity will be shared when confirmed."
+        alt
+      >
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {PLAY_SPACE_FEATURES.map((feature) => (
+            <li
+              key={feature}
+              className="flex gap-2 rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted"
+            >
+              <span
+                className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                aria-hidden
+              />
+              {feature}
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section
+        id="console-gaming"
+        title="Console gaming"
+        subtitle="Possible console gaming offerings at the expanded location—these features are planned, not yet open."
+      >
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {CONSOLE_GAMING_FEATURES.map((feature) => (
+            <li
+              key={feature}
+              className="flex flex-col rounded-lg border border-card-border bg-card px-4 py-3"
+            >
+              <span className="text-xs font-semibold uppercase tracking-wide text-accent-secondary">
+                Planned
+              </span>
+              <span className="mt-1 text-sm text-muted">{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section
+        id="new-players"
+        title="New players welcome"
+        subtitle="You do not need prior experience—or your own cards—to get started at PixelNation."
+        alt
+      >
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {NEW_PLAYER_SUPPORT.map((item) => (
+            <li
+              key={item}
+              className="flex gap-2 rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted"
+            >
+              <span
+                className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-secondary"
+                aria-hidden
+              />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section
         id="events"
         title="Organized events"
         subtitle={TCG_LAUNCH.eventsComing}
-        alt
       >
-        <Button href="/events">View Events</Button>
+        <div className="cta-group">
+          <Button href="/events">View Events</Button>
+          <Button href="/events#weekly-schedule" variant="secondary">
+            Weekly Schedule
+          </Button>
+        </div>
       </Section>
 
-      <Section id="faq" title="Frequently asked questions">
+      <Section id="faq" title="Frequently asked questions" alt>
         <FAQ items={GAMING_FAQS} showHeading={false} />
       </Section>
 

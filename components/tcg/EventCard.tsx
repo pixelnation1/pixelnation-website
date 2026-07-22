@@ -40,10 +40,22 @@ export function EventCard({ event }: EventCardProps) {
             <dd>{event.date}</dd>
           </div>
         ) : null}
+        {event.day ? (
+          <div>
+            <dt className="font-medium text-foreground">Day</dt>
+            <dd>{event.day}</dd>
+          </div>
+        ) : null}
         {event.startTime ? (
           <div>
             <dt className="font-medium text-foreground">Start time</dt>
             <dd>{event.startTime}</dd>
+          </div>
+        ) : null}
+        {event.skillLevel ? (
+          <div>
+            <dt className="font-medium text-foreground">Skill level</dt>
+            <dd>{event.skillLevel}</dd>
           </div>
         ) : null}
         {event.entryFee ? (
@@ -74,6 +86,9 @@ export function EventCard({ event }: EventCardProps) {
       <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">
         {event.description}
       </p>
+      {event.registrationNote ? (
+        <p className="mt-3 text-xs text-muted">{event.registrationNote}</p>
+      ) : null}
       {event.registrationUrl ? (
         <div className="mt-5">
           <Button href={event.registrationUrl} external={event.registrationUrl.startsWith("http")}>

@@ -28,12 +28,20 @@ export type TcgGame = {
   /** Brand-safe accent for placeholder visuals (CSS color) */
   accent: string;
   productCategories: readonly TcgProductCategory[];
+  /** Game-specific product types PixelNation carries or plans to carry */
+  productsCarried: readonly string[];
   sealedStatus: string;
   singlesStatus: string;
   accessoriesStatus: string;
   preorderStatus: string;
   organizedPlayStatus: string;
   buySellTradeStatus: string;
+  /** Learn-to-play copy for new players */
+  learnToPlay: string;
+  /** Casual play copy */
+  casualPlay: string;
+  /** Event types planned for this game (no dates) */
+  plannedEventTypes: readonly string[];
   faqs: readonly FaqItem[];
 };
 
@@ -50,12 +58,56 @@ export type PixelNationEvent = {
   title: string;
   game: string;
   date?: string;
+  /** Recurring day of week, e.g. "Fridays" */
+  day?: string;
   startTime?: string;
   entryFee?: string;
   playerCapacity?: number;
   format?: string;
+  skillLevel?: string;
   description: string;
   registrationUrl?: string;
+  registrationNote?: string;
   status: PixelNationEventStatus;
   location?: string;
+};
+
+export type WeeklyScheduleStatus = "confirmed" | "planned" | "coming-soon";
+
+/** One row of the weekly schedule — easy for staff to edit in lib/tcg/schedule.ts */
+export type WeeklyScheduleEntry = {
+  day: string;
+  eventName: string;
+  startTime?: string;
+  endTime?: string;
+  game?: string;
+  description?: string;
+  status: WeeklyScheduleStatus;
+};
+
+/** Informational event category (no dates) shown on the events hub. */
+export type EventCategory = {
+  title: string;
+  game?: string;
+  description: string;
+  skillLevel?: string;
+  status: "planned" | "coming-soon";
+};
+
+export type ReleaseStatus =
+  | "preorder-open"
+  | "preorder-planned"
+  | "released"
+  | "tbd";
+
+/** Informational release announcement card — not an online preorder system. */
+export type ReleaseAnnouncement = {
+  id: string;
+  productName: string;
+  game: string;
+  /** Human-readable expected window, e.g. "Q3 2026" — only when confirmed */
+  expectedRelease?: string;
+  description: string;
+  availabilityNote?: string;
+  status: ReleaseStatus;
 };

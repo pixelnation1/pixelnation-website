@@ -6,7 +6,9 @@ import { TcgPageStructuredData } from "@/components/tcg/TcgStructuredData";
 import {
   BUY_SELL_ELIGIBLE_ITEMS,
   BUY_SELL_FAQS,
+  BUY_SELL_OFFER_TYPES,
   BUY_SELL_POLICIES,
+  BUY_SELL_PROCESS,
   BUY_SELL_TRADE_METADATA,
 } from "@/lib/tcg/buy-sell-trade-page";
 import { createPageMetadata } from "@/lib/seo/metadata";
@@ -94,8 +96,52 @@ export default function BuySellTradePage() {
       </Section>
 
       <Section
+        id="process"
+        title="How the review process works"
+        subtitle="A simple, in-person evaluation with no obligation."
+        alt
+      >
+        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {BUY_SELL_PROCESS.map((step, index) => (
+            <li
+              key={step.title}
+              className="rounded-xl border border-card-border bg-card p-5"
+            >
+              <span className="text-sm font-bold text-accent">
+                Step {index + 1}
+              </span>
+              <h3 className="mt-2 font-semibold text-foreground">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                {step.text}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section
+        id="offer-types"
+        title="Offer types"
+        subtitle="Depending on the item and your preference, offers may take one of three forms."
+      >
+        <div className="grid gap-4 sm:grid-cols-3">
+          {BUY_SELL_OFFER_TYPES.map((offer) => (
+            <div
+              key={offer.title}
+              className="rounded-xl border border-card-border bg-card p-5"
+            >
+              <h3 className="font-semibold text-foreground">{offer.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                {offer.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section
         id="policies"
-        title="How evaluation works"
+        title="Important disclaimers"
         subtitle="Clear expectations before you bring or ship a collection."
         alt
       >
@@ -132,7 +178,10 @@ export default function BuySellTradePage() {
           </p>
           <div className="cta-group mt-8 justify-center">
             <Button href="/contact">Request a Collection Review</Button>
-            <Button href="/trading-cards" variant="secondary">
+            <Button href="/contact" variant="secondary">
+              Contact Us
+            </Button>
+            <Button href="/trading-cards" variant="outline">
               Back to Trading Cards
             </Button>
           </div>
