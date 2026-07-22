@@ -1,3 +1,5 @@
+import { getLocalLanding } from "@/lib/seo/local-landings";
+
 export type InternalLink = {
   label: string;
   href: string;
@@ -25,12 +27,11 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
     { label: "Repairs Overview", href: "/repairs", description: "All PixelNation repair services" },
   ],
   "/console-repair": [
+    { label: "Game Console Repair Emporia", href: "/game-console-repair-emporia-ks", description: "Local SEO landing" },
+    { label: "Console Trade-Ins", href: "/console-trade-ins" },
     { label: "Training", href: "/training", description: "Microsoldering courses in Emporia, KS" },
     { label: "Board Repair", href: "/board-repair", description: "HDMI port and power rail console repair" },
-    { label: "Data Recovery", href: "/data-recovery", description: "Console storage and save data recovery" },
-    { label: "Phone Repair", href: "/phone-repair", description: "Handheld and mobile gaming devices" },
     { label: "Why PS5 HDMI Ports Fail", href: "/knowledge/why-ps5-hdmi-ports-fail", description: "Console HDMI repair guide" },
-    { label: "HDMI Port vs Encoder", href: "/knowledge/hdmi-port-vs-hdmi-encoder-failure", description: "Diagnose no video correctly" },
   ],
   "/data-recovery": [
     { label: "Board Repair", href: "/board-repair", description: "Power-on failures and storage access" },
@@ -69,41 +70,51 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
     { label: "Contact", href: "/contact" },
   ],
   "/trading-cards": [
+    { label: "Trading Card Store Emporia", href: "/trading-card-store-emporia-ks", description: "Local LGS landing" },
+    { label: "Pokémon Cards Emporia", href: "/pokemon-cards-emporia-ks" },
+    { label: "Magic Emporia", href: "/magic-the-gathering-emporia-ks" },
     { label: "What We Carry", href: "/what-we-carry", description: "Product categories guide" },
     { label: "Pokémon", href: "/trading-cards/pokemon" },
     { label: "Magic: The Gathering", href: "/trading-cards/magic-the-gathering" },
-    { label: "Yu-Gi-Oh!", href: "/trading-cards/yu-gi-oh" },
-    { label: "Disney Lorcana", href: "/trading-cards/lorcana" },
-    { label: "One Piece", href: "/trading-cards/one-piece" },
-    { label: "Preorders & New Releases", href: "/preorders-new-releases" },
+    { label: "Preorders", href: "/preorders" },
+    { label: "New Releases", href: "/new-releases" },
     { label: "Buy, Sell & Trade", href: "/buy-sell-trade" },
     { label: "Gaming", href: "/gaming" },
-    { label: "Events", href: "/events" },
   ],
   "/what-we-carry": [
     { label: "Trading Cards", href: "/trading-cards" },
-    { label: "Preorders & New Releases", href: "/preorders-new-releases" },
-    { label: "Buy, Sell & Trade", href: "/buy-sell-trade" },
+    { label: "Trading Card Store Emporia", href: "/trading-card-store-emporia-ks" },
+    { label: "Preorders", href: "/preorders" },
+    { label: "New Releases", href: "/new-releases" },
     { label: "Contact", href: "/contact", description: "Check product availability" },
   ],
   "/preorders-new-releases": [
+    { label: "Preorders explained", href: "/preorders" },
+    { label: "New Releases", href: "/new-releases" },
     { label: "What We Carry", href: "/what-we-carry" },
     { label: "Trading Cards", href: "/trading-cards" },
     { label: "Contact", href: "/contact", description: "Ask about a release" },
   ],
   "/buy-sell-trade": [
+    { label: "Sell Pokémon Cards", href: "/sell-pokemon-cards" },
+    { label: "Sell Magic Cards", href: "/sell-magic-cards" },
+    { label: "Sell Video Games", href: "/sell-video-games" },
+    { label: "Console Trade-Ins", href: "/console-trade-ins" },
     { label: "Trading Cards", href: "/trading-cards" },
-    { label: "What We Carry", href: "/what-we-carry" },
-    { label: "Gaming", href: "/gaming" },
     { label: "Contact", href: "/contact", description: "Request a collection review" },
   ],
   "/gaming": [
+    { label: "Gaming Lounge vision", href: "/gaming-lounge" },
+    { label: "Birthday Parties", href: "/birthday-parties" },
+    { label: "Gaming Community", href: "/gaming-community" },
     { label: "Events", href: "/events" },
     { label: "Trading Cards", href: "/trading-cards" },
-    { label: "Buy, Sell & Trade", href: "/buy-sell-trade" },
-    { label: "Console Repair", href: "/console-repair" },
+    { label: "Game Console Repair Emporia", href: "/game-console-repair-emporia-ks" },
   ],
   "/events": [
+    { label: "Weekly Events", href: "/weekly-events" },
+    { label: "Gaming Lounge", href: "/gaming-lounge" },
+    { label: "Birthday Parties", href: "/birthday-parties" },
     { label: "Gaming", href: "/gaming" },
     { label: "Trading Cards", href: "/trading-cards" },
     { label: "Contact", href: "/contact" },
@@ -202,6 +213,14 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
 };
 
 export function getRelatedRepairLinks(path: string): InternalLink[] {
+  const local = getLocalLanding(path.replace(/^\//, ""));
+  if (local) {
+    return local.relatedLinks.map((link) => ({
+      label: link.label,
+      href: link.href,
+      description: link.description,
+    }));
+  }
   if (path.startsWith("/portfolio/")) {
     return RELATED_REPAIR_LINKS["/portfolio"] ?? [];
   }

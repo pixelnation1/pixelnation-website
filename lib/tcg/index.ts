@@ -27,6 +27,10 @@ export {
   isTradingCardsNavActive,
   isGamingEventsNavActive,
 } from "@/lib/tcg/links";
+export {
+  COMMUNITY_HUB_LINKS,
+  WEEKLY_EVENT_PLACEHOLDERS,
+} from "@/lib/tcg/community-pages";
 export type {
   TcgGame,
   TcgGameSlug,

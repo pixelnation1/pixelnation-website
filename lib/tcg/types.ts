@@ -51,6 +51,16 @@ export type TcgGame = {
   casualPlay: string;
   /** Event types planned for this game (no dates) */
   plannedEventTypes: readonly string[];
+  /** Why players love this game — community-focused storytelling */
+  whyPeopleLove: string;
+  /** Who the game is for */
+  whoItsFor: string;
+  /** How beginners can get started */
+  howBeginnersStart: string;
+  /** Recommended starter products (informational, not inventory) */
+  recommendedProducts: readonly string[];
+  /** Why PixelNation carries this game */
+  whyWeCarry: string;
   faqs: readonly FaqItem[];
 };
 

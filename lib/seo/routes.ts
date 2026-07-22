@@ -5,6 +5,7 @@ import { PORTFOLIO_SLUGS } from "@/lib/portfolio";
 import { CITY_SLUGS } from "@/lib/locations/cities";
 import { SERVICE_SLUGS } from "@/lib/locations/services";
 import { getAllCityServiceParams } from "@/lib/locations/content";
+import { LOCAL_LANDING_SLUGS } from "@/lib/seo/local-landings";
 import { buildCanonical } from "@/lib/seo/site-seo";
 
 export type SitemapEntry = {
@@ -53,11 +54,25 @@ export const PUBLIC_ROUTES: SitemapEntry[] = [
   },
   { path: "/gaming", changeFrequency: "weekly", priority: 0.9 },
   { path: "/events", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/gaming-community", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/commander-nights", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/learn-to-play", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/weekly-events", changeFrequency: "weekly", priority: 0.88 },
+  { path: "/family-gaming", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/what-to-expect", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/trading-card-philosophy", changeFrequency: "monthly", priority: 0.8 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/team", changeFrequency: "monthly", priority: 0.65 },
+  { path: "/why-choose-pixelnation", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.8 },
   { path: "/knowledge", changeFrequency: "weekly", priority: 0.88 },
   { path: "/locations", changeFrequency: "weekly", priority: 0.85 },
   { path: "/services", changeFrequency: "weekly", priority: 0.85 },
+  ...LOCAL_LANDING_SLUGS.map((slug) => ({
+    path: `/${slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.82,
+  })),
 ];
 
 function locationSitemapEntries(): SitemapEntry[] {

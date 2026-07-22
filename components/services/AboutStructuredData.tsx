@@ -17,6 +17,8 @@ export function AboutStructuredData() {
       "Data Recovery",
       "Microsoldering",
       "Board-Level Repair",
+      "Trading Card Games",
+      "Local Gaming Community",
     ],
   };
 

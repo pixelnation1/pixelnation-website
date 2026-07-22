@@ -11,7 +11,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     tagline:
       "Booster packs, Elite Trainer Boxes, singles, accessories, and the latest Pokémon TCG releases.",
     intro:
-      "Looking for Pokémon cards in Emporia, KS? PixelNation is building a local destination for the Pokémon Trading Card Game—sealed products, singles, supplies, and community play as our trading-card and gaming division expands.",
+      "Pokémon cards in Emporia, KS mean more than packs on a shelf—they mean trainers learning together, families opening boosters, and a local community that celebrates every win. PixelNation is building a destination for the Pokémon TCG with sealed products, singles, supplies, and welcoming play.",
     metaTitle: "Pokémon Cards Emporia KS | Pokémon TCG | PixelNation",
     metaDescription:
       "Buy Pokémon cards in Emporia, Kansas. PixelNation offers Pokémon TCG sealed products, singles, accessories, and plans for organized play. Contact us for availability.",
@@ -90,6 +90,20 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Family gaming events",
       "Release events",
     ],
+    whyPeopleLove:
+      "Pokémon is nostalgia, art, and approachable strategy in one hobby. Kids light up over favorite creatures; collectors chase special treatments; competitive players refine prize-trade decisions. Few games make starting feel this exciting.",
+    whoItsFor:
+      "Families, kids, collectors, casual trainers, and players who want a welcoming path into competitive play. If you love characters, collecting, or friendly battles, Pokémon fits.",
+    howBeginnersStart:
+      "Begin with a battle deck or teachable starter product, learn Active Pokémon and Prize cards with a patient partner, then grow into boosters, Elite Trainer Boxes, and sleeves. Visit Learn to Play or ask staff for a beginner path.",
+    recommendedProducts: [
+      "Battle decks / League Battle Decks",
+      "Elite Trainer Boxes",
+      "Booster packs and bundles",
+      "Sleeves and binders",
+    ],
+    whyWeCarry:
+      "Pokémon brings families and first-time TCG players through the door. Carrying Pokémon helps PixelNation be a true local game store for Emporia—not only a repair counter.",
     faqs: [
       {
         question: "Can I buy Pokémon cards at PixelNation in Emporia?",
@@ -118,7 +132,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     tagline:
       "Commander decks, Play Boosters, Collector products, singles, and accessories for every Magic player.",
     intro:
-      "Magic: The Gathering players in Emporia, KS can look to PixelNation for sealed product, singles, accessories, and future organized play—including interest in Commander and casual formats—as we expand into a fuller local game store experience.",
+      "Magic: The Gathering in Emporia, KS is about more than cardboard—it is Commander pods, draft nights, and the joy of discovering a deck that feels like you. PixelNation supports MTG sealed products, singles, accessories, and community play as we grow into a fuller local game store.",
     metaTitle: "Magic the Gathering Emporia KS | MTG Cards | PixelNation",
     metaDescription:
       "MTG cards in Emporia, Kansas. PixelNation supports Magic: The Gathering sealed products, singles, Commander interest, and upcoming Magic events. Ask about availability.",
@@ -199,6 +213,20 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Learn-to-play sessions",
       "Casual play",
     ],
+    whyPeopleLove:
+      "Magic rewards creativity and conversation. Commander tables become stories. Drafts create shared chaos. Constructed formats push skill. Players stay because every deck—and every table—feels personal.",
+    whoItsFor:
+      "Social multiplayer fans, collectors of Universes Beyond and premium treatments, competitive minds, and beginners willing to learn one excellent format at a time—often Commander.",
+    howBeginnersStart:
+      "Start with a Commander precon or starter kit, ask for a teach game, and tell your table you are new. Then explore Play Boosters, sleeves, and singles as your style emerges. See Commander Nights and Learn to Play for more.",
+    recommendedProducts: [
+      "Commander precons",
+      "Starter kits",
+      "Play Boosters",
+      "Sleeves, deck boxes, and playmats",
+    ],
+    whyWeCarry:
+      "Magic is the backbone of many local game stores. Supporting MTG—and especially Commander—helps PixelNation build weekly community in Emporia.",
     faqs: [
       {
         question: "Where can I find MTG cards in Emporia?",
@@ -226,7 +254,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     tagline:
       "Structure Decks, booster products, singles, accessories, and popular releases for duelists of every experience level.",
     intro:
-      "PixelNation supports Yu-Gi-Oh! cards in Emporia, KS with sealed products, singles interest, accessories, and plans for community play as our trading-card division grows.",
+      "Yu-Gi-Oh! in Emporia, KS is for duelists who love big summons, clever combos, and the energy of a good match. PixelNation carries sealed products, singles interest, and accessories—and plans community play so local players have a place to duel.",
     metaTitle: "Yu-Gi-Oh Cards Emporia KS | Yu-Gi-Oh Products | PixelNation",
     metaDescription:
       "Yu-Gi-Oh cards and products in Emporia, Kansas. PixelNation offers sealed Yu-Gi-Oh! products, singles interest, accessories, and upcoming organized play. Contact for availability.",
@@ -283,6 +311,20 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Local events",
       "Trade nights",
     ],
+    whyPeopleLove:
+      "Yu-Gi-Oh! is dramatic and expressive. Turns swing hard, monsters hit the field with flair, and Structure Decks make it easy to feel powerful quickly. Fans love the pace and the nostalgia.",
+    whoItsFor:
+      "Anime fans, duelists who enjoy combo lines, collectors of iconic cards, and beginners who want a Structure Deck path into the game.",
+    howBeginnersStart:
+      "Pick up a Structure Deck, learn summons and Spell/Trap basics with a patient partner, then expand with boosters and sleeves. Ask about learn-to-play guidance—experienced duelists are encouraged to teach.",
+    recommendedProducts: [
+      "Structure Decks",
+      "Booster packs and boxes",
+      "Sleeves and deck boxes",
+      "Special collections and tins",
+    ],
+    whyWeCarry:
+      "Yu-Gi-Oh! keeps competitive energy and classic TCG culture alive. Supporting duelists helps PixelNation serve the full spectrum of Emporia’s card community.",
     faqs: [
       {
         question: "Do you sell Yu-Gi-Oh! products in Emporia?",
@@ -305,7 +347,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     tagline:
       "Booster products, Illumineer’s Troves, starter decks, singles, and accessories for Lorcana players and collectors.",
     intro:
-      "Disney Lorcana fans in Emporia, KS can find sealed products, singles interest, accessories, and community gaming plans at PixelNation as we grow our trading-card selection.",
+      "Disney Lorcana in Emporia, KS invites families and storytellers to the table. Quest for lore, collect beloved characters, and learn a game designed to feel welcoming. PixelNation offers sealed products, singles interest, accessories, and family-friendly play plans.",
     metaTitle: "Lorcana Cards Emporia KS | Disney Lorcana | PixelNation",
     metaDescription:
       "Disney Lorcana cards in Emporia, Kansas. PixelNation offers Lorcana sealed products, singles interest, accessories, and upcoming play opportunities. Ask about availability.",
@@ -362,6 +404,20 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Family-friendly events",
       "Release events",
     ],
+    whyPeopleLove:
+      "Lorcana wraps strategy in Disney storytelling. Beautiful cards, approachable questing, and shared table moments make it a favorite for families and new collectors alike.",
+    whoItsFor:
+      "Families, Disney fans, newer TCG players, collectors who love art, and anyone who wants a friendlier first multiplayer hobby night.",
+    howBeginnersStart:
+      "Start with a starter deck or teachable product, learn inking and questing together, then grow into boosters, Illumineer’s Troves, and binders. Family Gaming and Learn to Play pages share more tips.",
+    recommendedProducts: [
+      "Starter decks",
+      "Illumineer’s Troves",
+      "Booster packs and boxes",
+      "Sleeves and binders",
+    ],
+    whyWeCarry:
+      "Lorcana helps PixelNation welcome families and brand-new players. It is a natural bridge between collecting joy and community play in Emporia.",
     faqs: [
       {
         question: "Where can I get Lorcana cards in Emporia?",
@@ -384,7 +440,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     tagline:
       "Booster products, Starter Decks, special collections, singles, and accessories for One Piece players and collectors.",
     intro:
-      "Looking for One Piece cards in Emporia, KS? PixelNation is expanding support for the One Piece Card Game with sealed products, singles interest, accessories, and future community play.",
+      "One Piece Card Game fans in Emporia, KS—set sail with Starter Decks, sealed products, and a community ready to teach DON!! and Life cards. PixelNation is expanding One Piece support so players and collectors have a local home for the adventure.",
     metaTitle: "One Piece Card Game Emporia KS | One Piece Cards | PixelNation",
     metaDescription:
       "One Piece Card Game products in Emporia, Kansas. PixelNation offers sealed One Piece cards, singles interest, accessories, and upcoming play opportunities. Contact for availability.",
@@ -442,6 +498,20 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Local events",
       "Release events",
     ],
+    whyPeopleLove:
+      "One Piece brings anime energy to the table—Leaders you know, dramatic attacks, and resource play that feels unique. Fans love representing their favorite crews while learning a crisp competitive game.",
+    whoItsFor:
+      "Anime fans, collectors of special sets, casual players who want lively matches, and newcomers who recognize characters and want a Starter Deck on-ramp.",
+    howBeginnersStart:
+      "Choose a Starter Deck with a Leader you love, learn Life and DON!! with a patient partner, then explore boosters and accessories. Ask about open play and learn-to-play help.",
+    recommendedProducts: [
+      "Starter Decks",
+      "Booster packs and boxes",
+      "Special collections",
+      "Sleeves and deck boxes",
+    ],
+    whyWeCarry:
+      "One Piece expands PixelNation’s community beyond classic TCGs and invites fans who may never have visited a local game store before—exactly the kind of energy Emporia needs.",
     faqs: [
       {
         question: "Do you sell One Piece cards in Emporia?",

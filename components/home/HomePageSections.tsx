@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaqPreview } from "@/components/faq/FaqPreview";
 import { FaqSection as FaqSectionBlock } from "@/components/faq/FaqSection";
+import { PhotoPlaceholder } from "@/components/media/PhotoPlaceholder";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import {
@@ -20,6 +21,11 @@ import {
   MAIL_IN_STEPS,
   WHY_CHOOSE,
 } from "@/lib/homepage";
+import {
+  HOME_CLOSING_CTA,
+  MEET_PIXELNATION,
+  OUR_MISSION,
+} from "@/lib/brand-story";
 import { TCG_GAME_LIST } from "@/lib/tcg/games";
 import { TCG_IMAGES } from "@/lib/tcg/images";
 import { TCG_LAUNCH } from "@/lib/tcg/launch";
@@ -77,6 +83,69 @@ export function HeroSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+export function MeetPixelNationSection() {
+  return (
+    <Section
+      id="meet-pixelnation"
+      title={MEET_PIXELNATION.title}
+      subtitle={MEET_PIXELNATION.subtitle}
+      alt
+    >
+      <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+        <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
+          {MEET_PIXELNATION.paragraphs.map((paragraph) => (
+            <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+          ))}
+          <div className="cta-group pt-2">
+            <Button href="/about" variant="secondary">
+              Our story
+            </Button>
+            <Button href="/team" variant="outline">
+              Meet the team
+            </Button>
+          </div>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+          <PhotoPlaceholder
+            label="Repair Bench"
+            description="Future photo of the workbench where devices get a second chance."
+          />
+          <PhotoPlaceholder
+            label="Trading Cards & Play"
+            description="Future photo of cards, tables, and the community side of PixelNation."
+          />
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+export function OurMissionSection() {
+  return (
+    <Section
+      id="our-mission"
+      title={OUR_MISSION.title}
+      subtitle={OUR_MISSION.subtitle}
+      alt
+    >
+      <p className="-mt-2 mb-8 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
+        {OUR_MISSION.body}
+      </p>
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {OUR_MISSION.pillars.map((pillar) => (
+          <li
+            key={pillar.title}
+            className="rounded-xl border border-card-border bg-card p-5"
+          >
+            <h3 className="font-semibold text-foreground">{pillar.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{pillar.text}</p>
+          </li>
+        ))}
+      </ul>
+    </Section>
   );
 }
 
@@ -328,10 +397,10 @@ export function WhyChooseSection() {
   return (
     <Section
       id="why-pixelnation"
-      title="Why customers choose PixelNation"
-      subtitle="Real bench experience, clear communication, and repair paths that match the actual fault."
+      title="Why choose PixelNation"
+      subtitle="Repair depth, honest guidance, and a local community worth visiting—whether you need a device fixed or a place to play."
     >
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {WHY_CHOOSE.map((item) => (
           <article
             key={item.title}
@@ -341,6 +410,12 @@ export function WhyChooseSection() {
             <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
           </article>
         ))}
+      </div>
+      <div className="cta-group mt-8">
+        <Button href="/why-choose-pixelnation">Why choose PixelNation</Button>
+        <Button href="/about" variant="secondary">
+          Read our story
+        </Button>
       </div>
     </Section>
   );
@@ -616,18 +691,18 @@ export function FinalCTASection() {
     >
       <div className="mx-auto max-w-3xl px-4 text-center">
         <h2 id="final-cta-heading" className="text-2xl font-bold sm:text-3xl">
-          Ready to repair, play, or explore?
+          {HOME_CLOSING_CTA.title}
         </h2>
-        <p className="mt-3 text-muted">
-          Start a repair, browse trading cards, or ask about gaming events in Emporia.
+        <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+          {HOME_CLOSING_CTA.body}
         </p>
         <div className="cta-group mt-8 justify-center">
           <Button href="/contact">Start a Repair</Button>
           <Button href="/trading-cards" variant="secondary">
             Explore Trading Cards
           </Button>
-          <Button href="/events" variant="outline">
-            View Events
+          <Button href="/contact" variant="outline">
+            Contact Us
           </Button>
         </div>
       </div>

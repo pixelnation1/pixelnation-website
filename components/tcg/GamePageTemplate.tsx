@@ -12,12 +12,27 @@ import type { TcgGame } from "@/lib/tcg/types";
 import { SITE } from "@/lib/site";
 import type { BreadcrumbItem } from "@/lib/seo/types";
 
+const GAME_LOCAL_LANDINGS: Record<string, { href: string; label: string }> = {
+  pokemon: { href: "/pokemon-cards-emporia-ks", label: "Pokémon Cards in Emporia" },
+  "magic-the-gathering": {
+    href: "/magic-the-gathering-emporia-ks",
+    label: "Magic in Emporia",
+  },
+  "yu-gi-oh": { href: "/yu-gi-oh-cards-emporia-ks", label: "Yu-Gi-Oh! in Emporia" },
+  lorcana: { href: "/disney-lorcana-emporia-ks", label: "Lorcana in Emporia" },
+  "one-piece": {
+    href: "/one-piece-card-game-emporia-ks",
+    label: "One Piece in Emporia",
+  },
+};
+
 type GamePageTemplateProps = {
   game: TcgGame;
 };
 
 export function GamePageTemplate({ game }: GamePageTemplateProps) {
   const hasGallery = Boolean(game.gallery && game.gallery.length > 0);
+  const localLanding = GAME_LOCAL_LANDINGS[game.slug];
   const breadcrumbs: BreadcrumbItem[] = [
     { name: "Home", path: "/" },
     { name: "Trading Cards", path: "/trading-cards" },
@@ -57,10 +72,19 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
               {TCG_LAUNCH.availabilityNote}
             </p>
             <div className="cta-group mt-8">
-              <Button href="/contact">Ask about availability</Button>
-              <Button href="/buy-sell-trade" variant="secondary">
-                Buy, Sell &amp; Trade
+              <Button href="/learn-to-play">Learn to Play</Button>
+              <Button href="/contact" variant="secondary">
+                Ask about availability
               </Button>
+              {localLanding ? (
+                <Button href={localLanding.href} variant="outline">
+                  {localLanding.label}
+                </Button>
+              ) : (
+                <Button href="/gaming-community" variant="outline">
+                  Gaming Community
+                </Button>
+              )}
             </div>
           </div>
           {game.image ? (
@@ -85,9 +109,77 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
       </section>
 
       <Section
+        id="why-love"
+        title={`Why players love ${game.name}`}
+        subtitle="The excitement behind the cardboard—not just a product list."
+      >
+        <div className="grid gap-6 md:grid-cols-2">
+          <article className="rounded-xl border border-card-border bg-card p-6">
+            <h3 className="font-semibold text-foreground">Why people love it</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              {game.whyPeopleLove}
+            </p>
+          </article>
+          <article className="rounded-xl border border-card-border bg-card p-6">
+            <h3 className="font-semibold text-foreground">Who it&apos;s for</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              {game.whoItsFor}
+            </p>
+          </article>
+        </div>
+      </Section>
+
+      <Section
+        id="get-started"
+        title="How beginners can start"
+        subtitle="No experience required—experienced players are welcome to help teach."
+        alt
+      >
+        <p className="max-w-3xl text-muted leading-relaxed">{game.howBeginnersStart}</p>
+        <h3 className="mt-8 font-semibold text-foreground">
+          Recommended ways to begin
+        </h3>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          {game.recommendedProducts.map((item) => (
+            <li
+              key={item}
+              className="rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div className="cta-group mt-8">
+          <Button href="/learn-to-play">Full learn-to-play guides</Button>
+          <Button href="/what-to-expect" variant="secondary">
+            What to expect
+          </Button>
+        </div>
+      </Section>
+
+      <Section
+        id="why-we-carry"
+        title={`Why PixelNation carries ${game.name}`}
+        subtitle="Part of building a real local game store community in Emporia."
+      >
+        <p className="max-w-3xl text-lg leading-relaxed text-muted">
+          {game.whyWeCarry}
+        </p>
+        <div className="cta-group mt-8">
+          <Button href="/trading-card-philosophy" variant="secondary">
+            Our trading card philosophy
+          </Button>
+          <Button href="/gaming-community" variant="outline">
+            Meet the community vision
+          </Button>
+        </div>
+      </Section>
+
+      <Section
         id="products"
         title="Products we carry or plan to carry"
         subtitle={`${game.name} products at PixelNation, subject to release timing and current inventory.`}
+        alt
       >
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {game.productsCarried.map((item) => (
@@ -109,7 +201,6 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
           id="product-gallery"
           title="Product examples"
           subtitle={`Examples of ${game.name} products PixelNation carries or can source—shown for reference, not a live inventory list.`}
-          alt
         >
           <ProductImageGrid images={game.gallery} />
           <p className="mt-6 max-w-3xl text-sm text-muted">
@@ -122,7 +213,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         id="categories"
         title="Product categories"
         subtitle={`What we support for ${game.name} as inventory expands.`}
-        alt={!hasGallery}
+        alt
       >
         <ul className="grid gap-4 sm:grid-cols-2">
           {game.productCategories.map((category) => (
@@ -143,7 +234,6 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         id="play"
         title="Learn to play & casual games"
         subtitle="New players are welcome—no experience required."
-        alt={hasGallery}
       >
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-xl border border-card-border bg-card p-6">
@@ -165,7 +255,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         id="events"
         title="Organized events"
         subtitle={`${game.name} event types planned for the expanded location—schedules will be announced when confirmed.`}
-        alt={!hasGallery}
+        alt
       >
         <ul className="flex flex-wrap gap-2">
           {game.plannedEventTypes.map((eventType) => (
@@ -178,10 +268,19 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
           ))}
         </ul>
         <div className="cta-group mt-8">
-          <Button href="/events">View Events</Button>
-          <Button href="/gaming" variant="secondary">
-            Explore Gaming
+          <Button href="/weekly-events">Weekly Events</Button>
+          <Button href="/events" variant="secondary">
+            Events hub
           </Button>
+          {game.slug === "magic-the-gathering" ? (
+            <Button href="/commander-nights" variant="outline">
+              Commander Nights
+            </Button>
+          ) : (
+            <Button href="/gaming" variant="outline">
+              Explore Gaming
+            </Button>
+          )}
         </div>
       </Section>
 
@@ -189,7 +288,6 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         id="availability"
         title="Availability & services"
         subtitle="Honest launch-stage details—no invented stock or schedules."
-        alt={hasGallery}
       >
         <dl className="grid gap-4 sm:grid-cols-2">
           {[
@@ -217,7 +315,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         id="preorders"
         title="New releases & preorders"
         subtitle={game.preorderStatus}
-        alt={!hasGallery}
+        alt
       >
         <div className="cta-group">
           <Button href="/preorders-new-releases">Preorders &amp; New Releases</Button>
@@ -227,7 +325,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         </div>
       </Section>
 
-      <Section id="faq" title="Frequently asked questions" alt={hasGallery}>
+      <Section id="faq" title="Frequently asked questions">
         <FAQ items={game.faqs} showHeading={false} />
       </Section>
 

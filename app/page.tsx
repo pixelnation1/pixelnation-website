@@ -11,6 +11,8 @@ import {
   FinalCTASection,
   HeroSection,
   MailInRepairSection,
+  MeetPixelNationSection,
+  OurMissionSection,
   TrainingHomeSection,
   SoftwareDevelopmentHomeSection,
   TradingCardsHomeSection,
@@ -36,7 +38,9 @@ export default function HomePage() {
     <>
       <HomeStructuredData />
       <HeroSection />
+      <MeetPixelNationSection />
       <DivisionSelectorSection />
+      <OurMissionSection />
       <TrustBar />
       <WhatWeRepairSection />
       <TradingCardsHomeSection />

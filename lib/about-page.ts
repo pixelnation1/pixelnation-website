@@ -1,19 +1,92 @@
+import { SITE } from "@/lib/site";
+import { MEET_PIXELNATION, OUR_MISSION } from "@/lib/brand-story";
+
 export const ABOUT_METADATA = {
   title:
-    "About PixelNation | Advanced Repair, Data Recovery & Training in Emporia, KS",
+    "About PixelNation | Repair, Trading Cards & Community in Emporia, KS",
   description:
-    "Learn about PixelNation in Emporia, KS. Advanced phone, computer, console, appliance, data recovery, board repair, and microsoldering training from an experienced repair specialist.",
+    "Learn about PixelNation in Emporia, KS—professional electronics repair, trading cards, gaming community, technology education, and honest local service since 2007.",
   path: "/about",
   canonical: "https://www.pixelnation.co/about",
 } as const;
 
 export const HERO_BULLETS = [
-  "Phone, computer, and console repair",
-  "Appliance diagnostics and repair",
-  "Data recovery",
-  "Board-level microsoldering",
-  "Hands-on repair training",
-  "Local service with nationwide mail-in options",
+  "Professional electronics repair",
+  "Microsoldering & board-level work",
+  "Data recovery and console repair",
+  "Trading cards and gaming community",
+  "Buy, sell & trade interest",
+  "Technology education and local events",
+] as const;
+
+export const STORY_SECTIONS = [
+  {
+    id: "how-we-started",
+    title: "How PixelNation started",
+    paragraphs: [
+      `PixelNation began with a love of technology and a stubborn refusal to treat every broken device as disposable. Since 2007, the work has been hands-on: diagnosing real faults, repairing what can be repaired, and telling customers the truth about what is—and is not—worth fixing.`,
+      `What started as dedicated repair service grew into deeper specialties—microsoldering, data recovery, appliance diagnostics, and training that teaches practical bench skills. Along the way, gaming stayed close to the culture of the shop: consoles on the bench, conversations about cards and play, and a belief that technology is more meaningful when people share it.`,
+    ],
+  },
+  {
+    id: "why-we-repair",
+    title: "Why we repair",
+    paragraphs: [
+      `Repair is respect—for the device, for the customer's money, and for the photos, files, and memories stored inside. Replacement culture is convenient for manufacturers; it is not always right for people.`,
+      `We repair because careful diagnostics can save a phone, revive a console, recover a hard drive, or restore a computer someone still needs for work or school. When board-level work is required, we say so. When replacement is the wiser path, we say that too. Honesty is part of the repair.`,
+    ],
+  },
+  {
+    id: "why-gaming-matters",
+    title: "Why gaming matters",
+    paragraphs: [
+      `Gaming is not a distraction from technology—it is one of the best reasons people connect through it. Trading card games, video games, and shared tables create friendships, friendly competition, and a welcoming way for newcomers to learn.`,
+      `PixelNation is expanding trading cards, accessories, buy/sell/trade interest, and community events because gaming belongs next to repair—not behind it. We want Emporia to have a place where fixing a Switch and finding a booster pack can live under the same roof.`,
+    ],
+  },
+  {
+    id: "building-community",
+    title: "Building a community",
+    paragraphs: [
+      `A good local shop is more than a counter and a queue. It is a place people return to—because they were treated fairly, because someone explained a repair without jargon, or because they found others who love the same games.`,
+      `As PixelNation grows toward a larger location with more room for inventory, tables, and events, the community goal stays simple: be welcoming to beginners and experienced players, collectors and casual groups, families and competitive minds. Help people. Make room for them.`,
+    ],
+  },
+  {
+    id: "our-vision",
+    title: "Our vision",
+    paragraphs: [
+      `We see PixelNation as a lasting technology, gaming, and community brand in ${SITE.address.region}—professional electronics repair, trading cards, video games, local events, buy/sell/trade, and technology education working together.`,
+      `The larger location will give that vision more room. Until details like address and opening date are confirmed, we will not invent them. What we can promise is the direction: repair done right, games people love, and a place worth visiting.`,
+    ],
+  },
+] as const;
+
+export const OUR_VALUES = [
+  {
+    title: "Honesty",
+    text: "Clear diagnostics, clear options, and no pressure to buy what you do not need.",
+  },
+  {
+    title: "Craft",
+    text: "Respect for careful work—from screen swaps to microsoldering and recovery cases.",
+  },
+  {
+    title: "Hospitality",
+    text: "A shop and community that feel approachable, whether you are new or experienced.",
+  },
+  {
+    title: "Stewardship",
+    text: "Repair when it makes sense. Teach skills that last. Build something the community can trust.",
+  },
+  {
+    title: "Curiosity",
+    text: "Keep learning—better tools, better methods, better ways to serve gamers and customers.",
+  },
+  {
+    title: "Belonging",
+    text: "Technology and gaming are better when people share them in person.",
+  },
 ] as const;
 
 export const WHAT_WE_OFFER = [
@@ -54,10 +127,16 @@ export const WHAT_WE_OFFER = [
     keyword: "Board Repair Emporia KS",
   },
   {
-    title: "Mail-In Repair",
-    description: "Nationwide service with structured updates through evaluation and repair.",
-    href: "/contact",
-    keyword: "Mail-in electronics repair",
+    title: "Trading Cards & Gaming",
+    description: "Sealed products, singles interest, accessories, and community play.",
+    href: "/trading-cards",
+    keyword: "Trading Cards Emporia KS",
+  },
+  {
+    title: "Buy, Sell & Trade",
+    description: "Collection reviews for eligible cards, games, consoles, and accessories.",
+    href: "/buy-sell-trade",
+    keyword: "Sell Trading Cards Emporia",
   },
   {
     title: "Training Courses",
@@ -72,15 +151,9 @@ export const WHAT_WE_OFFER = [
     href: "/software-development",
     keyword: "Custom Software Development",
   },
-  {
-    title: "Website Development",
-    description:
-      "Modern, mobile-friendly business websites, landing pages, and nonprofit sites.",
-    href: "/software-development/website-development",
-    keyword: "Website Development Services",
-  },
 ] as const;
 
+/** About-page highlights — complements the full /why-choose-pixelnation page. */
 export const WHY_CHOOSE = [
   {
     title: "Advanced board-level diagnostics",
@@ -95,16 +168,16 @@ export const WHY_CHOOSE = [
     text: "Structured paths to recover important files when devices will not boot or storage fails.",
   },
   {
-    title: "Hands-on training",
-    text: "Practical courses that teach diagnostics and microsoldering skills technicians can use immediately.",
+    title: "Gaming & trading cards",
+    text: "A growing local destination for sealed products, singles interest, accessories, and community play.",
   },
   {
     title: "Local support in Emporia, Kansas",
     text: "Straightforward communication and dependable service from a shop rooted in the community.",
   },
   {
-    title: "Mail-in service nationwide",
-    text: "Customers outside Emporia can ship devices for repair, recovery, and board-level work.",
+    title: "Hands-on training",
+    text: "Practical courses that teach diagnostics and microsoldering skills technicians can use immediately.",
   },
 ] as const;
 
@@ -112,17 +185,22 @@ export const ABOUT_FAQ = [
   {
     question: "When was PixelNation established?",
     answer:
-      "PixelNation has been serving customers with hands-on repair expertise since 2007, growing from everyday device repair into advanced diagnostics, data recovery, and training.",
+      "PixelNation has been serving customers with hands-on repair expertise since 2007, growing from everyday device repair into advanced diagnostics, data recovery, training, and a trading-card and gaming community.",
   },
   {
     question: "What makes PixelNation different from other repair shops?",
     answer:
-      "PixelNation combines local repair service with board-level microsoldering, data recovery, appliance diagnostics, and professional training—solving problems many shops will not take on.",
+      "PixelNation combines local repair service with board-level microsoldering, data recovery, appliance diagnostics, professional training, and an expanding trading-card and gaming presence—solving hard technical problems while building a welcoming community.",
   },
   {
     question: "Does PixelNation offer training for other technicians?",
     answer:
       "Yes. PixelNation offers hands-on microsoldering and board repair training for shop owners, technicians, and entrepreneurs through structured courses in Emporia, Kansas.",
+  },
+  {
+    question: "Is PixelNation only a repair shop?",
+    answer:
+      "Repair remains a core strength, but PixelNation is becoming a broader technology, gaming, and community brand—including trading cards, events interest, buy/sell/trade, and education alongside professional electronics repair.",
   },
 ] as const;
 
@@ -130,7 +208,7 @@ export const AEO_ANSWERS = [
   {
     question: "What is PixelNation?",
     answer:
-      "PixelNation is an advanced repair and training business in Emporia, Kansas specializing in phone repair, computer repair, appliance repair, data recovery, and board-level microsoldering.",
+      "PixelNation is a technology, gaming, and community business in Emporia, Kansas specializing in professional electronics repair, data recovery, board-level microsoldering, trading cards, and local gaming community experiences—plus training and software services.",
   },
   {
     question: "Does PixelNation offer repair training?",
@@ -143,3 +221,5 @@ export const AEO_ANSWERS = [
       "PixelNation is based in Emporia, Kansas and also offers nationwide mail-in services.",
   },
 ] as const;
+
+export { MEET_PIXELNATION, OUR_MISSION };

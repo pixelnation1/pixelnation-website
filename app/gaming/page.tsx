@@ -66,12 +66,12 @@ export default function GamingPage() {
             {GAMING_INTRO.body}
           </p>
           <div className="cta-group mt-8">
-            <Button href="/events">View Events</Button>
-            <Button href="/trading-cards" variant="secondary">
-              Explore Trading Cards
+            <Button href="/gaming-community">Gaming Community</Button>
+            <Button href="/events" variant="secondary">
+              View Events
             </Button>
-            <Button href="/contact" variant="outline">
-              Contact us
+            <Button href="/what-to-expect" variant="outline">
+              What to expect
             </Button>
           </div>
         </div>

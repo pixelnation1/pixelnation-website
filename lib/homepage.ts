@@ -170,28 +170,52 @@ export const COMMON_PROBLEMS = [
 
 export const WHY_CHOOSE = [
   {
-    title: "Advanced diagnostics",
-    text: "We reproduce symptoms and test circuits before recommending parts or board work.",
+    title: "Experienced Repair Specialists",
+    text: "Years of hands-on repair across phones, computers, consoles, appliances, and boards—not guesswork.",
   },
   {
-    title: "Board-level repair",
-    text: "Microsoldering, HDMI rework, and power rail repair when replacement alone is not enough.",
+    title: "Board-Level Repair",
+    text: "Microsoldering, HDMI rework, and power-rail repair when a simple part swap is not enough.",
   },
   {
-    title: "Data recovery expertise",
+    title: "Local Business",
+    text: `Rooted in ${SITE.address.region}—real people, real conversations, and service that stays local.`,
+  },
+  {
+    title: "Fast Turnaround",
+    text: "Same-day options on select repairs, with clear timelines when deeper diagnostics are needed.",
+  },
+  {
+    title: "Honest Diagnostics",
+    text: "We reproduce the symptom, explain what failed, and quote options before work begins.",
+  },
+  {
+    title: "Data Recovery",
     text: "Structured recovery paths for phones, drives, and devices that will not power on.",
   },
   {
-    title: "Mail-in service",
-    text: "Ship devices from anywhere in the U.S. with clear updates through evaluation and repair.",
+    title: "Gaming Community",
+    text: "A welcoming place for play, events, and people who love cards, consoles, and gathering together.",
   },
   {
-    title: "Local Emporia support",
-    text: `Walk-in help during business hours at our ${SITE.address.region} location.`,
+    title: "Trading Card Selection",
+    text: "Pokémon, Magic, Yu-Gi-Oh!, Lorcana, One Piece, sealed products, singles, and accessories—availability varies as inventory grows.",
   },
   {
-    title: "Hands-on training",
-    text: "Learn practical repair and board-level skills through PixelNation training courses.",
+    title: "Friendly Support",
+    text: "Questions are welcome. Whether you are new to repair or deep into a collection, we meet you where you are.",
+  },
+  {
+    title: "No Pressure Recommendations",
+    text: "We would rather tell you the truth than upsell a repair you do not need.",
+  },
+  {
+    title: "Quality Parts",
+    text: "We prioritize parts and materials that support lasting repairs—not the cheapest shortcut.",
+  },
+  {
+    title: "Transparent Pricing",
+    text: "You understand the options and cost before work proceeds. No mystery charges after the fact.",
   },
 ] as const;
 

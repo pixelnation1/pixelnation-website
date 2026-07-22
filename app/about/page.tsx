@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { FaqSection } from "@/components/faq/FaqSection";
-import { toSchemaFaqs } from "@/lib/faq/utils";
+import { PhotoPlaceholder } from "@/components/media/PhotoPlaceholder";
 import { AboutStructuredData } from "@/components/services/AboutStructuredData";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
@@ -12,9 +12,12 @@ import {
   ABOUT_FAQ,
   ABOUT_METADATA,
   HERO_BULLETS,
+  OUR_VALUES,
+  STORY_SECTIONS,
   WHAT_WE_OFFER,
   WHY_CHOOSE,
 } from "@/lib/about-page";
+import { OUR_MISSION, PHOTO_SLOTS } from "@/lib/brand-story";
 import { SITE } from "@/lib/site";
 
 export const metadata = createPageMetadataFromLegacy({
@@ -27,7 +30,6 @@ export default function AboutPage() {
     <article>
       <AboutStructuredData />
 
-      {/* Hero */}
       <section
         className="border-b border-card-border bg-gradient-to-b from-accent-muted via-accent-secondary-muted to-background py-12 sm:py-16 md:py-24"
         aria-labelledby="about-heading"
@@ -42,7 +44,7 @@ export default function AboutPage() {
               <span className="text-foreground">About</span>
             </nav>
             <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-accent">
-              About PixelNation · Repair Shop Emporia KS
+              About PixelNation · Emporia, Kansas
             </p>
             <h1
               id="about-heading"
@@ -51,8 +53,8 @@ export default function AboutPage() {
               About PixelNation
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-muted">
-              Advanced repair, data recovery, and hands-on training built on real-world
-              technical experience.
+              A technology, gaming, and community brand built on honest repair,
+              shared play, and a place people want to visit in {SITE.address.region}.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-muted">
               {HERO_BULLETS.map((item) => (
@@ -67,78 +69,118 @@ export default function AboutPage() {
             </ul>
             <div className="cta-group mt-8">
               <Button href="/contact">Start a Repair</Button>
-              <Button href="/training" variant="secondary">
-                Explore Training
+              <Button href="/trading-cards" variant="secondary">
+                Explore Trading Cards
               </Button>
-              <Button href="/contact" variant="outline">
-                Contact Us
+              <Button href="/team" variant="outline">
+                Meet the Team
               </Button>
             </div>
           </div>
           <div className="order-2 flex w-full min-w-0 justify-center lg:justify-end">
             <div className="relative flex aspect-[4/3] w-full max-w-[380px] min-h-[240px] items-center justify-center overflow-hidden rounded-2xl border border-card-border bg-background p-2 sm:max-w-[420px] sm:min-h-[280px] lg:max-w-none lg:min-h-[320px]">
-            <Image
-              src="/images/coverlogo.png"
-              alt="PixelNation advanced repair and training in Emporia Kansas"
-              fill
-              className="h-full w-full object-contain object-center"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
+              <Image
+                src="/images/coverlogo.png"
+                alt="PixelNation advanced repair, trading cards, and community in Emporia Kansas"
+                fill
+                className="h-full w-full object-contain object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our story */}
+      {STORY_SECTIONS.map((section, index) => (
+        <Section
+          key={section.id}
+          id={section.id}
+          title={section.title}
+          alt={index % 2 === 1}
+        >
+          <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+            <div className="max-w-3xl space-y-4 text-muted leading-relaxed">
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+              ))}
+            </div>
+            {index === 0 ? (
+              <PhotoPlaceholder
+                label={PHOTO_SLOTS[2].label}
+                description={PHOTO_SLOTS[2].description}
+              />
+            ) : index === 1 ? (
+              <PhotoPlaceholder
+                label={PHOTO_SLOTS[0].label}
+                description={PHOTO_SLOTS[0].description}
+              />
+            ) : index === 2 ? (
+              <PhotoPlaceholder
+                label={PHOTO_SLOTS[4].label}
+                description={PHOTO_SLOTS[4].description}
+              />
+            ) : index === 3 ? (
+              <PhotoPlaceholder
+                label={PHOTO_SLOTS[3].label}
+                description={PHOTO_SLOTS[3].description}
+              />
+            ) : (
+              <PhotoPlaceholder
+                label={PHOTO_SLOTS[5].label}
+                description={PHOTO_SLOTS[5].description}
+              />
+            )}
+          </div>
+        </Section>
+      ))}
+
       <Section
-        id="our-story"
-        title="Built from real repair experience"
-        subtitle="Established in 2007 — advanced diagnostics, honest service, and a passion for solving hard problems."
+        id="our-values"
+        title="Our values"
+        subtitle="The principles that guide repair work, community growth, and everyday service."
+        alt
       >
-        <div className="max-w-3xl space-y-4 text-muted leading-relaxed">
-          <p>
-            Looking for reliable repair with fast turnaround and real experience behind
-            the work? PixelNation is built on years of hands-on repair knowledge and
-            advanced diagnostics across phones, computers, game consoles, appliances, and
-            board-level electronics.
-          </p>
-          <p>
-            Since <span className="font-semibold text-foreground">2007</span>, our focus
-            has been honest repair solutions, accurate diagnostics, and quality workmanship
-            customers can trust. What started as a passion for technology and
-            problem-solving grew into a specialized business—expanding beyond basic
-            screen and battery work into microsoldering, data recovery, and training that
-            helps others build real bench skills.
-          </p>
-          <p>
-            From cracked screens and charging issues to complex board failures and
-            recovery cases, we take pride in solving problems many shops turn away. We
-            believe repairs should be straightforward, professional, and done right the
-            first time—with clear communication so you understand your options before work
-            begins.
-          </p>
-          <p>
-            Today, PixelNation serves {SITE.address.region} and customers nationwide
-            through mail-in repair. We are committed to helping people save devices,
-            recover irreplaceable data, and learn practical technical skills through
-            hands-on education—not theory alone.
-          </p>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {OUR_VALUES.map((value) => (
+            <article
+              key={value.title}
+              className="rounded-xl border border-card-border bg-card p-5"
+            >
+              <h3 className="font-semibold text-foreground">{value.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{value.text}</p>
+            </article>
+          ))}
         </div>
       </Section>
 
-      {/* What we do */}
+      <Section
+        id="mission"
+        title={OUR_MISSION.title}
+        subtitle={OUR_MISSION.subtitle}
+      >
+        <p className="-mt-2 mb-8 max-w-3xl text-lg leading-relaxed text-muted">
+          {OUR_MISSION.body}
+        </p>
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {OUR_MISSION.pillars.map((pillar) => (
+            <li
+              key={pillar.title}
+              className="rounded-xl border border-card-border bg-card p-5"
+            >
+              <h3 className="font-semibold text-foreground">{pillar.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{pillar.text}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
       <Section
         id="what-we-do"
-        title="More than a typical repair shop"
-        subtitle="A specialized technical business for repair, recovery, training, and technology."
+        title="What we do"
+        subtitle="Repair, recovery, training, trading cards, gaming, and technology services under one local brand."
         alt
       >
-        <p className="-mt-6 mb-8 max-w-3xl text-muted leading-relaxed">
-          PixelNation is an electronics repair specialist in Emporia, Kansas offering
-          advanced diagnostics, board-level work, and professional training alongside
-          everyday device and appliance repair.
-        </p>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {WHAT_WE_OFFER.map((item) => (
             <Link
@@ -161,29 +203,12 @@ export default function AboutPage() {
             </Link>
           ))}
         </div>
-        <div className="mt-8">
-          <Button href="/repairs" variant="secondary">
-            Repairs overview
-          </Button>
-        </div>
       </Section>
 
-      {/* Mission */}
-      <Section id="mission" title="Our mission" subtitle="Practical solutions, real skills, honest service.">
-        <p className="-mt-6 max-w-3xl text-lg leading-relaxed text-muted">
-          To provide practical repair solutions, recover valuable data, teach real-world
-          technical skills, and serve customers with honesty and professionalism. Whether
-          you need a quick repair or advanced board-level diagnostics, our goal is
-          dependable service backed by experience you can trust.
-        </p>
-      </Section>
-
-      {/* Why choose */}
       <Section
         id="why-choose"
         title="Why customers choose PixelNation"
-        subtitle="Technical depth, clear communication, and service beyond basic part swaps."
-        alt
+        subtitle="Technical depth, clear communication, and a community worth visiting."
       >
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {WHY_CHOOSE.map((item) => (
@@ -196,53 +221,32 @@ export default function AboutPage() {
             </article>
           ))}
         </div>
-      </Section>
-
-      {/* Training vision */}
-      <Section
-        id="training-vision"
-        title="Sharing knowledge through hands-on training"
-        subtitle="Helping technicians, shop owners, and entrepreneurs build real board repair skills."
-      >
-        <p className="-mt-6 max-w-3xl text-muted leading-relaxed">
-          PixelNation offers practical microsoldering and board repair training designed
-          for repair shop owners, technicians, and entrepreneurs who want skills they can
-          apply immediately—from charging port and HDMI rework to diagnostics and
-          structured troubleshooting on real circuit boards.
-        </p>
         <div className="cta-group mt-8">
-          <Button href="/training">Training overview</Button>
-          <Button href="/training-courses" variant="secondary">
-            Training courses & pricing
+          <Button href="/why-choose-pixelnation">Full why-choose page</Button>
+          <Button href="/team" variant="secondary">
+            Meet the team
           </Button>
         </div>
       </Section>
 
-      {/* Community */}
       <Section
-        id="community"
-        title="Built to serve more than repairs"
-        subtitle="Technology, education, and community-focused service."
+        id="moments"
+        title="Moments we want to capture"
+        subtitle="These spaces are ready for real PixelNation photography—repair, play, and community."
         alt
       >
-        <p className="-mt-6 max-w-3xl text-muted leading-relaxed">
-          PixelNation is focused on solving real problems, creating opportunities, and
-          making a positive impact through education, technology, and community
-          involvement. Beyond the bench, we connect with customers who care about gaming,
-          electronics, and learning—building a business that supports local needs while
-          sharing expertise with the broader repair community.
-        </p>
-        <div className="cta-group mt-8">
-          <Button href="/training" variant="secondary">
-            Explore training
-          </Button>
-          <Button href="/contact" variant="outline">
-            Get in touch
-          </Button>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {PHOTO_SLOTS.map((slot) => (
+            <PhotoPlaceholder
+              key={slot.id}
+              label={slot.label}
+              description={slot.description}
+              aspect="square"
+            />
+          ))}
         </div>
       </Section>
 
-      {/* Quick answers */}
       <Section
         id="quick-answers"
         title="Quick answers"
@@ -272,68 +276,36 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* FAQ */}
-      <Section id="faq" title="About PixelNation FAQ" subtitle="History, services, and training.">
+      <Section
+        id="faq"
+        title="About PixelNation FAQ"
+        subtitle="History, services, community, and training."
+        alt
+      >
         <FaqSection items={ABOUT_FAQ} initialVisible={6} showPeopleAlsoAsk />
       </Section>
 
-      {/* Final CTA */}
       <section
         className="border-t border-card-border bg-gradient-to-r from-accent-muted to-accent-secondary-muted py-12 sm:py-16 md:py-20"
         aria-labelledby="about-cta-heading"
       >
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 id="about-cta-heading" className="text-2xl font-bold sm:text-3xl">
-            Ready to Work with PixelNation?
+            Ready to visit PixelNation?
           </h2>
           <p className="mt-3 text-muted">
-            Whether you need advanced repair, data recovery, or professional training,
-            PixelNation is here to help.
+            Whether you need advanced repair, trading cards, or a friendly place to
+            ask a question—we are here to help.
           </p>
           <div className="cta-group mt-8 justify-center">
             <Button href="/contact">Start a Repair</Button>
-            <Button href="/training" variant="secondary">
-              Explore Training
+            <Button href="/trading-cards" variant="secondary">
+              Explore Trading Cards
             </Button>
             <Button href="/contact" variant="outline">
               Contact Us
             </Button>
           </div>
-          <nav
-            className="mt-10 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-muted"
-            aria-label="Service pages"
-          >
-            <Link href="/repairs" className="hover:text-accent">
-              Repairs
-            </Link>
-            <Link href="/phone-repair" className="hover:text-accent">
-              Phone Repair
-            </Link>
-            <Link href="/computer-repair" className="hover:text-accent">
-              Computer Repair
-            </Link>
-            <Link href="/appliance-repair" className="hover:text-accent">
-              Appliance Repair
-            </Link>
-            <Link href="/console-repair" className="hover:text-accent">
-              Console Repair
-            </Link>
-            <Link href="/data-recovery" className="hover:text-accent">
-              Data Recovery
-            </Link>
-            <Link href="/board-repair" className="hover:text-accent">
-              Board Repair
-            </Link>
-            <Link href="/training" className="hover:text-accent">
-              Training
-            </Link>
-            <Link href="/training-courses" className="hover:text-accent">
-              Training Courses
-            </Link>
-            <Link href="/contact" className="hover:text-accent">
-              Contact
-            </Link>
-          </nav>
         </div>
       </section>
     </article>

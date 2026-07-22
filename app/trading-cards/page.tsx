@@ -75,8 +75,11 @@ export default function TradingCardsPage() {
           </p>
           <div className="cta-group mt-8">
             <Button href="#games">Explore Supported Games</Button>
-            <Button href="/events" variant="secondary">
-              View Events
+            <Button href="/gaming-community" variant="secondary">
+              Gaming Community
+            </Button>
+            <Button href="/learn-to-play" variant="outline">
+              Learn to Play
             </Button>
             <Button href="/buy-sell-trade" variant="outline">
               Buy, Sell &amp; Trade
@@ -131,9 +134,37 @@ export default function TradingCardsPage() {
       </Section>
 
       <Section
+        id="community"
+        title="More than products—a local game store community"
+        subtitle="Learn, play, and feel welcome in Emporia."
+      >
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { label: "Gaming Community", href: "/gaming-community" },
+            { label: "Learn to Play", href: "/learn-to-play" },
+            { label: "Commander Nights", href: "/commander-nights" },
+            { label: "Weekly Events", href: "/weekly-events" },
+            { label: "Family Gaming", href: "/family-gaming" },
+            { label: "What to Expect", href: "/what-to-expect" },
+            { label: "Trading Card Philosophy", href: "/trading-card-philosophy" },
+          ].map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="flex h-full rounded-xl border border-card-border bg-card px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:text-accent"
+              >
+                {link.label} →
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section
         id="sealed"
         title={TRADING_CARDS_SECTIONS.sealed.title}
         subtitle={TRADING_CARDS_SECTIONS.sealed.body}
+        alt
       >
         <p className="max-w-3xl text-sm text-muted">
           {TCG_LAUNCH.contactAvailability}
