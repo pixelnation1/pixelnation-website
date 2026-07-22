@@ -10,7 +10,7 @@ export function PullQuote({ text, attribution }: PullQuoteProps) {
         className="absolute left-4 top-3 text-4xl leading-none text-accent/40 sm:left-6"
         aria-hidden
       >
-        "
+        &ldquo;
       </span>
       <p className="pl-6 text-lg font-medium italic leading-relaxed text-foreground sm:pl-8 sm:text-xl">
         {text}
