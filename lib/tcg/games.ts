@@ -8,7 +8,8 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     name: "Pokémon",
     shortName: "Pokémon",
     href: "/trading-cards/pokemon",
-    tagline: "Sealed products, singles, and accessories for trainers in Emporia.",
+    tagline:
+      "Booster packs, Elite Trainer Boxes, singles, accessories, and the latest Pokémon TCG releases.",
     intro:
       "Looking for Pokémon cards in Emporia, KS? PixelNation is building a local destination for the Pokémon Trading Card Game—sealed products, singles, supplies, and community play as our trading-card and gaming division expands.",
     metaTitle: "Pokémon Cards Emporia KS | Pokémon TCG | PixelNation",
@@ -114,7 +115,8 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     name: "Magic: The Gathering",
     shortName: "MTG",
     href: "/trading-cards/magic-the-gathering",
-    tagline: "MTG sealed, singles, Commander interest, and community play in Emporia.",
+    tagline:
+      "Commander decks, Play Boosters, Collector products, singles, and accessories for every Magic player.",
     intro:
       "Magic: The Gathering players in Emporia, KS can look to PixelNation for sealed product, singles, accessories, and future organized play—including interest in Commander and casual formats—as we expand into a fuller local game store experience.",
     metaTitle: "Magic the Gathering Emporia KS | MTG Cards | PixelNation",
@@ -221,7 +223,8 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     name: "Yu-Gi-Oh!",
     shortName: "Yu-Gi-Oh!",
     href: "/trading-cards/yu-gi-oh",
-    tagline: "Yu-Gi-Oh! products, singles interest, and supplies in Emporia.",
+    tagline:
+      "Structure Decks, booster products, singles, accessories, and popular releases for duelists of every experience level.",
     intro:
       "PixelNation supports Yu-Gi-Oh! cards in Emporia, KS with sealed products, singles interest, accessories, and plans for community play as our trading-card division grows.",
     metaTitle: "Yu-Gi-Oh Cards Emporia KS | Yu-Gi-Oh Products | PixelNation",
@@ -232,6 +235,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Yu-Gi-Oh products Emporia",
     ],
     accent: "#7eb8ff",
+    image: TCG_IMAGES.yugiohSealedProducts,
     productCategories: [
       {
         title: "Sealed products",
@@ -298,7 +302,8 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     name: "Disney Lorcana",
     shortName: "Lorcana",
     href: "/trading-cards/lorcana",
-    tagline: "Lorcana cards and products for players in Emporia, Kansas.",
+    tagline:
+      "Booster products, Illumineer’s Troves, starter decks, singles, and accessories for Lorcana players and collectors.",
     intro:
       "Disney Lorcana fans in Emporia, KS can find sealed products, singles interest, accessories, and community gaming plans at PixelNation as we grow our trading-card selection.",
     metaTitle: "Lorcana Cards Emporia KS | Disney Lorcana | PixelNation",
@@ -309,6 +314,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Disney Lorcana Emporia",
     ],
     accent: "#c9a227",
+    image: TCG_IMAGES.lorcanaSealedProducts,
     productCategories: [
       {
         title: "Sealed products",
@@ -375,7 +381,8 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     name: "One Piece Card Game",
     shortName: "One Piece",
     href: "/trading-cards/one-piece",
-    tagline: "One Piece Card Game products for Emporia collectors and players.",
+    tagline:
+      "Booster products, Starter Decks, special collections, singles, and accessories for One Piece players and collectors.",
     intro:
       "Looking for One Piece cards in Emporia, KS? PixelNation is expanding support for the One Piece Card Game with sealed products, singles interest, accessories, and future community play.",
     metaTitle: "One Piece Card Game Emporia KS | One Piece Cards | PixelNation",
@@ -386,6 +393,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "One Piece cards Emporia",
     ],
     accent: "#ff6b4a",
+    image: TCG_IMAGES.onePieceSealedProducts,
     productCategories: [
       {
         title: "Sealed products",

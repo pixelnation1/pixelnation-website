@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FAQ } from "@/components/FAQ";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
-import { GameCard } from "@/components/tcg/GameCard";
+import { GameCardGrid } from "@/components/tcg/GameCard";
 import { ProductImageGrid } from "@/components/tcg/ProductImageGrid";
 import { TcgPageStructuredData } from "@/components/tcg/TcgStructuredData";
 import { TCG_GAME_LIST } from "@/lib/tcg/games";
@@ -127,11 +127,7 @@ export default function TradingCardsPage() {
         subtitle="Explore dedicated pages for each trading card game we support."
         alt
       >
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {TCG_GAME_LIST.map((game) => (
-            <GameCard key={game.slug} game={game} />
-          ))}
-        </div>
+        <GameCardGrid games={TCG_GAME_LIST} />
       </Section>
 
       <Section

@@ -45,9 +45,33 @@ type GameCardProps = {
   game: Pick<TcgGame, "name" | "href" | "tagline" | "accent" | "shortName" | "image">;
 };
 
+type GameCardGridProps = {
+  games: readonly GameCardProps["game"][];
+};
+
+/**
+ * Centered wrapping layout for the five game cards: one per row on small
+ * screens, two per row on medium screens, and three per row on large screens
+ * with the trailing two cards centered instead of left-aligned.
+ */
+export function GameCardGrid({ games }: GameCardGridProps) {
+  return (
+    <div className="flex flex-wrap justify-center gap-6">
+      {games.map((game) => (
+        <div
+          key={game.href}
+          className="flex w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+        >
+          <GameCard game={game} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function GameCard({ game }: GameCardProps) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-card-border bg-card transition hover:border-accent-secondary/50">
+    <article className="group flex w-full flex-col overflow-hidden rounded-2xl border border-card-border bg-card transition hover:border-accent-secondary/50">
       <Link href={game.href} className="flex flex-1 flex-col focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
         {game.image ? (
           <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-card-border bg-white">
@@ -56,7 +80,7 @@ export function GameCard({ game }: GameCardProps) {
               alt={game.image.alt}
               fill
               className="object-contain p-3"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               loading="lazy"
             />
           </div>

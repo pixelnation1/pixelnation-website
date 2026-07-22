@@ -12,6 +12,24 @@ export const TCG_IMAGES = {
     alt: "PixelNation trading cards and gaming banner with Magic: The Gathering and Pokémon card artwork",
   },
 
+  // ---- Yu-Gi-Oh! (official Konami asset — see /public/images/tcg/image-sources.md) ----
+  yugiohSealedProducts: {
+    src: "/images/tcg/yugioh/yugioh-sealed-products.webp",
+    alt: "Yu-Gi-Oh! Trading Card Game sealed products",
+  },
+
+  // ---- Disney Lorcana (official Ravensburger asset — see /public/images/tcg/image-sources.md) ----
+  lorcanaSealedProducts: {
+    src: "/images/tcg/lorcana/disney-lorcana-sealed-products.webp",
+    alt: "Disney Lorcana sealed trading card products",
+  },
+
+  // ---- One Piece Card Game (official Bandai asset — see /public/images/tcg/image-sources.md) ----
+  onePieceSealedProducts: {
+    src: "/images/tcg/one-piece/one-piece-card-game-sealed-products.webp",
+    alt: "One Piece Card Game sealed products",
+  },
+
   // ---- Pokémon ----
   pokemon151Etb: {
     src: "/images/151etb.jpg",

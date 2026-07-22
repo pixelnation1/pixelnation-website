@@ -23,7 +23,7 @@ import {
 import { TCG_GAME_LIST } from "@/lib/tcg/games";
 import { TCG_IMAGES } from "@/lib/tcg/images";
 import { TCG_LAUNCH } from "@/lib/tcg/launch";
-import { GameCard } from "@/components/tcg/GameCard";
+import { GameCardGrid } from "@/components/tcg/GameCard";
 import { SITE } from "@/lib/site";
 
 export function HeroSection() {
@@ -127,11 +127,7 @@ export function TradingCardsHomeSection() {
           loading="lazy"
         />
       </div>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {TCG_GAME_LIST.map((game) => (
-          <GameCard key={game.slug} game={game} />
-        ))}
-      </div>
+      <GameCardGrid games={TCG_GAME_LIST} />
       <div className="cta-group mt-8">
         <Button href="/trading-cards">Explore Trading Cards</Button>
         <Button href="/buy-sell-trade" variant="secondary">
