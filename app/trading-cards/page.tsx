@@ -1,11 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FAQ } from "@/components/FAQ";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import { GameCard } from "@/components/tcg/GameCard";
+import { ProductImageGrid } from "@/components/tcg/ProductImageGrid";
 import { TcgPageStructuredData } from "@/components/tcg/TcgStructuredData";
 import { TCG_GAME_LIST } from "@/lib/tcg/games";
+import { TCG_IMAGES, TRADING_CARDS_MIX_IMAGES } from "@/lib/tcg/images";
 import { TCG_LAUNCH } from "@/lib/tcg/launch";
 import { TCG_GENERAL_FAQS } from "@/lib/tcg/faqs";
 import {
@@ -79,6 +82,16 @@ export default function TradingCardsPage() {
               Buy, Sell &amp; Trade
             </Button>
           </div>
+          <div className="relative mt-10 aspect-[1024/412] w-full overflow-hidden rounded-2xl border border-card-border">
+            <Image
+              src={TCG_IMAGES.shopBanner.src}
+              alt={TCG_IMAGES.shopBanner.alt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1152px) 100vw, 1120px"
+              priority
+            />
+          </div>
         </div>
       </section>
 
@@ -100,7 +113,8 @@ export default function TradingCardsPage() {
         <p className="mt-6 max-w-3xl text-sm text-muted">
           {TRADING_CARDS_CARRY_NOTICE}
         </p>
-        <div className="mt-6">
+        <ProductImageGrid images={TRADING_CARDS_MIX_IMAGES} columns={3} className="mt-8" />
+        <div className="mt-8">
           <Button href="/what-we-carry" variant="secondary">
             Full product guide
           </Button>

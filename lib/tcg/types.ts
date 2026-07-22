@@ -14,6 +14,11 @@ export type TcgProductCategory = {
   description: string;
 };
 
+export type TcgImage = {
+  src: string;
+  alt: string;
+};
+
 export type TcgGame = {
   slug: TcgGameSlug;
   name: string;
@@ -27,6 +32,10 @@ export type TcgGame = {
   keywords: string[];
   /** Brand-safe accent for placeholder visuals (CSS color) */
   accent: string;
+  /** Featured product image (falls back to abstract GameVisual when absent) */
+  image?: TcgImage;
+  /** Product image gallery for the game page */
+  gallery?: readonly TcgImage[];
   productCategories: readonly TcgProductCategory[];
   /** Game-specific product types PixelNation carries or plans to carry */
   productsCarried: readonly string[];

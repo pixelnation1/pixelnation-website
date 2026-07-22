@@ -2,8 +2,10 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
+import { ProductImageGrid } from "@/components/tcg/ProductImageGrid";
 import { ReleaseCard } from "@/components/tcg/ReleaseCard";
 import { TcgPageStructuredData } from "@/components/tcg/TcgStructuredData";
+import { PREORDER_SHOWCASE_IMAGES } from "@/lib/tcg/images";
 import { PREORDER_GAME_SECTIONS, PREORDERS_METADATA } from "@/lib/tcg/preorders-page";
 import {
   getReleasesByGame,
@@ -92,6 +94,19 @@ export default function PreordersNewReleasesPage() {
       </Section>
 
       <Section
+        id="recent-releases"
+        title="Recent & upcoming sealed products"
+        subtitle="Examples of the kinds of releases preorders may cover—availability depends on distributor allocation and release timing."
+        alt
+      >
+        <ProductImageGrid images={PREORDER_SHOWCASE_IMAGES} />
+        <p className="mt-6 max-w-3xl text-sm text-muted">
+          Shown for reference only. Contact PixelNation to ask about a specific
+          release or preorder availability.
+        </p>
+      </Section>
+
+      <Section
         id="by-game"
         title="Releases by game"
         subtitle={
@@ -99,7 +114,6 @@ export default function PreordersNewReleasesPage() {
             ? "Current release announcements and preorder interest by game."
             : "Release announcements will appear here when confirmed. In the meantime, contact us about any upcoming set."
         }
-        alt
       >
         <div className="grid gap-6 md:grid-cols-2">
           {PREORDER_GAME_SECTIONS.map((section) => {

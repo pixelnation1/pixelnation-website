@@ -1,4 +1,6 @@
 import type { FaqItem } from "@/lib/seo/types";
+import type { TcgImage } from "@/lib/tcg/types";
+import { TCG_IMAGES } from "@/lib/tcg/images";
 
 export const WHAT_WE_CARRY_METADATA = {
   title: "What We Carry | Trading Cards & Gaming Products Emporia KS | PixelNation",
@@ -15,6 +17,8 @@ export type CarryCategory = {
   /** "current" = actively stocked category, "mixed" = current + planned, "planned" = future offering */
   availability: "current" | "mixed" | "planned";
   note?: string;
+  /** Example product photography for the category */
+  images?: readonly TcgImage[];
 };
 
 export const CARRY_CATEGORIES: readonly CarryCategory[] = [
@@ -32,6 +36,12 @@ export const CARRY_CATEGORIES: readonly CarryCategory[] = [
     ],
     availability: "mixed",
     note: "Each game has a dedicated page with details on products, play, and events.",
+    images: [
+      TCG_IMAGES.pokemonPrismaticEtb,
+      TCG_IMAGES.mtgBloomburrowCommanders,
+      TCG_IMAGES.pokemon151Etb,
+      TCG_IMAGES.mtgFinalFantasyStarterKit,
+    ],
   },
   {
     id: "sealed",
@@ -52,6 +62,12 @@ export const CARRY_CATEGORIES: readonly CarryCategory[] = [
       "Special releases",
     ],
     availability: "mixed",
+    images: [
+      TCG_IMAGES.pokemonDestinedRivalsBoosterBox,
+      TCG_IMAGES.mtgAetherdriftBoosterBox,
+      TCG_IMAGES.pokemon151BoosterBundle,
+      TCG_IMAGES.mtgHobbitBundle,
+    ],
   },
   {
     id: "singles",
@@ -90,6 +106,7 @@ export const CARRY_CATEGORIES: readonly CarryCategory[] = [
       "Team bags",
     ],
     availability: "mixed",
+    images: [TCG_IMAGES.mtgStrixhavenCodexBundle],
   },
   {
     id: "gaming",

@@ -2,6 +2,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FAQ } from "@/components/FAQ";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
+import { ProductImageGrid } from "@/components/tcg/ProductImageGrid";
 import { TcgPageStructuredData } from "@/components/tcg/TcgStructuredData";
 import {
   CARRY_AVAILABILITY_NOTICE,
@@ -109,6 +110,9 @@ export default function WhatWeCarryPage() {
               </li>
             ))}
           </ul>
+          {category.images && category.images.length > 0 ? (
+            <ProductImageGrid images={category.images} className="mt-8" />
+          ) : null}
           {category.note ? (
             <p className="mt-6 max-w-3xl text-sm text-muted">{category.note}</p>
           ) : null}

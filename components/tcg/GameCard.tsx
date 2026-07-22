@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { TcgGame } from "@/lib/tcg/types";
 
@@ -41,14 +42,27 @@ export function GameVisual({ name, accent, className = "" }: GameVisualProps) {
 }
 
 type GameCardProps = {
-  game: Pick<TcgGame, "name" | "href" | "tagline" | "accent" | "shortName">;
+  game: Pick<TcgGame, "name" | "href" | "tagline" | "accent" | "shortName" | "image">;
 };
 
 export function GameCard({ game }: GameCardProps) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-card-border bg-card transition hover:border-accent-secondary/50">
       <Link href={game.href} className="flex flex-1 flex-col focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-        <GameVisual name={game.shortName} accent={game.accent} className="rounded-none rounded-t-2xl border-0 border-b" />
+        {game.image ? (
+          <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-card-border bg-white">
+            <Image
+              src={game.image.src}
+              alt={game.image.alt}
+              fill
+              className="object-contain p-3"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <GameVisual name={game.shortName} accent={game.accent} className="rounded-none rounded-t-2xl border-0 border-b" />
+        )}
         <div className="flex flex-1 flex-col p-5">
           <h3 className="font-semibold text-foreground group-hover:text-accent">
             {game.name}

@@ -15,6 +15,12 @@ export {
   hasReleaseAnnouncements,
 } from "@/lib/tcg/releases";
 export {
+  TCG_IMAGES,
+  TRADING_CARDS_MIX_IMAGES,
+  PREORDER_SHOWCASE_IMAGES,
+  BUY_SELL_TRADE_IMAGES,
+} from "@/lib/tcg/images";
+export {
   TRADING_CARDS_DROPDOWN_LINKS,
   GAMING_EVENTS_DROPDOWN_LINKS,
   FOOTER_TCG_LINKS,
@@ -24,6 +30,7 @@ export {
 export type {
   TcgGame,
   TcgGameSlug,
+  TcgImage,
   PixelNationEvent,
   PixelNationEventStatus,
   WeeklyScheduleEntry,

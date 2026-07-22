@@ -2,7 +2,9 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FAQ } from "@/components/FAQ";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
+import { ProductImageGrid } from "@/components/tcg/ProductImageGrid";
 import { TcgPageStructuredData } from "@/components/tcg/TcgStructuredData";
+import { BUY_SELL_TRADE_IMAGES } from "@/lib/tcg/images";
 import {
   BUY_SELL_ELIGIBLE_ITEMS,
   BUY_SELL_FAQS,
@@ -93,6 +95,11 @@ export default function BuySellTradePage() {
             </li>
           ))}
         </ul>
+        <ProductImageGrid images={BUY_SELL_TRADE_IMAGES} columns={3} className="mt-8" />
+        <p className="mt-6 max-w-3xl text-sm text-muted">
+          Premium collections, sealed products, and complete sets are examples of
+          items our staff can review in person.
+        </p>
       </Section>
 
       <Section

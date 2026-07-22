@@ -21,6 +21,7 @@ import {
   WHY_CHOOSE,
 } from "@/lib/homepage";
 import { TCG_GAME_LIST } from "@/lib/tcg/games";
+import { TCG_IMAGES } from "@/lib/tcg/images";
 import { TCG_LAUNCH } from "@/lib/tcg/launch";
 import { GameCard } from "@/components/tcg/GameCard";
 import { SITE } from "@/lib/site";
@@ -116,6 +117,16 @@ export function TradingCardsHomeSection() {
       subtitle="PixelNation is expanding into a full local destination for trading card games, sealed products, singles, accessories, organized events, and community play. Follow our progress as we prepare for a larger retail and gaming location."
       alt
     >
+      <div className="relative mb-8 aspect-[1024/412] w-full overflow-hidden rounded-2xl border border-card-border">
+        <Image
+          src={TCG_IMAGES.shopBanner.src}
+          alt={TCG_IMAGES.shopBanner.alt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 1152px) 100vw, 1120px"
+          loading="lazy"
+        />
+      </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {TCG_GAME_LIST.map((game) => (
           <GameCard key={game.slug} game={game} />

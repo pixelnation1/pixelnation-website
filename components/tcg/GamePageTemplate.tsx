@@ -1,9 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FAQ } from "@/components/FAQ";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import { GameVisual } from "@/components/tcg/GameCard";
+import { ProductImageGrid } from "@/components/tcg/ProductImageGrid";
 import { TcgPageStructuredData } from "@/components/tcg/TcgStructuredData";
 import { TCG_LAUNCH } from "@/lib/tcg/launch";
 import type { TcgGame } from "@/lib/tcg/types";
@@ -15,6 +17,7 @@ type GamePageTemplateProps = {
 };
 
 export function GamePageTemplate({ game }: GamePageTemplateProps) {
+  const hasGallery = Boolean(game.gallery && game.gallery.length > 0);
   const breadcrumbs: BreadcrumbItem[] = [
     { name: "Home", path: "/" },
     { name: "Trading Cards", path: "/trading-cards" },
@@ -60,11 +63,24 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
               </Button>
             </div>
           </div>
-          <GameVisual
-            name={game.shortName}
-            accent={game.accent}
-            className="mx-auto w-full max-w-md lg:max-w-none"
-          />
+          {game.image ? (
+            <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-xl border border-card-border bg-white lg:max-w-none">
+              <Image
+                src={game.image.src}
+                alt={game.image.alt}
+                fill
+                className="object-contain p-4"
+                sizes="(max-width: 1024px) 90vw, 45vw"
+                priority
+              />
+            </div>
+          ) : (
+            <GameVisual
+              name={game.shortName}
+              accent={game.accent}
+              className="mx-auto w-full max-w-md lg:max-w-none"
+            />
+          )}
         </div>
       </section>
 
@@ -88,11 +104,25 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         </p>
       </Section>
 
+      {hasGallery && game.gallery ? (
+        <Section
+          id="product-gallery"
+          title="Product examples"
+          subtitle={`Examples of ${game.name} products PixelNation carries or can source—shown for reference, not a live inventory list.`}
+          alt
+        >
+          <ProductImageGrid images={game.gallery} />
+          <p className="mt-6 max-w-3xl text-sm text-muted">
+            {TCG_LAUNCH.availabilityNote}
+          </p>
+        </Section>
+      ) : null}
+
       <Section
         id="categories"
         title="Product categories"
         subtitle={`What we support for ${game.name} as inventory expands.`}
-        alt
+        alt={!hasGallery}
       >
         <ul className="grid gap-4 sm:grid-cols-2">
           {game.productCategories.map((category) => (
@@ -113,6 +143,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         id="play"
         title="Learn to play & casual games"
         subtitle="New players are welcome—no experience required."
+        alt={hasGallery}
       >
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-xl border border-card-border bg-card p-6">
@@ -134,7 +165,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         id="events"
         title="Organized events"
         subtitle={`${game.name} event types planned for the expanded location—schedules will be announced when confirmed.`}
-        alt
+        alt={!hasGallery}
       >
         <ul className="flex flex-wrap gap-2">
           {game.plannedEventTypes.map((eventType) => (
@@ -158,6 +189,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         id="availability"
         title="Availability & services"
         subtitle="Honest launch-stage details—no invented stock or schedules."
+        alt={hasGallery}
       >
         <dl className="grid gap-4 sm:grid-cols-2">
           {[
@@ -185,7 +217,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         id="preorders"
         title="New releases & preorders"
         subtitle={game.preorderStatus}
-        alt
+        alt={!hasGallery}
       >
         <div className="cta-group">
           <Button href="/preorders-new-releases">Preorders &amp; New Releases</Button>
@@ -195,7 +227,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
         </div>
       </Section>
 
-      <Section id="faq" title="Frequently asked questions">
+      <Section id="faq" title="Frequently asked questions" alt={hasGallery}>
         <FAQ items={game.faqs} showHeading={false} />
       </Section>
 

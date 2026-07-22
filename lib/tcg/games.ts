@@ -1,3 +1,4 @@
+import { TCG_IMAGES } from "@/lib/tcg/images";
 import { TCG_LAUNCH } from "@/lib/tcg/launch";
 import type { TcgGame, TcgGameSlug } from "@/lib/tcg/types";
 
@@ -21,6 +22,21 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Sell Pokémon cards Kansas",
     ],
     accent: "#f4c542",
+    image: TCG_IMAGES.pokemonPrismaticEtb,
+    gallery: [
+      TCG_IMAGES.pokemon151Etb,
+      TCG_IMAGES.pokemonSurgingSparksEtb,
+      TCG_IMAGES.pokemonDestinedRivalsEtb,
+      TCG_IMAGES.pokemonDestinedRivalsBoosterBox,
+      TCG_IMAGES.pokemon151UltraPremium,
+      TCG_IMAGES.pokemon151BoosterBundle,
+      TCG_IMAGES.pokemonBlackBoltEtb,
+      TCG_IMAGES.pokemonWhiteFlareEtb,
+      TCG_IMAGES.pokemonScarletVioletBoosterBox,
+      TCG_IMAGES.pokemonPrismaticSuperPremium,
+      TCG_IMAGES.pokemonBattleStylesBoosterBox,
+      TCG_IMAGES.pokemonPerfectOrderBoosterBox,
+    ],
     productCategories: [
       {
         title: "Sealed products",
@@ -112,6 +128,21 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Magic events Emporia",
     ],
     accent: "#38ddf8",
+    image: TCG_IMAGES.mtgBloomburrowCommanders,
+    gallery: [
+      TCG_IMAGES.mtgAetherdriftBoosterBox,
+      TCG_IMAGES.mtgLotrCommanders,
+      TCG_IMAGES.mtgFinalFantasyCollectors,
+      TCG_IMAGES.mtgFinalFantasyStarterKit,
+      TCG_IMAGES.mtgTmntPlayBoosters,
+      TCG_IMAGES.mtgTmntCollectorBoosters,
+      TCG_IMAGES.mtgAvatarPlayBoosters,
+      TCG_IMAGES.mtgWarhammerCommanders,
+      TCG_IMAGES.mtgFalloutCommanders,
+      TCG_IMAGES.mtgEldraineBoosterBox,
+      TCG_IMAGES.mtgKhansBoosterBox,
+      TCG_IMAGES.mtgStrixhavenPrerelease,
+    ],
     productCategories: [
       {
         title: "Sealed products",
