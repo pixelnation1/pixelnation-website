@@ -62,6 +62,12 @@ export const FOOTER_COMPANY_LINKS = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
+export const FOOTER_LEGAL_LINKS = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms-of-service" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
 /** Footer services column */
 export const FOOTER_SERVICE_LINKS = [
   ...REPAIRS_DROPDOWN_LINKS,

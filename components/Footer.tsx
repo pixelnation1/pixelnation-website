@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FOOTER_COMPANY_LINKS, FOOTER_SERVICE_LINKS, SITE } from "@/lib/site";
+import {
+  FOOTER_COMPANY_LINKS,
+  FOOTER_LEGAL_LINKS,
+  FOOTER_SERVICE_LINKS,
+  SITE,
+} from "@/lib/site";
 import { FOOTER_TCG_LINKS } from "@/lib/tcg/links";
 
 export function Footer() {
@@ -106,9 +111,18 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-10 border-t border-card-border pt-6 text-center text-xs text-muted">
-          © {new Date().getFullYear()} {SITE.name}. All rights reserved.
-        </p>
+        <div className="mt-10 flex flex-col items-center gap-3 border-t border-card-border pt-6 text-center text-xs text-muted sm:flex-row sm:justify-between">
+          <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
+          <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            {FOOTER_LEGAL_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="hover:text-accent-secondary">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </footer>
   );

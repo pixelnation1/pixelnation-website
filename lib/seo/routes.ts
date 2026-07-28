@@ -65,6 +65,8 @@ export const PUBLIC_ROUTES: SitemapEntry[] = [
   { path: "/team", changeFrequency: "monthly", priority: 0.65 },
   { path: "/why-choose-pixelnation", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/privacy-policy", changeFrequency: "yearly", priority: 0.4 },
+  { path: "/terms-of-service", changeFrequency: "yearly", priority: 0.4 },
   { path: "/knowledge", changeFrequency: "weekly", priority: 0.88 },
   { path: "/locations", changeFrequency: "weekly", priority: 0.85 },
   { path: "/services", changeFrequency: "weekly", priority: 0.85 },
