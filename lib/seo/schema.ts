@@ -36,7 +36,7 @@ export function localBusinessSchema(overrides?: Record<string, unknown>) {
     name: SITE.name,
     description:
       "Electronics repair, trading cards, and gaming in Emporia, Kansas—phones, computers, consoles, appliances, data recovery, board-level repair, and TCG products.",
-    telephone: SITE.phone,
+    telephone: SITE.phoneSchema,
     email: SITE.email,
     url: CANONICAL_ORIGIN,
     image: LOGO,
@@ -107,7 +107,7 @@ export function organizationSchema() {
     url: CANONICAL_ORIGIN,
     logo: LOGO,
     email: SITE.email,
-    telephone: SITE.phone,
+    telephone: SITE.phoneSchema,
     address: {
       "@type": "PostalAddress",
       addressLocality: SITE.address.city,

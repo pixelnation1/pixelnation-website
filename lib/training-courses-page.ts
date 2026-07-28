@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/site";
+
 export const TRAINING_COURSES_METADATA = {
   title: "Microsoldering Training Courses & Pricing | PixelNation",
   description:
@@ -252,7 +254,7 @@ export const COURSES_FAQ = [
   {
     question: "How do I reserve my spot?",
     answer:
-      "Reserve through our training courses page or contact us at 620-591-0083 or support@pixelnation.co. Seats are limited to ensure individual instruction.",
+      `Reserve through our training courses page or contact us at ${SITE.phone} or support@pixelnation.co. Seats are limited to ensure individual instruction.`,
   },
 ] as const;
 

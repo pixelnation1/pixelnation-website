@@ -377,14 +377,13 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
-          <Link
-            href="/contact"
+          <a
+            href={SITE.phoneHref}
             className="inline-flex min-h-11 items-center rounded-lg bg-accent px-3 py-2.5 text-xs font-semibold text-background transition-colors duration-200 hover:bg-accent-hover sm:px-4 sm:text-sm"
-            aria-label="Contact PixelNation"
-            onClick={closeMobile}
+            aria-label={`Call PixelNation at ${SITE.phone}`}
           >
             Call Now
-          </Link>
+          </a>
 
           <button
             type="button"
@@ -494,13 +493,14 @@ export function Header() {
             ))}
 
             <li className="pt-2">
-              <Link
-                href="/contact"
+              <a
+                href={SITE.phoneHref}
                 className="flex min-h-11 items-center justify-center rounded-lg bg-accent px-3 py-3 text-center text-sm font-semibold text-background transition-colors duration-200 hover:bg-accent-hover"
+                aria-label={`Call PixelNation at ${SITE.phone}`}
                 onClick={closeMobile}
               >
                 Call Now
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>

@@ -5,6 +5,7 @@ import {
   FORM_SERVICE_OPTIONS,
   PREFERRED_CONTACT_OPTIONS,
 } from "@/lib/contact-page";
+import { SITE } from "@/lib/site";
 
 const fieldClass =
   "min-h-11 w-full rounded-lg border border-card-border bg-background px-4 py-2.5 text-base text-foreground placeholder:text-muted/50 focus:border-accent-secondary focus:outline-none focus:ring-1 focus:ring-accent-secondary/40 sm:text-sm";
@@ -64,7 +65,7 @@ export function ContactForm() {
     } catch {
       setStatus("error");
       setErrorMessage(
-        "Unable to send your message. Please call 620-591-0083 or email support@pixelnation.co.",
+        `Unable to send your message. Please call ${SITE.phone} or email support@pixelnation.co.`,
       );
     }
   }
@@ -80,8 +81,8 @@ export function ContactForm() {
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Thank you for contacting PixelNation. We received your message and will respond
           during business hours (Monday–Friday, 9:00 AM–3:00 PM). For urgent help, call{" "}
-          <a href="tel:+16205910083" className="font-medium text-accent-secondary">
-            620-591-0083
+          <a href={SITE.phoneHref} className="font-medium text-accent-secondary">
+            {SITE.phone}
           </a>
           .
         </p>
@@ -241,8 +242,8 @@ export function ContactForm() {
       </button>
       <p className="text-xs text-muted">
         For the fastest response during business hours, call{" "}
-        <a href="tel:+16205910083" className="text-accent-secondary hover:underline">
-          620-591-0083
+        <a href={SITE.phoneHref} className="text-accent-secondary hover:underline">
+          {SITE.phone}
         </a>
         .
       </p>

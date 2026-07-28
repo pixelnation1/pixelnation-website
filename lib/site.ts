@@ -4,8 +4,10 @@ export const SITE = {
   name: "PixelNation",
   tagline: "Advanced Tech Repair Specialists",
   domain: "https://www.pixelnation.co",
-  phone: "620-591-0083",
-  phoneHref: "tel:+16205910083",
+  phone: "(620) 779-7158",
+  phoneHref: "tel:+16207797158",
+  /** E.164-style value for schema.org LocalBusiness / Organization */
+  phoneSchema: "+1-620-779-7158",
   email: "support@pixelnation.co",
   emailHref: "mailto:support@pixelnation.co",
   address: {

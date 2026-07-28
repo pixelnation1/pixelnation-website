@@ -1,4 +1,5 @@
 import type { EnrichedFaqItem } from "@/lib/faq/types";
+import { SITE } from "@/lib/site";
 
 export const MAIL_IN_REPAIR_FAQS: readonly EnrichedFaqItem[] = [
   {
@@ -21,7 +22,7 @@ export const MAIL_IN_REPAIR_FAQS: readonly EnrichedFaqItem[] = [
     question: "Will I get updates during mail-in repair?",
     answer:
       "Yes. We contact you after intake and before major work. You approve quotes before repair proceeds.",
-    links: [{ label: "Call PixelNation", href: "tel:+16205910083" }],
+    links: [{ label: "Call PixelNation", href: SITE.phoneHref }],
   },
   {
     question: "Is mail-in repair insured?",

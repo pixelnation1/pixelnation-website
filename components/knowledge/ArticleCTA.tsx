@@ -23,7 +23,7 @@ export function ArticleCTA({
       </p>
       <div className="cta-group mt-6">
         <Button href="/contact">Start a Repair</Button>
-        <Button href={`tel:${SITE.phone.replace(/\D/g, "")}`} variant="secondary">
+        <Button href={SITE.phoneHref} variant="secondary" external>
           Call {SITE.phone}
         </Button>
         <Button href="/repairs" variant="outline">

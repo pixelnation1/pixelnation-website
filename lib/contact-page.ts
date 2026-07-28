@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/site";
+
 export const CONTACT_METADATA = {
   title: "Contact PixelNation | Repair Services in Emporia, KS",
   description:
@@ -53,7 +55,7 @@ export const CONTACT_FAQ = [
   {
     question: "How do I start a repair?",
     answer:
-      "Call 620-591-0083, email support@pixelnation.co, or submit the contact form with your device type and symptoms. We outline evaluation steps, timing, and pricing before work begins.",
+      `Call ${SITE.phone}, email support@pixelnation.co, or submit the contact form with your device type and symptoms. We outline evaluation steps, timing, and pricing before work begins.`,
   },
   {
     question: "What information should I include when contacting you?",
@@ -86,7 +88,7 @@ export const AEO_ANSWERS = [
   {
     question: "How do I contact PixelNation in Emporia, Kansas?",
     answer:
-      "You can call PixelNation at 620-591-0083 or email support@pixelnation.co.",
+      `You can call PixelNation at ${SITE.phone} or email support@pixelnation.co.`,
   },
   {
     question: "What are PixelNation's business hours?",

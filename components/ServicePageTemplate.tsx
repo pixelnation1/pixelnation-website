@@ -58,7 +58,7 @@ export function ServicePageTemplate({ service }: Props) {
             <p className="mt-4 text-lg leading-relaxed text-muted">{service.intro}</p>
             <div className="cta-group mt-8">
               <Button href="/contact">Start a Repair</Button>
-              <Button href="/contact" variant="secondary">
+              <Button href={SITE.phoneHref} variant="secondary" external>
                 Call {SITE.phone}
               </Button>
             </div>

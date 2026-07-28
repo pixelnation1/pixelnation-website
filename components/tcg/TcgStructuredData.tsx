@@ -65,7 +65,7 @@ export function TcgPageStructuredData({
     provider: {
       "@type": "LocalBusiness",
       name: SITE.name,
-      telephone: SITE.phone,
+      telephone: SITE.phoneSchema,
       address: {
         "@type": "PostalAddress",
         addressLocality: SITE.address.city,
