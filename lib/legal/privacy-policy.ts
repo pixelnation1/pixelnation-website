@@ -84,10 +84,8 @@ export const PRIVACY_POLICY_SECTIONS: readonly LegalSection[] = [
     id: "sms-messaging",
     title: "SMS Messaging and Mobile Information",
     paragraphs: [
-      "If you provide your mobile phone number and affirmatively opt in, PixelNation may send you text messages regarding repair status updates, diagnostic results, appointment reminders, order updates, product pickup notifications, delivery notifications, and customer-support communications.",
-      "Message frequency varies depending on your interactions with PixelNation. Message and data rates may apply. Reply STOP to unsubscribe from future text messages. Reply HELP for assistance, call or text 620-779-7158, or email support@pixelnation.co.",
-      "Consent to receive SMS messages is not a condition of purchasing goods or services.",
-      "PixelNation does not sell, rent, or share mobile phone numbers, SMS consent records, or SMS opt-in information with third parties or affiliates for their marketing or promotional purposes. Mobile information will only be shared with service providers when necessary to deliver messaging services, operate the business, comply with the law, or protect the rights and safety of PixelNation and its customers.",
+      "If you provide your mobile phone number and affirmatively opt in, PixelNation may send transactional and customer-care text messages regarding repair status updates, diagnostic results, appointment reminders, order updates, delivery notifications, pickup notices, and customer support. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for assistance. Consent is not a condition of purchase.",
+      "PixelNation does not sell, rent, or share mobile phone numbers, SMS consent records, or SMS opt-in information with third parties or affiliates for their marketing or promotional purposes. Mobile phone numbers and SMS opt-in data may only be shared with service providers when needed to operate the messaging program, deliver text messages, operate the business, or comply with legal obligations.",
     ],
   },
   {

@@ -158,11 +158,36 @@ export default function ContactPage() {
             id="contact-form"
             className="rounded-2xl border border-card-border bg-card p-6 md:p-8"
           >
-            <h3 className="text-lg font-semibold text-foreground">Send a message</h3>
-            <p className="mt-2 text-sm text-muted">
-              Tell us about your device and issue. We respond during business hours.
+            <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+              Contact PixelNation
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
+              Complete the form below to contact PixelNation about a repair, appointment,
+              order, product, or customer-support request. To receive text-message updates,
+              enter your mobile phone number and manually check the optional SMS consent box
+              in the form below. By checking the box, you agree to receive transactional and
+              customer-care text messages from PixelNation regarding repair updates,
+              diagnostic results, appointments, order status, delivery notifications, pickup
+              notices, and customer support. Message frequency varies. Message and data rates
+              may apply. Reply STOP to opt out at any time. Reply HELP for assistance, call
+              or text 620-779-7158, or email support@pixelnation.co. Consent is not a
+              condition of purchase. Please review our{" "}
+              <Link
+                href="/privacy-policy"
+                className="font-medium text-accent-secondary hover:underline"
+              >
+                Privacy Policy
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="/terms-of-service"
+                className="font-medium text-accent-secondary hover:underline"
+              >
+                Terms of Service
+              </Link>
+              .
             </p>
-            <div className="mt-6">
+            <div className="mt-6 border-t border-card-border pt-6">
               <ContactForm />
             </div>
           </div>

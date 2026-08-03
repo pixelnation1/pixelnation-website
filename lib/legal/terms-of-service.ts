@@ -139,7 +139,8 @@ export const TERMS_OF_SERVICE_SECTIONS: readonly TermsSection[] = [
     id: "sms-terms",
     title: "SMS Terms and Conditions",
     paragraphs: [
-      "By entering your mobile phone number and checking the SMS consent box on a PixelNation form, you agree to receive transactional and customer-care text messages from PixelNation. Messages may include repair status updates, diagnostic results, appointment reminders, order updates, delivery notifications, product-arrival notices, pickup notifications, and responses to customer-support requests.",
+      "Customers opt in to PixelNation SMS by entering a mobile phone number and manually checking the SMS consent box on the Contact page at https://www.pixelnation.co/contact. Checking the box is optional and is never preselected.",
+      "By opting in, you agree to receive transactional and customer-care text messages from PixelNation. Messages may include repair status updates, diagnostic results, appointment reminders, order updates, delivery notifications, product-arrival notices, pickup notifications, and responses to customer-support requests.",
       "Message frequency varies. Message and data rates may apply. Consent is not a condition of purchase.",
       "You may opt out at any time by replying STOP. After submitting STOP, you may receive one final confirmation message. For assistance, reply HELP, call or text 620-779-7158, email support@pixelnation.co, or visit https://www.pixelnation.co/.",
       "Wireless carriers are not liable for delayed or undelivered messages. PixelNation may modify or discontinue its SMS program at any time.",

@@ -2,7 +2,11 @@
 export const SMS_CONSENT_DISCLOSURE =
   "I agree to receive text messages from PixelNation regarding repair updates, diagnostic results, appointments, order status, delivery notifications, pickup notices, and customer support. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for assistance. Consent is not a condition of purchase.";
 
-export const SMS_CONSENT_SOURCE_CONTACT = "/contact";
+/** Human-readable source label stored with consent records for TCR/RingCentral review. */
+export const SMS_CONSENT_SOURCE_CONTACT = "PixelNation Contact Page";
+
+export const SMS_CONSENT_PHONE_ERROR =
+  "Please enter a valid mobile phone number to receive SMS updates.";
 
 /** Digits-only length for a standard U.S. phone number (optional leading 1). */
 export function isValidUsPhone(value: string): boolean {

@@ -9,6 +9,7 @@ import {
 import {
   isValidUsPhone,
   SMS_CONSENT_DISCLOSURE,
+  SMS_CONSENT_PHONE_ERROR,
   SMS_CONSENT_SOURCE_CONTACT,
 } from "@/lib/legal/sms";
 import { SITE } from "@/lib/site";
@@ -63,10 +64,8 @@ export function ContactForm() {
         "Please enter a valid U.S. phone number (for example, 620-779-7158 or (620) 779-7158).";
     }
 
-    if (form.smsConsent && !form.phone.trim()) {
-      next.smsConsent = "Please enter a mobile phone number to receive SMS updates.";
-    } else if (form.smsConsent && form.phone.trim() && !isValidUsPhone(form.phone)) {
-      next.smsConsent = "Please enter a valid mobile phone number to receive SMS updates.";
+    if (form.smsConsent && (!form.phone.trim() || !isValidUsPhone(form.phone))) {
+      next.smsConsent = SMS_CONSENT_PHONE_ERROR;
     }
 
     setFieldErrors(next);
@@ -246,7 +245,7 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-card-border bg-card/60 p-4 sm:p-5">
+      <div className="rounded-xl border border-card-border bg-background/80 p-4 sm:p-5">
         <div className="flex gap-3">
           <input
             id="contact-sms-consent"

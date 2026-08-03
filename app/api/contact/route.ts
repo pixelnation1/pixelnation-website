@@ -1,4 +1,9 @@
-import { isValidUsPhone, SMS_CONSENT_DISCLOSURE } from "@/lib/legal/sms";
+import {
+  isValidUsPhone,
+  SMS_CONSENT_DISCLOSURE,
+  SMS_CONSENT_PHONE_ERROR,
+  SMS_CONSENT_SOURCE_CONTACT,
+} from "@/lib/legal/sms";
 import { SITE } from "@/lib/site";
 
 type ContactPayload = {
@@ -55,7 +60,7 @@ function formatEmailBody(data: StoredContactSubmission): string {
     `Preferred contact: ${data.preferredContact}`,
     "",
     "SMS consent record:",
-    `SMS consent: ${data.sms_consent ? "YES" : "NO"}`,
+    `SMS consent: ${data.sms_consent ? "Yes" : "No"}`,
     `SMS consent source: ${data.sms_consent_source}`,
     `SMS consent timestamp: ${data.sms_consent_timestamp ?? "n/a"}`,
     `SMS consent disclosure: ${data.sms_consent_text || "n/a"}`,
@@ -125,11 +130,8 @@ export async function POST(request: Request) {
   }
 
   const consented = smsConsent === true;
-  if (consented && !phone.trim()) {
-    return Response.json(
-      { error: "Please enter a mobile phone number to receive SMS updates." },
-      { status: 400 },
-    );
+  if (consented && (!phone.trim() || !isValidUsPhone(phone))) {
+    return Response.json({ error: SMS_CONSENT_PHONE_ERROR }, { status: 400 });
   }
 
   const payload: StoredContactSubmission = {
@@ -148,7 +150,7 @@ export async function POST(request: Request) {
     sms_consent_timestamp: consented
       ? (smsConsentTimestamp?.trim() || new Date().toISOString())
       : null,
-    sms_consent_source: smsConsentSource?.trim() || "/contact",
+    sms_consent_source: smsConsentSource?.trim() || SMS_CONSENT_SOURCE_CONTACT,
     ip_address: getClientIp(request),
     user_agent: request.headers.get("user-agent"),
   };
