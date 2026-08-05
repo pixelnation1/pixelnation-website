@@ -68,12 +68,16 @@ export default function BuySellTradePage() {
             as our Emporia location expands.
           </p>
           <p className="mt-3 max-w-2xl text-sm text-muted">
-            We do not provide automatic online price quotes. Request a collection review
-            and our team will evaluate eligible items.
+            Search estimated electronics trade values online, then request a final offer.
+            Final value always depends on in-store inspection. Trading-card collections are
+            reviewed in person.
           </p>
           <div className="cta-group mt-8">
-            <Button href="/contact">Request a Collection Review</Button>
-            <Button href={SITE.phoneHref} variant="secondary" external>
+            <Button href="/trade-values">Search Trade Values</Button>
+            <Button href="/sell-to-pixelnation" variant="secondary">
+              Get a Final Offer
+            </Button>
+            <Button href={SITE.phoneHref} variant="outline" external>
               Call {SITE.phone}
             </Button>
           </div>

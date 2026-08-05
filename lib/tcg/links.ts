@@ -14,6 +14,8 @@ export const TRADING_CARDS_DROPDOWN_LINKS = [
   { label: "New Releases", href: "/new-releases" },
   { label: "Trading Card Store Emporia", href: "/trading-card-store-emporia-ks" },
   { label: "Buy, Sell & Trade", href: "/buy-sell-trade" },
+  { label: "Trade Values", href: "/trade-values" },
+  { label: "Sell to PixelNation", href: "/sell-to-pixelnation" },
 ] as const;
 
 export const GAMING_EVENTS_DROPDOWN_LINKS = [
@@ -47,6 +49,8 @@ export const FOOTER_TCG_LINKS = [
   { label: "Gaming", href: "/gaming" },
   { label: "Events", href: "/events" },
   { label: "Buy, Sell & Trade", href: "/buy-sell-trade" },
+  { label: "Trade Values", href: "/trade-values" },
+  { label: "Sell to PixelNation", href: "/sell-to-pixelnation" },
   { label: "Preorders & New Releases", href: "/preorders-new-releases" },
   { label: "Preorders", href: "/preorders" },
   { label: "New Releases", href: "/new-releases" },
@@ -63,6 +67,8 @@ export const FOOTER_TCG_LINKS = [
 export const TRADING_CARDS_ACTIVE_PATHS = [
   "/trading-cards",
   "/buy-sell-trade",
+  "/trade-values",
+  "/sell-to-pixelnation",
   "/what-we-carry",
   "/preorders-new-releases",
   "/preorders",

@@ -46,6 +46,8 @@ export const PUBLIC_ROUTES: SitemapEntry[] = [
     priority: 0.9,
   },
   { path: "/buy-sell-trade", changeFrequency: "weekly", priority: 0.88 },
+  { path: "/trade-values", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/sell-to-pixelnation", changeFrequency: "weekly", priority: 0.86 },
   { path: "/what-we-carry", changeFrequency: "weekly", priority: 0.88 },
   {
     path: "/preorders-new-releases",

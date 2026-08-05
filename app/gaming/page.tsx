@@ -199,7 +199,7 @@ export default function GamingPage() {
             in {SITE.address.region}.
           </p>
           <div className="cta-group mt-8 justify-center">
-            <Button href="/contact">Contact us</Button>
+            <Button href="/trade-values">Trade Values</Button>
             <Button href="/trading-cards" variant="secondary">
               Trading Cards
             </Button>

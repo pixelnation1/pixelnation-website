@@ -269,14 +269,14 @@ export function BuySellTradeHomeSection() {
       subtitle="Bring in trading cards, collections, sealed products, video games, and consoles for review."
     >
       <p className="-mt-4 mb-8 max-w-3xl text-muted leading-relaxed">
-        Our staff evaluates condition, authenticity, and market value in person, then
-        makes an offer as cash, store credit, or trade value. No obligation—you can
-        always decline.
+        Search estimated trade values for gaming systems and electronics, or bring in
+        trading cards and collections for review. Offers may be cash or higher-value
+        store credit after inspection. No obligation—you can always decline.
       </p>
       <div className="cta-group">
-        <Button href="/buy-sell-trade">How it works</Button>
-        <Button href="/contact" variant="secondary">
-          Request a Collection Review
+        <Button href="/trade-values">Search Trade Values</Button>
+        <Button href="/buy-sell-trade" variant="secondary">
+          Buy, Sell &amp; Trade
         </Button>
       </div>
     </Section>

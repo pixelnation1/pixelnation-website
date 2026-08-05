@@ -84,6 +84,9 @@ export default function TradingCardsPage() {
             <Button href="/buy-sell-trade" variant="outline">
               Buy, Sell &amp; Trade
             </Button>
+            <Button href="/trade-values" variant="outline">
+              Trade Values
+            </Button>
           </div>
           <div className="relative mt-10 aspect-[1024/412] w-full overflow-hidden rounded-2xl border border-card-border">
             <Image
@@ -201,7 +204,12 @@ export default function TradingCardsPage() {
         subtitle={TRADING_CARDS_SECTIONS.buySellTrade.body}
         alt
       >
-        <Button href="/buy-sell-trade">Learn about Buy, Sell &amp; Trade</Button>
+        <div className="cta-group">
+          <Button href="/buy-sell-trade">Learn about Buy, Sell &amp; Trade</Button>
+          <Button href="/trade-values" variant="secondary">
+            Search Trade Values
+          </Button>
+        </div>
       </Section>
 
       <Section
