@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TradeItemCard } from "@/components/trade/TradeItemCard";
+import { TradeProductImage } from "@/components/trade/TradeProductImage";
 import { accessoryBadges, conditionBadges } from "@/lib/trade/badges";
 import { BROKEN_DEVICE_EXAMPLES, TRUST_BADGES } from "@/lib/trade/ui-config";
 import { formatCents, formatTradeDate, toPublicTradeItem } from "@/lib/trade/format";
@@ -58,10 +58,10 @@ export default async function TradeValueDetailPage({ params }: Props) {
       <div className="border-b border-card-border/70 bg-gradient-to-b from-accent-muted/50 to-background">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:py-12">
           <div className="relative aspect-square overflow-hidden rounded-3xl border border-card-border bg-white shadow-[0_16px_40px_rgba(0,0,0,0.25)]">
-            <Image
-              src={item.imageUrl || "/images/pixellogo.png"}
+            <TradeProductImage
+              src={item.imageUrl}
               alt={item.name}
-              fill
+              itemId={item.id}
               priority
               className="object-contain object-center p-8"
               sizes="(max-width: 1024px) 100vw, 520px"
@@ -87,22 +87,27 @@ export default async function TradeValueDetailPage({ params }: Props) {
               {[item.model, item.storage].filter(Boolean).join(" · ") || "Verified in store"}
             </p>
 
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              <div className="rounded-2xl border border-card-border bg-card px-4 py-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted">
-                  Cash Offer
-                </p>
-                <p className="mt-1 text-3xl font-bold tabular-nums">
-                  {formatCents(item.displayCashCents)}
-                </p>
-              </div>
-              <div className="rounded-2xl border border-accent-secondary/50 bg-accent-secondary-muted px-4 py-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-accent-secondary">
-                  Store Credit
-                </p>
-                <p className="mt-1 text-3xl font-bold tabular-nums text-accent-secondary">
-                  {formatCents(item.displayStoreCreditCents)}
-                </p>
+            <div className="mt-6">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                Estimated Trade Value
+              </p>
+              <div className="mt-2 grid grid-cols-2 gap-3">
+                <div className="rounded-2xl border border-card-border bg-card px-4 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                    Cash
+                  </p>
+                  <p className="mt-1 text-3xl font-bold tabular-nums">
+                    {formatCents(item.displayCashCents)}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-accent-secondary/50 bg-accent-secondary-muted px-4 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-accent-secondary">
+                    Store Credit
+                  </p>
+                  <p className="mt-1 text-3xl font-bold tabular-nums text-accent-secondary">
+                    {formatCents(item.displayStoreCreditCents)}
+                  </p>
+                </div>
               </div>
             </div>
 

@@ -16,7 +16,7 @@ const emptyForm = {
   category: "PlayStation",
   model: "",
   storage: "",
-  imageUrl: "/images/pixellogo.png",
+  imageUrl: "",
   cashDollars: "",
   creditDollars: "",
   requiredAccessories: "",
@@ -258,11 +258,54 @@ export function TradeAdminDashboard({
           </select>
           <input className={fieldClass} placeholder="Model" value={form.model} onChange={(e) => setForm({ ...form, model: e.target.value })} />
           <input className={fieldClass} placeholder="Storage" value={form.storage} onChange={(e) => setForm({ ...form, storage: e.target.value })} />
-          <input className={fieldClass} placeholder="Image URL" value={form.imageUrl} onChange={(e) => setForm({ ...form, imageUrl: e.target.value })} />
           <input className={fieldClass} placeholder="Cash value (dollars)" value={form.cashDollars} onChange={(e) => setForm({ ...form, cashDollars: e.target.value })} required />
           <input className={fieldClass} placeholder="Store credit (dollars, blank = multiplier)" value={form.creditDollars} onChange={(e) => setForm({ ...form, creditDollars: e.target.value })} />
           <input className={fieldClass} placeholder="Repair page href (optional)" value={form.repairHref} onChange={(e) => setForm({ ...form, repairHref: e.target.value })} />
           <input className={fieldClass} placeholder="Sort order" value={form.sortOrder} onChange={(e) => setForm({ ...form, sortOrder: e.target.value })} />
+        </div>
+        <div className="rounded-xl border border-card-border bg-background/40 p-3 md:col-span-2">
+          <p className="mb-2 text-xs font-semibold uppercase text-muted">Product image</p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+            <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-lg border border-card-border bg-white">
+              {form.imageUrl && !form.imageUrl.includes("pixellogo") ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={form.imageUrl}
+                  alt={form.name || "Product preview"}
+                  className="h-full w-full object-contain p-2"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.display = "none";
+                  }}
+                />
+              ) : (
+                <div className="flex h-full items-center justify-center px-2 text-center text-[11px] text-muted">
+                  Image coming soon
+                </div>
+              )}
+            </div>
+            <div className="min-w-0 flex-1 space-y-2">
+              <label className="block text-xs text-muted">
+                Image URL or local path
+                <input
+                  className={`${fieldClass} mt-1`}
+                  placeholder="/images/trade-values/example.webp or https://..."
+                  value={form.imageUrl}
+                  onChange={(e) => setForm({ ...form, imageUrl: e.target.value.trim() })}
+                />
+              </label>
+              <p className="text-xs text-muted">
+                Prefer files under <code className="text-accent-secondary">/public/images/trade-values/</code>.
+                Supported: .webp, .jpg, .jpeg, .png, .avif
+              </p>
+              <button
+                type="button"
+                onClick={() => setForm({ ...form, imageUrl: "" })}
+                className="rounded-lg border border-card-border px-3 py-1.5 text-xs font-semibold text-muted hover:text-foreground"
+              >
+                Remove image
+              </button>
+            </div>
+          </div>
         </div>
         <textarea className={fieldClass} placeholder="Required accessories" value={form.requiredAccessories} onChange={(e) => setForm({ ...form, requiredAccessories: e.target.value })} rows={2} />
         <textarea className={fieldClass} placeholder="Customer-facing condition note" value={form.conditionNote} onChange={(e) => setForm({ ...form, conditionNote: e.target.value })} rows={2} />

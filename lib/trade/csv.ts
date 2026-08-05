@@ -152,7 +152,7 @@ export function csvToTradeItems(csv: string): TradeItem[] {
       category,
       model: row.model?.trim() || "",
       storage: row.storage?.trim() || "",
-      imageUrl: row.image_url?.trim() || "/images/pixellogo.png",
+      imageUrl: row.image_url?.trim() || "",
       cashValueCents: cash,
       storeCreditValueCents: storeCredit,
       requiredAccessories: row.required_accessories?.trim() || "",

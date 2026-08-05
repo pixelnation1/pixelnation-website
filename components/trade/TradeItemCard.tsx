@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { TradeProductImage } from "@/components/trade/TradeProductImage";
 import { accessoryBadges, conditionBadges } from "@/lib/trade/badges";
 import { formatCents, formatTradeDate } from "@/lib/trade/format";
 import { BROKEN_MODE_MESSAGE } from "@/lib/trade/ui-config";
@@ -26,19 +26,12 @@ export function TradeItemCard({
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-card-border/80 bg-card shadow-[0_10px_30px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-0.5 hover:border-accent-secondary/50 hover:shadow-[0_16px_40px_rgba(0,0,0,0.28)]">
       <div className="relative aspect-[4/3] w-full bg-white">
-        <Image
-          src={item.imageUrl || "/images/pixellogo.png"}
+        <TradeProductImage
+          src={item.imageUrl}
           alt={item.name}
-          fill
-          className="object-contain object-center p-5 transition duration-200 group-hover:scale-[1.02]"
-          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          itemId={item.id}
           priority={priority}
         />
-        {item.isSample ? (
-          <span className="absolute left-3 top-3 rounded-full bg-accent px-2.5 py-1 text-[11px] font-semibold text-background">
-            Sample
-          </span>
-        ) : null}
       </div>
 
       <div className="flex flex-1 flex-col p-5">
@@ -52,22 +45,27 @@ export function TradeItemCard({
           {[item.model, item.storage].filter(Boolean).join(" · ") || "Model verified in store"}
         </p>
 
-        <div className="mt-5 grid grid-cols-2 gap-3">
-          <div className="rounded-xl border border-card-border bg-background/60 px-3 py-3">
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-muted">
-              Cash Offer
-            </p>
-            <p className="mt-1 text-2xl font-bold tabular-nums text-foreground">
-              {formatCents(item.displayCashCents)}
-            </p>
-          </div>
-          <div className="rounded-xl border border-accent-secondary/50 bg-accent-secondary-muted px-3 py-3">
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-accent-secondary">
-              Store Credit
-            </p>
-            <p className="mt-1 text-2xl font-bold tabular-nums text-accent-secondary">
-              {formatCents(item.displayStoreCreditCents)}
-            </p>
+        <div className="mt-5">
+          <p className="text-[11px] font-semibold uppercase tracking-wide text-muted">
+            Estimated Trade Value
+          </p>
+          <div className="mt-2 grid grid-cols-2 gap-3">
+            <div className="rounded-xl border border-card-border bg-background/60 px-3 py-3">
+              <p className="text-[11px] font-semibold uppercase tracking-wide text-muted">
+                Cash
+              </p>
+              <p className="mt-1 text-2xl font-bold tabular-nums text-foreground">
+                {formatCents(item.displayCashCents)}
+              </p>
+            </div>
+            <div className="rounded-xl border border-accent-secondary/50 bg-accent-secondary-muted px-3 py-3">
+              <p className="text-[11px] font-semibold uppercase tracking-wide text-accent-secondary">
+                Store Credit
+              </p>
+              <p className="mt-1 text-2xl font-bold tabular-nums text-accent-secondary">
+                {formatCents(item.displayStoreCreditCents)}
+              </p>
+            </div>
           </div>
         </div>
 

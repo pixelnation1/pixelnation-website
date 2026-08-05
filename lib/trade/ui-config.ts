@@ -18,13 +18,13 @@ export const POPULAR_SEARCHES = [
   "PS5 Disc",
   "PS5 Digital",
   "Nintendo Switch OLED",
-  "Steam Deck",
+  "Steam Deck OLED",
   "Xbox Series X",
+  "Xbox Series S",
+  "ROG Ally",
   "Switch Lite",
+  "PlayStation Portal",
   "DualSense",
-  "iPhone 12",
-  "PlayStation 4 Pro",
-  "Nintendo 64",
 ] as const;
 
 export const TRUST_BADGES = [

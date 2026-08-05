@@ -11,6 +11,7 @@ import {
   TRADE_CATEGORY_BUTTONS,
   TRUST_BADGES,
 } from "@/lib/trade/ui-config";
+import { TRADE_ESTIMATE_NOTICE } from "@/lib/trade/content";
 import type {
   PublicTradeItem,
   TradeFilterState,
@@ -24,15 +25,11 @@ type ConditionMode = "working" | "broken";
 type TradeSearchPanelProps = {
   items: TradeItem[];
   settings: TradeSettings;
-  showSampleBanner?: boolean;
-  sampleBannerText?: string;
 };
 
 export function TradeSearchPanel({
   items,
   settings,
-  showSampleBanner = false,
-  sampleBannerText,
 }: TradeSearchPanelProps) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
@@ -191,14 +188,9 @@ export function TradeSearchPanel({
             ))}
           </ul>
 
-          {showSampleBanner && sampleBannerText ? (
-            <p
-              className="mx-auto mt-4 max-w-3xl rounded-xl border border-accent/40 bg-accent-muted px-4 py-3 text-center text-xs leading-relaxed text-foreground sm:text-sm"
-              role="note"
-            >
-              {sampleBannerText}
-            </p>
-          ) : null}
+          <p className="mx-auto mt-4 max-w-3xl text-center text-xs leading-relaxed text-muted sm:text-sm">
+            {TRADE_ESTIMATE_NOTICE}
+          </p>
         </div>
       </section>
 
@@ -302,7 +294,7 @@ export function TradeSearchPanel({
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
-              {hasActiveSearch ? "Search results" : "Estimated trade values"}
+              {hasActiveSearch ? "Search results" : "Estimated Trade Values"}
             </h2>
             <p className="mt-1 text-sm text-muted">
               Showing{" "}

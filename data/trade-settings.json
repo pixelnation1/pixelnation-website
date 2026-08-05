@@ -1,5 +1,5 @@
 {
   "storeCreditMultiplier": 1.2,
-  "showSampleDataBanner": true,
+  "showSampleDataBanner": false,
   "publishSampleItems": true
 }

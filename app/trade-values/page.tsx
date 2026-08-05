@@ -10,7 +10,6 @@ import {
   TRADE_VALUE_TERMS,
   TRADE_VALUES_METADATA,
 } from "@/lib/trade/content";
-import { SAMPLE_DATA_WARNING } from "@/lib/trade/sample-items";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { getPublicTradeItems } from "@/lib/trade/store";
 import { SITE } from "@/lib/site";
@@ -27,17 +26,10 @@ export const metadata = createPageMetadata({
 
 export default async function TradeValuesPage() {
   const { items, settings } = await getPublicTradeItems();
-  const showBanner =
-    settings.showSampleDataBanner && items.some((item) => item.isSample);
 
   return (
     <article>
-      <TradeSearchPanel
-        items={items}
-        settings={settings}
-        showSampleBanner={showBanner}
-        sampleBannerText={SAMPLE_DATA_WARNING}
-      />
+      <TradeSearchPanel items={items} settings={settings} />
 
       {/* Secondary education — intentionally below the search app */}
       <div className="border-t border-card-border/70">

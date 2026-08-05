@@ -7,6 +7,23 @@ import {
 } from "@/lib/trade/store";
 import type { TradeItem } from "@/lib/trade/types";
 
+function sanitizeImageUrl(value?: string | null): string {
+  const trimmed = value?.trim() || "";
+  if (!trimmed || trimmed.includes("pixellogo")) return "";
+  if (trimmed.startsWith("/images/")) {
+    if (!/\.(webp|png|jpe?g|avif|svg)$/i.test(trimmed)) return "";
+    return trimmed;
+  }
+  try {
+    const url = new URL(trimmed);
+    if (url.protocol !== "https:") return "";
+    if (!/\.(webp|png|jpe?g|avif)$/i.test(url.pathname)) return "";
+    return url.toString();
+  } catch {
+    return "";
+  }
+}
+
 export async function GET() {
   if (!(await requireTradeAdmin())) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
@@ -60,7 +77,7 @@ export async function POST(request: Request) {
     category: body.category?.trim() || "Other Electronics",
     model: body.model?.trim() || "",
     storage: body.storage?.trim() || "",
-    imageUrl: body.imageUrl?.trim() || "/images/pixellogo.png",
+    imageUrl: sanitizeImageUrl(body.imageUrl),
     cashValueCents: Number(body.cashValueCents) || 0,
     storeCreditValueCents:
       body.storeCreditValueCents == null ? null : Number(body.storeCreditValueCents),
