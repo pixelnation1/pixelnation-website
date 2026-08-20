@@ -3,6 +3,7 @@ import {
   breadcrumbListSchema,
   faqPageSchema,
   localBusinessSchema,
+  sitePostalAddressSchema,
 } from "@/lib/seo/schema";
 import { buildCanonical, CANONICAL_ORIGIN } from "@/lib/seo/site-seo";
 import type { BreadcrumbItem, FaqItem } from "@/lib/seo/types";
@@ -66,12 +67,7 @@ export function TcgPageStructuredData({
       "@type": "LocalBusiness",
       name: SITE.name,
       telephone: SITE.phoneSchema,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: SITE.address.city,
-        addressRegion: SITE.address.state,
-        addressCountry: "US",
-      },
+      address: sitePostalAddressSchema(),
     },
   };
 

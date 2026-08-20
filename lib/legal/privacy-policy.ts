@@ -29,7 +29,7 @@ export const PRIVACY_POLICY_SECTIONS: readonly LegalSection[] = [
     title: "Business name and contact information",
     paragraphs: [
       `Business name: ${SITE.name}`,
-      `Location: ${SITE.address.region}`,
+      `Location: ${SITE.address.singleLine}`,
       `Phone: 620-779-7158`,
       `Email: ${SITE.email}`,
       `Website: ${SITE.domain}/`,
@@ -163,7 +163,7 @@ export const PRIVACY_POLICY_SECTIONS: readonly LegalSection[] = [
       `If you have questions about this Privacy Policy or our privacy practices, contact ${SITE.name}:`,
       `Email: ${SITE.email}`,
       `Phone: 620-779-7158`,
-      `Location: ${SITE.address.region}`,
+      `Location: ${SITE.address.singleLine}`,
       `Website: ${SITE.domain}/`,
       `You may also visit our Contact page at ${SITE.domain}/contact.`,
     ],

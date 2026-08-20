@@ -194,7 +194,7 @@ export default function TrainingPage() {
         </div>
         <p className="mt-6 text-sm text-muted">
           <span className="font-medium text-foreground">Location:</span> {SITE.name},{" "}
-          {SITE.address.region} ·{" "}
+          {SITE.address.singleLine} ·{" "}
           <span className="font-medium text-foreground">Duration:</span> 3-day workshop
           (exact schedule provided upon registration)
         </p>

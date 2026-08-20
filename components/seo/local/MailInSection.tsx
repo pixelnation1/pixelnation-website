@@ -36,7 +36,7 @@ export function MailInSection({ city, serviceName }: MailInSectionProps) {
         <div className="rounded-xl border border-card-border bg-card p-6">
           <h3 className="font-semibold text-foreground">What happens next</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted">
-            {city.driveTimeNote} We diagnose at {SITE.address.region}, send a
+            {city.driveTimeNote} We diagnose at {SITE.address.singleLine}, send a
             quote before work begins, and keep you updated through repair and return
             shipping.
           </p>

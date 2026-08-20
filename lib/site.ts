@@ -11,9 +11,19 @@ export const SITE = {
   email: "support@pixelnation.co",
   emailHref: "mailto:support@pixelnation.co",
   address: {
+    streetLine1: "22 E. 5th Ave",
     city: "Emporia",
     state: "KS",
+    postalCode: "66801",
+    cityStateZip: "Emporia, KS 66801",
+    singleLine: "22 E. 5th Ave, Emporia, KS 66801",
     region: "Emporia, Kansas",
+  },
+  maps: {
+    embedUrl:
+      "https://maps.google.com/maps?q=22+E.+5th+Ave,+Emporia,+KS+66801&hl=en&z=15&output=embed",
+    directionsUrl:
+      "https://www.google.com/maps/search/?api=1&query=22+E.+5th+Ave,+Emporia,+KS+66801",
   },
   hours: "Monday – Friday, 9:00 AM – 3:00 PM",
   openingHours: {

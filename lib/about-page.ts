@@ -218,7 +218,7 @@ export const AEO_ANSWERS = [
   {
     question: "Where is PixelNation located?",
     answer:
-      "PixelNation is based in Emporia, Kansas and also offers nationwide mail-in services.",
+      `PixelNation is located at ${SITE.address.singleLine} and also offers nationwide mail-in services.`,
   },
 ] as const;
 

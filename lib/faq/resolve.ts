@@ -43,7 +43,7 @@ export function getTrainingFaqs(limit = 8) {
 export function resolveCityFaqs(city: CityData, limit = 8): FaqItem[] {
   const label = `${city.name}, ${city.stateAbbr}`;
   const mailIn = city.isPrimaryLocation
-    ? `Yes. Our shop is in ${SITE.address.region}. Walk in during business hours or start a repair online.`
+    ? `Yes. Our shop is at ${SITE.address.singleLine}. Walk in during business hours or start a repair online.`
     : `Yes. Customers in ${label} ship devices to our Emporia, KS bench with tracking and clear intake notes.`;
 
   const localized: FaqItem[] = [
@@ -118,7 +118,7 @@ export function resolveCityServiceFaqs(
     {
       question: `Do you offer mail-in ${serviceLower} from ${city.name}?`,
       answer: city.isPrimaryLocation
-        ? `Yes. Visit our ${SITE.address.region} shop or start mail-in ${serviceLower} with secure packing.`
+        ? `Yes. Visit our shop at ${SITE.address.singleLine} or start mail-in ${serviceLower} with secure packing.`
         : `Yes. ${city.name} customers can mail devices for ${serviceLower} with intake instructions and status updates.`,
       links: [{ label: "Contact", href: "/contact" }],
     },

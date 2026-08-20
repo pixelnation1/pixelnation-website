@@ -94,7 +94,7 @@ export function buildCityPageContent(citySlug: string): CityPageContent {
     quickAnswers: [
       {
         question: `Where is PixelNation located for ${city.name} customers?`,
-        answer: `Our repair bench is in ${SITE.address.region}. ${city.isPrimaryLocation ? "You can visit in person during business hours." : `${city.name} customers use mail-in repair with tracking and updates.`}`,
+        answer: `Our repair bench is at ${SITE.address.singleLine}. ${city.isPrimaryLocation ? "You can visit in person during business hours." : `${city.name} customers use mail-in repair with tracking and updates.`}`,
       },
       {
         question: `What repair services are available in ${city.name}?`,
@@ -233,7 +233,7 @@ export function buildCityServicePageContent(
       {
         question: `Do you offer mail-in ${service.name.toLowerCase()} from ${city.name}?`,
         answer: city.isPrimaryLocation
-          ? `Yes — visit ${SITE.address.region} or use mail-in with tracking.`
+          ? `Yes — visit ${SITE.address.singleLine} or use mail-in with tracking.`
           : `Yes. Ship from ${city.name} to our Emporia bench; we guide you through secure packaging.`,
       },
     ],
@@ -247,7 +247,7 @@ export function buildCityServicePageContent(
       processTitle: `Getting ${service.shortName} repair from ${city.name}`,
       processSteps: city.isPrimaryLocation
         ? [
-            `Bring your device to ${SITE.address.region}`,
+            `Bring your device to ${SITE.address.singleLine}`,
             "We inspect and quote for " + service.shortName.toLowerCase(),
             "Repair and bench testing at PixelNation",
             "Pickup when ready — warranty explained upfront",

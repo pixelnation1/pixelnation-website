@@ -88,7 +88,7 @@ export const AEO_ANSWERS = [
   {
     question: "How do I contact PixelNation in Emporia, Kansas?",
     answer:
-      `You can call PixelNation at ${SITE.phone} or email support@pixelnation.co.`,
+      `You can call PixelNation at ${SITE.phone}, email support@pixelnation.co, or visit us at ${SITE.address.singleLine}.`,
   },
   {
     question: "What are PixelNation's business hours?",
@@ -102,8 +102,6 @@ export const AEO_ANSWERS = [
   },
 ] as const;
 
-export const MAP_EMBED_URL =
-  "https://maps.google.com/maps?q=Emporia,+Kansas&hl=en&z=13&output=embed";
+export const MAP_EMBED_URL = SITE.maps.embedUrl;
 
-export const GOOGLE_MAPS_LINK =
-  "https://www.google.com/maps/search/?api=1&query=Emporia,+Kansas";
+export const GOOGLE_MAPS_LINK = SITE.maps.directionsUrl;

@@ -10,6 +10,17 @@ import type {
 
 const LOGO = `${CANONICAL_ORIGIN}/images/pixellogo.png`;
 
+export function sitePostalAddressSchema() {
+  return {
+    "@type": "PostalAddress" as const,
+    streetAddress: SITE.address.streetLine1,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.state,
+    postalCode: SITE.address.postalCode,
+    addressCountry: "US",
+  };
+}
+
 export function schemaCityArea(input: AreaServedInput) {
   return {
     "@type": "City" as const,
@@ -40,12 +51,7 @@ export function localBusinessSchema(overrides?: Record<string, unknown>) {
     email: SITE.email,
     url: CANONICAL_ORIGIN,
     image: LOGO,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: SITE.address.city,
-      addressRegion: SITE.address.state,
-      addressCountry: "US",
-    },
+    address: sitePostalAddressSchema(),
     areaServed: {
       "@type": "City",
       name: SITE.address.city,
@@ -108,12 +114,7 @@ export function organizationSchema() {
     logo: LOGO,
     email: SITE.email,
     telephone: SITE.phoneSchema,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: SITE.address.city,
-      addressRegion: SITE.address.state,
-      addressCountry: "US",
-    },
+    address: sitePostalAddressSchema(),
     sameAs: [CANONICAL_ORIGIN],
   };
 }

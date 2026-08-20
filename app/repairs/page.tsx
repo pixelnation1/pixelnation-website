@@ -220,7 +220,7 @@ export default function RepairsPage() {
             </p>
             <p className="mt-1 text-sm text-muted">
               <span className="font-medium text-foreground">Location:</span>{" "}
-              {SITE.address.region}
+              {SITE.address.singleLine}
             </p>
             <div className="mt-6">
               <Button href="/contact">Contact us</Button>

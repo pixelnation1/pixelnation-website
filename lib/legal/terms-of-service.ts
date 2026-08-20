@@ -182,7 +182,7 @@ export const TERMS_OF_SERVICE_SECTIONS: readonly TermsSection[] = [
       `Questions about these Terms may be directed to ${SITE.name}:`,
       `Email: ${SITE.email}`,
       `Phone: 620-779-7158`,
-      `Location: ${SITE.address.region}`,
+      `Location: ${SITE.address.singleLine}`,
       `Website: ${SITE.domain}/`,
       `Contact form: ${SITE.domain}/contact`,
     ],

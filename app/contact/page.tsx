@@ -86,7 +86,11 @@ export default function ContactPage() {
                 <dt className="text-xs font-semibold uppercase text-accent-secondary">
                   Location
                 </dt>
-                <dd className="mt-1 text-muted">{SITE.address.region}</dd>
+                <dd className="mt-1 text-muted">
+                  {SITE.address.streetLine1}
+                  <br />
+                  {SITE.address.cityStateZip}
+                </dd>
               </div>
               <div>
                 <dt className="text-xs font-semibold uppercase text-accent-secondary">
@@ -239,7 +243,7 @@ export default function ContactPage() {
       >
         <div className="overflow-hidden rounded-2xl border border-card-border bg-card">
           <iframe
-            title="PixelNation repair shop location in Emporia Kansas"
+            title={`PixelNation repair shop at ${SITE.address.streetLine1} in Emporia Kansas`}
             src={MAP_EMBED_URL}
             className="aspect-[16/9] w-full min-h-[280px] border-0"
             loading="lazy"
@@ -253,7 +257,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="font-medium text-accent-secondary hover:underline"
             >
-              Open in Google Maps
+              Get Directions
             </a>
           </p>
         </div>

@@ -75,7 +75,8 @@ export function Footer() {
               Visit
             </h2>
             <ul className="space-y-2 text-sm text-muted">
-              <li>{SITE.address.region}</li>
+              <li>{SITE.address.streetLine1}</li>
+              <li>{SITE.address.cityStateZip}</li>
               <li>
                 <a href={SITE.phoneHref} className="hover:text-accent-secondary">
                   {SITE.phone}
