@@ -1,5 +1,5 @@
 import { EventCard } from "@/components/events/EventCard";
-import { WeeklyScheduleBoard } from "@/components/events/WeeklyScheduleBoard";
+import { WeeklyScheduleGrid } from "@/components/events/WeeklyScheduleGrid";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import { CommunityPageShell } from "@/components/tcg/CommunityPageShell";
@@ -10,6 +10,8 @@ import {
   WEEKLY_EVENTS_PAGE,
 } from "@/lib/tcg/community-pages";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = createPageMetadata({
   title: WEEKLY_EVENTS_METADATA.title,
   description: WEEKLY_EVENTS_METADATA.description,
@@ -18,7 +20,7 @@ export const metadata = createPageMetadata({
   keywords: [
     "weekly gaming events Emporia",
     "Friday Night Magic Emporia",
-    "PixelNation Friday Nights",
+    "Commander night Emporia",
   ],
 });
 
@@ -37,21 +39,21 @@ export default function WeeklyEventsPage() {
         { name: "Events", path: "/events" },
         { name: "Weekly Events", path: "/weekly-events" },
       ]}
-      primaryCta={{ href: "/events", label: "Events hub" }}
-      secondaryCta={{ href: "/events/pixelnation-friday-nights", label: "Friday Nights" }}
+      primaryCta={{ href: "/events#weekly-schedule", label: "Weekly schedule" }}
+      secondaryCta={{ href: "/events/friday-night-magic", label: "Friday Night Magic" }}
     >
       <Section
         id="weekly-schedule"
         title="Weekly schedule"
         subtitle={WEEKLY_EVENTS_PAGE.note}
       >
-        <WeeklyScheduleBoard />
+        <WeeklyScheduleGrid />
       </Section>
 
       <Section
         id="weekly-events"
         title="Recurring events"
-        subtitle="Every Friday at PixelNation — 22 E. 5th Ave, Emporia, KS 66801."
+        subtitle="Recurring PixelNation nights in downtown Emporia."
         alt
       >
         <div className="grid gap-6 md:grid-cols-2">

@@ -14,7 +14,7 @@ export const TCG_LAUNCH = {
     "Join weekly gaming events and organized play at PixelNation in downtown Emporia.",
   eventsEmptyTitle: "No upcoming events posted right now.",
   eventsEmptyBody:
-    "Check PixelNation Friday Nights or contact us for the latest community gaming details.",
+    "Check the weekly schedule or contact us for the latest community gaming details.",
   gamingForwardLooking:
     "PixelNation is a local game store and electronics repair shop in downtown Emporia—community play, trading cards, video games, and weekly events under one roof.",
   buySellTradeDisclaimer:

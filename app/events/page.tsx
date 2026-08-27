@@ -1,16 +1,29 @@
+import {
+  NextEventBanner,
+  OpenPlaySection,
+  SpecialEventsList,
+  ThisWeekStrip,
+  VisitPixelNationEvents,
+} from "@/components/events/EventsPageSections";
 import { EventsHub } from "@/components/events/EventsHub";
-import { WeeklyScheduleBoard } from "@/components/events/WeeklyScheduleBoard";
+import { WeeklyScheduleGrid } from "@/components/events/WeeklyScheduleGrid";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
-import { EVENT_EXPECTATIONS } from "@/lib/tcg/event-categories";
-import { EVENTS_HUB_METADATA, getUpcomingEvents } from "@/lib/events";
+import {
+  EVENTS_HUB_METADATA,
+  getSpecialUpcomingEvents,
+  getUpcomingEvents,
+} from "@/lib/events";
+import { getNextScheduleItem, getThisWeekItems } from "@/lib/events/weekly";
 import { eventSchema, eventsItemListSchema } from "@/lib/events/schema";
 import { breadcrumbListSchema } from "@/lib/seo/schema";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import type { BreadcrumbItem } from "@/lib/seo/types";
 import { SITE } from "@/lib/site";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = createPageMetadata({
   title: EVENTS_HUB_METADATA.title,
@@ -19,10 +32,12 @@ export const metadata = createPageMetadata({
   titleAbsolute: true,
   keywords: [
     "gaming events Emporia KS",
-    "TCG events Emporia",
-    "Pokémon trade night Emporia",
+    "Pokémon events Emporia",
     "Magic the Gathering Emporia",
+    "Commander night Emporia",
     "Friday Night Magic Emporia",
+    "video game tournaments Emporia",
+    "TCG tournaments Emporia",
   ],
 });
 
@@ -33,7 +48,11 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function EventsPage() {
-  const events = getUpcomingEvents();
+  const now = new Date();
+  const events = getUpcomingEvents(now);
+  const nextEvent = getNextScheduleItem(now);
+  const thisWeek = getThisWeekItems(now);
+  const specials = getSpecialUpcomingEvents(now);
 
   return (
     <article>
@@ -58,14 +77,14 @@ export default function EventsPage() {
             id="events-heading"
             className="max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
           >
-            PixelNation Events
+            Events at PixelNation
           </h1>
           <p className="mt-3 text-xl font-medium text-accent-secondary sm:text-2xl">
-            Play. Trade. Compete. Hang Out.
+            There&apos;s something happening almost every day.
           </p>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-            Weekly gaming, trading card events, tournaments, trade nights and special
-            releases in downtown Emporia, Kansas.
+            Trading cards, tournaments, retro gaming, video games, trade nights, and
+            community play in downtown Emporia.
           </p>
           <address className="mt-6 not-italic text-sm leading-relaxed text-muted">
             <span className="block font-semibold text-foreground">{SITE.name}</span>
@@ -73,69 +92,60 @@ export default function EventsPage() {
             <span className="block">{SITE.address.cityStateZip}</span>
           </address>
           <div className="cta-group mt-8">
-            <Button href="#upcoming">Upcoming Events</Button>
+            <Button href="#this-week">View this week</Button>
             <Button href="#weekly-schedule" variant="secondary">
-              Weekly Schedule
+              Weekly schedule
             </Button>
           </div>
         </div>
       </section>
 
+      {nextEvent ? <NextEventBanner item={nextEvent} /> : null}
+
+      <Section
+        id="weekly-schedule"
+        title="Weekly gaming schedule"
+        subtitle="A regular week at PixelNation—then check this week's calendar for featured games, formats, and Saturday tournaments."
+      >
+        <WeeklyScheduleGrid now={now} />
+      </Section>
+
+      <Section
+        id="this-week"
+        title="This week at PixelNation"
+        subtitle="Upcoming nights and posted events in chronological order."
+        alt
+      >
+        <ThisWeekStrip items={thisWeek} />
+      </Section>
+
+      <Section
+        id="special-events"
+        title="Upcoming special events"
+        subtitle="Tournaments, prereleases, release nights, and other one-time events."
+      >
+        <SpecialEventsList events={specials} />
+      </Section>
+
       <Section
         id="upcoming"
-        title="Upcoming events"
-        subtitle="Filter by game or type. Recurring nights show the weekly cadence instead of a one-off date."
+        title="Browse all events"
+        subtitle="Filter by game or type. Weekly nights stay on the calendar every week."
+        alt
       >
         <EventsHub events={events} />
       </Section>
 
       <Section
-        id="weekly-schedule"
-        title="Weekly schedule"
-        subtitle="Regular PixelNation nights in downtown Emporia. Additional weekly events can be added to the schedule as they go live."
-        alt
+        id="open-play"
+        title="Free open play"
+        subtitle="Available anytime PixelNation is open."
       >
-        <WeeklyScheduleBoard />
-        <div className="mt-8 rounded-2xl border border-card-border bg-background p-5 sm:p-6">
-          <p className="text-sm font-semibold uppercase tracking-wide text-accent">
-            Every Friday · 5:00 PM – 10:00 PM
-          </p>
-          <h3 className="mt-2 text-xl font-semibold text-foreground">
-            PixelNation Friday Nights
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-muted">
-            Weekly Trade Night for Pokémon, Magic: The Gathering, Disney Lorcana, One
-            Piece, Yu-Gi-Oh!, and video games. Bring binders, cards, games, and items
-            you are looking to trade. Friday Night Magic runs during the same evening.
-          </p>
-        </div>
+        <OpenPlaySection />
       </Section>
 
-      <Section
-        id="what-to-expect"
-        title="What to expect at PixelNation events"
-        subtitle="A welcoming local game store night in downtown Emporia."
-      >
-        <ul className="grid gap-3 sm:grid-cols-2">
-          {EVENT_EXPECTATIONS.map((item) => (
-            <li
-              key={item}
-              className="flex gap-2 rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted"
-            >
-              <span
-                className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
-                aria-hidden
-              />
-              {item}
-            </li>
-          ))}
-        </ul>
-        <div className="cta-group mt-8">
-          <Button href="/contact">Contact PixelNation</Button>
-          <Button href="/gaming" variant="secondary">
-            Explore Gaming
-          </Button>
-        </div>
+      <Section id="visit" title="Play at PixelNation" alt>
+        <VisitPixelNationEvents />
       </Section>
     </article>
   );

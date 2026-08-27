@@ -176,8 +176,8 @@ export function EventsEmptyState({ filterLabel }: { filterLabel?: string }) {
           : "No upcoming events posted right now."}
       </p>
       <p className="mx-auto mt-3 max-w-2xl text-muted leading-relaxed">
-        Check PixelNation Friday Nights or contact us for the latest community
-        gaming details.
+        Check the weekly schedule or contact us for the latest community gaming
+        details.
       </p>
       <p className="mt-6 text-sm text-muted">
         <Link href="/contact" className="text-accent hover:underline">

@@ -205,9 +205,50 @@ function addDaysIso(isoDate: string, days: number): string {
   return `${y}-${m}-${d}`;
 }
 
-function todayIsoInChicago(now = new Date()): string {
+export function todayIsoInChicago(now = new Date()): string {
   const { year, month, day } = chicagoYmd(now);
   return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+}
+
+const INDEX_TO_DAY: readonly RecurringDay[] = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+];
+
+export function getChicagoWeekday(now = new Date()): RecurringDay {
+  return INDEX_TO_DAY[chicagoWeekdayIndex(now)] ?? "monday";
+}
+
+export function weekdayFromIso(isoDate: string): RecurringDay | null {
+  const [year, month, day] = isoDate.split("-").map(Number);
+  if (!year || !month || !day) return null;
+  const utcDay = new Date(Date.UTC(year, month - 1, day, 18, 0, 0)).getUTCDay();
+  return INDEX_TO_DAY[utcDay] ?? null;
+}
+
+/** Minutes from midnight for a display clock like "6:00 PM". */
+export function clockToMinutes(displayTime: string): number | null {
+  const clock = parseClockToIsoTime(displayTime);
+  if (!clock) return null;
+  const [hours, minutes] = clock.split(":").map(Number);
+  return (hours ?? 0) * 60 + (minutes ?? 0);
+}
+
+export function chicagoMinutesNow(now = new Date()): number {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: STORE_TIMEZONE,
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(now);
+  const hour = Number(parts.find((part) => part.type === "hour")?.value ?? 0);
+  const minute = Number(parts.find((part) => part.type === "minute")?.value ?? 0);
+  return hour * 60 + minute;
 }
 
 export function nextOccurrenceIso(event: StoreEvent, now = new Date()): string | null {

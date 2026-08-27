@@ -36,7 +36,7 @@ export const GAMING_FEATURES = [
   {
     title: "Weekly events",
     description:
-      "PixelNation Friday Nights and Friday Night Magic run every Friday. See the events page for the full calendar.",
+      "Pokémon Night, Commander, Friday Night Magic, retro gaming, and Sunday trade & play—see the events page for the full weekly schedule.",
   },
   {
     title: "Tournaments & special events",
@@ -46,7 +46,7 @@ export const GAMING_FEATURES = [
   {
     title: "Trade nights",
     description:
-      "Bring binders, cards, games, and wishlists to PixelNation Friday Nights for weekly trade night.",
+      "Bring binders, cards, games, and wishlists to Trade & Play Sunday, or trade during other weekly nights.",
   },
   {
     title: "Learn-to-play",

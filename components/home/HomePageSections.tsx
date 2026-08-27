@@ -247,9 +247,9 @@ export function EventsPreviewHomeSection() {
       alt
     >
       <p className="-mt-4 mb-8 max-w-3xl text-muted leading-relaxed">
-        PixelNation Friday Nights, Friday Night Magic, trade nights, and special
-        events happen in downtown Emporia. Bring a deck, a binder, or just show up
-        and hang out.
+        PixelNation runs a weekly gaming schedule in downtown Emporia—Pokémon Night,
+        Commander, Friday Night Magic, retro gaming, tournaments, and Sunday trade
+        & play. Bring a deck, a binder, or just show up.
       </p>
       <div className="cta-group">
         <Button href="/events">View Events</Button>

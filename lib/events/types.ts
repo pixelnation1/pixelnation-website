@@ -64,6 +64,11 @@ export type StoreEvent = {
   playerInfo?: string;
   whatToBring?: readonly string[];
   registrationInfo?: string;
+  /**
+   * Attach a one-time or featured event to a weekly schedule slot
+   * (see lib/events/weekly-schedule.ts). Example: tuesday-rotating.
+   */
+  weeklySlotId?: string;
 };
 
 export type EventFilterId =

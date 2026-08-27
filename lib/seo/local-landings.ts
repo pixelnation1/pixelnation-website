@@ -735,7 +735,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         question: "Is the PixelNation play space open now?",
         answer:
-          "Yes. Visit PixelNation at 22 E. 5th Ave in downtown Emporia. PixelNation Friday Nights run every Friday from 5:00 PM to 10:00 PM.",
+          "Yes. Visit PixelNation at 22 E. 5th Ave in downtown Emporia. See the events page for the weekly gaming schedule.",
         links: [
           { label: "Gaming overview", href: "/gaming" },
           { label: "Events", href: "/events" },

@@ -14,6 +14,8 @@ export {
 } from "@/lib/events/data";
 export {
   capacityLabel,
+  chicagoMinutesNow,
+  clockToMinutes,
   EVENT_GAME_LABELS,
   EVENT_TYPE_LABELS,
   eventHref,
@@ -21,6 +23,7 @@ export {
   formatEventTime,
   formatEventWhen,
   gameLabel,
+  getChicagoWeekday,
   getEventLocation,
   getEventLocationLines,
   isFreeEntry,
@@ -36,9 +39,37 @@ export {
   seatsRemaining,
   statusBadgeLabel,
   STORE_TIMEZONE,
+  todayIsoInChicago,
   toOffsetDateTime,
   WEEKDAY_ORDER,
+  weekdayFromIso,
 } from "@/lib/events/helpers";
+export {
+  getWeeklyDay,
+  getWeeklySlot,
+  OPEN_PLAY,
+  WEEKLY_SCHEDULE,
+} from "@/lib/events/weekly-schedule";
+export {
+  getNextScheduleItem,
+  getSaturdayEvents,
+  getSpecialUpcomingEvents,
+  getThisWeekItems,
+  resolveWeeklySchedule,
+} from "@/lib/events/weekly";
+export type {
+  WeeklyScheduleCategory,
+  WeeklyScheduleDay,
+  WeeklyScheduleIcon,
+  WeeklyScheduleSlot,
+} from "@/lib/events/weekly-schedule";
+export type {
+  NextScheduleItem,
+  ResolvedWeeklyDay,
+  ResolvedWeeklySlot,
+  SlotHighlight,
+  ThisWeekItem,
+} from "@/lib/events/weekly";
 export type {
   EventFilter,
   EventFilterId,
@@ -63,8 +94,10 @@ export function getEventSlugs(): string[] {
 }
 
 export function getUpcomingEvents(now = new Date()): StoreEvent[] {
-  return STORE_EVENTS.filter((event) => isUpcoming(event, now)).sort(
-    (a, b) => {
+  return STORE_EVENTS.filter(
+    (event) =>
+      isUpcoming(event, now) && event.slug !== "pixelnation-friday-nights",
+  ).sort((a, b) => {
       if (a.featured !== b.featured) return a.featured ? -1 : 1;
       return sortKey(a, now) - sortKey(b, now);
     },
@@ -80,7 +113,8 @@ export function getWeeklyEvents(): StoreEvent[] {
     (event) =>
       event.recurring &&
       event.status !== "cancelled" &&
-      event.status !== "completed",
+      event.status !== "completed" &&
+      event.slug !== "pixelnation-friday-nights",
   ).sort((a, b) => {
     const aDay = a.recurringDay ? WEEKDAY_ORDER.indexOf(a.recurringDay) : 99;
     const bDay = b.recurringDay ? WEEKDAY_ORDER.indexOf(b.recurringDay) : 99;

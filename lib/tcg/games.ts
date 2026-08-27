@@ -119,7 +119,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       {
         question: "Will there be Pokémon events in Emporia?",
         answer:
-          "Yes. Pokémon play is part of PixelNation Friday Nights every Friday from 5:00 PM to 10:00 PM. Check the events page for upcoming Pokémon nights.",
+          "Yes. Pokémon Night is every Wednesday from 6:00 PM to 8:00 PM. Check the events page for tournaments and special Pokémon events.",
         links: [{ label: "View Events", href: "/events" }],
       },
     ],
@@ -187,7 +187,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Deck protection and accessories are available. Selection varies—ask about current stock.",
     preorderStatus: TCG_LAUNCH.preorderStatus,
     organizedPlayStatus:
-      "Friday Night Magic runs every Friday during PixelNation Friday Nights, including casual constructed and Commander. Check the events page for the current Magic calendar.",
+      "Friday Night Magic runs every Friday from 6:00 PM to 10:00 PM. Commander Night is Thursday. Check the events page for the current Magic calendar.",
     buySellTradeStatus:
       "Eligible MTG singles, collections, and sealed products may be evaluated for cash or store credit.",
     productsCarried: [
@@ -236,12 +236,12 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       {
         question: "Do you support Commander in Emporia?",
         answer:
-          "Yes. Commander tables are welcome during Friday Night Magic at PixelNation. Bring a precon or your own deck and tell your table the power level you want.",
+          "Yes. Commander Night is every Thursday from 6:00 PM to 10:00 PM. Commander tables are also welcome during Friday Night Magic. Bring a precon or your own deck and tell your table the power level you want.",
       },
       {
         question: "Will there be Magic events in Emporia?",
         answer:
-          "Yes. Friday Night Magic runs every Friday during PixelNation Friday Nights from 5:00 PM to 10:00 PM. See the events page for the current Magic calendar.",
+          "Yes. Friday Night Magic runs every Friday from 6:00 PM to 10:00 PM. Commander Night is Thursday from 6:00 PM to 10:00 PM. See the events page for the current Magic calendar.",
         links: [{ label: "Events", href: "/events" }],
       },
     ],

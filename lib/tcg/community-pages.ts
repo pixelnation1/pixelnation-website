@@ -24,7 +24,7 @@ export const LEARN_TO_PLAY_METADATA = {
 export const WEEKLY_EVENTS_METADATA = {
   title: "Weekly Gaming Events Emporia KS | PixelNation",
   description:
-    "Weekly events at PixelNation in Emporia—Friday Nights trade night, Friday Night Magic, and community gaming at 22 E. 5th Ave.",
+    "Weekly events at PixelNation in Emporia—Pokémon Night, Commander, Friday Night Magic, retro gaming, trade nights, and community play at 22 E. 5th Ave.",
   path: "/weekly-events",
 } as const;
 
@@ -90,7 +90,7 @@ export const GAMING_COMMUNITY = {
 export const COMMANDER_NIGHTS = {
   heroTitle: "Commander nights in Emporia",
   heroSupport:
-    "Commander is Magic: The Gathering’s most social format—and one of the best ways to meet people at a local game store. Join Commander tables during PixelNation Friday Nights.",
+    "Commander is Magic: The Gathering’s most social format—and one of the best ways to meet people at a local game store. Join Commander Night every Thursday, or play during Friday Night Magic.",
   whatIs: [
     `Commander (also called Elder Dragon Highlander) is a multiplayer Magic format where each player builds a 100-card deck led by a legendary creature—their Commander. Decks are singleton: almost every card appears only once, which keeps games surprising and personal.`,
     `Most Commander games are designed for four players around a table. Turns take time. Politics happen. Huge plays happen. Someone’s board state becomes a story the whole table remembers.`,
@@ -198,8 +198,8 @@ export const LEARN_TO_PLAY_PAGE = {
 export const WEEKLY_EVENTS_PAGE = {
   heroTitle: "Weekly events at PixelNation",
   heroSupport:
-    "Recurring nights at our downtown Emporia shop—trade, play Magic, and hang out with the local gaming community every Friday.",
-  note: "PixelNation Friday Nights run every Friday from 5:00 PM to 10:00 PM at 22 E. 5th Ave, Emporia, KS 66801.",
+    "Recurring nights at our downtown Emporia shop—Pokémon, Commander, Friday Night Magic, retro gaming, rotating game nights, and Sunday trade & play.",
+  note: "See the PixelNation Events page for the full weekly schedule and this week's featured games.",
 } as const;
 
 export const FAMILY_GAMING = {

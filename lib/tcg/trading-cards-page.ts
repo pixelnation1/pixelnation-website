@@ -107,7 +107,7 @@ export const TRADING_CARDS_FAQS: readonly FaqItem[] = [
   {
     question: "When are gaming events?",
     answer:
-      "PixelNation Friday Nights run every Friday from 5:00 PM to 10:00 PM, including weekly trade night and Friday Night Magic. Check the events page for the full calendar.",
+      "PixelNation has a weekly schedule including Pokémon Night every Wednesday, Commander on Thursday, Friday Night Magic, retro gaming, and Sunday trade & play. Check the events page for the full calendar.",
     links: [{ label: "Events", href: "/events" }],
   },
   {
