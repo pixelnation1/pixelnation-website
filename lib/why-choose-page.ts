@@ -44,7 +44,7 @@ export const WHY_CHOOSE_DEPTH = [
   {
     id: "community",
     title: "Community",
-    body: `PixelNation is building a local destination for trading cards, gaming, and gatherings. Community is not a slogan here—it is the reason we are expanding tables, inventory, and welcoming spaces alongside the repair bench.`,
+    body: `PixelNation is a local destination for trading cards, gaming, and gatherings. Community is not a slogan here—it is the tables, events, and welcome at the counter alongside the repair bench.`,
   },
   {
     id: "education",

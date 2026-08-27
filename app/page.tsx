@@ -6,7 +6,7 @@ import {
   DivisionSelectorSection,
   EducationalSection,
   EventsPreviewHomeSection,
-  ExpansionAnnouncementSection,
+  VisitPixelNationSection,
   FAQSection,
   FinalCTASection,
   HeroSection,
@@ -47,7 +47,7 @@ export default function HomePage() {
       <WhatWeCarryHomeSection />
       <EventsPreviewHomeSection />
       <BuySellTradeHomeSection />
-      <ExpansionAnnouncementSection />
+      <VisitPixelNationSection />
       <CommonProblemsSection />
       <WhyChooseSection />
       <EducationalSection />

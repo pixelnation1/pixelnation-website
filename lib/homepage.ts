@@ -17,7 +17,7 @@ export const HERO_SUPPORT =
 export const HERO_BULLETS = [
   "Phone, computer, console & appliance repair",
   "Trading cards, sealed products & singles",
-  "Gaming community & upcoming events",
+  "Gaming community, weekly events & play space",
   "Data recovery and board-level repair",
   "Mail-in repair accepted nationwide",
   "Training and software development available",
@@ -43,26 +43,27 @@ export const HOME_CARRY_CATEGORIES = [
   {
     label: "Video games",
     href: "/what-we-carry#gaming",
-    description: "Planned for the expanded location.",
+    description:
+      "Video games, retro titles, and accessories—selection changes frequently.",
   },
   {
     label: "Consoles",
     href: "/what-we-carry#gaming",
-    description: "Planned alongside our console repair expertise.",
+    description:
+      "Consoles and related hardware when available. Eligible systems may be bought or traded.",
   },
 ] as const;
 
-/** Expansion announcement — no address or opening date claims. */
-export const HOME_EXPANSION = {
-  title: "A larger PixelNation location is coming",
-  body: "PixelNation is moving toward a larger Emporia location with more room for everything we do. Details like the address and opening date will be announced when confirmed.",
+export const HOME_VISIT = {
+  title: "Visit PixelNation",
+  body: "Electronics repair, trading cards, gaming, events, buy/sell/trade and community — all under one roof in downtown Emporia.",
   items: [
-    "Expanded inventory",
     "Electronics repair",
-    "Gaming tables",
-    "Events and organized play",
-    "Customer browsing space",
-    "Community play",
+    "Trading cards",
+    "Gaming & play space",
+    "Weekly events",
+    "Buy, sell & trade",
+    "Community hangout",
   ],
 } as const;
 
@@ -88,7 +89,7 @@ export const HOME_TRUST_ITEMS = [
   "Electronics repair & trading cards",
   "Same-day repairs available on select services",
   "Mail-in repair accepted nationwide",
-  "Gaming events coming with expanded location",
+  "Weekly events at 22 E. 5th Ave",
 ] as const;
 
 export const HOME_SERVICES = [
@@ -199,7 +200,7 @@ export const WHY_CHOOSE = [
   },
   {
     title: "Trading Card Selection",
-    text: "Pokémon, Magic, Yu-Gi-Oh!, Lorcana, One Piece, sealed products, singles, and accessories—availability varies as inventory grows.",
+    text: "Pokémon, Magic, Yu-Gi-Oh!, Lorcana, One Piece, sealed products, singles, and accessories. Selection and availability vary.",
   },
   {
     title: "Friendly Support",

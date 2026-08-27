@@ -8,8 +8,8 @@ export const MEET_PIXELNATION = {
     "A local place for repair, gaming, and people who care about technology that lasts.",
   paragraphs: [
     `PixelNation grew out of a simple belief: technology deserves to be repaired—not thrown away the moment something goes wrong. When a phone stops charging, a console loses video, or a hard drive fails, the right answer is often careful diagnosis and honest work, not a rushed replacement.`,
-    `Gaming has always been about bringing people together. Trading cards, video games, and shared tables create friendships, friendly competition, and a reason to show up in person. That spirit belongs alongside the repair bench—not as a side note, but as part of who we are becoming in ${SITE.address.region}.`,
-    `Today PixelNation is a technology, gaming, and community brand. We still do the hard work—electronics repair, microsoldering, data recovery, and game console repair—and we are expanding into trading cards, local play, events, buy/sell/trade, and technology education. Through all of it, the goal stays the same: help people, tell the truth about options, and make technology feel personal again.`,
+    `Gaming has always been about bringing people together. Trading cards, video games, and shared tables create friendships, friendly competition, and a reason to show up in person. That spirit belongs alongside the repair bench in ${SITE.address.region}.`,
+    `Today PixelNation is a technology, gaming, and community shop. We still do the hard work—electronics repair, microsoldering, data recovery, and game console repair—and we also run trading cards, local play, events, buy/sell/trade, and technology education. Through all of it, the goal stays the same: help people, tell the truth about options, and make technology feel personal again.`,
   ],
 } as const;
 
@@ -49,32 +49,32 @@ export const PHOTO_SLOTS = [
   {
     id: "repair-bench",
     label: "Repair Bench",
-    description: "Future photo of diagnostics and hands-on repair work.",
+    description: "Diagnostics and hands-on repair work.",
   },
   {
     id: "microsoldering",
     label: "Microsoldering",
-    description: "Future photo of board-level and precision repair.",
+    description: "Board-level and precision repair.",
   },
   {
     id: "store-interior",
     label: "Store Interior",
-    description: "Future photo of the PixelNation space customers walk into.",
+    description: "The PixelNation space customers walk into.",
   },
   {
     id: "game-nights",
     label: "Game Nights",
-    description: "Future photo of community play and local events.",
+    description: "Community play and local events.",
   },
   {
     id: "trading-cards",
     label: "Trading Cards",
-    description: "Future photo of sealed products, singles, and browsing.",
+    description: "Sealed products, singles, and browsing.",
   },
   {
     id: "customers",
     label: "Customers & Community",
-    description: "Future photo celebrating the people who make PixelNation feel like home.",
+    description: "The people who make PixelNation feel like home.",
   },
 ] as const;
 

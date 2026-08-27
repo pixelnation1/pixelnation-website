@@ -160,7 +160,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
       <Section
         id="why-we-carry"
         title={`Why PixelNation carries ${game.name}`}
-        subtitle="Part of building a real local game store community in Emporia."
+        subtitle="How PixelNation supports a real local game store community in Emporia."
       >
         <p className="max-w-3xl text-lg leading-relaxed text-muted">
           {game.whyWeCarry}
@@ -170,14 +170,14 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
             Our trading card philosophy
           </Button>
           <Button href="/gaming-community" variant="outline">
-            Meet the community vision
+            Meet the community
           </Button>
         </div>
       </Section>
 
       <Section
         id="products"
-        title="Products we carry or plan to carry"
+        title="Products we carry"
         subtitle={`${game.name} products at PixelNation, subject to release timing and current inventory.`}
         alt
       >
@@ -212,7 +212,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
       <Section
         id="categories"
         title="Product categories"
-        subtitle={`What we support for ${game.name} as inventory expands.`}
+        subtitle={`What PixelNation carries and sources for ${game.name}. Selection varies.`}
         alt
       >
         <ul className="grid gap-4 sm:grid-cols-2">
@@ -254,7 +254,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
       <Section
         id="events"
         title="Organized events"
-        subtitle={`${game.name} event types planned for the expanded location—schedules will be announced when confirmed.`}
+        subtitle={`${game.name} events at PixelNation. See the events hub for dates, times, and registration.`}
         alt
       >
         <ul className="flex flex-wrap gap-2">
@@ -268,7 +268,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
           ))}
         </ul>
         <div className="cta-group mt-8">
-          <Button href="/weekly-events">Weekly Events</Button>
+          <Button href="/events">View {game.shortName} events</Button>
           <Button href="/events" variant="secondary">
             Events hub
           </Button>
@@ -287,7 +287,7 @@ export function GamePageTemplate({ game }: GamePageTemplateProps) {
       <Section
         id="availability"
         title="Availability & services"
-        subtitle="Honest launch-stage details—no invented stock or schedules."
+        subtitle="Current product and play details—selection varies, and event dates live on the events page."
       >
         <dl className="grid gap-4 sm:grid-cols-2">
           {[

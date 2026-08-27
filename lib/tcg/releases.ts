@@ -17,7 +17,7 @@ export function hasReleaseAnnouncements(): boolean {
 
 /** Preorder program facts — shown on /preorders-new-releases. */
 export const PREORDER_POLICIES = [
-  "PixelNation plans to offer preorders for select releases.",
+  "PixelNation offers preorders for select releases.",
   "Availability may depend on distributor allocation.",
   "Some releases may have quantity limits.",
   "Deposits may be required for certain products.",

@@ -103,17 +103,17 @@ export default function WhyChoosePixelNationPage() {
               {index % 3 === 0 ? (
                 <PhotoPlaceholder
                   label="Repair Bench"
-                  description="Future photo of diagnostics and careful repair work."
+                  description="Diagnostics and careful repair work."
                 />
               ) : index % 3 === 1 ? (
                 <PhotoPlaceholder
                   label="Microsoldering"
-                  description="Future photo of board-level precision repair."
+                  description="Board-level precision repair."
                 />
               ) : (
                 <PhotoPlaceholder
                   label="Game Nights"
-                  description="Future photo of community play and local gatherings."
+                  description="Community play and local gatherings."
                 />
               )}
             </article>

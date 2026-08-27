@@ -38,10 +38,10 @@ function availabilityLabel(
   switch (availability) {
     case "current":
       return "Available now";
-    case "planned":
-      return "Planned";
+    case "rotating":
+      return "In-store, selection varies";
     default:
-      return "Available & expanding";
+      return "Selection varies";
   }
 }
 
@@ -74,8 +74,8 @@ export default function WhatWeCarryPage() {
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
             A guide to the trading-card and gaming product categories PixelNation
-            carries or plans to carry in Emporia, Kansas. This is an informational
-            overview, not a live inventory catalog.
+            carries in Emporia, Kansas. This is an informational overview, not a
+            live inventory catalog.
           </p>
           <p className="mt-3 max-w-2xl text-sm text-muted">
             {CARRY_AVAILABILITY_NOTICE}

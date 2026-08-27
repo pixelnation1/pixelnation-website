@@ -1,6 +1,6 @@
 export { TCG_LAUNCH } from "@/lib/tcg/launch";
 export { TCG_GAMES, TCG_GAME_LIST, TCG_GAME_SLUGS, getTcgGame, isTcgGameSlug } from "@/lib/tcg/games";
-export { PIXELNATION_EVENTS, getPublishedEvents, hasPublishedEvents } from "@/lib/tcg/events";
+export { getPublishedEvents, hasPublishedEvents } from "@/lib/tcg/events";
 export { TCG_GENERAL_FAQS } from "@/lib/tcg/faqs";
 export { EVENT_CATEGORIES, EVENT_EXPECTATIONS } from "@/lib/tcg/event-categories";
 export {
@@ -27,10 +27,7 @@ export {
   isTradingCardsNavActive,
   isGamingEventsNavActive,
 } from "@/lib/tcg/links";
-export {
-  COMMUNITY_HUB_LINKS,
-  WEEKLY_EVENT_PLACEHOLDERS,
-} from "@/lib/tcg/community-pages";
+export { COMMUNITY_HUB_LINKS } from "@/lib/tcg/community-pages";
 export type {
   TcgGame,
   TcgGameSlug,

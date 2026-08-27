@@ -104,7 +104,7 @@ export default function TradingCardsPage() {
       <Section
         id="what-we-carry"
         title="What we carry"
-        subtitle="PixelNation carries or plans to carry a broad range of trading-card products and supplies."
+        subtitle="PixelNation carries a broad range of trading-card products and supplies. Selection varies."
       >
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {TRADING_CARDS_CARRY_ITEMS.map((item) => (
@@ -181,7 +181,7 @@ export default function TradingCardsPage() {
         alt
       >
         <p className="max-w-3xl text-sm text-muted">
-          Browse game pages for singles interest, or contact us with specific requests.
+          Browse game pages for singles, or contact us with specific requests.
         </p>
       </Section>
 

@@ -70,7 +70,7 @@ export const CONTACT_FAQ = [
   {
     question: "How quickly will I receive a response?",
     answer:
-      "During business hours (Monday–Friday, 9:00 AM–3:00 PM), we aim to respond the same day. Messages received after hours or on weekends are answered on the next business day.",
+      `During business hours (${SITE.hours}), we aim to respond the same day. Messages received after hours or on weekends are answered on the next business day.`,
   },
   {
     question: "Can I track my repair online?",
@@ -93,7 +93,7 @@ export const AEO_ANSWERS = [
   {
     question: "What are PixelNation's business hours?",
     answer:
-      "PixelNation is open Monday through Friday from 9:00 AM to 3:00 PM.",
+      `PixelNation is open ${SITE.hours}.`,
   },
   {
     question: "What services does PixelNation offer?",

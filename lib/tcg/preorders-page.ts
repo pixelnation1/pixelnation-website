@@ -1,7 +1,7 @@
 export const PREORDERS_METADATA = {
   title: "Preorders & New Releases | Trading Cards Emporia KS | PixelNation",
   description:
-    "Preorders and new trading-card releases in Emporia, Kansas. PixelNation plans preorders for select Pokémon, Magic: The Gathering, Yu-Gi-Oh!, Lorcana, and One Piece releases—contact us for availability.",
+    "Preorders and new trading-card releases in Emporia, Kansas. PixelNation offers preorders for select Pokémon, Magic: The Gathering, Yu-Gi-Oh!, Lorcana, and One Piece releases—contact us for availability.",
   path: "/preorders-new-releases",
 } as const;
 

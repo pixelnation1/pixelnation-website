@@ -1,6 +1,6 @@
 export const EVENTS_METADATA = {
-  title: "Gaming Events Emporia KS | PixelNation",
+  title: "Gaming Events in Emporia KS | PixelNation",
   description:
-    "Upcoming trading-card and gaming events in Emporia, Kansas. PixelNation is preparing weekly TCG events, community nights, and learn-to-play sessions for our expanded location.",
+    "Discover upcoming trading card events, Pokémon trade nights, Magic: The Gathering events, tournaments, video game nights and community gaming at PixelNation in Emporia, Kansas.",
   path: "/events",
 } as const;

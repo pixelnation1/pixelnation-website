@@ -35,7 +35,7 @@ export default function GamingCommunityPage() {
     >
       <Section
         id="vision"
-        title="Our community vision"
+        title="Our community"
         subtitle="A local game store culture built around belonging."
       >
         <div className="max-w-3xl space-y-4 text-muted leading-relaxed">

@@ -1,16 +1,27 @@
+import { gameLabel, getWeeklyEvents } from "@/lib/events";
 import type { WeeklyScheduleEntry } from "@/lib/tcg/types";
 
 /**
- * Weekly schedule — staff-editable.
- * Add real entries with status "confirmed" once days and times are locked in.
- * Entries with status "planned" or "coming-soon" render without implying
- * an active schedule.
+ * Weekly schedule derived from recurring store events in lib/events/data.ts.
+ * Add a recurring event there to show it here automatically.
  */
-export const WEEKLY_SCHEDULE: readonly WeeklyScheduleEntry[] = [];
+export const WEEKLY_SCHEDULE: readonly WeeklyScheduleEntry[] = getWeeklyEvents().map(
+  (event) => ({
+    day: event.recurringDay
+      ? event.recurringDay.charAt(0).toUpperCase() + event.recurringDay.slice(1)
+      : "Weekly",
+    eventName: event.title,
+    startTime: event.startTime,
+    endTime: event.endTime,
+    game: gameLabel(event.game),
+    description: event.shortDescription,
+    status: "confirmed" as const,
+  }),
+);
 
 export const SCHEDULE_PLACEHOLDER_MESSAGE =
-  "PixelNation’s regular event schedule will be announced as the expanded location gets closer to opening.";
+  "Check the events page for PixelNation’s current weekly nights in downtown Emporia.";
 
 export function hasConfirmedSchedule(): boolean {
-  return WEEKLY_SCHEDULE.some((entry) => entry.status === "confirmed");
+  return WEEKLY_SCHEDULE.length > 0;
 }

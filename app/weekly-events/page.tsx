@@ -1,27 +1,30 @@
+import { EventCard } from "@/components/events/EventCard";
+import { WeeklyScheduleBoard } from "@/components/events/WeeklyScheduleBoard";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
-import { EventCard } from "@/components/tcg/EventCard";
 import { CommunityPageShell } from "@/components/tcg/CommunityPageShell";
+import { getWeeklyEvents } from "@/lib/events";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import {
-  WEEKLY_EVENT_PLACEHOLDERS,
   WEEKLY_EVENTS_METADATA,
   WEEKLY_EVENTS_PAGE,
 } from "@/lib/tcg/community-pages";
-import { TCG_LAUNCH } from "@/lib/tcg/launch";
 
 export const metadata = createPageMetadata({
   title: WEEKLY_EVENTS_METADATA.title,
   description: WEEKLY_EVENTS_METADATA.description,
   path: WEEKLY_EVENTS_METADATA.path,
+  titleAbsolute: true,
   keywords: [
     "weekly gaming events Emporia",
     "Friday Night Magic Emporia",
-    "Pokémon League Emporia",
+    "PixelNation Friday Nights",
   ],
 });
 
 export default function WeeklyEventsPage() {
+  const weeklyEvents = getWeeklyEvents();
+
   return (
     <CommunityPageShell
       title="Weekly Events"
@@ -35,26 +38,31 @@ export default function WeeklyEventsPage() {
         { name: "Weekly Events", path: "/weekly-events" },
       ]}
       primaryCta={{ href: "/events", label: "Events hub" }}
-      secondaryCta={{ href: "/contact", label: "Contact for updates" }}
+      secondaryCta={{ href: "/events/pixelnation-friday-nights", label: "Friday Nights" }}
     >
       <Section
-        id="placeholders"
-        title="Planned weekly experiences"
-        subtitle="Placeholder cards only—no invented dates, fees, or registration systems."
+        id="weekly-schedule"
+        title="Weekly schedule"
+        subtitle={WEEKLY_EVENTS_PAGE.note}
       >
-        <p className="mb-8 max-w-3xl text-sm text-muted">{WEEKLY_EVENTS_PAGE.note}</p>
+        <WeeklyScheduleBoard />
+      </Section>
+
+      <Section
+        id="weekly-events"
+        title="Recurring events"
+        subtitle="Every Friday at PixelNation — 22 E. 5th Ave, Emporia, KS 66801."
+        alt
+      >
         <div className="grid gap-6 md:grid-cols-2">
-          {WEEKLY_EVENT_PLACEHOLDERS.map((event) => (
-            <EventCard key={event.id} event={event} />
+          {weeklyEvents.map((event) => (
+            <EventCard key={event.id} event={event} featured={event.featured} />
           ))}
         </div>
-        <p className="mt-8 max-w-3xl text-sm text-muted">
-          {TCG_LAUNCH.eventsComing}
-        </p>
         <div className="cta-group mt-8">
           <Button href="/commander-nights">Commander Nights</Button>
-          <Button href="/events#weekly-schedule" variant="secondary">
-            Weekly schedule
+          <Button href="/events" variant="secondary">
+            All events
           </Button>
         </div>
       </Section>

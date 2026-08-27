@@ -6,6 +6,7 @@ import { CITY_SLUGS } from "@/lib/locations/cities";
 import { SERVICE_SLUGS } from "@/lib/locations/services";
 import { getAllCityServiceParams } from "@/lib/locations/content";
 import { LOCAL_LANDING_SLUGS } from "@/lib/seo/local-landings";
+import { getEventSlugs } from "@/lib/events";
 import { buildCanonical } from "@/lib/seo/site-seo";
 
 export type SitemapEntry = {
@@ -127,6 +128,14 @@ function portfolioSitemapEntries(): SitemapEntry[] {
   }));
 }
 
+function eventSitemapEntries(): SitemapEntry[] {
+  return getEventSlugs().map((slug) => ({
+    path: `/events/${slug}`,
+    changeFrequency: "weekly" as const,
+    priority: 0.86,
+  }));
+}
+
 export function getAllSitemapEntries(): SitemapEntry[] {
   const blogEntries: SitemapEntry[] = BLOG_POSTS.map((post) => ({
     path: `/blog/${post.slug}`,
@@ -139,6 +148,7 @@ export function getAllSitemapEntries(): SitemapEntry[] {
     ...locationSitemapEntries(),
     ...knowledgeSitemapEntries(),
     ...portfolioSitemapEntries(),
+    ...eventSitemapEntries(),
     ...blogEntries,
   ];
 }

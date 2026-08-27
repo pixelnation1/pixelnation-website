@@ -62,9 +62,9 @@ export default function PreordersNewReleasesPage() {
             Preorders &amp; New Releases
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-            PixelNation plans to offer preorders for select trading-card releases as
-            our Emporia location expands. This page explains how preorders will
-            work—it is not an online ordering system.
+            PixelNation offers preorders for select trading-card releases.
+            Availability depends on distributor allocation and demand. This page
+            explains how preorders work—it is not an online ordering system.
           </p>
           <div className="cta-group mt-8">
             <Button href="/contact">Ask about a release</Button>
@@ -112,7 +112,7 @@ export default function PreordersNewReleasesPage() {
         subtitle={
           anyReleases
             ? "Current release announcements and preorder interest by game."
-            : "Release announcements will appear here when confirmed. In the meantime, contact us about any upcoming set."
+            : "No specific release cards are posted right now. Contact us about any upcoming set."
         }
       >
         <div className="grid gap-6 md:grid-cols-2">

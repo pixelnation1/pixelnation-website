@@ -14,7 +14,7 @@ import {
   HERO_SUPPORT,
   HOME_CARRY_CATEGORIES,
   HOME_DIVISIONS,
-  HOME_EXPANSION,
+  HOME_VISIT,
   HOME_FAQS,
   HOME_SERVICES,
   HOME_TRUST_ITEMS,
@@ -111,11 +111,11 @@ export function MeetPixelNationSection() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
           <PhotoPlaceholder
             label="Repair Bench"
-            description="Future photo of the workbench where devices get a second chance."
+            description="The workbench where devices get a second chance."
           />
           <PhotoPlaceholder
             label="Trading Cards & Play"
-            description="Future photo of cards, tables, and the community side of PixelNation."
+            description="Cards, tables, and the community side of PixelNation."
           />
         </div>
       </div>
@@ -183,7 +183,7 @@ export function TradingCardsHomeSection() {
     <Section
       id="trading-cards"
       title="Trading Cards & Gaming in Emporia"
-      subtitle="PixelNation is expanding into a full local destination for trading card games, sealed products, singles, accessories, organized events, and community play. Follow our progress as we prepare for a larger retail and gaming location."
+      subtitle="Trading cards, sealed products, singles, accessories, weekly events, and community play at our downtown Emporia shop."
       alt
     >
       <div className="relative mb-8 aspect-[1024/412] w-full overflow-hidden rounded-2xl border border-card-border">
@@ -212,7 +212,7 @@ export function WhatWeCarryHomeSection() {
     <Section
       id="what-we-carry"
       title="What we carry"
-      subtitle="Broad product categories at PixelNation—availability varies as inventory expands."
+      subtitle="Broad product categories at PixelNation. Selection and availability vary."
     >
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {HOME_CARRY_CATEGORIES.map((category) => (
@@ -247,9 +247,9 @@ export function EventsPreviewHomeSection() {
       alt
     >
       <p className="-mt-4 mb-8 max-w-3xl text-muted leading-relaxed">
-        Community gaming nights, learn-to-play sessions, and organized play are all
-        part of the plan for our expanded location—alongside dedicated tables and
-        play space for trading-card and tabletop gaming.
+        PixelNation Friday Nights, Friday Night Magic, trade nights, and special
+        events happen in downtown Emporia. Bring a deck, a binder, or just show up
+        and hang out.
       </p>
       <div className="cta-group">
         <Button href="/events">View Events</Button>
@@ -283,15 +283,20 @@ export function BuySellTradeHomeSection() {
   );
 }
 
-export function ExpansionAnnouncementSection() {
+export function VisitPixelNationSection() {
   return (
     <Section
-      id="expansion"
-      title={HOME_EXPANSION.title}
-      subtitle={HOME_EXPANSION.body}
+      id="visit"
+      title={HOME_VISIT.title}
+      subtitle={HOME_VISIT.body}
     >
+      <address className="mb-8 not-italic text-sm leading-relaxed text-muted sm:text-base">
+        <span className="block font-semibold text-foreground">{SITE.name}</span>
+        <span className="block">{SITE.address.streetLine1}</span>
+        <span className="block">{SITE.address.cityStateZip}</span>
+      </address>
       <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {HOME_EXPANSION.items.map((item) => (
+        {HOME_VISIT.items.map((item) => (
           <li
             key={item}
             className="flex gap-2 rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted"
@@ -304,6 +309,17 @@ export function ExpansionAnnouncementSection() {
           </li>
         ))}
       </ul>
+      <div className="cta-group mt-8">
+        <Button href={SITE.maps.directionsUrl} external>
+          Visit PixelNation
+        </Button>
+        <Button href="/events" variant="secondary">
+          View Events
+        </Button>
+        <Button href="/contact" variant="outline">
+          Start a Repair
+        </Button>
+      </div>
     </Section>
   );
 }

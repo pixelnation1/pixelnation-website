@@ -41,7 +41,7 @@ export const STORY_SECTIONS = [
     title: "Why gaming matters",
     paragraphs: [
       `Gaming is not a distraction from technology—it is one of the best reasons people connect through it. Trading card games, video games, and shared tables create friendships, friendly competition, and a welcoming way for newcomers to learn.`,
-      `PixelNation is expanding trading cards, accessories, buy/sell/trade interest, and community events because gaming belongs next to repair—not behind it. We want Emporia to have a place where fixing a Switch and finding a booster pack can live under the same roof.`,
+      `PixelNation carries trading cards, accessories, buy/sell/trade, and community events because gaming belongs next to repair—not behind it. Emporia has a place where fixing a Switch and finding a booster pack live under the same roof.`,
     ],
   },
   {
@@ -49,15 +49,15 @@ export const STORY_SECTIONS = [
     title: "Building a community",
     paragraphs: [
       `A good local shop is more than a counter and a queue. It is a place people return to—because they were treated fairly, because someone explained a repair without jargon, or because they found others who love the same games.`,
-      `As PixelNation grows toward a larger location with more room for inventory, tables, and events, the community goal stays simple: be welcoming to beginners and experienced players, collectors and casual groups, families and competitive minds. Help people. Make room for them.`,
+      `As PixelNation grows as a local shop with room for inventory, tables, and events, the community goal stays simple: be welcoming to beginners and experienced players, collectors and casual groups, families and competitive minds. Help people. Make room for them.`,
     ],
   },
   {
     id: "our-vision",
-    title: "Our vision",
+    title: "What we stand for",
     paragraphs: [
       `We see PixelNation as a lasting technology, gaming, and community brand in ${SITE.address.region}—professional electronics repair, trading cards, video games, local events, buy/sell/trade, and technology education working together.`,
-      `The larger location will give that vision more room. Until details like address and opening date are confirmed, we will not invent them. What we can promise is the direction: repair done right, games people love, and a place worth visiting.`,
+      `That vision has a home at 22 E. 5th Ave in downtown Emporia: repair done right, games people love, and a place worth visiting.`,
     ],
   },
 ] as const;
@@ -128,7 +128,7 @@ export const WHAT_WE_OFFER = [
   },
   {
     title: "Trading Cards & Gaming",
-    description: "Sealed products, singles interest, accessories, and community play.",
+    description: "Sealed products, singles, accessories, and community play.",
     href: "/trading-cards",
     keyword: "Trading Cards Emporia KS",
   },
@@ -169,7 +169,7 @@ export const WHY_CHOOSE = [
   },
   {
     title: "Gaming & trading cards",
-    text: "A growing local destination for sealed products, singles interest, accessories, and community play.",
+    text: "A local destination for sealed products, singles, accessories, and community play.",
   },
   {
     title: "Local support in Emporia, Kansas",
@@ -190,7 +190,7 @@ export const ABOUT_FAQ = [
   {
     question: "What makes PixelNation different from other repair shops?",
     answer:
-      "PixelNation combines local repair service with board-level microsoldering, data recovery, appliance diagnostics, professional training, and an expanding trading-card and gaming presence—solving hard technical problems while building a welcoming community.",
+      "PixelNation combines local repair service with board-level microsoldering, data recovery, appliance diagnostics, professional training, and a trading-card and gaming shop—solving hard technical problems while building a welcoming community.",
   },
   {
     question: "Does PixelNation offer training for other technicians?",
@@ -200,7 +200,7 @@ export const ABOUT_FAQ = [
   {
     question: "Is PixelNation only a repair shop?",
     answer:
-      "Repair remains a core strength, but PixelNation is becoming a broader technology, gaming, and community brand—including trading cards, events interest, buy/sell/trade, and education alongside professional electronics repair.",
+      "Repair remains a core strength, and PixelNation is also a technology, gaming, and community shop—including trading cards, events, buy/sell/trade, and education alongside professional electronics repair.",
   },
 ] as const;
 

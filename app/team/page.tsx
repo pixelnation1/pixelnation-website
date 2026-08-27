@@ -70,7 +70,7 @@ export default function TeamPage() {
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <PhotoPlaceholder
             label="Founder portrait"
-            description="Future photo placeholder—add a real portrait when ready. No invented identity."
+            description="Founder portrait."
             aspect="square"
           />
           <div className="max-w-3xl space-y-4 text-muted leading-relaxed">
@@ -84,7 +84,7 @@ export default function TeamPage() {
       <Section
         id="future-team"
         title={FUTURE_TEAM.title}
-        subtitle="Room to grow—without inventing people who are not here yet."
+        subtitle="Roles PixelNation may add as the shop grows."
         alt
       >
         <p className="-mt-2 max-w-3xl text-muted leading-relaxed">
@@ -100,7 +100,7 @@ export default function TeamPage() {
               >
                 <h3 className="font-semibold text-foreground">{role}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
-                  Future team slot—ready to introduce a real teammate later.
+                  This role is not filled yet.
                 </p>
               </article>
             ),

@@ -11,10 +11,10 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     tagline:
       "Booster packs, Elite Trainer Boxes, singles, accessories, and the latest Pokémon TCG releases.",
     intro:
-      "Pokémon cards in Emporia, KS mean more than packs on a shelf—they mean trainers learning together, families opening boosters, and a local community that celebrates every win. PixelNation is building a destination for the Pokémon TCG with sealed products, singles, supplies, and welcoming play.",
+      "Pokémon cards in Emporia, KS mean more than packs on a shelf—they mean trainers learning together, families opening boosters, and a local community that celebrates every win. PixelNation carries Pokémon TCG sealed products, singles, supplies, and welcoming play in downtown Emporia.",
     metaTitle: "Pokémon Cards Emporia KS | Pokémon TCG | PixelNation",
     metaDescription:
-      "Buy Pokémon cards in Emporia, Kansas. PixelNation offers Pokémon TCG sealed products, singles, accessories, and plans for organized play. Contact us for availability.",
+      "Buy Pokémon cards in Emporia, Kansas. PixelNation offers Pokémon TCG sealed products, singles, accessories, and community play. Selection varies—contact us for availability.",
     keywords: [
       "Pokémon cards Emporia KS",
       "Pokémon TCG Emporia",
@@ -61,9 +61,9 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     ],
     sealedStatus: TCG_LAUNCH.availabilityNote,
     singlesStatus:
-      "Singles selection is growing. Contact us to ask about specific cards or to sell Pokémon cards in Kansas.",
+      "Singles selection varies. Contact us to ask about specific cards or to sell Pokémon cards in Kansas.",
     accessoriesStatus:
-      "Sleeves, binders, and related supplies are part of our expanding inventory.",
+      "Sleeves, binders, and related supplies are available. Selection varies—ask about current stock.",
     preorderStatus: TCG_LAUNCH.preorderStatus,
     organizedPlayStatus: TCG_LAUNCH.organizedPlayStatus,
     buySellTradeStatus:
@@ -81,9 +81,9 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Playmats",
     ],
     learnToPlay:
-      "New to the Pokémon TCG? Learn-to-play opportunities are planned for the expanded location, and our staff can point new trainers toward starter products and beginner-friendly resources today.",
+      "New to the Pokémon TCG? Staff can point new trainers toward starter products and beginner-friendly resources. Casual play during PixelNation Friday Nights is a good way to learn at the table.",
     casualPlay:
-      "Pokémon is one of the most family-friendly trading card games, and casual, all-ages play is a core part of our community plans—bring your deck or start a new one.",
+      "Pokémon is one of the most family-friendly trading card games. Casual, all-ages play is welcome—bring your deck or start a new one.",
     plannedEventTypes: [
       "Pokémon casual play",
       "Learn-to-play sessions",
@@ -108,18 +108,18 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       {
         question: "Can I buy Pokémon cards at PixelNation in Emporia?",
         answer:
-          "Yes—PixelNation is expanding trading-card inventory in Emporia, including Pokémon TCG products. Products and availability may vary; contact us for current stock.",
+          "Yes. PixelNation carries Pokémon TCG products in Emporia. Selection and availability vary; contact us or visit for current stock.",
       },
       {
         question: "Do you buy or trade Pokémon cards?",
         answer:
-          "We plan to purchase and accept trades for eligible Pokémon singles, collections, and sealed products based on condition, authenticity, demand, and market value. Start with a collection review request.",
+          "PixelNation buys and trades eligible Pokémon singles, collections, and sealed products based on condition, authenticity, demand, and market value. Start with a collection review request.",
         links: [{ label: "Buy, Sell & Trade", href: "/buy-sell-trade" }],
       },
       {
         question: "Will there be Pokémon events in Emporia?",
         answer:
-          "Weekly gaming events and organized play are coming as PixelNation prepares for its expanded location. Follow our events page for updates.",
+          "Yes. Pokémon play is part of PixelNation Friday Nights every Friday from 5:00 PM to 10:00 PM. Check the events page for upcoming Pokémon nights.",
         links: [{ label: "View Events", href: "/events" }],
       },
     ],
@@ -132,10 +132,10 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     tagline:
       "Commander decks, Play Boosters, Collector products, singles, and accessories for every Magic player.",
     intro:
-      "Magic: The Gathering in Emporia, KS is about more than cardboard—it is Commander pods, draft nights, and the joy of discovering a deck that feels like you. PixelNation supports MTG sealed products, singles, accessories, and community play as we grow into a fuller local game store.",
+      "Magic: The Gathering in Emporia, KS is about more than cardboard—it is Commander pods, Friday Night Magic, and the joy of discovering a deck that feels like you. PixelNation supports MTG sealed products, singles, accessories, and community play in downtown Emporia.",
     metaTitle: "Magic the Gathering Emporia KS | MTG Cards | PixelNation",
     metaDescription:
-      "MTG cards in Emporia, Kansas. PixelNation supports Magic: The Gathering sealed products, singles, Commander interest, and upcoming Magic events. Ask about availability.",
+      "MTG cards in Emporia, Kansas. PixelNation supports Magic: The Gathering sealed products, singles, Commander play, and Friday Night Magic. Ask about availability.",
     keywords: [
       "Magic the Gathering Emporia KS",
       "MTG Emporia",
@@ -168,7 +168,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       {
         title: "Singles",
         description:
-          "Cards for Constructed, Commander, and casual play—inventory grows over time.",
+          "Cards for Constructed, Commander, and casual play—ask about current singles.",
       },
       {
         title: "Accessories",
@@ -182,12 +182,12 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     ],
     sealedStatus: TCG_LAUNCH.availabilityNote,
     singlesStatus:
-      "MTG singles are part of our expanding selection. Contact us for specific cards or Commander staples.",
+      "MTG singles selection varies. Contact us for specific cards or Commander staples.",
     accessoriesStatus:
-      "Deck protection and accessories are available as inventory expands.",
+      "Deck protection and accessories are available. Selection varies—ask about current stock.",
     preorderStatus: TCG_LAUNCH.preorderStatus,
     organizedPlayStatus:
-      "Magic events in Emporia are in preparation—including plans for casual and Commander-friendly play as the location expands.",
+      "Friday Night Magic runs every Friday during PixelNation Friday Nights, including casual constructed and Commander. Check the events page for the current Magic calendar.",
     buySellTradeStatus:
       "Eligible MTG singles, collections, and sealed products may be evaluated for cash or store credit.",
     productsCarried: [
@@ -203,9 +203,9 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Playmats",
     ],
     learnToPlay:
-      "Never played Magic? Learn-to-play opportunities and starter kit recommendations are part of our plans—ask our staff where to begin, whether you want Commander or a simpler starting point.",
+      "Never played Magic? Ask staff where to begin—starter kits and Commander precons are a common first step, and Friday Night Magic is a welcoming table for new players.",
     casualPlay:
-      "Commander nights, casual constructed play, and draft nights are planned for the expanded location. Until schedules are announced, ask us about product availability and informal play.",
+      "Commander nights, casual constructed play, and draft tables are part of Magic play at PixelNation. Join Friday Night Magic or ask about a pickup game.",
     plannedEventTypes: [
       "Commander nights",
       "Draft nights",
@@ -226,22 +226,22 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Sleeves, deck boxes, and playmats",
     ],
     whyWeCarry:
-      "Magic is the backbone of many local game stores. Supporting MTG—and especially Commander—helps PixelNation build weekly community in Emporia.",
+      "Magic is the backbone of many local game stores. Supporting MTG—and especially Commander—gives PixelNation a weekly community table in Emporia.",
     faqs: [
       {
         question: "Where can I find MTG cards in Emporia?",
         answer:
-          "PixelNation carries Magic: The Gathering products as part of our trading-card expansion in Emporia, Kansas. Availability changes as inventory grows—reach out for current stock.",
+          "PixelNation carries Magic: The Gathering products in Emporia, Kansas. Availability changes with releases—reach out or visit for current stock.",
       },
       {
         question: "Do you support Commander in Emporia?",
         answer:
-          "Commander is a priority interest for our community gaming plans. Formal event schedules will be announced when ready; ask us about casual play and product availability.",
+          "Yes. Commander tables are welcome during Friday Night Magic at PixelNation. Bring a precon or your own deck and tell your table the power level you want.",
       },
       {
         question: "Will there be Magic events in Emporia?",
         answer:
-          "Yes—Magic events are part of our upcoming events roadmap. Check the events page or contact us for the latest updates.",
+          "Yes. Friday Night Magic runs every Friday during PixelNation Friday Nights from 5:00 PM to 10:00 PM. See the events page for the current Magic calendar.",
         links: [{ label: "Events", href: "/events" }],
       },
     ],
@@ -254,10 +254,10 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     tagline:
       "Structure Decks, booster products, singles, accessories, and popular releases for duelists of every experience level.",
     intro:
-      "Yu-Gi-Oh! in Emporia, KS is for duelists who love big summons, clever combos, and the energy of a good match. PixelNation carries sealed products, singles interest, and accessories—and plans community play so local players have a place to duel.",
+      "Yu-Gi-Oh! in Emporia, KS is for duelists who love big summons, clever combos, and the energy of a good match. PixelNation carries sealed products, singles, and accessories—and welcomes duelists during PixelNation Friday Nights.",
     metaTitle: "Yu-Gi-Oh Cards Emporia KS | Yu-Gi-Oh Products | PixelNation",
     metaDescription:
-      "Yu-Gi-Oh cards and products in Emporia, Kansas. PixelNation offers sealed Yu-Gi-Oh! products, singles interest, accessories, and upcoming organized play. Contact for availability.",
+      "Yu-Gi-Oh cards and products in Emporia, Kansas. PixelNation offers sealed Yu-Gi-Oh! products, singles, accessories, and community play. Contact for availability.",
     keywords: [
       "Yu-Gi-Oh cards Emporia KS",
       "Yu-Gi-Oh products Emporia",
@@ -285,8 +285,9 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     ],
     sealedStatus: TCG_LAUNCH.availabilityNote,
     singlesStatus:
-      "Yu-Gi-Oh! singles selection is expanding. Contact us with card requests or collections to sell.",
-    accessoriesStatus: "Dueling supplies are added as inventory grows.",
+      "Yu-Gi-Oh! singles selection varies. Contact us with card requests or collections to sell.",
+    accessoriesStatus:
+      "Dueling supplies are available. Selection varies—ask about current stock.",
     preorderStatus: TCG_LAUNCH.preorderStatus,
     organizedPlayStatus: TCG_LAUNCH.organizedPlayStatus,
     buySellTradeStatus:
@@ -302,9 +303,9 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Deck boxes",
     ],
     learnToPlay:
-      "Structure decks are a great entry point for new duelists. Learn-to-play guidance and beginner-friendly play are part of our community plans—ask our staff where to start.",
+      "Structure decks are a great entry point for new duelists. Ask staff where to start, then sit down for beginner-friendly play during PixelNation Friday Nights.",
     casualPlay:
-      "Casual dueling and local Yu-Gi-Oh! events are planned as the expanded location comes online. Bring your deck or build a new one from structure decks and singles.",
+      "Casual dueling and Yu-Gi-Oh! play are welcome at PixelNation Friday Nights. Bring your deck or build a new one from structure decks and singles.",
     plannedEventTypes: [
       "Yu-Gi-Oh! casual play",
       "Learn-to-play sessions",
@@ -329,7 +330,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       {
         question: "Do you sell Yu-Gi-Oh! products in Emporia?",
         answer:
-          "Yes. PixelNation is expanding Yu-Gi-Oh! product availability in Emporia, Kansas. Products and availability may vary—contact us for current stock.",
+          "Yes. PixelNation carries Yu-Gi-Oh! products in Emporia, Kansas. Selection and availability vary—contact us for current stock.",
       },
       {
         question: "Can I sell Yu-Gi-Oh! cards to PixelNation?",
@@ -347,10 +348,10 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     tagline:
       "Booster products, Illumineer’s Troves, starter decks, singles, and accessories for Lorcana players and collectors.",
     intro:
-      "Disney Lorcana in Emporia, KS invites families and storytellers to the table. Quest for lore, collect beloved characters, and learn a game designed to feel welcoming. PixelNation offers sealed products, singles interest, accessories, and family-friendly play plans.",
+      "Disney Lorcana in Emporia, KS invites families and storytellers to the table. Quest for lore, collect beloved characters, and learn a game designed to feel welcoming. PixelNation offers sealed products, singles, accessories, and family-friendly play.",
     metaTitle: "Lorcana Cards Emporia KS | Disney Lorcana | PixelNation",
     metaDescription:
-      "Disney Lorcana cards in Emporia, Kansas. PixelNation offers Lorcana sealed products, singles interest, accessories, and upcoming play opportunities. Ask about availability.",
+      "Disney Lorcana cards in Emporia, Kansas. PixelNation offers Lorcana sealed products, singles, accessories, and community play. Ask about availability.",
     keywords: [
       "Lorcana cards Emporia KS",
       "Disney Lorcana Emporia",
@@ -378,8 +379,9 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     ],
     sealedStatus: TCG_LAUNCH.availabilityNote,
     singlesStatus:
-      "Lorcana singles are part of our expanding inventory. Contact us for specific cards.",
-    accessoriesStatus: "Accessories are added as our TCG selection grows.",
+      "Lorcana singles selection varies. Contact us for specific cards.",
+    accessoriesStatus:
+      "Accessories are available. Selection varies—ask about current stock.",
     preorderStatus: TCG_LAUNCH.preorderStatus,
     organizedPlayStatus: TCG_LAUNCH.organizedPlayStatus,
     buySellTradeStatus:
@@ -395,9 +397,9 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Binders",
     ],
     learnToPlay:
-      "Lorcana is welcoming for new players and families. Starter decks make it easy to begin, and learn-to-play opportunities are planned for the expanded location.",
+      "Lorcana is welcoming for new players and families. Starter decks make it easy to begin, and staff can help you learn the ink system at the table.",
     casualPlay:
-      "Family-friendly Lorcana play and community events are part of our roadmap. Casual games are a great way to learn the ink system and meet local players.",
+      "Family-friendly Lorcana play is welcome during PixelNation Friday Nights. Casual games are a great way to learn the ink system and meet local players.",
     plannedEventTypes: [
       "Lorcana casual play",
       "Learn-to-play sessions",
@@ -422,12 +424,12 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       {
         question: "Where can I get Lorcana cards in Emporia?",
         answer:
-          "PixelNation carries Disney Lorcana as part of our trading-card expansion in Emporia, Kansas. Availability varies—contact us for current products.",
+          "PixelNation carries Disney Lorcana in Emporia, Kansas. Availability varies—contact us for current products.",
       },
       {
         question: "Will there be Lorcana play events?",
         answer:
-          "Learn-to-play and community events are part of our broader events roadmap. Check the events page for updates as schedules are announced.",
+          "Yes. Lorcana play is welcome during PixelNation Friday Nights every Friday from 5:00 PM to 10:00 PM. Check the events page for special Lorcana nights.",
         links: [{ label: "Events", href: "/events" }],
       },
     ],
@@ -440,10 +442,10 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     tagline:
       "Booster products, Starter Decks, special collections, singles, and accessories for One Piece players and collectors.",
     intro:
-      "One Piece Card Game fans in Emporia, KS—set sail with Starter Decks, sealed products, and a community ready to teach DON!! and Life cards. PixelNation is expanding One Piece support so players and collectors have a local home for the adventure.",
+      "One Piece Card Game fans in Emporia, KS—set sail with Starter Decks, sealed products, and a community ready to teach DON!! and Life cards. PixelNation supports One Piece so players and collectors have a local home for the adventure.",
     metaTitle: "One Piece Card Game Emporia KS | One Piece Cards | PixelNation",
     metaDescription:
-      "One Piece Card Game products in Emporia, Kansas. PixelNation offers sealed One Piece cards, singles interest, accessories, and upcoming play opportunities. Contact for availability.",
+      "One Piece Card Game products in Emporia, Kansas. PixelNation offers sealed One Piece cards, singles, accessories, and community play. Contact for availability.",
     keywords: [
       "One Piece Card Game Emporia KS",
       "One Piece cards Emporia",
@@ -472,8 +474,8 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
     ],
     sealedStatus: TCG_LAUNCH.availabilityNote,
     singlesStatus:
-      "One Piece singles selection is growing. Contact us with requests or collections to sell.",
-    accessoriesStatus: "Accessories are added alongside sealed and singles inventory.",
+      "One Piece singles selection varies. Contact us with requests or collections to sell.",
+    accessoriesStatus: "Accessories are available alongside sealed and singles products.",
     preorderStatus: TCG_LAUNCH.preorderStatus,
     organizedPlayStatus: TCG_LAUNCH.organizedPlayStatus,
     buySellTradeStatus:
@@ -489,9 +491,9 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       "Deck boxes",
     ],
     learnToPlay:
-      "Starter decks are the easiest way into the One Piece Card Game. Learn-to-play guidance is planned as our community programs launch—ask our staff where to begin.",
+      "Starter decks are the easiest way into the One Piece Card Game. Ask staff where to begin, then sit down during PixelNation Friday Nights to learn DON!! and Life cards at the table.",
     casualPlay:
-      "Casual One Piece play and local events are planned for the expanded location. Meet other players and test decks in a relaxed setting.",
+      "Casual One Piece play is welcome at PixelNation Friday Nights. Meet other players and test decks in a relaxed setting.",
     plannedEventTypes: [
       "One Piece casual play",
       "Learn-to-play sessions",
@@ -516,7 +518,7 @@ export const TCG_GAMES: Record<TcgGameSlug, TcgGame> = {
       {
         question: "Do you sell One Piece cards in Emporia?",
         answer:
-          "Yes. PixelNation is expanding One Piece Card Game inventory in Emporia, Kansas. Products and availability may vary—contact us for current stock.",
+          "Yes. PixelNation carries One Piece Card Game products in Emporia, Kansas. Selection and availability vary—contact us for current stock.",
       },
       {
         question: "Can I preorder One Piece releases?",

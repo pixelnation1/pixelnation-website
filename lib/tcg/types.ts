@@ -37,7 +37,7 @@ export type TcgGame = {
   /** Product image gallery for the game page */
   gallery?: readonly TcgImage[];
   productCategories: readonly TcgProductCategory[];
-  /** Game-specific product types PixelNation carries or plans to carry */
+  /** Game-specific product types PixelNation carries */
   productsCarried: readonly string[];
   sealedStatus: string;
   singlesStatus: string;
@@ -49,7 +49,7 @@ export type TcgGame = {
   learnToPlay: string;
   /** Casual play copy */
   casualPlay: string;
-  /** Event types planned for this game (no dates) */
+  /** Event types this game supports (dates live on /events) */
   plannedEventTypes: readonly string[];
   /** Why players love this game — community-focused storytelling */
   whyPeopleLove: string;
@@ -110,7 +110,7 @@ export type EventCategory = {
   game?: string;
   description: string;
   skillLevel?: string;
-  status: "planned" | "coming-soon";
+  status: "available" | "check-events";
 };
 
 export type ReleaseStatus =

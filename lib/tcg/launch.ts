@@ -1,25 +1,26 @@
 /**
- * Centralized launch-stage messaging for Trading Cards & Gaming.
- * Edit these constants as the expanded location and inventory come online.
+ * Shared customer-facing notes for Trading Cards & Gaming.
+ * Availability language is honest about stock without sounding unopened.
  */
 export const TCG_LAUNCH = {
-  stageLabel: "Expanding in Emporia",
+  stageLabel: "Downtown Emporia",
   availabilityNote:
-    "Products and availability may vary. Additional inventory is being added as PixelNation expands.",
+    "Selection and availability vary. Contact PixelNation or visit the shop for current stock.",
   contactAvailability:
     "Contact us for current availability and preorder information.",
   inventoryExpanding:
-    "Additional inventory is being added as PixelNation expands.",
+    "Selection changes with new releases and distributor allocation.",
   eventsComing:
-    "Weekly gaming events and organized play are coming as PixelNation prepares for its expanded location.",
-  eventsEmptyTitle: "PixelNation events are coming soon.",
+    "Join weekly gaming events and organized play at PixelNation in downtown Emporia.",
+  eventsEmptyTitle: "No upcoming events posted right now.",
   eventsEmptyBody:
-    "We are preparing weekly trading-card events, community gaming nights, learn-to-play sessions, and special release events for our expanded location.",
+    "Check PixelNation Friday Nights or contact us for the latest community gaming details.",
   gamingForwardLooking:
-    "Community play space, organized events, and expanded gaming experiences are part of PixelNation’s plans for a larger Emporia location. Features will open in phases—ask us what is available today.",
+    "PixelNation is a local game store and electronics repair shop in downtown Emporia—community play, trading cards, video games, and weekly events under one roof.",
   buySellTradeDisclaimer:
-    "Final buy, sell, and trade programs may change as the expanded location launches. PixelNation may decline any item or collection.",
-  organizedPlayStatus: "Organized play and weekly events are in preparation.",
+    "PixelNation may decline any item or collection. Offers depend on inspection, condition, authenticity, and market demand.",
+  organizedPlayStatus:
+    "Weekly events and organized play run at our Emporia shop. See the events page for the current schedule.",
   preorderStatus:
     "Preorders and upcoming releases can be discussed with our team—availability depends on distributor timing and demand.",
 } as const;

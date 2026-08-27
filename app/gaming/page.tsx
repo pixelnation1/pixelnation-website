@@ -9,11 +9,9 @@ import {
   GAMING_FEATURES,
   GAMING_INTRO,
   GAMING_METADATA,
-  gamingStatusLabel,
   NEW_PLAYER_SUPPORT,
   PLAY_SPACE_FEATURES,
 } from "@/lib/tcg/gaming-page";
-import { TCG_LAUNCH } from "@/lib/tcg/launch";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { SITE } from "@/lib/site";
 import type { BreadcrumbItem } from "@/lib/seo/types";
@@ -65,10 +63,15 @@ export default function GamingPage() {
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
             {GAMING_INTRO.body}
           </p>
+          <address className="mt-6 not-italic text-sm leading-relaxed text-muted">
+            <span className="block font-semibold text-foreground">{SITE.name}</span>
+            <span className="block">{SITE.address.streetLine1}</span>
+            <span className="block">{SITE.address.cityStateZip}</span>
+          </address>
           <div className="cta-group mt-8">
-            <Button href="/gaming-community">Gaming Community</Button>
-            <Button href="/events" variant="secondary">
-              View Events
+            <Button href="/events">View Events</Button>
+            <Button href="/gaming-lounge" variant="secondary">
+              Play Space
             </Button>
             <Button href="/what-to-expect" variant="outline">
               What to expect
@@ -79,8 +82,8 @@ export default function GamingPage() {
 
       <Section
         id="experiences"
-        title="What we are building"
-        subtitle="A community gaming destination alongside electronics repair—features will open in phases."
+        title="What you'll find at PixelNation"
+        subtitle="A local game store and community hangout alongside electronics repair."
       >
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {GAMING_FEATURES.map((feature) => (
@@ -88,27 +91,19 @@ export default function GamingPage() {
               key={feature.title}
               className="flex flex-col rounded-xl border border-card-border bg-card p-5"
             >
-              <span className="text-xs font-semibold uppercase tracking-wide text-accent-secondary">
-                {gamingStatusLabel(feature.status)}
-              </span>
-              <h3 className="mt-2 font-semibold text-foreground">
-                {feature.title}
-              </h3>
+              <h3 className="font-semibold text-foreground">{feature.title}</h3>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
                 {feature.description}
               </p>
             </li>
           ))}
         </ul>
-        <p className="mt-8 max-w-3xl text-sm text-muted">
-          {TCG_LAUNCH.gamingForwardLooking}
-        </p>
       </Section>
 
       <Section
         id="play-space"
         title="Play space"
-        subtitle="The planned environment at the larger location—details like seating capacity will be shared when confirmed."
+        subtitle="A place to sit down, shuffle up, and spend time with the local gaming community."
         alt
       >
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -125,12 +120,15 @@ export default function GamingPage() {
             </li>
           ))}
         </ul>
+        <div className="mt-8">
+          <Button href="/gaming-lounge">Gaming &amp; play space</Button>
+        </div>
       </Section>
 
       <Section
         id="console-gaming"
-        title="Console gaming"
-        subtitle="Possible console gaming offerings at the expanded location—these features are planned, not yet open."
+        title="Video games & consoles"
+        subtitle="In-store selection changes frequently. Eligible games and consoles may also be bought or traded."
       >
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {CONSOLE_GAMING_FEATURES.map((feature) => (
@@ -138,13 +136,16 @@ export default function GamingPage() {
               key={feature}
               className="flex flex-col rounded-lg border border-card-border bg-card px-4 py-3"
             >
-              <span className="text-xs font-semibold uppercase tracking-wide text-accent-secondary">
-                Planned
-              </span>
-              <span className="mt-1 text-sm text-muted">{feature}</span>
+              <span className="text-sm text-muted">{feature}</span>
             </li>
           ))}
         </ul>
+        <div className="cta-group mt-8">
+          <Button href="/buy-sell-trade">Buy, Sell &amp; Trade</Button>
+          <Button href="/what-we-carry#gaming" variant="secondary">
+            What we carry
+          </Button>
+        </div>
       </Section>
 
       <Section
@@ -172,7 +173,7 @@ export default function GamingPage() {
       <Section
         id="events"
         title="Organized events"
-        subtitle={TCG_LAUNCH.eventsComing}
+        subtitle="Dates, times, and registration live on the PixelNation events hub."
       >
         <div className="cta-group">
           <Button href="/events">View Events</Button>
@@ -192,14 +193,14 @@ export default function GamingPage() {
       >
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 id="gaming-cta-heading" className="text-2xl font-bold sm:text-3xl">
-            Follow the expansion
+            Come play in downtown Emporia
           </h2>
           <p className="mt-3 text-muted">
-            Contact PixelNation for updates on gaming space, events, and trading cards
-            in {SITE.address.region}.
+            PixelNation, {SITE.address.singleLine}. Check events, grab cards, or start a
+            repair while you are here.
           </p>
           <div className="cta-group mt-8 justify-center">
-            <Button href="/trade-values">Trade Values</Button>
+            <Button href="/events">View Events</Button>
             <Button href="/trading-cards" variant="secondary">
               Trading Cards
             </Button>

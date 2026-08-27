@@ -20,16 +20,16 @@ export const FOUNDER = {
   role: "Founder",
   headline: "Building PixelNation with repair craft and community heart",
   bio: [
-    `PixelNation’s founder leads with the same principles that started the business: diagnose carefully, repair honestly, and treat every customer like a neighbor. The work spans professional electronics repair, microsoldering, data recovery, console repair, and the growing trading-card and gaming side of the brand.`,
+    `PixelNation’s founder leads with the same principles that started the business: diagnose carefully, repair honestly, and treat every customer like a neighbor. The work spans professional electronics repair, microsoldering, data recovery, console repair, and the trading-card and gaming side of the shop.`,
     `Names and portraits will be published here when the team chooses to share them publicly. Until then, this space represents the founder role—not a placeholder identity.`,
   ],
 } as const;
 
 export const FUTURE_TEAM = {
-  title: "Future team",
-  body: `As PixelNation expands inventory, play space, events, and day-to-day service, the team will grow carefully. New roles may include repair specialists, retail and gaming support, event hosts, and education partners. We will introduce real people here—never invented names—when they join.`,
+  title: "Growing the team",
+  body: `As PixelNation continues serving Emporia, the team may grow. New roles may include repair specialists, retail and gaming support, event hosts, and education partners. We will introduce real people here when they join.`,
   openingsNote:
-    "Interested in future opportunities? Contact PixelNation and tell us how you would like to help.",
+    "Interested in working with PixelNation? Contact us and tell us how you would like to help.",
 } as const;
 
 export const CULTURE = {

@@ -36,10 +36,7 @@ export default function CommanderNightsPage() {
         },
         { name: "Commander Nights", path: "/commander-nights" },
       ]}
-      primaryCta={{
-        href: "/trading-cards/magic-the-gathering",
-        label: "Magic page",
-      }}
+      primaryCta={{ href: "/events", label: "View events" }}
       secondaryCta={{ href: "/learn-to-play", label: "Learn to Play" }}
     >
       <Section id="what-is-commander" title="What is Commander?">
@@ -80,8 +77,11 @@ export default function CommanderNightsPage() {
             <p key={paragraph.slice(0, 48)}>{paragraph}</p>
           ))}
         </div>
+        <p className="mt-6 max-w-3xl text-sm text-muted">
+          Check the PixelNation Events page for upcoming Commander and Magic events.
+        </p>
         <div className="cta-group mt-8">
-          <Button href="/weekly-events">Weekly event placeholders</Button>
+          <Button href="/events">View Magic events</Button>
           <Button href="/what-to-expect" variant="secondary">
             First visit tips
           </Button>

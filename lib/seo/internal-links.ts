@@ -64,7 +64,7 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
   "/": [
     { label: "Repairs", href: "/repairs", description: "Phones, computers, consoles & more" },
     { label: "Trading Cards", href: "/trading-cards", description: "TCG products, singles & accessories" },
-    { label: "Gaming & Events", href: "/gaming", description: "Community play and upcoming events" },
+    { label: "Gaming & Events", href: "/gaming", description: "Community play and weekly events" },
     { label: "Software Development", href: "/software-development", description: "Custom SaaS, websites & automation" },
     { label: "Training", href: "/training" },
     { label: "Contact", href: "/contact" },
@@ -104,7 +104,7 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
     { label: "Contact", href: "/contact", description: "Request a collection review" },
   ],
   "/gaming": [
-    { label: "Gaming Lounge vision", href: "/gaming-lounge" },
+    { label: "Play at PixelNation", href: "/gaming-lounge" },
     { label: "Birthday Parties", href: "/birthday-parties" },
     { label: "Gaming Community", href: "/gaming-community" },
     { label: "Events", href: "/events" },

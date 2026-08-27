@@ -134,7 +134,7 @@ export function ContactForm() {
         <p className="text-lg font-semibold text-foreground">Message sent</p>
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Thank you for contacting PixelNation. We received your message and will respond
-          during business hours (Monday–Friday, 9:00 AM–3:00 PM). For urgent help, call{" "}
+          during business hours ({SITE.hours}). For urgent help, call{" "}
           <a href={SITE.phoneHref} className="font-medium text-accent-secondary">
             {SITE.phone}
           </a>

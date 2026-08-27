@@ -33,7 +33,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     path: "/pokemon-cards-emporia-ks",
     metaTitle: "Pokémon Cards in Emporia KS | Local TCG | PixelNation",
     metaDescription:
-      "Looking for Pokémon cards in Emporia, Kansas? Learn how PixelNation helps local trainers find sealed products, singles interest, supplies, and a welcoming place to play.",
+      "Looking for Pokémon cards in Emporia, Kansas? Learn how PixelNation helps local trainers find sealed products, singles, supplies, and a welcoming place to play.",
     keywords: [
       "Pokémon cards Emporia KS",
       "Pokémon TCG Emporia",
@@ -42,7 +42,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     eyebrow: "Emporia, Kansas · Pokémon TCG",
     h1: "Pokémon Cards in Emporia, KS",
     intro:
-      "If you live in Emporia or nearby and want Pokémon cards without driving across the state, PixelNation is building a local home for trainers—sealed products when available, growing singles interest, accessories, and community play plans that welcome beginners and collectors alike.",
+      "If you live in Emporia or nearby and want Pokémon cards without driving across the state, PixelNation is a local home for trainers—sealed products, singles, accessories, and community play that welcomes beginners and collectors alike.",
     sections: [
       {
         heading: "What Emporia trainers usually need",
@@ -54,14 +54,14 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         heading: "A local alternative to big-box aisles",
         paragraphs: [
-          "National retailers sometimes carry Pokémon product, but a local game store conversation is different. You can ask which starter product fits a child, how Prize cards work, or whether a learn-to-play night is coming. That guidance is part of why people seek Pokémon cards in Emporia specifically.",
+          "National retailers sometimes carry Pokémon product, but a local game store conversation is different. You can ask which starter product fits a child, how Prize cards work, or about a learn-to-play table. That guidance is part of why people seek Pokémon cards in Emporia specifically.",
           "PixelNation pairs that community approach with the same shop that already repairs phones and consoles—so families already visiting for tech help can discover cards in the same trusted place.",
         ],
       },
       {
         heading: "How to get started in Emporia",
         paragraphs: [
-          "New trainers can begin with a battle deck or other beginner-friendly product, then grow into packs, Elite Trainer Boxes, and binders. Experienced players can ask about singles interest, collection reviews, or upcoming Pokémon play.",
+          "New trainers can begin with a battle deck or other beginner-friendly product, then grow into packs, Elite Trainer Boxes, and binders. Experienced players can ask about singles, collection reviews, or Pokémon play during Friday Nights.",
           "For deeper game information—product categories, FAQs, and why we carry Pokémon—visit our dedicated Pokémon trading cards page. This Emporia landing page is focused on helping locals understand what is available nearby and how to connect with the shop.",
         ],
       },
@@ -70,7 +70,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         question: "Where can I buy Pokémon cards in Emporia, Kansas?",
         answer:
-          "PixelNation in Emporia carries or sources Pokémon TCG sealed products and related supplies as inventory expands. Availability varies—contact us or visit to check current stock.",
+          "PixelNation in Emporia carries Pokémon TCG sealed products and related supplies. Availability varies—contact us or visit to check current stock.",
         links: [{ label: "Pokémon game page", href: "/trading-cards/pokemon" }],
       },
       {
@@ -92,7 +92,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       { label: "Pokémon at PixelNation", href: "/trading-cards/pokemon", description: "Products, play, and FAQs" },
       { label: "Learn to Play", href: "/learn-to-play", description: "Beginner Pokémon guide" },
       { label: "Sell Pokémon Cards", href: "/sell-pokemon-cards", description: "Collection review interest" },
-      { label: "Family Gaming", href: "/family-gaming", description: "Family-friendly play vision" },
+      { label: "Family Gaming", href: "/family-gaming", description: "Family-friendly play" },
       { label: "Trading Cards Overview", href: "/trading-cards" },
     ],
     schemaKind: "hobby",
@@ -103,7 +103,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     path: "/magic-the-gathering-emporia-ks",
     metaTitle: "Magic the Gathering in Emporia KS | MTG | PixelNation",
     metaDescription:
-      "Magic: The Gathering in Emporia, Kansas—local sealed interest, Commander focus, accessories, and community play plans at PixelNation.",
+      "Magic: The Gathering in Emporia, Kansas—local sealed products, Commander play, accessories, and Friday Night Magic at PixelNation.",
     keywords: [
       "Magic the Gathering Emporia KS",
       "MTG Emporia",
@@ -112,13 +112,13 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     eyebrow: "Emporia, Kansas · Magic: The Gathering",
     h1: "Magic: The Gathering in Emporia, KS",
     intro:
-      "Emporia Magic players deserve more than mail-order alone. PixelNation is growing MTG support locally—Play Boosters and Commander products when available, accessories, singles interest, and planned nights where pods can actually meet in person.",
+      "Emporia Magic players deserve more than mail-order alone. PixelNation supports MTG locally—Play Boosters and Commander products when available, accessories, singles, and nights where pods actually meet in person.",
     sections: [
       {
         heading: "Why local Magic still matters",
         paragraphs: [
-          "Online markets are convenient, but Magic thrives at the table. Commander politics, draft chaos, and prerelease energy are social experiences. Building MTG presence in Emporia means making those moments possible closer to home.",
-          "Our Emporia focus is practical: help you find sealed product when we have it, point beginners toward precons or starter kits, and prepare Commander-friendly community nights without inventing fake schedules.",
+          "Online markets are convenient, but Magic thrives at the table. Commander politics, draft chaos, and prerelease energy are social experiences. Supporting MTG in Emporia means making those moments possible closer to home.",
+          "Our Emporia focus is practical: help you find sealed product when we have it, point beginners toward precons or starter kits, and host Commander-friendly community nights. Check the events page for the current Magic schedule.",
         ],
       },
       {
@@ -131,7 +131,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         heading: "What to do next",
         paragraphs: [
-          "Contact us about current sealed or singles interest, browse the full Magic game page for product categories, or ask about learn-to-play help. If you have a collection to sell, we also review eligible Magic cards through our buy/sell process.",
+          "Contact us about current sealed products or singles, browse the full Magic game page for product categories, or ask about learn-to-play help. If you have a collection to sell, we also review eligible Magic cards through our buy/sell process.",
         ],
       },
     ],
@@ -139,7 +139,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         question: "Is there an MTG store in Emporia?",
         answer:
-          "PixelNation is expanding Magic: The Gathering products and community play in Emporia, Kansas. We are not claiming official tournament status until confirmed—ask us what is available now.",
+          "PixelNation carries Magic: The Gathering products and hosts community play in Emporia, Kansas. Friday Night Magic is weekly—ask us what product is available now.",
         links: [
           { label: "Magic game page", href: "/trading-cards/magic-the-gathering" },
         ],
@@ -147,8 +147,11 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         question: "Do you support Commander in Emporia?",
         answer:
-          "Yes—Commander is a priority for our community plans. Formal night schedules will be announced when ready.",
-        links: [{ label: "Commander Nights", href: "/commander-nights" }],
+          "Yes. Commander tables are welcome during Friday Night Magic at PixelNation. Check the events page for upcoming Magic nights.",
+        links: [
+          { label: "Commander Nights", href: "/commander-nights" },
+          { label: "Events", href: "/events" },
+        ],
       },
       {
         question: "Can I sell Magic cards locally?",
@@ -181,7 +184,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     path: "/yu-gi-oh-cards-emporia-ks",
     metaTitle: "Yu-Gi-Oh Cards in Emporia KS | PixelNation",
     metaDescription:
-      "Yu-Gi-Oh! cards in Emporia, Kansas. PixelNation supports sealed products, Structure Decks, singles interest, accessories, and local dueling community plans.",
+      "Yu-Gi-Oh! cards in Emporia, Kansas. PixelNation supports sealed products, Structure Decks, singles, accessories, and local dueling community play.",
     keywords: ["Yu-Gi-Oh cards Emporia KS", "Yu-Gi-Oh products Emporia"],
     eyebrow: "Emporia, Kansas · Yu-Gi-Oh!",
     h1: "Yu-Gi-Oh! Cards in Emporia, KS",
@@ -198,7 +201,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         heading: "Community play for duelists",
         paragraphs: [
-          "Casual dueling and local event interest are part of PixelNation’s roadmap. Until exact dates are published, use our weekly events placeholders and contact channel to stay informed—never invented tournament claims.",
+          "Casual dueling is welcome during PixelNation Friday Nights. View upcoming Yu-Gi-Oh! events on the events page.",
         ],
       },
     ],
@@ -206,7 +209,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         question: "Where can I get Yu-Gi-Oh! products in Emporia?",
         answer:
-          "PixelNation is expanding Yu-Gi-Oh! sealed products and supplies in Emporia. Contact us for current availability.",
+          "PixelNation carries Yu-Gi-Oh! sealed products and supplies in Emporia. Contact us for current availability.",
         links: [{ label: "Yu-Gi-Oh! page", href: "/trading-cards/yu-gi-oh" }],
       },
       {
@@ -232,12 +235,12 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     path: "/disney-lorcana-emporia-ks",
     metaTitle: "Disney Lorcana in Emporia KS | Lorcana Cards | PixelNation",
     metaDescription:
-      "Disney Lorcana cards in Emporia, Kansas—starter decks, sealed interest, Illumineer’s Troves when available, and family-friendly play plans at PixelNation.",
+      "Disney Lorcana cards in Emporia, Kansas—starter decks, sealed products, Illumineer’s Troves when available, and family-friendly play at PixelNation.",
     keywords: ["Lorcana cards Emporia KS", "Disney Lorcana Emporia"],
     eyebrow: "Emporia, Kansas · Disney Lorcana",
     h1: "Disney Lorcana in Emporia, KS",
     intro:
-      "Families and collectors searching for Disney Lorcana in Emporia can find a local shop approach at PixelNation—starter decks for learning, sealed interest as inventory grows, and a family-friendly gaming vision that fits Lorcana’s welcoming style.",
+      "Families and collectors searching for Disney Lorcana in Emporia can find a local shop at PixelNation—starter decks for learning, sealed products when available, and family-friendly play that fits Lorcana’s welcoming style.",
     sections: [
       {
         heading: "Why Lorcana fits Emporia families",
@@ -257,7 +260,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         question: "Can I buy Lorcana cards in Emporia?",
         answer:
-          "PixelNation carries Disney Lorcana as part of our trading-card expansion. Availability varies—ask us what is in stock.",
+          "PixelNation carries Disney Lorcana in Emporia. Availability varies—ask us what is in stock.",
         links: [{ label: "Lorcana page", href: "/trading-cards/lorcana" }],
       },
       {
@@ -283,7 +286,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     path: "/one-piece-card-game-emporia-ks",
     metaTitle: "One Piece Card Game Emporia KS | PixelNation",
     metaDescription:
-      "One Piece Card Game in Emporia, Kansas—Starter Decks, sealed interest, accessories, and community play plans for anime fans and new players.",
+      "One Piece Card Game in Emporia, Kansas—Starter Decks, sealed products, accessories, and community play for anime fans and new players.",
     keywords: [
       "One Piece Card Game Emporia KS",
       "One Piece cards Emporia",
@@ -297,7 +300,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
         heading: "Anime energy, local tables",
         paragraphs: [
           "One Piece brings recognizable Leaders and lively matches. Emporia players should not have to leave town just to ask which Starter Deck matches their favorite crew. We keep answers grounded in what we can actually carry and teach.",
-          "Casual play nights are planned as the expanded location develops. Until then, contact us and follow weekly event updates.",
+          "Casual play is welcome during PixelNation Friday Nights. Check the events page for One Piece nights and weekly hours.",
         ],
       },
       {
@@ -311,7 +314,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         question: "Do you sell One Piece cards in Emporia?",
         answer:
-          "Yes—PixelNation is expanding One Piece Card Game inventory in Emporia. Contact us for current stock.",
+          "Yes. PixelNation carries One Piece Card Game products in Emporia. Contact us for current stock.",
         links: [{ label: "One Piece page", href: "/trading-cards/one-piece" }],
       },
       {
@@ -337,7 +340,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     path: "/trading-card-store-emporia-ks",
     metaTitle: "Trading Card Store in Emporia KS | Local Game Store | PixelNation",
     metaDescription:
-      "Looking for a trading card store in Emporia, Kansas? PixelNation is building a local game store experience—TCG products, community play, buy/sell/trade interest, and honest service.",
+      "Looking for a trading card store in Emporia, Kansas? PixelNation is a local game store—TCG products, community play, buy/sell/trade, and honest service.",
     keywords: [
       "trading card store Emporia KS",
       "local game store Emporia",
@@ -346,19 +349,19 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     eyebrow: "Emporia, Kansas · Local game store",
     h1: "Trading Card Store in Emporia, KS",
     intro:
-      "PixelNation is becoming Emporia’s destination for trading cards and community gaming—while remaining a trusted electronics repair shop. If you are searching for a trading card store in Emporia, this page explains what that means here: products when available, people who will help you learn, and no invented inventory claims.",
+      "PixelNation is Emporia’s destination for trading cards and community gaming—while remaining a trusted electronics repair shop. If you are searching for a trading card store in Emporia, this page explains what that means here: products when available, people who will help you learn, and straightforward service.",
     sections: [
       {
         heading: "What “local game store” means at PixelNation",
         paragraphs: [
-          "A trading card store is more than shelves. It is a place to ask questions, find a starter product, trade collections thoughtfully, and eventually sit down for weekly play. PixelNation is intentionally building that culture in Emporia alongside professional repair services.",
-          "We support Pokémon, Magic: The Gathering, Yu-Gi-Oh!, Disney Lorcana, and the One Piece Card Game. Availability varies as inventory expands—contact us for what is on hand today.",
+          "A trading card store is more than shelves. It is a place to ask questions, find a starter product, trade collections thoughtfully, and sit down for weekly play. PixelNation is that shop in Emporia, alongside professional repair services.",
+          "We support Pokémon, Magic: The Gathering, Yu-Gi-Oh!, Disney Lorcana, and the One Piece Card Game. Availability varies—contact us for what is on hand today.",
         ],
       },
       {
         heading: "Repair + cards under one roof",
         paragraphs: [
-          "Few Emporia shops combine console repair expertise with TCG community plans. That combination matters for families who already trust PixelNation with devices and now want a place for cards and play.",
+          "Few Emporia shops combine console repair expertise with a TCG community. That combination matters for families who already trust PixelNation with devices and now want a place for cards and play.",
           "Explore What We Carry for category education, Gaming Community for belonging, and Buy/Sell/Trade when you have a collection to review.",
         ],
       },
@@ -367,7 +370,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         question: "Is PixelNation a trading card store?",
         answer:
-          "PixelNation is expanding into a local game store experience in Emporia—trading cards, accessories, community play plans, and buy/sell/trade interest—while continuing electronics repair.",
+          "Yes. PixelNation is a local game store in Emporia—trading cards, accessories, community play, and buy/sell/trade—while continuing electronics repair.",
         links: [{ label: "Trading Cards", href: "/trading-cards" }],
       },
       {
@@ -701,49 +704,52 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
   "gaming-lounge": {
     slug: "gaming-lounge",
     path: "/gaming-lounge",
-    metaTitle: "Gaming Lounge Emporia KS | Planned Play Space | PixelNation",
+    metaTitle: "Gaming & Play Space Emporia KS | PixelNation",
     metaDescription:
-      "PixelNation’s planned gaming lounge vision in Emporia, Kansas—tables, community play, console interest, and a welcoming space as the expanded location develops.",
+      "Play at PixelNation in downtown Emporia—tables for trading card games, casual gaming, Commander, Pokémon, community gatherings, and weekly events.",
     keywords: [
       "gaming lounge Emporia",
       "game lounge Emporia KS",
       "community play space Emporia",
     ],
-    eyebrow: "Emporia, Kansas · Planned play space",
-    h1: "Gaming Lounge Vision in Emporia",
+    eyebrow: "Emporia, Kansas · Play space",
+    h1: "Play at PixelNation",
     intro:
-      "PixelNation’s larger location is intended to include community play space that feels like a true gaming lounge—tables for trading card games, room for casual gatherings, and console play interest as features come online. We will not invent seating counts or opening dates; this page shares the vision honestly.",
+      "PixelNation’s downtown shop includes community play space for trading card games, casual hangouts, Commander, Pokémon, organized events, retro gaming, and video game activities. Come play in Emporia.",
     sections: [
       {
-        heading: "What we mean by gaming lounge",
+        heading: "What you'll find in the play space",
         paragraphs: [
-          "A welcoming room where Emporia players can learn, duel, draft, or hang out without needing a private basement table. Clean play surfaces, clear norms, and staff who help newcomers find the right game night.",
-          "TCG tables are the heart of the plan. Console free-play or demos may expand later and will be labeled as planned until confirmed.",
+          "A welcoming room where Emporia players can learn, duel, draft, or hang out. Clean play surfaces, clear norms, and staff who help newcomers find the right table.",
+          "Trading-card tables are the heart of the space—Commander, Pokémon, Yu-Gi-Oh!, Lorcana, One Piece, and pickup games. Video game activities and retro play happen during PixelNation Friday Nights and other posted events.",
         ],
       },
       {
-        heading: "How this differs from the Gaming overview",
+        heading: "How this relates to Gaming",
         paragraphs: [
-          "Our Gaming page covers the full play-space roadmap. This lounge landing targets people specifically searching for a gaming lounge in Emporia and sets expectations: community-first, family-aware, and still under expansion.",
+          "The Gaming page covers the full PixelNation gaming experience. This page is for people looking for a play space or gaming lounge in Emporia: community-first, family-aware, and open now at 22 E. 5th Ave.",
         ],
       },
     ],
     faqs: [
       {
-        question: "Is the PixelNation gaming lounge open now?",
+        question: "Is the PixelNation play space open now?",
         answer:
-          "The full expanded lounge experience is part of our larger location plans. Features will be announced as they become available—ask us what you can do today.",
-        links: [{ label: "Gaming overview", href: "/gaming" }],
+          "Yes. Visit PixelNation at 22 E. 5th Ave in downtown Emporia. PixelNation Friday Nights run every Friday from 5:00 PM to 10:00 PM.",
+        links: [
+          { label: "Gaming overview", href: "/gaming" },
+          { label: "Events", href: "/events" },
+        ],
       },
       {
         question: "Will there be tables for Magic and Pokémon?",
         answer:
-          "Yes—trading-card play space is central to the vision, including Commander and family-friendly games.",
-        links: [{ label: "Weekly Events", href: "/weekly-events" }],
+          "Yes. Trading-card play space includes Commander, Pokémon, and other supported games. Check the events page for weekly nights.",
+        links: [{ label: "Events", href: "/events" }],
       },
     ],
     primaryCta: { label: "Explore Gaming", href: "/gaming" },
-    secondaryCta: { label: "What to expect", href: "/what-to-expect" },
+    secondaryCta: { label: "View events", href: "/events" },
     relatedLinks: [
       { label: "Gaming Overview", href: "/gaming" },
       { label: "Gaming Community", href: "/gaming-community" },
@@ -759,28 +765,28 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     path: "/birthday-parties",
     metaTitle: "Birthday Parties Emporia KS | Gaming Parties | PixelNation",
     metaDescription:
-      "Planning a gaming birthday party in Emporia? Learn PixelNation’s vision for respectful, family-friendly card and game celebrations as party options develop.",
+      "Planning a gaming birthday party in Emporia? Ask PixelNation about family-friendly card and game celebrations. Parties are arranged by inquiry.",
     keywords: [
       "birthday party Emporia gaming",
       "Pokémon birthday party Emporia",
       "card game birthday Emporia KS",
     ],
-    eyebrow: "Emporia, Kansas · Parties (planned)",
+    eyebrow: "Emporia, Kansas · Parties by inquiry",
     h1: "Gaming Birthday Parties in Emporia",
     intro:
-      "Parents searching for birthday parties in Emporia often want something more memorable than a generic venue—Pokémon packs, gentle teach games, or a supervised table that feels special. PixelNation is exploring family-friendly party experiences as our play space expands. Details like packages and dates will be published when ready—not invented here.",
+      "Parents searching for birthday parties in Emporia often want something more memorable than a generic venue—Pokémon packs, gentle teach games, or a supervised table that feels special. PixelNation can discuss family-friendly party experiences. Contact us with ages, games, and a preferred date—packages are arranged individually.",
     sections: [
       {
         heading: "What a PixelNation-style party could include",
         paragraphs: [
-          "Possible elements include beginner-friendly games, supervised play, simple prize support that stays age-appropriate, and help choosing sealed product gifts. Exact offerings depend on space and staffing as the expanded location develops.",
+          "Possible elements include beginner-friendly games, supervised play, simple prize support that stays age-appropriate, and help choosing sealed product gifts. Exact offerings depend on space, staffing, and the date you have in mind.",
           "We prioritize respectful gaming so birthday guests leave excited—not overwhelmed by hyper-competitive tables.",
         ],
       },
       {
-        heading: "How to inquire today",
+        heading: "How to inquire",
         paragraphs: [
-          "Contact us with the age group, game interest, and preferred timeframe. We will share what is possible now versus what is still planned. Meanwhile, Family Gaming and Learn to Play explain the culture we want parties to reflect.",
+          "Contact us with the age group, game interest, and preferred timeframe. We will share what is possible for your date. Family Gaming and Learn to Play explain the culture parties should reflect.",
         ],
       },
     ],
@@ -788,7 +794,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         question: "Do you host birthday parties now?",
         answer:
-          "Party hosting is part of our expanded location vision. Current availability may be limited—contact us for the latest options instead of assuming a fixed package list.",
+          "Birthday parties are arranged by inquiry. Availability depends on space and staffing—contact us for the latest options instead of assuming a fixed package list.",
       },
       {
         question: "Which games work well for kids’ parties?",
@@ -801,7 +807,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     secondaryCta: { label: "Family Gaming", href: "/family-gaming" },
     relatedLinks: [
       { label: "Family Gaming", href: "/family-gaming" },
-      { label: "Gaming Lounge vision", href: "/gaming-lounge" },
+      { label: "Play at PixelNation", href: "/gaming-lounge" },
       { label: "Pokémon Cards Emporia", href: "/pokemon-cards-emporia-ks" },
       { label: "Learn to Play", href: "/learn-to-play" },
     ],
@@ -822,13 +828,13 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     eyebrow: "Emporia, Kansas · Preorders",
     h1: "Trading Card Preorders in Emporia",
     intro:
-      "Want to preorder a TCG release in Emporia? PixelNation plans to offer preorders for select products when distributor allocation allows. This page explains how our preorder conversations work—not a shopping cart.",
+      "Want to preorder a TCG release in Emporia? PixelNation offers preorders for select products when distributor allocation allows. This page explains how our preorder conversations work—not a shopping cart.",
     sections: [
       {
         heading: "How PixelNation preorders work",
         paragraphs: [
           "Availability depends on allocation. Some releases sell out quickly or arrive in limited quantities. Deposits may be required, quantity limits may apply, and publisher dates can shift.",
-          "We will never invent a live inventory feed. Contact us with the product name and we will tell you whether a preorder path exists yet.",
+          "This website is not a live inventory catalog. Contact us with the product name and we will tell you whether a preorder is available.",
         ],
       },
       {
@@ -842,7 +848,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       {
         question: "Can I preorder online and check out?",
         answer:
-          "Not through an ecommerce cart on this website. Preorders are handled through contact and in-person processes as programs launch.",
+          "Not through an ecommerce cart on this website. Preorders are handled through contact and in-person conversations.",
         links: [{ label: "Preorders & New Releases hub", href: "/preorders-new-releases" }],
       },
       {
@@ -885,7 +891,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
         heading: "What happens on a release",
         paragraphs: [
           "Publishers announce dates; distributors allocate; shops receive what they receive. Some Emporia customers want a booster the morning of street date; others want a Commander precon the following week. We communicate what we know and update when shipments change.",
-          "Release events may accompany major sets in the future. Until scheduled, treat event ideas as planned community offerings.",
+          "When PixelNation hosts a release event, it is posted on the events page. View upcoming events there instead of assuming every set has a launch night.",
         ],
       },
       {
@@ -907,7 +913,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
           "Ask us directly and review the Preorders & New Releases hub for informational release cards when we publish them.",
         links: [
           { label: "Preorders & New Releases", href: "/preorders-new-releases" },
-          { label: "Preorders explained", href: "/preorders" },
+          { label: "Events", href: "/events" },
         ],
       },
     ],
@@ -916,7 +922,7 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
     relatedLinks: [
       { label: "Preorders", href: "/preorders" },
       { label: "Preorders & New Releases hub", href: "/preorders-new-releases" },
-      { label: "Weekly Events", href: "/weekly-events" },
+      { label: "Events", href: "/events" },
       { label: "Trading Card Store Emporia", href: "/trading-card-store-emporia-ks" },
     ],
     schemaKind: "hobby",

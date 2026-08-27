@@ -63,9 +63,9 @@ export default function BuySellTradePage() {
             Buy, Sell &amp; Trade
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-            PixelNation plans to purchase and accept trades for eligible trading cards,
-            collections, sealed products, video games, consoles, and gaming accessories
-            as our Emporia location expands.
+            PixelNation buys and trades eligible trading cards, collections,
+            sealed products, video games, consoles, and gaming accessories. Offers
+            depend on inspection, condition, authenticity, and market demand.
           </p>
           <p className="mt-3 max-w-2xl text-sm text-muted">
             Search estimated electronics trade values online, then request a final offer.

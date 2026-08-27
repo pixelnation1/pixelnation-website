@@ -1,11 +1,9 @@
-import type { PixelNationEvent } from "@/lib/tcg/types";
-
 /** Community & LGS-feeling pages — informational only, no ecommerce. */
 
 export const GAMING_COMMUNITY_METADATA = {
   title: "Gaming Community Emporia KS | PixelNation",
   description:
-    "PixelNation is building a welcoming gaming community in Emporia, Kansas for casual players, competitive players, families, kids, collectors, and newcomers.",
+    "PixelNation is a welcoming gaming community in Emporia, Kansas for casual players, competitive players, families, kids, collectors, and newcomers.",
   path: "/gaming-community",
 } as const;
 
@@ -26,14 +24,14 @@ export const LEARN_TO_PLAY_METADATA = {
 export const WEEKLY_EVENTS_METADATA = {
   title: "Weekly Gaming Events Emporia KS | PixelNation",
   description:
-    "Future weekly events at PixelNation in Emporia—Friday Night Magic, Commander, Pokémon League, Open Play, One Piece, Lorcana, and board games. Schedules announced when confirmed.",
+    "Weekly events at PixelNation in Emporia—Friday Nights trade night, Friday Night Magic, and community gaming at 22 E. 5th Ave.",
   path: "/weekly-events",
 } as const;
 
 export const FAMILY_GAMING_METADATA = {
   title: "Family Gaming Emporia KS | PixelNation",
   description:
-    "PixelNation aims to be a family-friendly gaming environment in Emporia, Kansas—respectful play, welcoming staff, and a place parents can feel comfortable bringing children.",
+    "PixelNation is a family-friendly gaming environment in Emporia, Kansas—respectful play, welcoming staff, and a place parents can feel comfortable bringing children.",
   path: "/family-gaming",
 } as const;
 
@@ -54,10 +52,10 @@ export const TCG_PHILOSOPHY_METADATA = {
 export const GAMING_COMMUNITY = {
   heroTitle: "A welcoming gaming community in Emporia",
   heroSupport:
-    "PixelNation is building more than a counter full of cards. We are building a local game store community where people feel comfortable showing up—whether they bring a polished deck or a question about how the game even works.",
+    "PixelNation is more than a counter full of cards. It is a local game store community where people feel comfortable showing up—whether they bring a polished deck or a question about how the game even works.",
   vision: [
     `Local game stores thrive when everyone belongs. Casual players who want a fun night. Competitive players who love a sharp match. Families looking for something they can share. Kids discovering their first favorite cards. Collectors chasing art and nostalgia. New players who have never shuffled a deck.`,
-    `Our vision for Emporia is simple: a place where technology repair and gaming culture live side by side, and where community is the product as much as any sealed box on the shelf.`,
+    `At PixelNation in Emporia, technology repair and gaming culture live side by side. Community is the product as much as any sealed box on the shelf.`,
   ],
   audiences: [
     {
@@ -92,7 +90,7 @@ export const GAMING_COMMUNITY = {
 export const COMMANDER_NIGHTS = {
   heroTitle: "Commander nights in Emporia",
   heroSupport:
-    "Commander is Magic: The Gathering’s most social format—and one of the best ways to meet people at a local game store. PixelNation is preparing Commander nights as part of our expanded gaming community.",
+    "Commander is Magic: The Gathering’s most social format—and one of the best ways to meet people at a local game store. Join Commander tables during PixelNation Friday Nights.",
   whatIs: [
     `Commander (also called Elder Dragon Highlander) is a multiplayer Magic format where each player builds a 100-card deck led by a legendary creature—their Commander. Decks are singleton: almost every card appears only once, which keeps games surprising and personal.`,
     `Most Commander games are designed for four players around a table. Turns take time. Politics happen. Huge plays happen. Someone’s board state becomes a story the whole table remembers.`,
@@ -103,7 +101,7 @@ export const COMMANDER_NIGHTS = {
   ],
   nightLooksLike: [
     `A Commander night typically means pods of players finding tables, shuffling up, and playing multiplayer games. Some nights lean casual; some tables prefer higher power. Staff and community norms help keep the room welcoming.`,
-    `Expect conversation between games, help finding a pod, and space for spectators who want to watch a big turn unfold. Exact schedules and entry details will be announced when confirmed—until then, treat Commander nights as a planned community offering.`,
+    `Expect conversation between games, help finding a pod, and space for spectators who want to watch a big turn unfold. Friday Night Magic at PixelNation is a natural home for Commander tables.`,
   ],
   howToJoin: [
     `New players can start with a precon (preconstructed Commander deck), ask staff for a beginner-friendly recommendation, or join a learn-to-play conversation before sitting down.`,
@@ -197,93 +195,11 @@ export const LEARN_TO_PLAY_PAGE = {
     "Some of the best local game store moments happen when a veteran sits down, shuffles up, and teaches. If you already know a game, consider being that person for someone else. If you are brand new, ask—someone nearby likely remembers their first game too.",
 } as const;
 
-/** Placeholder weekly event cards — not real scheduled events. */
-export const WEEKLY_EVENT_PLACEHOLDERS: readonly PixelNationEvent[] = [
-  {
-    id: "placeholder-fnm",
-    title: "Friday Night Magic",
-    game: "Magic: The Gathering",
-    day: "Fridays (planned)",
-    description:
-      "A classic weekly Magic night for constructed or limited play. Exact format and times will be announced when the schedule is confirmed.",
-    skillLevel: "All welcome",
-    status: "coming-soon",
-    registrationNote: "Placeholder event—dates and registration details TBD.",
-  },
-  {
-    id: "placeholder-commander",
-    title: "Commander Night",
-    game: "Magic: The Gathering",
-    day: "Weekly (planned)",
-    description:
-      "Multiplayer Commander pods with a social focus. Casual and higher-power tables can coexist when players communicate expectations.",
-    skillLevel: "Casual to competitive",
-    format: "Commander",
-    status: "coming-soon",
-    registrationNote: "Placeholder event—see Commander Nights for format details.",
-  },
-  {
-    id: "placeholder-pokemon-league",
-    title: "Pokémon League",
-    game: "Pokémon",
-    day: "Weekly (planned)",
-    description:
-      "A welcoming Pokémon play space for trainers of many ages—learn, battle casually, and grow into organized formats over time.",
-    skillLevel: "Beginner friendly",
-    status: "coming-soon",
-    registrationNote: "Placeholder event—league details announced when confirmed.",
-  },
-  {
-    id: "placeholder-open-play",
-    title: "Open Play",
-    game: "Multiple games",
-    day: "Recurring (planned)",
-    description:
-      "Bring a deck, find a table, and play. Open play is for spontaneous games across supported trading card titles.",
-    skillLevel: "All welcome",
-    status: "coming-soon",
-    registrationNote: "Placeholder event—no signup invented yet.",
-  },
-  {
-    id: "placeholder-one-piece",
-    title: "One Piece Play Night",
-    game: "One Piece Card Game",
-    day: "Weekly (planned)",
-    description:
-      "Casual and structured One Piece play as community interest grows—Starter Decks welcome.",
-    skillLevel: "All welcome",
-    status: "coming-soon",
-    registrationNote: "Placeholder event—schedule TBD.",
-  },
-  {
-    id: "placeholder-lorcana",
-    title: "Lorcana Play Night",
-    game: "Disney Lorcana",
-    day: "Weekly (planned)",
-    description:
-      "Family-friendly Lorcana tables for new Illumineers and returning players alike.",
-    skillLevel: "Beginner friendly",
-    status: "coming-soon",
-    registrationNote: "Placeholder event—schedule TBD.",
-  },
-  {
-    id: "placeholder-board-games",
-    title: "Board Game Night",
-    game: "Board games",
-    day: "Occasional (planned)",
-    description:
-      "Tabletop nights beyond TCGs—community games, teachable titles, and social play as space allows.",
-    skillLevel: "All welcome",
-    status: "coming-soon",
-    registrationNote: "Placeholder event—titles and dates TBD.",
-  },
-] as const;
-
 export const WEEKLY_EVENTS_PAGE = {
-  heroTitle: "Weekly events (coming soon)",
+  heroTitle: "Weekly events at PixelNation",
   heroSupport:
-    "These cards represent the kinds of weekly experiences PixelNation plans to host. They are placeholders—not live schedules. Real dates, times, and registration details will replace them when confirmed.",
-  note: "PixelNation’s regular event schedule will be announced as the expanded location gets closer to opening. Contact us to follow updates.",
+    "Recurring nights at our downtown Emporia shop—trade, play Magic, and hang out with the local gaming community every Friday.",
+  note: "PixelNation Friday Nights run every Friday from 5:00 PM to 10:00 PM at 22 E. 5th Ave, Emporia, KS 66801.",
 } as const;
 
 export const FAMILY_GAMING = {
@@ -305,7 +221,7 @@ export const FAMILY_GAMING = {
     },
     {
       title: "Age-aware events",
-      text: "Some events will lean all-ages or family-focused. Others may be better for older players. We will label expectations clearly when schedules go live.",
+      text: "Some events lean all-ages or family-focused. Others may be better for older players. Check each event page for any age guidance.",
     },
     {
       title: "Learning together",
@@ -333,11 +249,11 @@ export const WHAT_TO_EXPECT = {
     },
     {
       title: "Clean play space",
-      text: "As our expanded location comes together, organized tables and a tidy play area are part of the plan.",
+      text: "PixelNation has organized tables and a tidy play area for trading card games, casual hangouts, and community events.",
     },
     {
       title: "Community events",
-      text: "Weekly play, learn-to-play nights, and special releases are coming—follow events pages for real schedules when posted.",
+      text: "Weekly play, trade night, Friday Night Magic, and special events are posted on the PixelNation Events page.",
     },
     {
       title: "Learning opportunities",

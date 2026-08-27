@@ -5,7 +5,7 @@ import { TCG_IMAGES } from "@/lib/tcg/images";
 export const WHAT_WE_CARRY_METADATA = {
   title: "What We Carry | Trading Cards & Gaming Products Emporia KS | PixelNation",
   description:
-    "Trading cards, sealed products, singles, supplies, and gaming products at PixelNation in Emporia, Kansas. A guide to the categories we carry or plan to carry—contact us for availability.",
+    "Trading cards, sealed products, singles, supplies, and gaming products at PixelNation in Emporia, Kansas. A guide to the categories we carry—contact us for availability.",
   path: "/what-we-carry",
 } as const;
 
@@ -14,8 +14,8 @@ export type CarryCategory = {
   title: string;
   intro: string;
   items: readonly string[];
-  /** "current" = actively stocked category, "mixed" = current + planned, "planned" = future offering */
-  availability: "current" | "mixed" | "planned";
+  /** "current" = actively stocked category, "mixed" = selection varies, "rotating" = in-store when available */
+  availability: "current" | "mixed" | "rotating";
   note?: string;
   /** Example product photography for the category */
   images?: readonly TcgImage[];
@@ -26,7 +26,7 @@ export const CARRY_CATEGORIES: readonly CarryCategory[] = [
     id: "trading-cards",
     title: "Trading cards",
     intro:
-      "PixelNation supports the major trading card games with sealed products, singles interest, and accessories.",
+      "PixelNation supports the major trading card games with sealed products, singles, and accessories.",
     items: [
       "Pokémon",
       "Magic: The Gathering",
@@ -112,7 +112,7 @@ export const CARRY_CATEGORIES: readonly CarryCategory[] = [
     id: "gaming",
     title: "Gaming products",
     intro:
-      "Gaming products are part of the plan for the expanded location. Planned categories include:",
+      "Video games, consoles, retro products, and accessories may be available in-store. Selection changes frequently.",
     items: [
       "Video games",
       "Game consoles",
@@ -122,8 +122,8 @@ export const CARRY_CATEGORIES: readonly CarryCategory[] = [
       "Retro gaming products",
       "Used gaming products",
     ],
-    availability: "planned",
-    note: "These categories are planned or arriving in phases—ask us what is available today.",
+    availability: "rotating",
+    note: "Ask us what is on the shelf today. PixelNation also buys and trades eligible games and consoles.",
   },
 ];
 
@@ -134,7 +134,7 @@ export const WHAT_WE_CARRY_FAQS: readonly FaqItem[] = [
   {
     question: "Is this a live inventory list?",
     answer:
-      "No. This page is a guide to the product categories PixelNation carries or plans to carry. Availability varies—contact us or visit to check current stock.",
+      "No. This page is a guide to the product categories PixelNation carries. Availability varies—contact us or visit to check current stock.",
   },
   {
     question: "Can I request a specific product?",
@@ -145,6 +145,6 @@ export const WHAT_WE_CARRY_FAQS: readonly FaqItem[] = [
   {
     question: "Do you sell card-protection supplies?",
     answer:
-      "Yes—sleeves, top loaders, deck boxes, binders, and related supplies are part of our expanding accessory selection.",
+      "Yes—sleeves, top loaders, deck boxes, binders, and related supplies are part of our accessory selection. Availability varies.",
   },
 ];
