@@ -116,12 +116,12 @@ export const INVESTIGATOR_TRACK_COURSES: readonly TrainingCourse[] = [
     track: "Investigator Track",
     skillLevel: "Professional",
     duration: "5 days",
-    price: 1500,
-    priceDisplay: "$1,500",
+    price: 3500,
+    priceDisplay: "$3,500",
     priceNote: "Per student",
     restricted: true,
     audience:
-      "Law enforcement, government agencies, military intelligence, and corporate investigators who require advanced device handling skills.",
+      "Law enforcement personnel, government agencies, and other explicitly authorized government investigative personnel who require advanced device handling skills.",
     summary:
       "Foundational training in safe device handling and microsoldering with emphasis on preserving device integrity during repair and recovery workflows.",
     learn: [
@@ -143,12 +143,12 @@ export const INVESTIGATOR_TRACK_COURSES: readonly TrainingCourse[] = [
     track: "Investigator Track",
     skillLevel: "Professional",
     duration: "5 days",
-    price: 1800,
-    priceDisplay: "$1,800",
+    price: 4000,
+    priceDisplay: "$4,000",
     priceNote: "Per student",
     restricted: true,
     audience:
-      "Investigators who completed Level 1 or equivalent experience and need structured board-level diagnostic capability.",
+      "Authorized law enforcement or government personnel who completed Level 1 or equivalent experience and need structured board-level diagnostic capability.",
     summary:
       "Builds on foundational skills with focus on diagnosing and resolving complex board-level issues using structured troubleshooting and power/data circuit analysis.",
     learn: [
@@ -171,12 +171,12 @@ export const INVESTIGATOR_TRACK_COURSES: readonly TrainingCourse[] = [
     track: "Investigator Track",
     skillLevel: "Expert",
     duration: "5 days",
-    price: 2200,
-    priceDisplay: "$2,200",
+    price: 5000,
+    priceDisplay: "$5,000",
     priceNote: "Per student",
     restricted: true,
     audience:
-      "Experienced professionals ready for complex board-level repairs, precision component work, and advanced recovery scenarios.",
+      "Authorized agency personnel ready for complex board-level repairs, precision component work, and advanced recovery scenarios.",
     summary:
       "Advanced course for complex board repairs and component-level recovery—non-standard layouts, precision removal/replacement, and high-stakes troubleshooting workflows.",
     learn: [

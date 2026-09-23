@@ -146,6 +146,24 @@ export function CoursePricingCard({
               {booking.ctaLabel}
             </a>
           </div>
+        ) : course.restricted ? (
+          <div className="mt-8 space-y-3">
+            <Link
+              href="/contact"
+              className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-background transition hover:bg-accent-hover"
+            >
+              Request Agency Enrollment
+            </Link>
+            <p className="text-xs leading-relaxed text-muted">
+              Restricted enrollment. Professional credentials or agency affiliation may be
+              verified before registration is approved.
+            </p>
+            <p className="text-xs leading-relaxed text-muted">
+              Agency invoicing, purchase orders, and alternative government payment
+              arrangements may be available. Contact PixelNation for agency registration
+              assistance.
+            </p>
+          </div>
         ) : (
           <div className="mt-8">
             <Link

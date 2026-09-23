@@ -136,15 +136,16 @@ export default function TrainingCoursesPage() {
       <Section
         id="investigator-track"
         title="Investigator track"
-        subtitle="Restricted enrollment for qualified professionals."
+        subtitle="Restricted professional training for authorized government personnel."
         alt
       >
         <div className="mb-8 rounded-xl border border-accent-secondary/40 bg-accent-secondary-muted p-5">
           <p className="text-sm leading-relaxed text-muted">
             <span className="font-semibold text-foreground">Enrollment is limited to:</span>{" "}
-            law enforcement, government agencies, military intelligence, and corporate
-            investigators. This track focuses on device handling, diagnostics, and
-            recovery-focused repair for professional workflows.
+            law enforcement personnel, government agencies, and other explicitly
+            authorized government investigative personnel. This track is not open as a
+            general public repair class. It focuses on device handling, diagnostics, and
+            recovery-focused repair for authorized professional workflows.
           </p>
         </div>
         <div className="grid gap-8 lg:grid-cols-2 xl:grid-cols-3">
