@@ -5,6 +5,7 @@ import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { TrainingPageFaq } from "@/components/faq/RepairPageFaq";
 import { TrainingCoursesStructuredData } from "@/components/services/TrainingCoursesStructuredData";
 import { CoursePricingCard } from "@/components/training/CoursePricingCard";
+import { RepairTrackInstructor } from "@/components/training/RepairTrackInstructor";
 import { RepairTrackPolicies } from "@/components/training/RepairTrackPolicies";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
@@ -14,7 +15,6 @@ import {
   INVESTIGATOR_TRACK_COURSES,
   PAYMENT_POLICY,
   REPAIR_TRACK_COURSES,
-  REPAIR_TRACK_REGISTRATION_POLICIES,
   TRAINING_COURSES_METADATA,
   TRAINING_FORMAT_NOTES,
   WHAT_STUDENTS_LEARN,
@@ -116,10 +116,11 @@ export default function TrainingCoursesPage() {
             <CoursePricingCard
               key={course.id}
               course={course}
-              paymentNotice={REPAIR_TRACK_REGISTRATION_POLICIES.paymentNotice}
+              squareBooking
             />
           ))}
         </div>
+        <RepairTrackInstructor />
       </Section>
 
       <Section

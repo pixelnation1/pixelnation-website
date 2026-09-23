@@ -1,16 +1,18 @@
 import Link from "next/link";
 import type { TrainingCourse } from "@/lib/training-courses-page";
+import { PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING } from "@/lib/training-courses-page";
 
 type CoursePricingCardProps = {
   course: TrainingCourse;
-  /** Repair Track only — omitted on Investigator Track cards. */
-  paymentNotice?: string;
+  /** Repair Track only — Investigator Track keeps the default contact booking CTA. */
+  squareBooking?: boolean;
 };
 
 export function CoursePricingCard({
   course,
-  paymentNotice,
+  squareBooking = false,
 }: CoursePricingCardProps) {
+  const booking = squareBooking ? PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING : null;
   return (
     <article
       className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card ${
@@ -58,7 +60,13 @@ export function CoursePricingCard({
           ) : null}
         </div>
 
-        <p className="mt-5 text-sm leading-relaxed text-muted">{course.summary}</p>
+        <div className="mt-5 space-y-3">
+          {course.summary.split("\n\n").map((paragraph) => (
+            <p key={paragraph} className="text-sm leading-relaxed text-muted">
+              {paragraph}
+            </p>
+          ))}
+        </div>
         <p className="mt-4 text-xs font-semibold uppercase text-foreground">
           Who this is for
         </p>
@@ -102,10 +110,26 @@ export function CoursePricingCard({
           scheduled group courses.
         </p>
 
-        <div className="mt-8 space-y-3">
-          {paymentNotice ? (
-            <p className="rounded-xl border border-accent-secondary/40 bg-accent-secondary-muted px-3 py-2.5 text-sm font-medium leading-snug text-foreground">
-              {paymentNotice}{" "}
+        {booking ? (
+          <div className="mt-8 space-y-4">
+            <div className="rounded-xl border border-accent-secondary/40 bg-accent-secondary-muted px-4 py-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-accent-secondary">
+                {booking.nextClassLabel}
+              </p>
+              <p className="mt-1 text-lg font-bold text-foreground">
+                {booking.nextClassDates}
+              </p>
+              <ul className="mt-3 space-y-1.5 text-sm text-muted">
+                {booking.details.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <p className="mt-3 text-sm font-medium text-foreground">
+                {booking.includesNote}
+              </p>
+            </div>
+            <p className="rounded-xl border border-card-border px-3 py-2.5 text-sm font-medium leading-snug text-foreground">
+              {booking.paymentMessage}{" "}
               <Link
                 href="#repair-registration-policies"
                 className="font-semibold text-accent-secondary underline-offset-2 hover:underline"
@@ -113,14 +137,25 @@ export function CoursePricingCard({
                 Review cancellation policy
               </Link>
             </p>
-          ) : null}
-          <Link
-            href="/contact"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-background transition hover:bg-accent-hover"
-          >
-            Book This Course
-          </Link>
-        </div>
+            <a
+              href={booking.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-background transition hover:bg-accent-hover"
+            >
+              {booking.ctaLabel}
+            </a>
+          </div>
+        ) : (
+          <div className="mt-8">
+            <Link
+              href="/contact"
+              className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-background transition hover:bg-accent-hover"
+            >
+              Book This Course
+            </Link>
+          </div>
+        )}
       </div>
     </article>
   );

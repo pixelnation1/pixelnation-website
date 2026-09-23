@@ -22,7 +22,7 @@ export const WHY_TRAIN_BENEFITS = [
   "Hands-on practical instruction",
   "Real devices and real fault scenarios",
   "Structured diagnostics methodology",
-  "Small class sizes (maximum 4 students)",
+  "Small class sizes (maximum 6 students)",
   "Personalized guidance",
   "Business and workflow insights",
 ] as const;

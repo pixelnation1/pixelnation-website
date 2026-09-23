@@ -70,7 +70,7 @@ export default function TrainingPage() {
             </ul>
             <div className="cta-group mt-8">
               <Button href="/training-courses">View Courses & Pricing</Button>
-              <Button href="/contact" variant="secondary">
+              <Button href="/training-courses#repair-track" variant="secondary">
                 Book Training
               </Button>
               <Button href="#course-options" variant="outline">
@@ -150,7 +150,7 @@ export default function TrainingPage() {
       <Section
         id="workshop"
         title="Hands-on microsoldering & diagnostics workshop"
-        subtitle="Practical Board Repair Intensive — 3 days / 15 hours, Friday–Sunday, 10:00 AM–3:00 PM. Seats limited to 4 students."
+        subtitle="Practical Board Repair Intensive — November 13–15, 2026. 3 days / 15 hours, Friday–Sunday, 10:00 AM–3:00 PM. Limited to 6 students."
       >
         <p className="-mt-6 max-w-3xl text-muted leading-relaxed">
           This flagship workshop provides practical, hands-on training in board-level
@@ -197,8 +197,23 @@ export default function TrainingPage() {
           {SITE.address.singleLine} ·{" "}
           <span className="font-medium text-foreground">Duration:</span> 3 days / 15 hours,
           Friday–Sunday, 10:00 AM–3:00 PM ·{" "}
-          <span className="font-medium text-foreground">Tuition:</span> $1,500 per student
+          <span className="font-medium text-foreground">Tuition:</span> $1,500 per student ·{" "}
+          <span className="font-medium text-foreground">Capacity:</span> Limited to 6 students
         </p>
+        <p className="mt-3 text-sm font-medium text-foreground">
+          One registration includes all three days of training. Full tuition is required at
+          registration to reserve your seat.
+        </p>
+        <div className="cta-group mt-6">
+          <Button href="/training-courses#repair-track">View Course Details & Policies</Button>
+          <Button
+            href="https://app.squareup.com/appointments/book/classes/ylpswjtvdqub0f/LRCKYM56QVYGP/classes"
+            variant="secondary"
+            external
+          >
+            Reserve Your Seat — $1,500
+          </Button>
+        </div>
       </Section>
 
       {/* Who is for */}
@@ -398,7 +413,7 @@ export default function TrainingPage() {
           </p>
           <div className="cta-group mt-8 justify-center">
             <Button href="/training-courses">View Courses & Pricing</Button>
-            <Button href="/contact">Book Training</Button>
+            <Button href="/training-courses#repair-track">Book Training</Button>
             <Button href="/contact" variant="secondary">
               Contact for Custom Training
             </Button>

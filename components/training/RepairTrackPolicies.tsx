@@ -1,8 +1,13 @@
 import { Button } from "@/components/ui/Button";
-import { REPAIR_TRACK_REGISTRATION_POLICIES } from "@/lib/training-courses-page";
+import {
+  PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING,
+  REPAIR_TRACK_REGISTRATION_POLICIES,
+} from "@/lib/training-courses-page";
 import { SITE } from "@/lib/site";
 
 export function RepairTrackPolicies() {
+  const booking = PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING;
+
   return (
     <div className="max-w-4xl space-y-5">
       <div className="rounded-2xl border border-accent-secondary/40 bg-accent-secondary-muted px-5 py-4 sm:px-6">
@@ -13,7 +18,8 @@ export function RepairTrackPolicies() {
           {REPAIR_TRACK_REGISTRATION_POLICIES.paymentNotice}
         </p>
         <p className="mt-1 text-sm text-muted">
-          Please read the cancellation and rescheduling terms below before you pay.
+          Please read the cancellation and rescheduling terms below before you continue
+          to Square to register and pay.
         </p>
       </div>
 
@@ -40,10 +46,26 @@ export function RepairTrackPolicies() {
       </div>
 
       <div className="rounded-2xl border border-card-border bg-card p-5 sm:p-6">
+        <p className="text-xs font-semibold uppercase tracking-wide text-accent-secondary">
+          {booking.nextClassLabel}
+        </p>
+        <p className="mt-1 text-lg font-bold text-foreground">{booking.nextClassDates}</p>
+        <p className="mt-2 text-sm font-medium text-foreground">{booking.includesNote}</p>
+        <p className="mt-2 text-sm font-medium text-foreground">{booking.paymentMessage}</p>
+        <div className="cta-group mt-5">
+          <Button href={booking.url} external>
+            {booking.ctaLabel}
+          </Button>
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-card-border bg-card p-5 sm:p-6">
         <p className="text-sm font-semibold text-foreground">Contact PixelNation</p>
         <p className="mt-1 text-sm leading-relaxed text-muted">
-          Call, email, or send a message before you register if you need help choosing
-          this course.
+          Have questions about the course, your current experience level, travel, or
+          whether this training is appropriate for you? Contact PixelNation before
+          registering and we&apos;ll help you determine whether the course matches what
+          you&apos;re looking to learn.
         </p>
         <div className="cta-group mt-5">
           <Button href={SITE.phoneHref} external>

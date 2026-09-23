@@ -48,26 +48,27 @@ export const REPAIR_TRACK_COURSES: readonly TrainingCourse[] = [
     audience:
       "Beginners and working technicians who want a single intensive covering the most common shop repairs—ports and connectors—plus practical board-level diagnostics.",
     summary:
-      "A 3-day, 15-hour intensive (Friday–Sunday, 10:00 AM–3:00 PM) combining foundational microsoldering, charging and HDMI port work, and practical board diagnostics on real devices.",
+      "An intensive 3-day hands-on board repair course that takes students from microsoldering fundamentals into practical board-level diagnostics and component-level repair.\n\nStudents work with professional repair equipment and practice boards while learning techniques and diagnostic processes used in real electronics repair environments.\n\nThe focus is not simply learning how to replace individual components. Students learn how to approach a failed device systematically, use diagnostic tools correctly, identify faults, perform board-level repairs, and recover from common microsoldering mistakes.",
     learn: [
-      "Heat control and precision soldering fundamentals",
+      "Microsoldering fundamentals and proper heat control",
       "Charging port replacement",
-      "HDMI port repair (console-focused)",
-      "FPC connector replacement",
-      "Pad repair and recovery techniques",
-      "Effective multimeter use for diagnostics",
-      "Identifying and isolating short circuits",
-      "Troubleshooting power and charging issues",
-      "Board components and circuit behavior",
-      "Introduction to schematics and board-level logic",
-      "Advanced tools including DC power supplies",
-    ],
-    handsOn: [
-      "Guided port and connector repairs",
-      "Water damage recovery",
-      "IC replacement",
+      "Game console HDMI port replacement",
+      "FPC and board connector replacement",
+      "Pad repair and recovery",
       "Jumper wire and trace repair",
-      "Complex fault troubleshooting",
+      "Component removal and replacement",
+      "Proper multimeter use for board diagnostics",
+      "Continuity, resistance, and diode-mode testing",
+      "Identifying and isolating short circuits",
+      "Troubleshooting power and charging problems",
+      "Understanding common board components and circuit behavior",
+      "Using DC power supplies for diagnostics",
+      "Introduction to schematics and boardviews",
+      "Understanding power rails and board-level logic",
+      "Liquid-damage inspection and diagnostic techniques",
+      "IC removal and replacement",
+      "Systematic fault isolation",
+      "Real-world board troubleshooting",
     ],
     comparison: {
       topicsCovered: "Ports, connectors, pads, diagnostics, shorts, power, schematics",
@@ -76,6 +77,37 @@ export const REPAIR_TRACK_COURSES: readonly TrainingCourse[] = [
     },
   },
 ] as const;
+
+/** Repair Track / Practical Board Repair Intensive only. Not used by Investigator Track. */
+export const PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING = {
+  url: "https://app.squareup.com/appointments/book/classes/ylpswjtvdqub0f/LRCKYM56QVYGP/classes",
+  ctaLabel: "Reserve Your Seat — $1,500",
+  paymentMessage:
+    "Full tuition is required at registration to reserve your seat.",
+  nextClassLabel: "Next Class",
+  nextClassDates: "November 13–15, 2026",
+  details: [
+    "Friday–Sunday",
+    "10:00 AM–3:00 PM",
+    "15 Hours of Hands-On Training",
+    "$1,500 Per Student",
+    "Limited to 6 Students",
+  ],
+  includesNote: "One registration includes all three days of training.",
+} as const;
+
+/** Repair Track / Practical Board Repair Intensive only. */
+export const REPAIR_TRACK_INSTRUCTOR = {
+  eyebrow: "About Your Instructor",
+  name: "Nathan Jobe",
+  paragraphs: [
+    "Nathan Jobe has extensive hands-on experience in electronics repair, microsoldering, and board-level diagnostics.",
+    "His professional training includes hands-on microsoldering instruction with Jessa Jones of iPad Rehab and board-level MacBook repair training with Louis Rossmann.",
+    "Since that training, Nathan has spent years applying board-level diagnostic and microsoldering techniques to real customer devices including smartphones, tablets, laptops, game consoles, liquid-damaged electronics, and component-level board failures.",
+  ],
+  disclaimer:
+    "This describes historical professional training only. Nathan Jobe and PixelNation are not currently affiliated with, endorsed by, sponsored by, or certified by Jessa Jones, iPad Rehab, Louis Rossmann, or their businesses.",
+} as const;
 
 export const INVESTIGATOR_TRACK_COURSES: readonly TrainingCourse[] = [
   {
@@ -165,20 +197,23 @@ export const INVESTIGATOR_TRACK_COURSES: readonly TrainingCourse[] = [
 /** Repair Track / Practical Board Repair Intensive only. Not used by Investigator Track. */
 export const REPAIR_TRACK_REGISTRATION_POLICIES = {
   paymentNotice:
-    "Payment is required in full at the time of registration to reserve your seat.",
+    "Full tuition is required at registration to reserve your seat.",
   sections: [
     {
       title: "Registration & Payment",
       paragraphs: [
-        "Payment is required in full at the time of registration to reserve your seat. Tuition covers course instruction, use of training equipment, practice boards, and standard training materials unless otherwise stated in the course description.",
-        "Because class sizes are intentionally limited, your registration reserves a seat that may otherwise have been offered to another student.",
+        "Payment is required in full at the time of registration to reserve a seat.",
+        "Tuition covers all three days of instruction, use of training equipment, practice boards, and standard training materials unless otherwise specified. One $1,500 registration includes Friday, Saturday, and Sunday. Saturday and Sunday are continuation training days and are not separately bookable. Square uses the Friday class session as the customer-facing enrollment for the complete three-day program.",
+        "Because class sizes are intentionally limited, registration reserves a seat that may otherwise have been offered to another student.",
       ],
     },
     {
       title: "Cancellation & Rescheduling Policy",
       paragraphs: [
+        "Please review these terms on this page before you continue to Square to pay.",
         "Students may cancel within 7 days of registration for a full refund, provided the scheduled course is still at least 30 days away.",
-        "After the 7-day grace period, tuition is non-refundable. However, if a student is unable to attend, they may request to transfer their registration to a future available class. Rescheduling is subject to availability and must be approved by PixelNation.",
+        "After the 7-day grace period, tuition is non-refundable.",
+        "If a student is unable to attend, they may request to transfer their registration to a future available class. Rescheduling is subject to availability and approval by PixelNation.",
         "If PixelNation must cancel or reschedule a class, registered students may choose between transferring their tuition to another available course date or receiving a full refund of tuition paid.",
         "Travel expenses, lodging, transportation, meals, and other personal expenses are not included in tuition and are not reimbursable by PixelNation.",
       ],
@@ -187,7 +222,8 @@ export const REPAIR_TRACK_REGISTRATION_POLICIES = {
       title: "What Happens After Registration?",
       paragraphs: [
         "After registering, students will receive confirmation of their seat along with course information, what to expect, recommended travel planning information, and anything they should bring.",
-        "Students attending scheduled group training are not required to bring professional repair equipment unless otherwise stated. Training equipment will be available during the course.",
+        "Students attending scheduled group training are not required to bring professional repair equipment unless otherwise stated.",
+        "Training equipment will be available during the course.",
       ],
     },
     {
