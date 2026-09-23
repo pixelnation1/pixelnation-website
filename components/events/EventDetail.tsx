@@ -48,7 +48,7 @@ export function EventDetail({ event, shareUrl }: EventDetailProps) {
         </div>
       ) : null}
 
-      <section className="border-b border-card-border bg-gradient-to-b from-accent-muted via-accent-secondary-muted to-background py-10 sm:py-14">
+      <section className="border-b border-card-border bg-card py-10 sm:py-12">
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-md border border-accent/40 bg-accent-muted px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-accent">
@@ -85,6 +85,13 @@ export function EventDetail({ event, shareUrl }: EventDetailProps) {
             <section>
               <h2 className="text-xl font-semibold text-foreground">Format</h2>
               <p className="mt-3 text-muted leading-relaxed">{event.format}</p>
+            </section>
+          ) : null}
+
+          {event.prizing ? (
+            <section>
+              <h2 className="text-xl font-semibold text-foreground">Prizing</h2>
+              <p className="mt-3 text-muted leading-relaxed">{event.prizing}</p>
             </section>
           ) : null}
 

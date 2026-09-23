@@ -92,6 +92,9 @@ export function isFreeEntry(event: StoreEvent): boolean {
 }
 
 export function seatsRemaining(event: StoreEvent): number | null {
+  if (typeof event.spotsRemaining === "number") {
+    return Math.max(0, event.spotsRemaining);
+  }
   if (typeof event.capacity !== "number") return null;
   const taken = event.registeredCount ?? 0;
   return Math.max(0, event.capacity - taken);
@@ -114,10 +117,17 @@ export function capacityLabel(event: StoreEvent): string | null {
 }
 
 export function registrationStatusLabel(event: StoreEvent): string {
-  if (event.status === "cancelled") return "Cancelled";
-  if (event.status === "completed") return "Completed";
-  if (isSoldOut(event)) return "Sold Out";
-  if (event.registrationRequired) return "Registration required";
+  if (event.status === "cancelled") return "Registration closed";
+  if (event.status === "completed") return "Registration closed";
+  if (isSoldOut(event)) return "Sold out";
+  if (event.registrationRequired) {
+    const remaining = seatsRemaining(event);
+    if (remaining !== null) {
+      return remaining === 1 ? "1 spot left" : `${remaining} spots left`;
+    }
+    return "Open";
+  }
+  if (event.eventType === "trade-night") return "Free open play";
   return "No registration required";
 }
 

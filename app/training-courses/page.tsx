@@ -5,6 +5,7 @@ import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
 import { TrainingPageFaq } from "@/components/faq/RepairPageFaq";
 import { TrainingCoursesStructuredData } from "@/components/services/TrainingCoursesStructuredData";
 import { CoursePricingCard } from "@/components/training/CoursePricingCard";
+import { RepairTrackPolicies } from "@/components/training/RepairTrackPolicies";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import {
@@ -13,6 +14,7 @@ import {
   INVESTIGATOR_TRACK_COURSES,
   PAYMENT_POLICY,
   REPAIR_TRACK_COURSES,
+  REPAIR_TRACK_REGISTRATION_POLICIES,
   TRAINING_COURSES_METADATA,
   TRAINING_FORMAT_NOTES,
   WHAT_STUDENTS_LEARN,
@@ -109,11 +111,24 @@ export default function TrainingCoursesPage() {
         title="Repair track courses"
         subtitle="Hands-on microsoldering for repair shops and technicians."
       >
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid max-w-2xl gap-8">
           {REPAIR_TRACK_COURSES.map((course) => (
-            <CoursePricingCard key={course.id} course={course} />
+            <CoursePricingCard
+              key={course.id}
+              course={course}
+              paymentNotice={REPAIR_TRACK_REGISTRATION_POLICIES.paymentNotice}
+            />
           ))}
         </div>
+      </Section>
+
+      <Section
+        id="repair-registration-policies"
+        title="Registration & Course Policies"
+        subtitle="Terms for the Practical Board Repair Intensive. Please review before you register and pay."
+        alt
+      >
+        <RepairTrackPolicies />
       </Section>
 
       {/* Investigator track */}
@@ -214,6 +229,16 @@ export default function TrainingCoursesPage() {
             </p>
           </div>
           <div className="space-y-4 text-sm text-muted">
+            <p>
+              Practical Board Repair Intensive payment and cancellation terms are in{" "}
+              <a
+                href="#repair-registration-policies"
+                className="font-medium text-accent-secondary underline-offset-2 hover:underline"
+              >
+                Registration &amp; Course Policies
+              </a>{" "}
+              above.
+            </p>
             <div>
               <h3 className="font-semibold text-foreground">Payment</h3>
               <p className="mt-2 leading-relaxed">{PAYMENT_POLICY.payment}</p>

@@ -23,7 +23,7 @@ export const GAMING_EVENTS_DROPDOWN_LINKS = [
   { label: "Gaming Community", href: "/gaming-community" },
   { label: "Events", href: "/events" },
   { label: "Weekly Events", href: "/weekly-events" },
-  { label: "Weekly Schedule", href: "/events#weekly-schedule" },
+  { label: "Weekly Schedule", href: "/events#weekly-nights" },
   { label: "Family Gaming", href: "/family-gaming" },
   { label: "What to Expect", href: "/what-to-expect" },
   { label: "Gaming Lounge", href: "/gaming-lounge" },

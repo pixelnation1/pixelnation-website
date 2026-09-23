@@ -263,7 +263,7 @@ export function getThisWeekItems(now = new Date()): ThisWeekItem[] {
           ? eventHref(highlight.event)
           : slot.eventSlug
             ? `/events/${slot.eventSlug}`
-            : "/events#weekly-schedule";
+            : "/events";
 
       items.push({
         day,
@@ -331,7 +331,7 @@ export function getNextScheduleItem(now = new Date()): NextScheduleItem | null {
             ? eventHref(highlight.event)
             : slot.eventSlug
               ? `/events/${slot.eventSlug}`
-              : "/events#weekly-schedule",
+              : "/events",
         dayLabel: RECURRING_DAY_LABELS[day],
         whenLabel:
           offset === 0

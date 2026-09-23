@@ -14,6 +14,8 @@ export type TrainingCourse = {
   track: string;
   skillLevel: string;
   duration: string;
+  /** Optional public schedule; omit on Investigator Track courses. */
+  schedule?: string;
   price: number;
   priceDisplay: string;
   priceNote?: string;
@@ -33,47 +35,26 @@ export type TrainingCourse = {
 
 export const REPAIR_TRACK_COURSES: readonly TrainingCourse[] = [
   {
-    id: "fundamentals-ports-connectors",
-    name: "Fundamentals – Ports & Connectors",
+    id: "practical-board-repair-intensive",
+    name: "Practical Board Repair Intensive",
     track: "Repair Track",
-    skillLevel: "Beginner",
-    duration: "3 days",
-    price: 499,
-    priceDisplay: "$499",
-    priceNote: "Introductory pricing per student",
-    badge: "Introductory Pricing",
+    skillLevel: "Beginner to Intermediate",
+    duration: "3 Days / 15 Hours",
+    schedule: "Friday–Sunday, 10:00 AM–3:00 PM",
+    price: 1500,
+    priceDisplay: "$1,500",
+    priceNote: "Per student",
     featured: true,
     audience:
-      "Beginners and repair technicians entering board-level work who want the most common, profitable repairs seen in real shops.",
+      "Beginners and working technicians who want a single intensive covering the most common shop repairs—ports and connectors—plus practical board-level diagnostics.",
     summary:
-      "Structured 3-day hands-on training focused on foundational microsoldering through guided practice—emphasizing consistency, proper technique, and confidence on real repair scenarios.",
+      "A 3-day, 15-hour intensive (Friday–Sunday, 10:00 AM–3:00 PM) combining foundational microsoldering, charging and HDMI port work, and practical board diagnostics on real devices.",
     learn: [
+      "Heat control and precision soldering fundamentals",
       "Charging port replacement",
       "HDMI port repair (console-focused)",
       "FPC connector replacement",
       "Pad repair and recovery techniques",
-      "Heat control and precision soldering fundamentals",
-    ],
-    comparison: {
-      topicsCovered: "Ports, connectors, pads, soldering fundamentals",
-      handsOnPractice: "Full workshop — guided repairs",
-      recommendedExperience: "None required; helpful if familiar with basic tools",
-    },
-  },
-  {
-    id: "practical-board-repair",
-    name: "Practical Board Repair",
-    track: "Repair Track",
-    skillLevel: "Advanced",
-    duration: "5 days",
-    price: 1200,
-    priceDisplay: "$1,200",
-    priceNote: "Per student",
-    audience:
-      "Students ready to move beyond ports and connectors into board-level diagnostics and more advanced fault isolation.",
-    summary:
-      "Intensive 5-day course developing real diagnostic thinking—multimeter work, shorts, power issues, schematics introduction, and complex hands-on board scenarios.",
-    learn: [
       "Effective multimeter use for diagnostics",
       "Identifying and isolating short circuits",
       "Troubleshooting power and charging issues",
@@ -82,15 +63,16 @@ export const REPAIR_TRACK_COURSES: readonly TrainingCourse[] = [
       "Advanced tools including DC power supplies",
     ],
     handsOn: [
+      "Guided port and connector repairs",
       "Water damage recovery",
       "IC replacement",
       "Jumper wire and trace repair",
       "Complex fault troubleshooting",
     ],
     comparison: {
-      topicsCovered: "Diagnostics, shorts, power, schematics, advanced rework",
-      handsOnPractice: "Water damage, IC, trace, complex faults",
-      recommendedExperience: "Ports/connectors experience or prior bench work",
+      topicsCovered: "Ports, connectors, pads, diagnostics, shorts, power, schematics",
+      handsOnPractice: "Ports, water damage, IC, trace, complex faults",
+      recommendedExperience: "None required; helpful if familiar with basic tools",
     },
   },
 ] as const;
@@ -180,6 +162,43 @@ export const INVESTIGATOR_TRACK_COURSES: readonly TrainingCourse[] = [
   },
 ] as const;
 
+/** Repair Track / Practical Board Repair Intensive only. Not used by Investigator Track. */
+export const REPAIR_TRACK_REGISTRATION_POLICIES = {
+  paymentNotice:
+    "Payment is required in full at the time of registration to reserve your seat.",
+  sections: [
+    {
+      title: "Registration & Payment",
+      paragraphs: [
+        "Payment is required in full at the time of registration to reserve your seat. Tuition covers course instruction, use of training equipment, practice boards, and standard training materials unless otherwise stated in the course description.",
+        "Because class sizes are intentionally limited, your registration reserves a seat that may otherwise have been offered to another student.",
+      ],
+    },
+    {
+      title: "Cancellation & Rescheduling Policy",
+      paragraphs: [
+        "Students may cancel within 7 days of registration for a full refund, provided the scheduled course is still at least 30 days away.",
+        "After the 7-day grace period, tuition is non-refundable. However, if a student is unable to attend, they may request to transfer their registration to a future available class. Rescheduling is subject to availability and must be approved by PixelNation.",
+        "If PixelNation must cancel or reschedule a class, registered students may choose between transferring their tuition to another available course date or receiving a full refund of tuition paid.",
+        "Travel expenses, lodging, transportation, meals, and other personal expenses are not included in tuition and are not reimbursable by PixelNation.",
+      ],
+    },
+    {
+      title: "What Happens After Registration?",
+      paragraphs: [
+        "After registering, students will receive confirmation of their seat along with course information, what to expect, recommended travel planning information, and anything they should bring.",
+        "Students attending scheduled group training are not required to bring professional repair equipment unless otherwise stated. Training equipment will be available during the course.",
+      ],
+    },
+    {
+      title: "Questions Before Booking?",
+      paragraphs: [
+        "Have questions about the course, your current experience level, travel, or whether this training is appropriate for you? Contact PixelNation before registering and we'll help you determine whether the course matches what you're looking to learn.",
+      ],
+    },
+  ],
+} as const;
+
 export const ALL_COURSES = [
   ...REPAIR_TRACK_COURSES,
   ...INVESTIGATOR_TRACK_COURSES,
@@ -229,7 +248,7 @@ export const COURSES_FAQ = [
   {
     question: "What experience level is required?",
     answer:
-      "The Fundamentals course requires no prior microsoldering experience. Practical Board Repair and investigator levels expect prior skills as described on each course card. Contact us if you are unsure which course fits.",
+      "The Practical Board Repair Intensive requires no prior microsoldering experience. Investigator track levels expect prior skills as described on each course card. Contact us if you are unsure which course fits.",
   },
   {
     question: "Are the courses hands-on?",

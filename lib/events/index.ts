@@ -51,6 +51,29 @@ export {
   WEEKLY_SCHEDULE,
 } from "@/lib/events/weekly-schedule";
 export {
+  CALENDAR_FILTERS,
+  CALENDAR_WEEKDAYS,
+  calendarLabel,
+  chicagoMonthYear,
+  eventAccent,
+  expandOccurrences,
+  findOccurrence,
+  formatAgendaDate,
+  formatMonthHeading,
+  getMonthOccurrences,
+  monthGrid,
+  occurrenceId,
+  parseOccurrenceId,
+  shiftMonth,
+} from "@/lib/events/calendar";
+export type {
+  CalendarAccent,
+  CalendarCell,
+  CalendarFilter,
+  CalendarFilterId,
+  CalendarOccurrence,
+} from "@/lib/events/calendar";
+export {
   getNextScheduleItem,
   getSaturdayEvents,
   getSpecialUpcomingEvents,

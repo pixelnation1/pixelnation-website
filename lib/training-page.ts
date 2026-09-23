@@ -131,7 +131,7 @@ export const SKILL_LEVELS = [
   {
     level: "Advanced",
     description:
-      "Short circuit diagnosis, multimeter-based fault isolation, power rail concepts, and complex board failures—available through private training and future advanced workshops.",
+      "Short circuit diagnosis, multimeter-based fault isolation, power rail concepts, and complex board failures—covered in the Practical Board Repair Intensive and available through private training.",
   },
 ] as const;
 
@@ -229,7 +229,7 @@ export const TRAINING_FAQ = [
   {
     question: "Do I need prior experience?",
     answer:
-      "No prior microsoldering experience is required for the foundational workshop. Basic familiarity with electronics or repair tools is helpful but not necessary.",
+      "No prior microsoldering experience is required for the Practical Board Repair Intensive. Basic familiarity with electronics or repair tools is helpful but not necessary.",
   },
   {
     question: "Is the training hands-on?",

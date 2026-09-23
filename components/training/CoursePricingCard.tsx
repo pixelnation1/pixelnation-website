@@ -3,9 +3,14 @@ import type { TrainingCourse } from "@/lib/training-courses-page";
 
 type CoursePricingCardProps = {
   course: TrainingCourse;
+  /** Repair Track only — omitted on Investigator Track cards. */
+  paymentNotice?: string;
 };
 
-export function CoursePricingCard({ course }: CoursePricingCardProps) {
+export function CoursePricingCard({
+  course,
+  paymentNotice,
+}: CoursePricingCardProps) {
   return (
     <article
       className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card ${
@@ -42,6 +47,9 @@ export function CoursePricingCard({ course }: CoursePricingCardProps) {
             {course.duration}
           </span>
         </div>
+        {course.schedule ? (
+          <p className="mt-2 text-sm text-muted">{course.schedule}</p>
+        ) : null}
 
         <div className="mt-6 border-b border-card-border pb-6">
           <p className="text-2xl font-bold text-accent sm:text-3xl">{course.priceDisplay}</p>
@@ -94,7 +102,18 @@ export function CoursePricingCard({ course }: CoursePricingCardProps) {
           scheduled group courses.
         </p>
 
-        <div className="mt-8">
+        <div className="mt-8 space-y-3">
+          {paymentNotice ? (
+            <p className="rounded-xl border border-accent-secondary/40 bg-accent-secondary-muted px-3 py-2.5 text-sm font-medium leading-snug text-foreground">
+              {paymentNotice}{" "}
+              <Link
+                href="#repair-registration-policies"
+                className="font-semibold text-accent-secondary underline-offset-2 hover:underline"
+              >
+                Review cancellation policy
+              </Link>
+            </p>
+          ) : null}
           <Link
             href="/contact"
             className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-background transition hover:bg-accent-hover"

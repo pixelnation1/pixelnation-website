@@ -150,7 +150,7 @@ export default function TrainingPage() {
       <Section
         id="workshop"
         title="Hands-on microsoldering & diagnostics workshop"
-        subtitle="3-day structured curriculum in Emporia, Kansas—seats limited to 4 students."
+        subtitle="Practical Board Repair Intensive — 3 days / 15 hours, Friday–Sunday, 10:00 AM–3:00 PM. Seats limited to 4 students."
       >
         <p className="-mt-6 max-w-3xl text-muted leading-relaxed">
           This flagship workshop provides practical, hands-on training in board-level
@@ -195,8 +195,9 @@ export default function TrainingPage() {
         <p className="mt-6 text-sm text-muted">
           <span className="font-medium text-foreground">Location:</span> {SITE.name},{" "}
           {SITE.address.singleLine} ·{" "}
-          <span className="font-medium text-foreground">Duration:</span> 3-day workshop
-          (exact schedule provided upon registration)
+          <span className="font-medium text-foreground">Duration:</span> 3 days / 15 hours,
+          Friday–Sunday, 10:00 AM–3:00 PM ·{" "}
+          <span className="font-medium text-foreground">Tuition:</span> $1,500 per student
         </p>
       </Section>
 

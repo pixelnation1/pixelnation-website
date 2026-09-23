@@ -4,14 +4,18 @@ import type { EventFilter, StoreEvent } from "@/lib/events/types";
 /**
  * PixelNation store events.
  *
- * Recurring weekly nights power detail pages and the events hub.
- * The visible week grid is configured in lib/events/weekly-schedule.ts.
+ * Recurring nights expand onto the /events calendar automatically.
+ * Saturday is not auto-filled — add a one-time StoreEvent with a Saturday
+ * startDate when a tournament, prerelease, or special is scheduled.
  *
  * To set this week's Tuesday game, a Saturday tournament, or a specific
  * Friday Night Magic format, add a StoreEvent with:
  * - weeklySlotId matching the slot (e.g. "tuesday-rotating")
  * - startDate as YYYY-MM-DD
  * - recurring: false
+ *
+ * A matching weeklySlotId on that date replaces the generic recurring night
+ * so the calendar does not show both.
  */
 export const STORE_EVENTS: readonly StoreEvent[] = [
   {
@@ -48,7 +52,7 @@ export const STORE_EVENTS: readonly StoreEvent[] = [
     shortDescription:
       "Tuesday nights rotate through tabletop, trading-card, and community games. Check the events page for this week's lineup.",
     description:
-      "Tuesday is Rotating Game Night at PixelNation. We feature a different game each week rather than the same title every Tuesday.\n\nLineups may include the One Piece Card Game, Disney Lorcana, Riftbound, and other tabletop, card, or community games. When this week's title is posted, it appears on the events calendar and on the Tuesday schedule card.\n\nNew players are welcome—ask staff what is on the tables tonight.",
+      "Tuesday is Rotating Game Night at PixelNation. We feature a different game each week rather than the same title every Tuesday.\n\nLineups may include the One Piece Card Game, Disney Lorcana, Riftbound, and other tabletop, card, or community games. When this week's title is posted, it appears on the events calendar.\n\nNew players are welcome—ask staff what is on the tables tonight.",
     game: "multi",
     eventType: "weekly",
     image: TCG_IMAGES.shopBanner,
@@ -165,7 +169,7 @@ export const STORE_EVENTS: readonly StoreEvent[] = [
     shortDescription:
       "Modern console tournaments every Friday on PixelNation's large-screen gaming setup.",
     description:
-      "Friday Video Game Tournament nights use the large-screen gaming setup at PixelNation.\n\nFeatured titles change. When a specific game is posted, it appears on the events calendar and on the Friday schedule card. Show up to compete or spectate.\n\nThis runs alongside Friday Night Magic, so the shop stays busy with cards and consoles in the same evening.",
+      "Friday Video Game Tournament nights use the large-screen gaming setup at PixelNation.\n\nFeatured titles change. When a specific game is posted, it appears on the events calendar. Show up to compete or spectate.\n\nThis runs alongside Friday Night Magic, so the shop stays busy with cards and consoles in the same evening.",
     game: "video-games",
     eventType: "video-game",
     image: TCG_IMAGES.shopBanner,
@@ -221,7 +225,7 @@ export const STORE_EVENTS: readonly StoreEvent[] = [
     shortDescription:
       "Friday evenings at PixelNation include Friday Night Magic from 6:00 PM and a video game tournament from 7:00 PM.",
     description:
-      "Friday is a full gaming evening at PixelNation in downtown Emporia.\n\nFriday Night Magic runs 6:00 PM–10:00 PM with rotating formats, prizes, and community play. The Friday Video Game Tournament runs 7:00 PM–10:00 PM on the large-screen setup.\n\nSee each event page for details, or check the weekly schedule on the events hub.",
+      "Friday is a full gaming evening at PixelNation in downtown Emporia.\n\nFriday Night Magic runs 6:00 PM–10:00 PM with rotating formats, prizes, and community play. The Friday Video Game Tournament runs 7:00 PM–10:00 PM on the large-screen setup.\n\nSee each event page or the events calendar for details.",
     game: "multi",
     eventType: "weekly",
     image: TCG_IMAGES.shopBanner,
@@ -235,6 +239,124 @@ export const STORE_EVENTS: readonly StoreEvent[] = [
     status: "scheduled",
     playerInfo: "See Friday Night Magic and Friday Video Game Tournament for the evening's details.",
     registrationInfo: "No registration required unless a special Friday event says otherwise.",
+  },
+  {
+    id: "one-piece-night-2026-09-01",
+    slug: "one-piece-night-sep-1",
+    title: "One Piece Card Game Night",
+    shortTitle: "One Piece Night",
+    subtitle: "Tuesday Rotating Game Night",
+    shortDescription:
+      "This Tuesday's Rotating Game Night is the One Piece Card Game—learn, battle, and play in downtown Emporia.",
+    description:
+      "Rotating Game Night this Tuesday is One Piece. Bring a deck if you have one, or ask staff how to get started.\n\nNew players are welcome.",
+    game: "one-piece",
+    eventType: "weekly",
+    image: TCG_IMAGES.onePieceSealedProducts,
+    startDate: "2026-09-01",
+    startTime: "6:00 PM",
+    endTime: "8:00 PM",
+    recurring: false,
+    entryFee: "Free",
+    registrationRequired: false,
+    featured: false,
+    status: "scheduled",
+    format: "One Piece Card Game",
+    playerInfo: "All skill levels are welcome. Ask staff if you need a starter.",
+    whatToBring: ["A One Piece deck if you have one", "Sleeves if you use them"],
+    registrationInfo: "No registration required. Walk in for One Piece Night.",
+    weeklySlotId: "tuesday-rotating",
+  },
+  {
+    id: "magic-draft-2026-08-29",
+    slug: "magic-draft-aug-29",
+    title: "Magic Draft",
+    subtitle: "Tournament Saturday",
+    shortDescription:
+      "A Magic: The Gathering draft at PixelNation on Saturday, August 29. Registration required.",
+    description:
+      "Join PixelNation for a Magic: The Gathering draft. Seats are limited.\n\nBring sleeves if you have them. Product and pairings are handled in store.\n\nOnline registration holds your spot. Entry is collected at the shop—this form does not process payment.",
+    game: "magic",
+    eventType: "draft",
+    startDate: "2026-08-29",
+    startTime: "2:00 PM",
+    endTime: "6:00 PM",
+    recurring: false,
+    entryFee: "$15",
+    registrationPrice: "15",
+    capacity: 16,
+    registeredCount: 4,
+    registrationRequired: true,
+    featured: true,
+    status: "scheduled",
+    format: "Draft",
+    prizing: "Pack prizes for top finishes, based on attendance.",
+    playerInfo: "Players of all skill levels are welcome. Ask staff if you have not drafted before.",
+    whatToBring: ["Sleeves if you have them", "A playmat if you use one"],
+    registrationInfo:
+      "Register to hold a seat. Pay the $15 entry at PixelNation before the event starts.",
+    weeklySlotId: "saturday-tournament",
+  },
+  {
+    id: "pokemon-prerelease-2026-09-05",
+    slug: "pokemon-prerelease-sep-5",
+    title: "Pokémon Prerelease",
+    subtitle: "Tournament Saturday",
+    shortDescription:
+      "Pokémon prerelease play at PixelNation on Saturday, September 5. Registration required.",
+    description:
+      "Play the newest Pokémon set early at PixelNation's Tournament Saturday prerelease.\n\nBuild a deck from prerelease product and play a structured event. All ages and skill levels are welcome.\n\nOnline registration holds your spot. Entry is collected in store.",
+    game: "pokemon",
+    eventType: "prerelease",
+    image: TCG_IMAGES.pokemonPrismaticEtb,
+    startDate: "2026-09-05",
+    startTime: "12:00 PM",
+    endTime: "5:00 PM",
+    recurring: false,
+    entryFee: "$25",
+    registrationPrice: "25",
+    capacity: 32,
+    registeredCount: 11,
+    registrationRequired: true,
+    featured: true,
+    status: "scheduled",
+    format: "Prerelease",
+    prizing: "Prerelease play promo and in-store prizes as announced.",
+    playerInfo: "All ages and skill levels are welcome. Product is provided with entry.",
+    whatToBring: ["Sleeves if you have them", "Dice and a playmat if you use them"],
+    registrationInfo:
+      "Register to hold a seat. Pay the $25 entry at PixelNation before the event starts.",
+    weeklySlotId: "saturday-tournament",
+  },
+  {
+    id: "console-invitational-2026-09-12",
+    slug: "console-invitational-sep-12",
+    title: "Console Fighting Tournament",
+    shortTitle: "Fighting Tournament",
+    subtitle: "Video game tournament — sold out",
+    shortDescription:
+      "A console fighting-game tournament on the large-screen setup. This event is sold out.",
+    description:
+      "This console fighting-game tournament on PixelNation's large-screen setup is sold out.\n\nSpectators are still welcome. Ask staff about the next video game tournament.",
+    game: "video-games",
+    eventType: "video-game",
+    image: TCG_IMAGES.shopBanner,
+    startDate: "2026-09-12",
+    startTime: "2:00 PM",
+    endTime: "6:00 PM",
+    recurring: false,
+    entryFee: "$10",
+    registrationPrice: "10",
+    capacity: 16,
+    registeredCount: 16,
+    registrationRequired: true,
+    featured: false,
+    status: "sold-out",
+    format: "Single-elimination tournament",
+    prizing: "Store credit for the winner.",
+    playerInfo: "Registration is closed. Spectators are welcome.",
+    registrationInfo: "This event is sold out.",
+    weeklySlotId: "saturday-tournament",
   },
 ];
 

@@ -177,7 +177,7 @@ export default function GamingPage() {
       >
         <div className="cta-group">
           <Button href="/events">View Events</Button>
-          <Button href="/events#weekly-schedule" variant="secondary">
+          <Button href="/events" variant="secondary">
             Weekly Schedule
           </Button>
         </div>

@@ -10,12 +10,14 @@ type EventRegistrationFormProps = {
   eventSlug: string;
   eventTitle: string;
   remainingSeats?: number | null;
+  idPrefix?: string;
 };
 
 export function EventRegistrationForm({
   eventSlug,
   eventTitle,
   remainingSeats,
+  idPrefix = "event-reg",
 }: EventRegistrationFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -103,13 +105,18 @@ export function EventRegistrationForm({
   }
 
   return (
-    <form id="register" onSubmit={handleSubmit} className="space-y-4" noValidate>
+    <form
+      id={idPrefix === "event-reg" ? "register" : `${idPrefix}-form`}
+      onSubmit={handleSubmit}
+      className="space-y-4"
+      noValidate
+    >
       <div>
-        <label htmlFor="event-reg-name" className="mb-1.5 block text-sm font-medium">
-          Name <span className="text-accent">*</span>
+        <label htmlFor={`${idPrefix}-name`} className="mb-1.5 block text-sm font-medium">
+          Full name <span className="text-accent">*</span>
         </label>
         <input
-          id="event-reg-name"
+          id={`${idPrefix}-name`}
           name="name"
           type="text"
           autoComplete="name"
@@ -121,11 +128,11 @@ export function EventRegistrationForm({
         />
       </div>
       <div>
-        <label htmlFor="event-reg-email" className="mb-1.5 block text-sm font-medium">
+        <label htmlFor={`${idPrefix}-email`} className="mb-1.5 block text-sm font-medium">
           Email <span className="text-accent">*</span>
         </label>
         <input
-          id="event-reg-email"
+          id={`${idPrefix}-email`}
           name="email"
           type="email"
           autoComplete="email"
@@ -137,11 +144,11 @@ export function EventRegistrationForm({
         />
       </div>
       <div>
-        <label htmlFor="event-reg-phone" className="mb-1.5 block text-sm font-medium">
+        <label htmlFor={`${idPrefix}-phone`} className="mb-1.5 block text-sm font-medium">
           Phone <span className="text-muted">(optional)</span>
         </label>
         <input
-          id="event-reg-phone"
+          id={`${idPrefix}-phone`}
           name="phone"
           type="tel"
           autoComplete="tel"
@@ -152,11 +159,11 @@ export function EventRegistrationForm({
         />
       </div>
       <div>
-        <label htmlFor="event-reg-players" className="mb-1.5 block text-sm font-medium">
+        <label htmlFor={`${idPrefix}-players`} className="mb-1.5 block text-sm font-medium">
           Number of players <span className="text-accent">*</span>
         </label>
         <input
-          id="event-reg-players"
+          id={`${idPrefix}-players`}
           name="playerCount"
           type="number"
           min={1}
