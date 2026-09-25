@@ -7,7 +7,16 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/"],
+        disallow: [
+          "/api/",
+          "/_next/",
+          "/account",
+          "/account/",
+          "/login",
+          "/auth/",
+          "/communities/check-in",
+          "/admin/",
+        ],
       },
     ],
     sitemap: buildCanonical("/sitemap.xml"),

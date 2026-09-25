@@ -36,7 +36,16 @@ export async function POST(request: Request) {
     );
   }
 
+  const hasSupabaseUrl = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL?.trim());
+  const hasSupabaseAnonKey = Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim(),
+  );
+
   if (!isSupabaseBrowserConfigured()) {
+    console.error("[magic-link] Sign-in unavailable: Supabase browser env incomplete", {
+      hasSupabaseUrl,
+      hasSupabaseAnonKey,
+    });
     return Response.json(
       {
         error:
@@ -85,15 +94,32 @@ export async function POST(request: Request) {
   try {
     const supabase = await createSupabaseServerClient();
     // Intentionally ignore detailed Supabase errors to avoid account enumeration.
-    await supabase.auth.signInWithOtp({
+    const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
         emailRedirectTo,
         shouldCreateUser: true,
       },
     });
-  } catch {
+    if (error) {
+      console.error("[magic-link] Supabase signInWithOtp failed", {
+        message: error.message,
+        status: error.status,
+        code: error.code,
+        hasSupabaseUrl,
+        hasSupabaseAnonKey,
+        emailRedirectToOrigin: origin,
+      });
+    }
+  } catch (err) {
     // Still return success messaging — do not leak delivery/account state.
+    const message = err instanceof Error ? err.message : "unknown_error";
+    console.error("[magic-link] Unexpected signInWithOtp exception", {
+      message,
+      hasSupabaseUrl,
+      hasSupabaseAnonKey,
+      emailRedirectToOrigin: origin,
+    });
   }
 
   return Response.json({ ok: true, message: SUCCESS_MESSAGE });

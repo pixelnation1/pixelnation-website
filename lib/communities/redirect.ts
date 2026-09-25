@@ -49,9 +49,15 @@ export function getSafeInternalPath(
 export function getAppOrigin(request: Request): string {
   const url = new URL(request.url);
 
+  // Local dev always uses the request origin (e.g. http://localhost:3000).
   if (process.env.NODE_ENV === "development") {
     return url.origin;
   }
+
+  // Prefer the canonical production site URL so magic-link redirects stay on
+  // https://www.pixelnation.co even when the request hit the apex host.
+  const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
+  if (configured) return configured;
 
   const forwardedHost = request.headers.get("x-forwarded-host")?.split(",")[0]?.trim();
   const forwardedProto =
@@ -60,9 +66,6 @@ export function getAppOrigin(request: Request): string {
   if (forwardedHost) {
     return `${forwardedProto}://${forwardedHost}`;
   }
-
-  const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
-  if (configured) return configured;
 
   return url.origin;
 }

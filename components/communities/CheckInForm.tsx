@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
-import { formatChicagoBusinessDateDisplay } from "@/lib/communities/business-date";
 import type { PublicCommunityOption } from "@/lib/communities/communities";
 
 type TodayCheckInSummary = {
@@ -21,8 +20,6 @@ type CheckInFormProps = {
 type SuccessState = {
   communityName: string;
   communitySlug: string;
-  businessDate: string;
-  locationLabel: string;
 };
 
 export function CheckInForm({
@@ -41,8 +38,10 @@ export function CheckInForm({
     useState<TodayCheckInSummary[]>(initialTodayCheckIns);
 
   async function handleCheckIn() {
-    if (!selectedSlug) {
-      setError("Choose what you are playing today.");
+    if (!selectedSlug || status === "loading") {
+      if (!selectedSlug) {
+        setError("Choose what you are playing today.");
+      }
       return;
     }
 
@@ -66,8 +65,6 @@ export function CheckInForm({
         code?: string;
         communityName?: string;
         communitySlug?: string;
-        businessDate?: string;
-        locationLabel?: string;
       };
 
       if (res.status === 409 && data.code === "already_checked_in") {
@@ -88,13 +85,10 @@ export function CheckInForm({
 
       const communityName = data.communityName ?? "your community";
       const communitySlug = data.communitySlug ?? selectedSlug;
-      const businessDate = data.businessDate ?? "";
 
       setSuccess({
         communityName,
         communitySlug,
-        businessDate,
-        locationLabel: data.locationLabel ?? locationLabel,
       });
 
       setTodayCheckIns((prev) => {
@@ -128,27 +122,34 @@ export function CheckInForm({
             PixelNation
           </p>
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            YOU&apos;RE CHECKED IN
+            YOU&apos;RE CHECKED IN!
           </h2>
-          <p className="mt-3 text-base text-foreground">
-            <span className="font-semibold">{success.communityName}</span>
-            {success.businessDate ? (
-              <>
-                {" "}
-                · {formatChicagoBusinessDateDisplay(success.businessDate)}
-              </>
-            ) : null}
+          <p className="mt-3 text-lg font-semibold text-foreground">
+            {success.communityName}
           </p>
-          <p className="mt-2 text-sm text-muted">{success.locationLabel}</p>
+          <p className="mt-3 text-base text-foreground">
+            Thanks for playing at PixelNation.
+          </p>
+          <p className="mt-2 text-sm text-muted">
+            Your visit has been recorded for today&apos;s community activity.
+          </p>
         </div>
 
-        <button
-          type="button"
-          onClick={handleAnotherGame}
-          className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-accent-hover sm:w-auto"
-        >
-          CHECK IN FOR ANOTHER GAME
-        </button>
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <button
+            type="button"
+            onClick={handleAnotherGame}
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-accent-hover sm:w-auto"
+          >
+            CHECK IN FOR ANOTHER GAME
+          </button>
+          <Link
+            href="/account"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-accent-secondary/40 bg-card px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-accent-secondary hover:text-accent-secondary sm:w-auto"
+          >
+            VIEW MY ACCOUNT
+          </Link>
+        </div>
 
         <TodayCheckInsList items={todayCheckIns} />
       </div>
@@ -180,13 +181,12 @@ export function CheckInForm({
       <fieldset className="space-y-3">
         <legend
           id={`${groupId}-legend`}
-          className="text-lg font-semibold text-foreground"
+          className="text-lg font-semibold uppercase tracking-wide text-foreground"
         >
           What are you playing today?
         </legend>
         <p className="text-sm text-muted" id={`${groupId}-hint`}>
-          Tap one community, then check in. You can check into another game
-          later today.
+          Choose the community you&apos;re here to play at {locationLabel}.
         </p>
 
         <div
@@ -207,7 +207,7 @@ export function CheckInForm({
                   setSelectedSlug(community.slug);
                   setError("");
                 }}
-                className={`flex min-h-14 w-full items-center justify-between gap-3 rounded-xl border px-4 py-4 text-left text-base font-semibold transition-colors ${
+                className={`flex min-h-14 w-full items-center justify-between gap-3 rounded-xl border px-4 py-4 text-left text-base font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
                   selected
                     ? "border-accent bg-accent/15 text-foreground ring-2 ring-accent"
                     : "border-card-border bg-card text-foreground hover:border-accent-secondary/60"
@@ -240,7 +240,7 @@ export function CheckInForm({
         type="button"
         onClick={handleCheckIn}
         disabled={status === "loading" || !selectedSlug}
-        className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold uppercase tracking-wide text-background transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold uppercase tracking-wide text-background transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         {status === "loading" ? "Checking in…" : "CHECK IN"}
       </button>

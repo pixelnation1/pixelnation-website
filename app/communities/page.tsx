@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { getAuthContext } from "@/lib/communities/auth";
 import {
   fetchActiveCommunities,
 } from "@/lib/communities/communities";
@@ -10,13 +11,14 @@ import { isSupabaseBrowserConfigured } from "@/lib/supabase/env";
 export const dynamic = "force-dynamic";
 
 export const metadata = createPageMetadata({
-  title: "PixelNation Communities | Local Game Play Tracking",
+  title: "Gaming Communities in Emporia, KS | PixelNation",
   description:
-    "PixelNation Communities tracks what local players are playing in Emporia so we can plan inventory, events, organized play, and community support.",
+    "Join PixelNation gaming communities in Emporia, Kansas. Check in when you play Pokémon, Magic: The Gathering, One Piece, Lorcana, Yu-Gi-Oh!, Warhammer, and more.",
   path: "/communities",
+  titleAbsolute: true,
   keywords: [
     "PixelNation Communities",
-    "game store Emporia KS",
+    "gaming communities Emporia KS",
     "TCG community Emporia",
     "local gaming check-in",
   ],
@@ -36,6 +38,8 @@ const FALLBACK_NAMES = [
 
 export default async function CommunitiesLandingPage() {
   const checkInHref = `/communities/check-in?location=${getDefaultCheckInLocationCode()}`;
+  const ctx = await getAuthContext();
+  const accountHref = ctx ? "/account" : `/login?next=${encodeURIComponent("/account")}`;
 
   let communityNames: string[] = [];
   if (isSupabaseBrowserConfigured()) {
@@ -61,13 +65,18 @@ export default async function CommunitiesLandingPage() {
           PIXELNATION COMMUNITIES
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-          We track what local players are playing so PixelNation can decide
-          inventory, events, organized play, and how we support each community
-          in the store.
+          Play what you love. Help shape what PixelNation becomes.
+        </p>
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
+          We track real in-store play so PixelNation can decide products, events,
+          organized play, and how we support each community going forward.
         </p>
 
-        <div className="mt-8">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Button href={checkInHref}>CHECK IN</Button>
+          <Button href={accountHref} variant="secondary">
+            MY ACCOUNT
+          </Button>
         </div>
 
         <section className="mt-14" aria-labelledby="active-communities-heading">
@@ -78,8 +87,7 @@ export default async function CommunitiesLandingPage() {
             Active communities
           </h2>
           <p className="mt-2 text-sm text-muted">
-            Check in when you play — it helps us see what Emporia is into right
-            now.
+            Communities you can check into when you play at PixelNation Emporia.
           </p>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             {communityNames.map((name) => (
@@ -90,6 +98,47 @@ export default async function CommunitiesLandingPage() {
                 {name}
               </li>
             ))}
+          </ul>
+        </section>
+
+        <section className="mt-14" aria-labelledby="availability-heading">
+          <h2
+            id="availability-heading"
+            className="text-xl font-semibold text-foreground"
+          >
+            Available now &amp; coming soon
+          </h2>
+          <ul className="mt-5 space-y-3">
+            <li className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-accent-secondary/40 bg-accent-secondary-muted/40 px-4 py-3">
+              <span className="text-base text-foreground">
+                Check in when you play
+              </span>
+              <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-accent-secondary">
+                Available now
+              </span>
+            </li>
+            <li className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-card-border/70 bg-card/60 px-4 py-3">
+              <span className="text-base text-foreground">
+                Track community activity
+              </span>
+              <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-muted">
+                Coming soon
+              </span>
+            </li>
+            <li className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-card-border/70 bg-card/60 px-4 py-3">
+              <span className="text-base text-foreground">
+                Support communities
+              </span>
+              <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-muted">
+                Coming soon
+              </span>
+            </li>
+            <li className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-card-border/70 bg-card/60 px-4 py-3">
+              <span className="text-base text-foreground">Top Supporters</span>
+              <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-muted">
+                Coming soon
+              </span>
+            </li>
           </ul>
         </section>
 

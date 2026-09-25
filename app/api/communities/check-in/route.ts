@@ -3,6 +3,7 @@ import {
   isCommunityParticipationAllowed,
   requireUser,
 } from "@/lib/communities/auth";
+import { needsDisplayNameSetup } from "@/lib/communities/profile";
 import { resolveCheckInLocation } from "@/lib/communities/locations";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { isSupabaseBrowserConfigured } from "@/lib/supabase/env";
@@ -13,16 +14,19 @@ type CheckInBody = {
   locationCode?: unknown;
 };
 
-function clientKey(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  return forwarded?.split(",")[0]?.trim() || "unknown";
-}
-
 function normalizeSlug(value: unknown): string | null {
   if (typeof value !== "string") return null;
   const slug = value.trim().toLowerCase();
   if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) return null;
   return slug;
+}
+
+function logCheckInFailure(
+  event: string,
+  details: Record<string, string | number | boolean | undefined>,
+) {
+  // Never log tokens, emails, service keys, or request bodies with PII.
+  console.error(`[communities-check-in] ${event}`, details);
 }
 
 /**
@@ -33,6 +37,7 @@ function normalizeSlug(value: unknown): string | null {
  */
 export async function POST(request: Request) {
   if (!isSupabaseBrowserConfigured()) {
+    logCheckInFailure("unavailable", { reason: "supabase_browser_env" });
     return Response.json(
       { error: "Check-in is temporarily unavailable. Please try again later." },
       { status: 503 },
@@ -46,9 +51,22 @@ export async function POST(request: Request) {
     if (error instanceof AuthError && error.reason === "unauthenticated") {
       return Response.json({ error: "Sign in required." }, { status: 401 });
     }
+    logCheckInFailure("auth_error", {
+      reason: error instanceof AuthError ? error.reason : "unknown",
+    });
     return Response.json(
       { error: "Unable to complete check-in." },
       { status: 500 },
+    );
+  }
+
+  if (needsDisplayNameSetup(ctx.profile, ctx.user)) {
+    return Response.json(
+      {
+        error: "Finish setting up your display name before checking in.",
+        code: "display_name_required",
+      },
+      { status: 403 },
     );
   }
 
@@ -63,10 +81,11 @@ export async function POST(request: Request) {
     );
   }
 
-  const ip = clientKey(request);
+  // Per authenticated user only — do not key on shared store Wi-Fi IPs.
+  // Light ceiling so a few same-day community check-ins stay allowed.
   const limit = checkRateLimit(
-    `communities-check-in:${ctx.user.id}:${ip}`,
-    30,
+    `communities-check-in:user:${ctx.user.id}`,
+    20,
     15 * 60 * 1000,
   );
   if (!limit.ok) {
@@ -88,8 +107,8 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  // Intentionally ignore profile_id, points, business_date, account_status,
-  // role, created_by, and any other client-supplied fields.
+  // Intentionally ignore profile_id, user_id, points, business_date,
+  // account_status, role, created_at, and any other client-supplied fields.
   const communitySlug = normalizeSlug(body.communitySlug);
   if (!communitySlug) {
     return Response.json(
@@ -116,6 +135,9 @@ export async function POST(request: Request) {
   try {
     admin = createSupabaseAdminClient();
   } catch {
+    logCheckInFailure("admin_client_unavailable", {
+      hasServiceRole: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()),
+    });
     return Response.json(
       { error: "Check-in is temporarily unavailable. Please try again later." },
       { status: 503 },
@@ -129,6 +151,10 @@ export async function POST(request: Request) {
     .maybeSingle();
 
   if (communityError) {
+    logCheckInFailure("community_lookup_failed", {
+      code: communityError.code,
+      message: communityError.message,
+    });
     return Response.json(
       { error: "Unable to complete check-in. Please try again." },
       { status: 500 },
@@ -154,10 +180,13 @@ export async function POST(request: Request) {
 
   // Do not set business_date or created_at — set_check_in_business_date owns them.
   // Do not write community_members or support_point_entries.
+  // TODO: Before check-ins award Support Points, implement stronger in-store
+  // presence verification (short-lived/rotating store session or staff-controlled
+  // check). Do not build that mechanism in this phase.
   const { data: inserted, error: insertError } = await admin
     .from("check_ins")
     .insert({
-      profile_id: ctx.user.id,
+      profile_id: ctx.profile.id,
       community_id: community.id,
       location_id: location.id,
     })
@@ -179,6 +208,12 @@ export async function POST(request: Request) {
       );
     }
 
+    logCheckInFailure("insert_failed", {
+      code: insertError.code,
+      message: insertError.message,
+      communitySlug: community.slug,
+      locationId: location.id,
+    });
     return Response.json(
       { error: "Unable to complete check-in. Please try again." },
       { status: 500 },

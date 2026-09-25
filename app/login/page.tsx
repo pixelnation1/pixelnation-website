@@ -54,10 +54,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
             <span className="text-accent" aria-hidden>
               •
             </span>
-            <span>
-              Check in when you play{" "}
-              <span className="text-foreground/70">(coming soon)</span>
-            </span>
+            <span>Check in when you play</span>
           </li>
           <li className="flex gap-2">
             <span className="text-accent" aria-hidden>

@@ -4,6 +4,8 @@ import {
   isCommunityParticipationAllowed,
   requireUserForPage,
 } from "@/lib/communities/auth";
+import { formatChicagoBusinessDateDisplay } from "@/lib/communities/business-date";
+import { fetchOwnCheckInHistory } from "@/lib/communities/check-ins";
 import { DEFAULT_DISPLAY_NAME } from "@/lib/communities/constants";
 import { needsDisplayNameSetup } from "@/lib/communities/profile";
 import { createPageMetadata } from "@/lib/seo/metadata";
@@ -33,6 +35,7 @@ export default async function AccountPage() {
 
   const suspended = !isCommunityParticipationAllowed(profile);
   const email = user.email ?? "";
+  const checkInHistory = await fetchOwnCheckInHistory(profile.id, 10);
 
   return (
     <div className="relative overflow-hidden">
@@ -89,19 +92,53 @@ export default async function AccountPage() {
           </div>
         </dl>
 
+        <section className="mt-8" aria-labelledby="check-ins-heading">
+          <h2
+            id="check-ins-heading"
+            className="text-lg font-semibold text-foreground"
+          >
+            Community Check-Ins
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            Total check-ins:{" "}
+            <span className="font-semibold text-foreground">
+              {checkInHistory.totalCount}
+            </span>
+          </p>
+
+          {checkInHistory.recent.length > 0 ? (
+            <ul className="mt-4 space-y-2">
+              {checkInHistory.recent.map((row, index) => (
+                <li
+                  key={`${row.communityName}-${row.businessDate}-${index}`}
+                  className="flex min-h-11 items-center justify-between gap-3 rounded-xl border border-card-border/70 bg-card/60 px-4 py-3 text-sm"
+                >
+                  <span className="font-medium text-foreground">
+                    {row.communityName}
+                  </span>
+                  <span className="shrink-0 text-muted">
+                    {formatChicagoBusinessDateDisplay(row.businessDate)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-4 text-sm text-muted">
+              No check-ins yet. When you play at PixelNation, check in from the
+              store QR code.
+            </p>
+          )}
+        </section>
+
         <section className="mt-8" aria-labelledby="coming-soon-heading">
           <h2
             id="coming-soon-heading"
             className="text-lg font-semibold text-foreground"
           >
-            Community activity
+            Coming soon
           </h2>
           <ul className="mt-4 space-y-3">
-            {[
-              "Support Points",
-              "Community Check-Ins",
-              "Top Supporters",
-            ].map((label) => (
+            {["Support Points", "Top Supporters"].map((label) => (
               <li
                 key={label}
                 className="flex items-center justify-between gap-3 rounded-xl border border-card-border/70 bg-card/60 px-4 py-3 text-sm"

@@ -42,16 +42,14 @@ export default async function CommunityCheckInPage({
   searchParams,
 }: CheckInPageProps) {
   const params = await searchParams;
-  const rawLocation =
-    typeof params.location === "string" && params.location.trim()
-      ? params.location
-      : getDefaultCheckInLocationCode();
-
-  const location = resolveCheckInLocation(rawLocation);
+  const hasLocationParam =
+    typeof params.location === "string" && params.location.trim().length > 0;
+  const rawLocation = hasLocationParam ? params.location!.trim() : "";
+  const location = resolveCheckInLocation(rawLocation || null);
   const returnPath = getSafeInternalPath(
     location
       ? buildCheckInPath(location.code)
-      : `/communities/check-in?location=${encodeURIComponent(rawLocation.trim().toLowerCase() || "store")}`,
+      : buildCheckInPath(getDefaultCheckInLocationCode()),
     buildCheckInPath(getDefaultCheckInLocationCode()),
   );
 
@@ -69,8 +67,9 @@ export default async function CommunityCheckInPage({
           role="status"
         >
           <p className="text-base text-foreground">
-            This check-in location is not recognized. Ask a team member for the
-            store QR code, or start check-in for PixelNation Emporia.
+            {hasLocationParam
+              ? "This check-in location is not recognized. Ask a team member for the store QR code, or start check-in for PixelNation Emporia."
+              : "A check-in location is required. Scan the store QR code, or start check-in for PixelNation Emporia."}
           </p>
         </div>
         <div className="mt-6">
