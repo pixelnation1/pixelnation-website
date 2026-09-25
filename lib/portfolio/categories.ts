@@ -4,7 +4,7 @@ export const PORTFOLIO_CATEGORIES: readonly PortfolioCategory[] = [
   {
     id: "websites",
     label: "Websites",
-    description: "Business, nonprofit, dealership, and service company websites.",
+    description: "Business, nonprofit, event, and local service company websites.",
   },
   {
     id: "saas-platforms",
@@ -12,24 +12,9 @@ export const PORTFOLIO_CATEGORIES: readonly PortfolioCategory[] = [
     description: "Subscription software, portals, and multi-user web applications.",
   },
   {
-    id: "business-automation",
-    label: "Business Automation",
-    description: "Workflow tools, CRM integrations, and operational automation.",
-  },
-  {
-    id: "dashboards",
-    label: "Dashboards",
-    description: "Reporting, KPI, and executive visibility tools.",
-  },
-  {
-    id: "repair-industry-software",
-    label: "Repair Industry Software",
-    description: "Shop management and technician workflow platforms.",
-  },
-  {
     id: "custom-applications",
     label: "Custom Applications",
-    description: "Purpose-built tools for niche business requirements.",
+    description: "Purpose-built tools and marketplace platforms for niche requirements.",
   },
 ] as const;
 
@@ -38,7 +23,4 @@ export const PORTFOLIO_FILTERS: readonly PortfolioFilter[] = [
   { id: "websites", label: "Websites" },
   { id: "saas", label: "SaaS" },
   { id: "automation", label: "Automation" },
-  { id: "nonprofit", label: "Nonprofit" },
-  { id: "automotive", label: "Automotive" },
-  { id: "marketplace", label: "Marketplace" },
 ] as const;

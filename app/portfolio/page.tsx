@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { PortfolioGrid } from "@/components/portfolio/PortfolioGrid";
 import { PortfolioStructuredData } from "@/components/portfolio/PortfolioStructuredData";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -20,7 +18,7 @@ export const metadata = createPageMetadata({
   description: PORTFOLIO_METADATA.description,
   path: PORTFOLIO_METADATA.path,
   titleAbsolute: true,
-  ogImage: "/images/computerrepair.png",
+  ogImage: "/images/pixellogo.png",
   ogImageAlt: "PixelNation software development portfolio",
 });
 
@@ -30,41 +28,37 @@ export default function PortfolioPage() {
       <PortfolioStructuredData />
 
       <section
-        className="border-b border-card-border bg-gradient-to-b from-accent-muted via-accent-secondary-muted to-background py-12 sm:py-16 md:py-24"
+        className="relative overflow-hidden border-b border-card-border bg-gradient-to-b from-accent-muted via-accent-secondary-muted to-background py-12 sm:py-16 md:py-24"
         aria-labelledby="portfolio-heading"
       >
-        <div className="mx-auto grid max-w-6xl min-w-0 items-center gap-8 px-4 sm:gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="min-w-0 order-1">
-            <Breadcrumbs items={portfolioBreadcrumbs()} />
-            <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-accent">
-              Portfolio · Case Studies · Software &amp; Web
-            </p>
-            <h1
-              id="portfolio-heading"
-              className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
-            >
-              Real Projects. Real Results.
-            </h1>
-            <p className="mt-4 text-lg leading-relaxed text-muted">
-              Explore websites, SaaS platforms, business automation systems, dashboards, and
-              custom software built by PixelNation.
-            </p>
-            <div className="cta-group mt-8">
-              <Button href="/contact">Start Your Project</Button>
-              <Button href="/software-development" variant="secondary">
-                Software Services
-              </Button>
-            </div>
-          </div>
-          <div className="relative order-2 mx-auto aspect-square w-full max-w-md min-w-0 lg:max-w-none">
-            <Image
-              src="/images/computerrepair.png"
-              alt="PixelNation software development portfolio — websites, SaaS, and automation projects"
-              fill
-              className="object-contain"
-              priority
-              sizes="(max-width: 1024px) 80vw, 40vw"
-            />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.35]"
+          aria-hidden
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 18% 20%, color-mix(in oklab, var(--accent) 28%, transparent), transparent 42%), radial-gradient(circle at 82% 30%, color-mix(in oklab, var(--accent-secondary) 22%, transparent), transparent 46%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-4xl min-w-0 px-4 text-center">
+          <Breadcrumbs items={portfolioBreadcrumbs()} className="justify-center" />
+          <p className="mb-2 mt-4 text-sm font-semibold uppercase tracking-[0.22em] text-accent">
+            PixelNation · Software Development
+          </p>
+          <h1
+            id="portfolio-heading"
+            className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
+          >
+            Real projects. Real products.
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted">
+            Built to solve real problems—websites, SaaS platforms, and custom software from
+            PixelNation.
+          </p>
+          <div className="cta-group mt-8 justify-center">
+            <Button href="/contact">Start Your Project</Button>
+            <Button href="/software-development" variant="secondary">
+              Software Services
+            </Button>
           </div>
         </div>
       </section>
@@ -72,7 +66,7 @@ export default function PortfolioPage() {
       <Section
         id="categories"
         title="Portfolio categories"
-        subtitle="Websites, SaaS, automation, dashboards, and industry-specific software."
+        subtitle="Websites, SaaS platforms, and custom applications."
       >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {PORTFOLIO_CATEGORIES.map((category) => (

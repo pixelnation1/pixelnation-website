@@ -55,7 +55,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
         .
       </p>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-8 grid items-start gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {filteredProjects.map((project, index) => (
           <PortfolioProjectCard
             key={project.slug}

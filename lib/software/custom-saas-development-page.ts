@@ -118,17 +118,17 @@ export const FEATURED_SAAS_PROJECTS = [
   {
     name: "RepairForge",
     description:
-      "Repair shop management SaaS for ticket tracking, customer communication, parts inventory, and technician workflows—built for operators who outgrew spreadsheets.",
-    features: ["Repair tickets", "Customer notifications", "Inventory tracking", "Technician dashboards"],
-    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
+      "Repair shop management SaaS for ticket tracking, customer management, parts inventory, point of sale, and reporting—built for operators who outgrew spreadsheets.",
+    features: ["Repair tickets", "Customer management", "Inventory tracking", "Point of sale"],
+    technologies: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
     status: "In development",
   },
   {
-    name: "ReconForge",
+    name: "ReviewForge",
     description:
-      "Reconditioning and inventory platform for auto dealerships managing vehicle recon, pricing, margin visibility, and sales prep workflows.",
-    features: ["Recon tracking", "Cost visibility", "Team boards", "Reporting"],
-    technologies: ["Next.js", "React", "Node.js", "PostgreSQL"],
+      "Reputation and customer engagement platform for collecting reviews, responding faster, and tracking multi-location reputation with executive intelligence.",
+    features: ["Executive Intelligence", "Review requests", "Campaigns", "Multi-location analytics"],
+    technologies: ["Next.js", "TypeScript", "Supabase", "Stripe"],
     status: "In development",
   },
 ] as const;
@@ -173,4 +173,4 @@ export const CONVERSATIONAL_QUERIES = [
   "MVP web app development services",
 ] as const;
 
-export const GEO_COPY = `PixelNation develops custom SaaS and web applications for businesses in ${SITE.address.region} and across the United States. From client portals to subscription platforms like RepairForge and ReconForge, we build software that solves operational problems—not demo-ware.`;
+export const GEO_COPY = `PixelNation develops custom SaaS and web applications for businesses in ${SITE.address.region} and across the United States. From client portals to subscription platforms like RepairForge and ReviewForge, we build software that solves operational problems—not demo-ware.`;

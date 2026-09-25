@@ -13,9 +13,21 @@ type PortfolioProjectCardProps = {
 
 const STATUS_LABELS: Record<ProjectStatus, string> = {
   live: "Live",
-  "in-development": "In development",
+  "in-development": "Active Development",
   internal: "Concept",
 };
+
+function ScreenshotPlaceholder({ name }: { name: string }) {
+  return (
+    <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-accent-muted via-background to-accent-secondary-muted px-6 text-center">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-secondary">
+        PixelNation
+      </p>
+      <p className="mt-3 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">{name}</p>
+      <p className="mt-2 text-xs text-muted">Screenshot coming soon</p>
+    </div>
+  );
+}
 
 export function PortfolioProjectCard({
   project,
@@ -25,17 +37,24 @@ export function PortfolioProjectCard({
   const caseStudyPath = getProjectPath(project.slug);
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl border border-card-border bg-card transition hover:border-accent-secondary/50">
-      <Link href={caseStudyPath} className="relative block h-48 w-full overflow-hidden bg-background">
-        <Image
-          src={project.screenshot}
-          alt={project.screenshotAlt}
-          fill
-          className="object-contain object-center p-4 transition group-hover:scale-[1.02]"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          priority={priorityImage}
-          loading={priorityImage ? undefined : "lazy"}
-        />
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-card-border bg-card transition duration-300 hover:-translate-y-0.5 hover:border-accent-secondary/45 hover:shadow-[0_10px_28px_-18px_rgba(0,0,0,0.5)]">
+      <Link
+        href={caseStudyPath}
+        className="relative block aspect-video w-full overflow-hidden border-b border-card-border bg-[#07101c]"
+      >
+        {project.screenshot ? (
+          <Image
+            src={project.screenshot}
+            alt={project.screenshotAlt ?? `${project.name} screenshot`}
+            fill
+            className="object-contain object-center p-2 transition duration-300 group-hover:scale-[1.015] sm:p-3"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            priority={priorityImage}
+            loading={priorityImage ? undefined : "lazy"}
+          />
+        ) : (
+          <ScreenshotPlaceholder name={project.name} />
+        )}
         {project.logo ? (
           <div className="absolute bottom-3 left-3 rounded-lg border border-card-border bg-background/95 p-1.5 shadow-sm">
             <Image
@@ -67,44 +86,27 @@ export function PortfolioProjectCard({
         </div>
 
         <p className="mt-1 text-xs font-medium text-muted">{project.industry}</p>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
+        <p className="mt-2 text-sm leading-relaxed text-muted">
           {compact ? project.tagline : project.description}
         </p>
 
         {!compact ? (
-          <>
-            <div className="mt-4">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-foreground">
-                Features
-              </h4>
-              <ul className="mt-2 space-y-1">
-                {project.features.slice(0, 4).map((feature) => (
-                  <li key={feature} className="flex gap-2 text-sm text-muted">
-                    <span
-                      className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-secondary"
-                      aria-hidden
-                    />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mt-4">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-foreground">
-                Technologies
-              </h4>
-              <ul className="mt-2 flex flex-wrap gap-2">
-                {project.technologies.slice(0, 5).map((tech) => (
-                  <li
-                    key={tech}
-                    className="rounded-full border border-card-border bg-background px-3 py-1 text-xs text-muted"
-                  >
-                    {tech}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </>
+          <div className="mt-4">
+            <h4 className="text-xs font-semibold uppercase tracking-wide text-foreground">
+              Features
+            </h4>
+            <ul className="mt-2 space-y-1">
+              {project.features.slice(0, 4).map((feature) => (
+                <li key={feature} className="flex gap-2 text-sm text-muted">
+                  <span
+                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-secondary"
+                    aria-hidden
+                  />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
         ) : null}
 
         <div className="mt-5 flex flex-wrap gap-2">

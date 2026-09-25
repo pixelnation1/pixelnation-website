@@ -128,7 +128,7 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
   ],
   "/portfolio": [
     { label: "RepairForge Case Study", href: "/portfolio/repairforge", description: "Repair shop management SaaS" },
-    { label: "ReconForge Case Study", href: "/portfolio/reconforge", description: "Automotive recon platform" },
+    { label: "ReviewForge Case Study", href: "/portfolio/reviewforge", description: "Reputation and review platform" },
     { label: "Website Development", href: "/software-development/website-development", description: "Business website services" },
     { label: "Custom SaaS Development", href: "/software-development/custom-saas-development", description: "SaaS and web app development" },
     { label: "Software Overview", href: "/software-development", description: "All PixelNation software services" },
@@ -143,6 +143,7 @@ export const RELATED_REPAIR_LINKS: Record<string, InternalLink[]> = {
   "/software-development/custom-saas-development": [
     { label: "Portfolio", href: "/portfolio", description: "SaaS and platform case studies" },
     { label: "RepairForge", href: "/portfolio/repairforge", description: "Repair shop SaaS case study" },
+    { label: "ReviewForge", href: "/portfolio/reviewforge", description: "Reputation platform case study" },
     { label: "Website Development", href: "/software-development/website-development", description: "Business and service company websites" },
     { label: "Business Automation", href: "/software-development/business-automation", description: "Workflow and dashboard automation" },
     { label: "Software Overview", href: "/software-development", description: "All PixelNation software services" },

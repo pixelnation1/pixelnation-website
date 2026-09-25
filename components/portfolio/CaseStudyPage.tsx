@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { CaseStudyStructuredData } from "@/components/portfolio/CaseStudyStructuredData";
 import { PortfolioProjectCard } from "@/components/portfolio/PortfolioProjectCard";
@@ -14,7 +13,7 @@ import { SITE } from "@/lib/site";
 
 const STATUS_LABELS = {
   live: "Live",
-  "in-development": "In development",
+  "in-development": "Active Development",
   internal: "Concept",
 } as const;
 
@@ -76,15 +75,27 @@ export function CaseStudyPage({ project }: CaseStudyPageProps) {
                 </Button>
               </div>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-card-border bg-background">
-              <Image
-                src={project.screenshot}
-                alt={project.screenshotAlt}
-                fill
-                className="object-contain p-4"
-                priority
-                sizes="(max-width: 1024px) 100vw, 40vw"
-              />
+            <div className="relative aspect-video overflow-hidden rounded-2xl border border-card-border bg-[#07101c]">
+              {project.screenshot ? (
+                <Image
+                  src={project.screenshot}
+                  alt={project.screenshotAlt ?? `${project.name} screenshot`}
+                  fill
+                  className="object-contain object-center p-2 sm:p-3"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+              ) : (
+                <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-accent-muted via-background to-accent-secondary-muted px-6 text-center">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-secondary">
+                    PixelNation
+                  </p>
+                  <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">
+                    {project.name}
+                  </p>
+                  <p className="mt-2 text-sm text-muted">Project screenshot coming soon</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -126,24 +137,24 @@ export function CaseStudyPage({ project }: CaseStudyPageProps) {
           subtitle="Visual highlights from the project."
           alt
         >
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
             {caseStudy.screenshots.map((shot) => (
               <figure
                 key={shot.src + shot.alt}
-                className="overflow-hidden rounded-2xl border border-card-border bg-background"
+                className="overflow-hidden rounded-2xl border border-card-border bg-[#07101c]"
               >
-                <div className="relative aspect-[4/3]">
+                <div className="relative aspect-video">
                   <Image
                     src={shot.src}
                     alt={shot.alt}
                     fill
-                    className="object-contain p-4"
+                    className="object-contain object-center p-2 sm:p-3"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     loading="lazy"
                   />
                 </div>
                 {shot.caption ? (
-                  <figcaption className="border-t border-card-border px-4 py-3 text-sm text-muted">
+                  <figcaption className="border-t border-card-border bg-card px-4 py-3 text-sm text-muted">
                     {shot.caption}
                   </figcaption>
                 ) : null}
@@ -153,37 +164,41 @@ export function CaseStudyPage({ project }: CaseStudyPageProps) {
         </Section>
       ) : null}
 
-      <Section id="results" title="Results" subtitle="Outcomes and value delivered.">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {caseStudy.results.map((result) => (
-            <article
-              key={result.label}
-              className="rounded-xl border border-card-border bg-card p-5"
-            >
-              <h3 className="font-semibold text-foreground">{result.label}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{result.text}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
+      {caseStudy.results.length > 0 ? (
+        <Section id="results" title="Results" subtitle="Outcomes and value delivered.">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {caseStudy.results.map((result) => (
+              <article
+                key={result.label}
+                className="rounded-xl border border-card-border bg-card p-5"
+              >
+                <h3 className="font-semibold text-foreground">{result.label}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{result.text}</p>
+              </article>
+            ))}
+          </div>
+        </Section>
+      ) : null}
 
-      <Section
-        id="technologies"
-        title="Technologies used"
-        subtitle="Stack and tools behind this project."
-        alt
-      >
-        <ul className="flex flex-wrap gap-2">
-          {project.technologies.map((tech) => (
-            <li
-              key={tech}
-              className="rounded-full border border-card-border bg-background px-4 py-2 text-sm text-muted"
-            >
-              {tech}
-            </li>
-          ))}
-        </ul>
-      </Section>
+      {project.technologies.length > 0 ? (
+        <Section
+          id="technologies"
+          title="Technologies used"
+          subtitle="Stack and tools behind this project."
+          alt
+        >
+          <ul className="flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <li
+                key={tech}
+                className="rounded-full border border-card-border bg-background px-4 py-2 text-sm text-muted"
+              >
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </Section>
+      ) : null}
 
       <Section
         id="lessons-learned"

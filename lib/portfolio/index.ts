@@ -14,7 +14,7 @@ export type {
 export const PORTFOLIO_METADATA = {
   title: "Software Development Portfolio | PixelNation",
   description:
-    "Explore websites, SaaS platforms, automation systems, dashboards, and custom software solutions built by PixelNation.",
+    "Explore websites, SaaS platforms, and custom software solutions built by PixelNation.",
   path: "/portfolio",
 } as const;
 

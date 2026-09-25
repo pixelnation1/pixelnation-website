@@ -26,8 +26,15 @@ export async function generateMetadata({ params }: PageProps) {
     description: meta.description,
     path: meta.path,
     titleAbsolute: true,
-    ogImage: project.screenshot,
-    ogImageAlt: project.screenshotAlt,
+    ...(project.screenshot
+      ? {
+          ogImage: project.screenshot,
+          ogImageAlt: project.screenshotAlt ?? `${project.name} screenshot`,
+        }
+      : {
+          ogImage: "/images/pixellogo.png",
+          ogImageAlt: `${project.name} — PixelNation portfolio`,
+        }),
   });
 }
 

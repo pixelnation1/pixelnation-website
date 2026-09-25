@@ -10,10 +10,7 @@ export type PortfolioFilterId =
   | "all"
   | "websites"
   | "saas"
-  | "automation"
-  | "nonprofit"
-  | "automotive"
-  | "marketplace";
+  | "automation";
 
 export type ProjectStatus = "live" | "in-development" | "internal";
 
@@ -32,6 +29,7 @@ export type PortfolioCaseStudy = {
   challenge: string;
   solution: string;
   featuresBuilt: readonly string[];
+  /** Additional gallery shots; do not repeat the card/hero screenshot. */
   screenshots: readonly CaseStudyScreenshot[];
   results: readonly CaseStudyResult[];
   lessonsLearned: readonly string[];
@@ -48,8 +46,9 @@ export type PortfolioProject = {
   filters: readonly Exclude<PortfolioFilterId, "all">[];
   features: readonly string[];
   technologies: readonly string[];
-  screenshot: string;
-  screenshotAlt: string;
+  /** Real project screenshot. Omit when no accurate screenshot is available. */
+  screenshot?: string;
+  screenshotAlt?: string;
   logo?: string;
   logoAlt?: string;
   projectUrl?: string;

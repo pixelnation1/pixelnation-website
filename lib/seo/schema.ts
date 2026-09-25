@@ -344,7 +344,7 @@ export function portfolioProjectSchema(project: {
   tagline: string;
   description: string;
   slug: string;
-  screenshot: string;
+  screenshot?: string;
   projectUrl?: string;
   technologies: readonly string[];
   industry: string;
@@ -358,7 +358,7 @@ export function portfolioProjectSchema(project: {
     headline: project.name,
     description: project.description,
     url: pageUrl,
-    image: buildCanonical(project.screenshot),
+    ...(project.screenshot ? { image: buildCanonical(project.screenshot) } : {}),
     creator: { "@id": `${CANONICAL_ORIGIN}/#organization` },
     about: project.industry,
     keywords: project.technologies.join(", "),

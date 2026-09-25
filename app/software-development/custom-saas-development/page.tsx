@@ -36,7 +36,7 @@ export const metadata = createPageMetadata({
 
 const PAGE_NAME = "Custom SaaS Development";
 
-const FEATURED_SAAS_SLUGS = ["repairforge", "reconforge"] as const;
+const FEATURED_SAAS_SLUGS = ["repairforge", "reviewforge"] as const;
 
 export default function CustomSaasDevelopmentPage() {
   const featuredProjects = FEATURED_SAAS_SLUGS.map((slug) => getPortfolioProject(slug)).filter(
@@ -107,7 +107,7 @@ export default function CustomSaasDevelopmentPage() {
       <Section
         id="featured-projects"
         title="Featured SaaS projects"
-        subtitle="Industry-specific platforms in development—RepairForge for repair shops and ReconForge for auto dealership recon workflows."
+        subtitle="Industry-specific platforms in development—RepairForge for repair shops and ReviewForge for reputation and review growth."
         alt
       >
         <div className="grid gap-6 lg:grid-cols-2">
