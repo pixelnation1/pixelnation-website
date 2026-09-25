@@ -10,7 +10,7 @@ import { FOOTER_TCG_LINKS } from "@/lib/tcg/links";
 
 export function Footer() {
   return (
-    <footer className="border-t border-card-border bg-card">
+    <footer className="border-t border-card-border bg-card print:hidden">
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           <div className="sm:col-span-2 lg:col-span-1 xl:col-span-1">

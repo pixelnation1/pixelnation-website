@@ -116,3 +116,47 @@ button:focus:not(:focus-visible) {
     max-width: none;
   }
 }
+
+/* Staff printable community check-in sign — US Letter, hide chrome */
+@media print {
+  @page {
+    size: letter;
+    margin: 0.4in;
+  }
+
+  html,
+  body {
+    background: #041427 !important;
+    color: #ffffff !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  header,
+  footer,
+  .check-in-sign-actions,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  main {
+    overflow: visible !important;
+  }
+
+  .check-in-sign-page {
+    background: #041427 !important;
+  }
+
+  .check-in-sign-sheet {
+    min-height: auto !important;
+    max-width: none !important;
+    padding: 0 !important;
+    page-break-inside: avoid;
+  }
+
+  .check-in-sign-qr {
+    max-width: 4.75in !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+}

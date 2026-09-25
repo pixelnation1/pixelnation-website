@@ -275,7 +275,7 @@ export function Header() {
   const contactLinks = PRIMARY_NAV_LINKS.filter((l) => l.href !== "/");
 
   return (
-    <header className="sticky top-0 z-50 border-b border-card-border bg-background/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-card-border bg-background/95 backdrop-blur print:hidden">
       <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 lg:gap-4">
         <Link
           href="/"
