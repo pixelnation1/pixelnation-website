@@ -5,6 +5,7 @@ import {
   resolvePostAuthPath,
 } from "@/lib/communities/auth";
 import { getSafeInternalPath } from "@/lib/communities/redirect";
+import { isSupabaseBrowserConfigured } from "@/lib/supabase/env";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 function loginErrorRedirect(origin: string, code: string) {
@@ -24,6 +25,14 @@ export async function GET(request: Request) {
   const type = searchParams.get("type") as EmailOtpType | null;
   const next = getSafeInternalPath(searchParams.get("next"), "/account");
 
+  if (!code && !(tokenHash && type)) {
+    return loginErrorRedirect(origin, "missing");
+  }
+
+  if (!isSupabaseBrowserConfigured()) {
+    return loginErrorRedirect(origin, "session");
+  }
+
   const supabase = await createSupabaseServerClient();
 
   let exchangeError: string | null = null;
@@ -37,8 +46,6 @@ export async function GET(request: Request) {
       token_hash: tokenHash,
     });
     if (error) exchangeError = error.message;
-  } else {
-    return loginErrorRedirect(origin, "missing");
   }
 
   if (exchangeError) {

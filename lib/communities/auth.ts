@@ -7,6 +7,7 @@ import {
 } from "@/lib/communities/profile";
 import { getSafeInternalPath } from "@/lib/communities/redirect";
 import type { Profile } from "@/lib/communities/types";
+import { isSupabaseBrowserConfigured } from "@/lib/supabase/env";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export type AuthContext = {
@@ -28,6 +29,8 @@ export class AuthError extends Error {
 
 /** Session + profile from Supabase identity. Never trust browser-supplied roles. */
 export async function getAuthContext(): Promise<AuthContext | null> {
+  if (!isSupabaseBrowserConfigured()) return null;
+
   const supabase = await createSupabaseServerClient();
   const {
     data: { user },

@@ -21,16 +21,6 @@ function clientKey(request: Request): string {
  * request is well-formed so we do not leak whether an email has an account.
  */
 export async function POST(request: Request) {
-  if (!isSupabaseBrowserConfigured()) {
-    return Response.json(
-      {
-        error:
-          "Sign-in is temporarily unavailable. Please try again later.",
-      },
-      { status: 503 },
-    );
-  }
-
   let body: { email?: string; next?: string };
   try {
     body = (await request.json()) as { email?: string; next?: string };
@@ -43,6 +33,16 @@ export async function POST(request: Request) {
     return Response.json(
       { error: "Enter a valid email address." },
       { status: 400 },
+    );
+  }
+
+  if (!isSupabaseBrowserConfigured()) {
+    return Response.json(
+      {
+        error:
+          "Sign-in is temporarily unavailable. Please try again later.",
+      },
+      { status: 503 },
     );
   }
 
