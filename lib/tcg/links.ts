@@ -21,6 +21,7 @@ export const TRADING_CARDS_DROPDOWN_LINKS = [
 export const GAMING_EVENTS_DROPDOWN_LINKS = [
   { label: "Gaming Overview", href: "/gaming" },
   { label: "Gaming Community", href: "/gaming-community" },
+  { label: "Communities", href: "/communities" },
   { label: "Events", href: "/events" },
   { label: "Weekly Events", href: "/weekly-events" },
   { label: "Weekly Schedule", href: "/events#weekly-nights" },
@@ -90,6 +91,7 @@ export const GAMING_EVENTS_ACTIVE_PATHS = [
   "/gaming",
   "/events",
   "/gaming-community",
+  "/communities",
   "/weekly-events",
   "/family-gaming",
   "/what-to-expect",
