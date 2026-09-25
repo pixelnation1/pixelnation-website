@@ -132,6 +132,7 @@ button:focus:not(:focus-visible) {
     -webkit-print-color-adjust: exact;
   }
 
+  /* Site nav/footer only — sign brand/copy use divs, not header/footer */
   header,
   footer,
   .check-in-sign-actions,
@@ -154,8 +155,16 @@ button:focus:not(:focus-visible) {
     page-break-inside: avoid;
   }
 
+  .check-in-sign-logo {
+    width: auto !important;
+    max-width: 2.85in !important;
+    max-height: 1.05in !important;
+  }
+
   .check-in-sign-qr {
-    max-width: 4.75in !important;
+    max-width: 4.5in !important;
+    margin-top: 0.35in !important;
+    margin-bottom: 0.35in !important;
     box-shadow: none !important;
     break-inside: avoid;
   }
