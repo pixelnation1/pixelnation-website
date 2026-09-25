@@ -21,6 +21,7 @@ import {
   isTradingCardsNavActive,
   TRADING_CARDS_DROPDOWN_LINKS,
 } from "@/lib/tcg/links";
+import { AccountNavLink } from "@/components/auth/AccountNavLink";
 
 function ChevronIcon({ open }: { open?: boolean }) {
   return (
@@ -374,6 +375,11 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+
+          <AccountNavLink
+            className={navLinkClass}
+            pathname={pathname}
+          />
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
@@ -491,6 +497,14 @@ export function Header() {
                 </Link>
               </li>
             ))}
+
+            <li>
+              <AccountNavLink
+                className={(active) => navLinkClass(active, false)}
+                pathname={pathname}
+                onNavigate={closeMobile}
+              />
+            </li>
 
             <li className="pt-2">
               <a
