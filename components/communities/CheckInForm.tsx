@@ -8,6 +8,8 @@ import type { PublicCommunityOption } from "@/lib/communities/communities";
 type TodayCheckInSummary = {
   communitySlug: string;
   communityName: string;
+  /** Set only when a matching check_in ledger row exists. */
+  supportPointsAwarded: number | null;
 };
 
 type CheckInFormProps = {
@@ -20,6 +22,7 @@ type CheckInFormProps = {
 type SuccessState = {
   communityName: string;
   communitySlug: string;
+  pointsAwarded: number;
 };
 
 export function CheckInForm({
@@ -65,13 +68,13 @@ export function CheckInForm({
         code?: string;
         communityName?: string;
         communitySlug?: string;
+        pointsAwarded?: number;
       };
 
       if (res.status === 409 && data.code === "already_checked_in") {
         setError(
           data.message ||
-            data.error ||
-            "YOU'RE ALREADY CHECKED IN for that community today.",
+            `You're already checked in for ${data.communityName || "that community"} today.`,
         );
         setStatus("idle");
         return;
@@ -85,17 +88,31 @@ export function CheckInForm({
 
       const communityName = data.communityName ?? "your community";
       const communitySlug = data.communitySlug ?? selectedSlug;
+      const pointsAwarded =
+        typeof data.pointsAwarded === "number" ? data.pointsAwarded : 5;
 
       setSuccess({
         communityName,
         communitySlug,
+        pointsAwarded,
       });
 
       setTodayCheckIns((prev) => {
         if (prev.some((row) => row.communitySlug === communitySlug)) {
-          return prev;
+          return prev.map((row) =>
+            row.communitySlug === communitySlug
+              ? { ...row, supportPointsAwarded: pointsAwarded }
+              : row,
+          );
         }
-        return [...prev, { communitySlug, communityName }];
+        return [
+          ...prev,
+          {
+            communitySlug,
+            communityName,
+            supportPointsAwarded: pointsAwarded,
+          },
+        ];
       });
 
       setSelectedSlug(null);
@@ -124,14 +141,12 @@ export function CheckInForm({
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
             YOU&apos;RE CHECKED IN!
           </h2>
-          <p className="mt-3 text-lg font-semibold text-foreground">
-            {success.communityName}
+          <p className="mt-3 text-base text-foreground">
+            You&apos;re checked in for {success.communityName}! +
+            {success.pointsAwarded} Support Points.
           </p>
           <p className="mt-3 text-base text-foreground">
             Thanks for playing at PixelNation.
-          </p>
-          <p className="mt-2 text-sm text-muted">
-            Your visit has been recorded for today&apos;s community activity.
           </p>
         </div>
 
@@ -268,12 +283,19 @@ function TodayCheckInsList({ items }: { items: TodayCheckInSummary[] }) {
         {items.map((item) => (
           <li
             key={item.communitySlug}
-            className="flex min-h-11 items-center gap-2 text-base text-foreground"
+            className="flex min-h-11 items-center justify-between gap-3 text-base text-foreground"
           >
-            <span className="text-accent" aria-hidden>
-              ✓
+            <span className="flex min-w-0 items-center gap-2">
+              <span className="text-accent" aria-hidden>
+                ✓
+              </span>
+              <span className="truncate">{item.communityName}</span>
             </span>
-            <span>{item.communityName}</span>
+            {typeof item.supportPointsAwarded === "number" ? (
+              <span className="shrink-0 text-sm text-muted">
+                +{item.supportPointsAwarded} Support Points
+              </span>
+            ) : null}
           </li>
         ))}
       </ul>

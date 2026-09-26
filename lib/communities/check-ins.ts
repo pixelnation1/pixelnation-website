@@ -8,6 +8,11 @@ export type TodayCheckIn = {
   communityName: string;
   businessDate: string;
   locationId: string;
+  /**
+   * Points from a matching check_in ledger row for this check-in, or null when
+   * none exists (e.g. historical pre-points check-ins). Never invent +5.
+   */
+  supportPointsAwarded: number | null;
 };
 
 /** Public account history row — community name + date only (no DB ids). */
@@ -27,9 +32,15 @@ type CommunityEmbed = {
 };
 
 type TodayCheckInRow = {
+  id: string;
   business_date: string;
   location_id: string;
   communities: CommunityEmbed | CommunityEmbed[] | null;
+};
+
+type CheckInLedgerRow = {
+  source_id: string;
+  points: number;
 };
 
 type HistoryCheckInRow = {
@@ -58,22 +69,44 @@ export async function fetchOwnCheckInsForToday(
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase
     .from("check_ins")
-    .select("business_date, location_id, communities(slug, name)")
+    .select("id, business_date, location_id, communities(slug, name)")
     .eq("profile_id", profileId)
     .eq("business_date", businessDate)
     .order("created_at", { ascending: true });
 
   if (error || !data) return [];
 
-  return (data as unknown as TodayCheckInRow[])
+  const rows = data as unknown as TodayCheckInRow[];
+  const checkInIds = rows.map((row) => row.id).filter(Boolean);
+
+  const pointsByCheckInId = new Map<string, number>();
+  if (checkInIds.length > 0) {
+    const { data: ledgerRows } = await supabase
+      .from("support_point_entries")
+      .select("source_id, points")
+      .eq("profile_id", profileId)
+      .eq("source", "check_in")
+      .in("source_id", checkInIds);
+
+    for (const entry of (ledgerRows ?? []) as CheckInLedgerRow[]) {
+      if (entry.source_id && typeof entry.points === "number") {
+        pointsByCheckInId.set(entry.source_id, entry.points);
+      }
+    }
+  }
+
+  return rows
     .map((row) => {
       const community = unwrapCommunity(row.communities);
       if (!community?.slug || !community.name) return null;
+      const awarded = pointsByCheckInId.get(row.id);
       return {
         communitySlug: community.slug,
         communityName: community.name,
         businessDate: row.business_date,
         locationId: row.location_id,
+        supportPointsAwarded:
+          typeof awarded === "number" ? awarded : null,
       };
     })
     .filter((row): row is TodayCheckIn => row !== null);

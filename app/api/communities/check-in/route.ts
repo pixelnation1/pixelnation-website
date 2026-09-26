@@ -14,6 +14,16 @@ type CheckInBody = {
   locationCode?: unknown;
 };
 
+type RpcResult = {
+  ok?: boolean;
+  code?: string;
+  communityName?: string;
+  communitySlug?: string;
+  businessDate?: string;
+  pointsAwarded?: number;
+  locationId?: string;
+};
+
 function normalizeSlug(value: unknown): string | null {
   if (typeof value !== "string") return null;
   const slug = value.trim().toLowerCase();
@@ -29,11 +39,24 @@ function logCheckInFailure(
   console.error(`[communities-check-in] ${event}`, details);
 }
 
+function asRpcResult(value: unknown): RpcResult | null {
+  if (!value || typeof value !== "object") return null;
+  return value as RpcResult;
+}
+
 /**
- * Record a community check-in.
+ * Record a community check-in and award +5 Support Points atomically.
  * Browser may send communitySlug + locationCode only.
- * Identity, status, business_date, and points are never taken from the client.
- * Inserts use the service role after server validation (no client INSERT policy).
+ * Identity, status, business_date, points, profile_id, and created_by are
+ * never taken from the client.
+ *
+ * Flow: session auth → validate display name / active / location / community →
+ * service-role call to record_community_check_in_with_points(profile from
+ * session, community id, location id). Points are hardcoded in Postgres.
+ *
+ * Phase 4: check-ins DO award +5 Support Points. Stronger rotating QR /
+ * in-store presence verification remains future work before higher-value
+ * awards. Do not build rotating QR in this phase.
  */
 export async function POST(request: Request) {
   if (!isSupabaseBrowserConfigured()) {
@@ -108,7 +131,7 @@ export async function POST(request: Request) {
   }
 
   // Intentionally ignore profile_id, user_id, points, business_date,
-  // account_status, role, created_at, and any other client-supplied fields.
+  // account_status, role, created_by, created_at, and any other client fields.
   const communitySlug = normalizeSlug(body.communitySlug);
   if (!communitySlug) {
     return Response.json(
@@ -178,39 +201,21 @@ export async function POST(request: Request) {
     );
   }
 
-  // Do not set business_date or created_at — set_check_in_business_date owns them.
-  // Do not write community_members or support_point_entries.
-  // TODO: Before check-ins award Support Points, implement stronger in-store
-  // presence verification (short-lived/rotating store session or staff-controlled
-  // check). Do not build that mechanism in this phase.
-  const { data: inserted, error: insertError } = await admin
-    .from("check_ins")
-    .insert({
-      profile_id: ctx.profile.id,
-      community_id: community.id,
-      location_id: location.id,
-    })
-    .select("id, business_date, location_id")
-    .single();
+  // Atomic: check_in + support_point_entries in one Postgres transaction.
+  // Profile id comes from the validated session only (never the request body).
+  const { data: rpcData, error: rpcError } = await admin.rpc(
+    "record_community_check_in_with_points",
+    {
+      p_profile_id: ctx.profile.id,
+      p_community_id: community.id,
+      p_location_id: location.id,
+    },
+  );
 
-  if (insertError) {
-    if (insertError.code === "23505") {
-      return Response.json(
-        {
-          ok: false,
-          code: "already_checked_in",
-          error: "YOU'RE ALREADY CHECKED IN",
-          message: `You're already checked in for ${community.name} today.`,
-          communityName: community.name,
-          communitySlug: community.slug,
-        },
-        { status: 409 },
-      );
-    }
-
-    logCheckInFailure("insert_failed", {
-      code: insertError.code,
-      message: insertError.message,
+  if (rpcError) {
+    logCheckInFailure("rpc_failed", {
+      code: rpcError.code,
+      message: rpcError.message,
       communitySlug: community.slug,
       locationId: location.id,
     });
@@ -220,11 +225,72 @@ export async function POST(request: Request) {
     );
   }
 
+  const result = asRpcResult(rpcData);
+  if (!result) {
+    logCheckInFailure("rpc_unexpected_shape", {
+      communitySlug: community.slug,
+    });
+    return Response.json(
+      { error: "Unable to complete check-in. Please try again." },
+      { status: 500 },
+    );
+  }
+
+  if (result.code === "already_checked_in") {
+    return Response.json(
+      {
+        ok: false,
+        code: "already_checked_in",
+        error: "YOU'RE ALREADY CHECKED IN",
+        message: `You're already checked in for ${community.name} today.`,
+        communityName: community.name,
+        communitySlug: community.slug,
+      },
+      { status: 409 },
+    );
+  }
+
+  if (result.code === "suspended") {
+    return Response.json(
+      {
+        error:
+          "This account cannot check in right now. Please speak with PixelNation staff.",
+        code: "suspended",
+      },
+      { status: 403 },
+    );
+  }
+
+  if (result.code === "inactive_community") {
+    return Response.json(
+      {
+        error: "That community is not accepting check-ins right now.",
+        code: "inactive_community",
+      },
+      { status: 400 },
+    );
+  }
+
+  if (result.code === "invalid_community" || result.ok !== true) {
+    logCheckInFailure("rpc_rejected", {
+      code: result.code,
+      communitySlug: community.slug,
+    });
+    return Response.json(
+      { error: "Unable to complete check-in. Please try again." },
+      { status: 500 },
+    );
+  }
+
+  const pointsAwarded =
+    typeof result.pointsAwarded === "number" ? result.pointsAwarded : 5;
+
   return Response.json({
     ok: true,
     communityName: community.name,
     communitySlug: community.slug,
-    businessDate: inserted.business_date,
+    businessDate: result.businessDate,
     locationLabel: location.label,
+    pointsAwarded,
   });
 }

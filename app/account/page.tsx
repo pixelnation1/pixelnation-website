@@ -8,6 +8,7 @@ import { formatChicagoBusinessDateDisplay } from "@/lib/communities/business-dat
 import { fetchOwnCheckInHistory } from "@/lib/communities/check-ins";
 import { DEFAULT_DISPLAY_NAME } from "@/lib/communities/constants";
 import { needsDisplayNameSetup } from "@/lib/communities/profile";
+import { fetchOwnSupportPointSummary } from "@/lib/communities/support-points";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { redirect } from "next/navigation";
 
@@ -35,7 +36,10 @@ export default async function AccountPage() {
 
   const suspended = !isCommunityParticipationAllowed(profile);
   const email = user.email ?? "";
-  const checkInHistory = await fetchOwnCheckInHistory(profile.id, 10);
+  const [checkInHistory, supportPoints] = await Promise.all([
+    fetchOwnCheckInHistory(profile.id, 10),
+    fetchOwnSupportPointSummary(profile.id),
+  ]);
 
   return (
     <div className="relative overflow-hidden">
@@ -92,6 +96,43 @@ export default async function AccountPage() {
           </div>
         </dl>
 
+        <section className="mt-8" aria-labelledby="support-points-heading">
+          <h2
+            id="support-points-heading"
+            className="text-lg font-semibold text-foreground"
+          >
+            Support Points
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            Total Support Points:{" "}
+            <span className="font-semibold text-foreground">
+              {supportPoints.totalPoints}
+            </span>
+          </p>
+
+          {supportPoints.byCommunity.length > 0 ? (
+            <ul className="mt-4 space-y-2">
+              {supportPoints.byCommunity.map((row) => (
+                <li
+                  key={row.communityName}
+                  className="flex min-h-11 items-center justify-between gap-3 rounded-xl border border-card-border/70 bg-card/60 px-4 py-3 text-sm"
+                >
+                  <span className="font-medium text-foreground">
+                    {row.communityName}
+                  </span>
+                  <span className="shrink-0 font-semibold text-foreground">
+                    {row.points}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-4 text-sm text-muted">
+              No Support Points yet. Check in at PixelNation to start earning.
+            </p>
+          )}
+        </section>
+
         <section className="mt-8" aria-labelledby="check-ins-heading">
           <h2
             id="check-ins-heading"
@@ -138,17 +179,12 @@ export default async function AccountPage() {
             Coming soon
           </h2>
           <ul className="mt-4 space-y-3">
-            {["Support Points", "Top Supporters"].map((label) => (
-              <li
-                key={label}
-                className="flex items-center justify-between gap-3 rounded-xl border border-card-border/70 bg-card/60 px-4 py-3 text-sm"
-              >
-                <span className="text-foreground">{label}</span>
-                <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-muted">
-                  Coming Soon
-                </span>
-              </li>
-            ))}
+            <li className="flex items-center justify-between gap-3 rounded-xl border border-card-border/70 bg-card/60 px-4 py-3 text-sm">
+              <span className="text-foreground">Top Supporters</span>
+              <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-muted">
+                Coming Soon
+              </span>
+            </li>
           </ul>
         </section>
 

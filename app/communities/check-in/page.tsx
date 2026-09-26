@@ -172,6 +172,7 @@ export default async function CommunityCheckInPage({
           initialTodayCheckIns={todayCheckIns.map((row) => ({
             communitySlug: row.communitySlug,
             communityName: row.communityName,
+            supportPointsAwarded: row.supportPointsAwarded,
           }))}
         />
       </div>
