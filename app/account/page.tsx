@@ -6,8 +6,14 @@ import {
 } from "@/lib/communities/auth";
 import { formatChicagoBusinessDateDisplay } from "@/lib/communities/business-date";
 import { fetchOwnCheckInHistory } from "@/lib/communities/check-ins";
+import { fetchActiveCommunities } from "@/lib/communities/communities";
 import { DEFAULT_DISPLAY_NAME } from "@/lib/communities/constants";
+import { fetchOwnPeriodStandings } from "@/lib/communities/leaderboard";
 import { needsDisplayNameSetup } from "@/lib/communities/profile";
+import {
+  fetchPublicCompetitionPeriod,
+  getCompetitionPhase,
+} from "@/lib/communities/reward-periods";
 import { fetchOwnSupportPointSummary } from "@/lib/communities/support-points";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { redirect } from "next/navigation";
@@ -36,10 +42,27 @@ export default async function AccountPage() {
 
   const suspended = !isCommunityParticipationAllowed(profile);
   const email = user.email ?? "";
-  const [checkInHistory, supportPoints] = await Promise.all([
-    fetchOwnCheckInHistory(profile.id, 10),
-    fetchOwnSupportPointSummary(profile.id),
-  ]);
+  const [checkInHistory, supportPoints, period, communities] =
+    await Promise.all([
+      fetchOwnCheckInHistory(profile.id, 10),
+      fetchOwnSupportPointSummary(profile.id),
+      fetchPublicCompetitionPeriod(),
+      fetchActiveCommunities(),
+    ]);
+
+  const phase = period ? getCompetitionPhase(period) : "upcoming";
+  const eligibleCommunities = communities.filter((c) => c.topSupportersEnabled);
+  const ownPeriodStandings =
+    period && phase !== "upcoming"
+      ? await fetchOwnPeriodStandings({
+          profileId: profile.id,
+          displayName: profile.displayName,
+          periodId: period.id,
+        })
+      : [];
+  const standingBySlug = new Map(
+    ownPeriodStandings.map((row) => [row.communitySlug, row]),
+  );
 
   return (
     <div className="relative overflow-hidden">
@@ -171,21 +194,69 @@ export default async function AccountPage() {
           )}
         </section>
 
-        <section className="mt-8" aria-labelledby="coming-soon-heading">
+        <section className="mt-8" aria-labelledby="top-supporters-standing-heading">
           <h2
-            id="coming-soon-heading"
+            id="top-supporters-standing-heading"
             className="text-lg font-semibold text-foreground"
           >
-            Coming soon
+            Your Top Supporters standing
           </h2>
-          <ul className="mt-4 space-y-3">
-            <li className="flex items-center justify-between gap-3 rounded-xl border border-card-border/70 bg-card/60 px-4 py-3 text-sm">
-              <span className="text-foreground">Top Supporters</span>
-              <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-muted">
-                Coming Soon
-              </span>
-            </li>
-          </ul>
+          {period && phase === "upcoming" ? (
+            <div className="mt-4 rounded-xl border border-accent-secondary/40 bg-accent-secondary-muted/40 p-4">
+              <p className="text-sm font-semibold uppercase tracking-wide text-accent-secondary">
+                {period.name} Top Supporters
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                Starts October 1. Lifetime Support Points above stay on your
+                account. October standings only count points earned during that
+                reward period — they begin October 1.
+              </p>
+            </div>
+          ) : period ? (
+            <>
+              <p className="mt-2 text-sm text-muted">
+                {period.name} points only — separate from your lifetime Support
+                Points total above.
+              </p>
+              <ul className="mt-4 space-y-2">
+                {eligibleCommunities.map((community) => {
+                  const standing = standingBySlug.get(community.slug);
+                  const periodPoints = standing?.periodPoints ?? 0;
+                  const rank = standing?.rank ?? null;
+                  return (
+                    <li
+                      key={community.slug}
+                      className="rounded-xl border border-card-border/70 bg-card/60 px-4 py-3 text-sm"
+                    >
+                      <p className="font-medium text-foreground">
+                        {community.name}
+                      </p>
+                      {periodPoints > 0 && rank != null ? (
+                        <p className="mt-1 text-muted">
+                          <span className="font-semibold text-foreground">
+                            {periodPoints}
+                          </span>{" "}
+                          {period.name} Points · Current Rank:{" "}
+                          <span className="font-semibold text-accent">
+                            #{rank}
+                          </span>
+                        </p>
+                      ) : (
+                        <p className="mt-1 text-muted">
+                          No {period.name} points yet.
+                        </p>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          ) : (
+            <p className="mt-4 text-sm text-muted">
+              Top Supporters standings will appear here when a reward period is
+              available.
+            </p>
+          )}
         </section>
 
         <section className="mt-10" aria-labelledby="edit-name-heading">

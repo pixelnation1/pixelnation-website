@@ -46,6 +46,26 @@ export async function fetchActiveCommunities(): Promise<Community[]> {
   return (data as CommunityRow[]).map(mapCommunity);
 }
 
+/** Active community by public slug (RLS). */
+export async function fetchCommunityBySlug(
+  slug: string,
+): Promise<Community | null> {
+  if (!isSupabaseBrowserConfigured() || !slug) return null;
+
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("communities")
+    .select(
+      "id, name, slug, description, active, top_supporters_enabled, sort_order, created_at, updated_at",
+    )
+    .eq("slug", slug)
+    .eq("active", true)
+    .maybeSingle();
+
+  if (error || !data) return null;
+  return mapCommunity(data as CommunityRow);
+}
+
 /** Safe public shape for client components (no internal UUIDs exposed). */
 export type PublicCommunityOption = {
   slug: string;
