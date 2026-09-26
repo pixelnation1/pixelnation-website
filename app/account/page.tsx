@@ -14,7 +14,10 @@ import {
   fetchPublicCompetitionPeriod,
   getCompetitionPhase,
 } from "@/lib/communities/reward-periods";
-import { fetchOwnSupportPointSummary } from "@/lib/communities/support-points";
+import {
+  fetchOwnRecentSupportActivity,
+  fetchOwnSupportPointSummary,
+} from "@/lib/communities/support-points";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { redirect } from "next/navigation";
 
@@ -42,10 +45,11 @@ export default async function AccountPage() {
 
   const suspended = !isCommunityParticipationAllowed(profile);
   const email = user.email ?? "";
-  const [checkInHistory, supportPoints, period, communities] =
+  const [checkInHistory, supportPoints, recentSupportActivity, period, communities] =
     await Promise.all([
       fetchOwnCheckInHistory(profile.id, 10),
       fetchOwnSupportPointSummary(profile.id),
+      fetchOwnRecentSupportActivity(profile.id, 8),
       fetchPublicCompetitionPeriod(),
       fetchActiveCommunities(),
     ]);
@@ -154,6 +158,42 @@ export default async function AccountPage() {
               No Support Points yet. Check in at PixelNation to start earning.
             </p>
           )}
+
+          {recentSupportActivity.length > 0 ? (
+            <div className="mt-6">
+              <h3 className="text-sm font-semibold text-foreground">
+                Recent Support Activity
+              </h3>
+              <ul className="mt-3 space-y-2">
+                {recentSupportActivity.map((row, index) => {
+                  const signed =
+                    row.points > 0 ? `+${row.points}` : String(row.points);
+                  let when = row.createdAt;
+                  try {
+                    when = new Intl.DateTimeFormat("en-US", {
+                      timeZone: "America/Chicago",
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    }).format(new Date(row.createdAt));
+                  } catch {
+                    /* keep iso */
+                  }
+                  return (
+                    <li
+                      key={`${row.createdAt}-${row.communityName}-${index}`}
+                      className="text-sm text-muted"
+                    >
+                      <span className="font-semibold text-foreground">
+                        {signed}
+                      </span>{" "}
+                      {row.communityName} / {row.sourceLabel} / {when}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ) : null}
         </section>
 
         <section className="mt-8" aria-labelledby="check-ins-heading">

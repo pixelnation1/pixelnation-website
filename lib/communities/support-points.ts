@@ -69,3 +69,67 @@ export async function fetchOwnSupportPointSummary(
 
   return { totalPoints, byCommunity };
 }
+
+export type OwnSupportActivityRow = {
+  points: number;
+  communityName: string;
+  sourceLabel: string;
+  createdAt: string;
+};
+
+type ActivityRow = {
+  points: number;
+  source: string;
+  created_at: string;
+  communities: { name: string } | { name: string }[] | null;
+};
+
+function activitySourceLabel(source: string): string {
+  switch (source) {
+    case "check_in":
+      return "Community Check-In";
+    case "purchase":
+      return "In-Store Purchase";
+    case "reversal":
+      return "Reversal";
+    case "adjustment":
+      return "Adjustment";
+    case "event":
+      return "Event";
+    case "community_builder":
+      return "Community Builder";
+    default:
+      return "Support Activity";
+  }
+}
+
+/** Compact recent ledger activity for /account — no ids or Square references. */
+export async function fetchOwnRecentSupportActivity(
+  profileId: string,
+  limit = 8,
+): Promise<OwnSupportActivityRow[]> {
+  if (!isSupabaseBrowserConfigured()) return [];
+
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("support_point_entries")
+    .select("points, source, created_at, communities(name)")
+    .eq("profile_id", profileId)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+
+  if (error || !data) return [];
+
+  return (data as unknown as ActivityRow[])
+    .map((row) => {
+      const name = unwrapCommunityName(row.communities);
+      if (!name) return null;
+      return {
+        points: row.points,
+        communityName: name,
+        sourceLabel: activitySourceLabel(row.source),
+        createdAt: row.created_at,
+      };
+    })
+    .filter((row): row is OwnSupportActivityRow => row != null);
+}

@@ -155,8 +155,9 @@ export default async function CommunitiesLandingPage() {
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">
             Support Points measure activity per community. Players earn points
             through qualifying activity. The most points during a reward period
-            become Top Supporters. Currently, check-ins award +5. More ways to
-            earn are coming.
+            become Top Supporters. Check-ins award +5. Qualifying in-store
+            purchases earn 1 Support Point per dollar for the matching community
+            when enabled for a mapped category and PixelNation account email.
           </p>
 
           <div className="mt-6 rounded-2xl border border-accent/50 bg-gradient-to-br from-accent-muted to-card p-5 sm:p-6">

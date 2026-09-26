@@ -228,7 +228,13 @@ export function HowPointsWork() {
           same day each earn their own +5 — for example, Magic and Pokémon can
           both count.
         </p>
-        <p>More ways to earn Support Points are coming.</p>
+        <p>
+          Qualifying in-store purchases earn{" "}
+          <span className="font-semibold text-foreground">1 Support Point per dollar</span>{" "}
+          for the matching community when the purchase is tied to a mapped product
+          category and a PixelNation account email. Mixed carts split by community.
+        </p>
+        <p>More ways to earn Support Points may be added over time.</p>
       </div>
     </section>
   );
