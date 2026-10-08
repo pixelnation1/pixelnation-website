@@ -110,7 +110,7 @@ export function ContactForm() {
       });
       const data = (await res.json()) as { ok?: boolean; message?: string; error?: string };
 
-      if (!res.ok) {
+      if (!res.ok || data.ok !== true) {
         setStatus("error");
         setErrorMessage(data.error ?? "Something went wrong. Please try again or call us.");
         return;

@@ -161,58 +161,61 @@ export async function POST(request: Request) {
     user_agent: request.headers.get("user-agent"),
   };
 
-  const webhook = process.env.CONTACT_WEBHOOK_URL;
-  if (webhook) {
-    try {
-      await fetch(webhook, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: SITE.email,
-          from: payload.email,
-          subject: `Contact: ${payload.service} — ${payload.name}`,
-          ...payload,
-        }),
-      });
-    } catch {
-      return Response.json(
-        { error: "Unable to send your message right now. Please call us directly." },
-        { status: 503 },
-      );
-    }
+  const webhook = process.env.CONTACT_WEBHOOK_URL?.trim();
+  const resendKey = process.env.RESEND_API_KEY?.trim();
+  const resendFrom = process.env.RESEND_FROM_EMAIL?.trim();
+  const deliveryError = () => Response.json(
+    { error: `Unable to send your message right now. Please call ${SITE.phone} or email ${SITE.email}.` },
+    { status: 503 },
+  );
+
+  // Use one delivery route. A webhook is authoritative when configured, so a
+  // second provider cannot duplicate an accepted inquiry or mask its failure.
+  if (!webhook && (!resendKey || !resendFrom)) {
+    console.error("[contact form] Delivery is not configured.");
+    return deliveryError();
   }
 
-  const resendKey = process.env.RESEND_API_KEY;
-  const resendFrom = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
-  if (resendKey) {
-    try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: resendFrom,
-          to: [SITE.email],
-          reply_to: payload.email,
-          subject: `Website contact: ${payload.service} — ${payload.name}`,
-          text: formatEmailBody(payload),
-        }),
+  try {
+    const response = await fetch(webhook || "https://api.resend.com/emails", {
+      method: "POST",
+      signal: AbortSignal.timeout(10_000),
+      headers: {
+        "Content-Type": "application/json",
+        ...(!webhook ? { Authorization: `Bearer ${resendKey}` } : {}),
+      },
+      body: JSON.stringify(webhook ? {
+        to: SITE.email,
+        from: payload.email,
+        subject: `Contact: ${payload.service} — ${payload.name}`,
+        ...payload,
+      } : {
+        from: resendFrom,
+        to: [SITE.email],
+        reply_to: payload.email,
+        subject: `Website contact: ${payload.service} — ${payload.name}`,
+        text: formatEmailBody(payload),
+      }),
+    });
+    if (!response.ok) {
+      console.error("[contact form] Delivery rejected", {
+        provider: webhook ? "webhook" : "resend",
+        status: response.status,
       });
-      if (!res.ok) {
-        throw new Error("Resend failed");
+      return deliveryError();
+    }
+    if (!webhook) {
+      const result = await response.json() as { id?: unknown } | null;
+      if (!result || typeof result.id !== "string" || !result.id.trim()) {
+        console.error("[contact form] Missing email acceptance receipt.");
+        return deliveryError();
       }
-    } catch {
-      return Response.json(
-        { error: "Unable to send your message right now. Please call us directly." },
-        { status: 503 },
-      );
+      console.info("[contact form] Email accepted", { id: result.id });
     }
-  }
-
-  if (!webhook && !resendKey) {
-    console.info("[contact form]", formatEmailBody(payload));
+  } catch {
+    // Never log the customer's message, credentials, or provider response body.
+    console.error("[contact form] Delivery request failed or timed out.");
+    return deliveryError();
   }
 
   return Response.json({
