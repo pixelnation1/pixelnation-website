@@ -1,3 +1,4 @@
+import { FORM_SERVICE_OPTIONS, PREFERRED_CONTACT_OPTIONS, isRepairInquiry } from "@/lib/contact-page";
 import {
   isValidUsPhone,
   SMS_CONSENT_DISCLOSURE,
@@ -11,7 +12,7 @@ type ContactPayload = {
   email: string;
   phone: string;
   service: string;
-  deviceType: string;
+  deviceType?: string;
   description: string;
   preferredContact: string;
   smsConsent?: boolean;
@@ -56,7 +57,7 @@ function formatEmailBody(data: StoredContactSubmission): string {
     `Email: ${data.email}`,
     `Mobile phone: ${data.mobile_phone}`,
     `Service: ${data.service}`,
-    `Device: ${data.deviceType}`,
+    ...(isRepairInquiry(data.service) ? [`Device: ${data.deviceType}`] : []),
     `Preferred contact: ${data.preferredContact}`,
     "",
     "SMS consent record:",
@@ -81,6 +82,10 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid request body." }, { status: 400 });
   }
 
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return Response.json({ error: "Invalid request body." }, { status: 400 });
+  }
+
   const {
     name,
     email,
@@ -95,13 +100,13 @@ export async function POST(request: Request) {
     smsConsentSource,
   } = body;
 
-  if (!name?.trim() || name.length > 120) {
+  if (typeof name !== "string" || !name.trim() || name.length > 120) {
     return Response.json({ error: "Please enter your full name." }, { status: 400 });
   }
-  if (!email?.trim() || !isValidEmail(email)) {
+  if (typeof email !== "string" || !email.trim() || !isValidEmail(email)) {
     return Response.json({ error: "Please enter a valid email address." }, { status: 400 });
   }
-  if (!phone?.trim() || phone.length > 30 || !isValidUsPhone(phone)) {
+  if (typeof phone !== "string" || !phone.trim() || phone.length > 30 || !isValidUsPhone(phone)) {
     return Response.json(
       {
         error:
@@ -110,19 +115,20 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-  if (!service?.trim()) {
-    return Response.json({ error: "Please select a service." }, { status: 400 });
+  if (!FORM_SERVICE_OPTIONS.some((option) => option === service)) {
+    return Response.json({ error: "Please select an inquiry type." }, { status: 400 });
   }
-  if (!deviceType?.trim() || deviceType.length > 120) {
+  const isRepair = isRepairInquiry(service);
+  if (isRepair && (typeof deviceType !== "string" || !deviceType.trim() || deviceType.length > 120)) {
     return Response.json({ error: "Please enter a device type." }, { status: 400 });
   }
-  if (!description?.trim() || description.length < 10) {
+  if (typeof description !== "string" || description.trim().length < 10) {
     return Response.json(
-      { error: "Please describe the problem (at least 10 characters)." },
+      { error: "Please enter a message (at least 10 characters)." },
       { status: 400 },
     );
   }
-  if (!preferredContact?.trim()) {
+  if (!PREFERRED_CONTACT_OPTIONS.some((option) => option === preferredContact)) {
     return Response.json(
       { error: "Please select a preferred contact method." },
       { status: 400 },
@@ -140,7 +146,7 @@ export async function POST(request: Request) {
     phone: phone.trim(),
     mobile_phone: phone.trim(),
     service: service.trim(),
-    deviceType: deviceType.trim(),
+    deviceType: isRepair ? deviceType!.trim() : "",
     description: description.trim(),
     preferredContact: preferredContact.trim(),
     sms_consent: consented,

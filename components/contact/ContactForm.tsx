@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   FORM_SERVICE_OPTIONS,
+  isRepairInquiry,
   PREFERRED_CONTACT_OPTIONS,
 } from "@/lib/contact-page";
 import {
@@ -50,6 +51,8 @@ export function ContactForm() {
     smsConsent?: string;
   }>({});
 
+  const isRepair = isRepairInquiry(form.service);
+
   function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
@@ -90,7 +93,7 @@ export function ContactForm() {
       email: form.email,
       phone: form.phone,
       service: form.service,
-      deviceType: form.deviceType,
+      deviceType: isRepair ? form.deviceType : "",
       description: form.description,
       preferredContact: form.preferredContact,
       smsConsent,
@@ -152,7 +155,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-name" className="mb-1.5 block text-xs font-semibold uppercase text-foreground">
@@ -163,6 +166,7 @@ export function ContactForm() {
             name="name"
             type="text"
             required
+            maxLength={120}
             autoComplete="name"
             value={form.name}
             onChange={(e) => updateField("name", e.target.value)}
@@ -225,7 +229,7 @@ export function ContactForm() {
         </div>
         <div>
           <label htmlFor="contact-service" className="mb-1.5 block text-xs font-semibold uppercase text-foreground">
-            Service needed <span className="text-accent">*</span>
+            Inquiry type <span className="text-accent">*</span>
           </label>
           <select
             id="contact-service"
@@ -235,7 +239,7 @@ export function ContactForm() {
             onChange={(e) => updateField("service", e.target.value)}
             className={fieldClass}
           >
-            <option value="">Select a service</option>
+            <option value="">Select an inquiry type</option>
             {FORM_SERVICE_OPTIONS.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -286,32 +290,38 @@ export function ContactForm() {
         ) : null}
       </div>
 
-      <div>
-        <label htmlFor="contact-device" className="mb-1.5 block text-xs font-semibold uppercase text-foreground">
-          Device type <span className="text-accent">*</span>
-        </label>
-        <input
-          id="contact-device"
-          name="deviceType"
-          type="text"
-          required
-          placeholder="e.g. iPhone 14, PS5, Dell laptop, Samsung dryer"
-          value={form.deviceType}
-          onChange={(e) => updateField("deviceType", e.target.value)}
-          className={fieldClass}
-        />
-      </div>
+      {isRepair && (
+        <div>
+          <label htmlFor="contact-device" className="mb-1.5 block text-xs font-semibold uppercase text-foreground">
+            Device type <span className="text-accent">*</span>
+          </label>
+          <input
+            id="contact-device"
+            name="deviceType"
+            type="text"
+            required
+            maxLength={120}
+            placeholder="e.g. iPhone 14, PS5, Dell laptop, Samsung dryer"
+            value={form.deviceType}
+            onChange={(e) => updateField("deviceType", e.target.value)}
+            className={fieldClass}
+          />
+        </div>
+      )}
 
       <div>
         <label htmlFor="contact-description" className="mb-1.5 block text-xs font-semibold uppercase text-foreground">
-          Description of the problem <span className="text-accent">*</span>
+          {isRepair ? "Description of the problem" : "Your message"} <span className="text-accent">*</span>
         </label>
         <textarea
           id="contact-description"
           name="description"
           required
+          minLength={10}
           rows={5}
-          placeholder="Describe symptoms, damage, and what you need recovered or repaired."
+          placeholder={isRepair
+            ? "Describe symptoms, damage, and what you need recovered or repaired."
+            : "Tell us what you need help with. For events or parties, include your preferred date and group size."}
           value={form.description}
           onChange={(e) => updateField("description", e.target.value)}
           className={`${fieldClass} resize-y min-h-[120px]`}

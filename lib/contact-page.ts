@@ -38,13 +38,25 @@ export const CONTACT_SERVICES = [
   { label: "Training Courses", href: "/training", keyword: "Repair training" },
 ] as const;
 
-export const FORM_SERVICE_OPTIONS = [
+export const REPAIR_SERVICE_OPTIONS = [
   "Phone Repair",
   "Computer Repair",
   "Appliance Repair",
   "Console Repair",
   "Data Recovery",
   "Board Repair",
+] as const;
+
+export function isRepairInquiry(service: string): boolean {
+  return REPAIR_SERVICE_OPTIONS.some((option) => option === service);
+}
+
+export const FORM_SERVICE_OPTIONS = [
+  ...REPAIR_SERVICE_OPTIONS,
+  "Cards / Products",
+  "Events",
+  "Birthday Parties",
+  "Trade-Ins",
   "Training",
   "General Question",
 ] as const;
