@@ -1,28 +1,16 @@
 import {
-  AdvancedRepairSection,
   BuySellTradeHomeSection,
-  CommonProblemsSection,
-  DataRecoveryHomeSection,
-  DivisionSelectorSection,
-  EducationalSection,
   EventsPreviewHomeSection,
   VisitPixelNationSection,
   FAQSection,
-  FinalCTASection,
   HeroSection,
-  MailInRepairSection,
   MeetPixelNationSection,
-  OurMissionSection,
-  TrainingHomeSection,
-  SoftwareDevelopmentHomeSection,
+  MoreServicesHomeSection,
   TradingCardsHomeSection,
   TrustBar,
-  WhatWeCarryHomeSection,
   WhatWeRepairSection,
-  WhyChooseSection,
 } from "@/components/home/HomePageSections";
 import { HomeStructuredData } from "@/components/seo/HomeStructuredData";
-import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { HOME_METADATA } from "@/lib/homepage";
 import { createPageMetadata } from "@/lib/seo/metadata";
 
@@ -38,31 +26,15 @@ export default function HomePage() {
     <>
       <HomeStructuredData />
       <HeroSection />
-      <MeetPixelNationSection />
-      <DivisionSelectorSection />
-      <OurMissionSection />
       <TrustBar />
+      <EventsPreviewHomeSection />
       <WhatWeRepairSection />
       <TradingCardsHomeSection />
-      <WhatWeCarryHomeSection />
-      <EventsPreviewHomeSection />
       <BuySellTradeHomeSection />
-      <VisitPixelNationSection />
-      <CommonProblemsSection />
-      <WhyChooseSection />
-      <EducationalSection />
-      <AdvancedRepairSection />
-      <MailInRepairSection />
-      <DataRecoveryHomeSection />
-      <TrainingHomeSection />
-      <SoftwareDevelopmentHomeSection />
+      <MeetPixelNationSection />
+      <MoreServicesHomeSection />
       <FAQSection />
-      <section className="border-t border-card-border py-12 sm:py-16">
-        <div className="mx-auto max-w-6xl min-w-0 px-4">
-          <RelatedLinks currentPath="/" title="More from PixelNation" />
-        </div>
-      </section>
-      <FinalCTASection />
+      <VisitPixelNationSection />
     </>
   );
 }

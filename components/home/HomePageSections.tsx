@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaqPreview } from "@/components/faq/FaqPreview";
 import { FaqSection as FaqSectionBlock } from "@/components/faq/FaqSection";
-import { PhotoPlaceholder } from "@/components/media/PhotoPlaceholder";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import {
@@ -39,7 +37,7 @@ export function HeroSection() {
       aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-accent-muted via-accent-secondary-muted to-background" />
-      <div className="relative mx-auto grid max-w-6xl min-w-0 items-center gap-8 px-4 py-12 sm:gap-10 sm:py-16 md:py-24 lg:grid-cols-2 lg:items-center">
+      <div className="relative mx-auto grid max-w-6xl min-w-0 items-center gap-8 px-4 py-10 sm:gap-10 sm:py-14 md:py-16 lg:grid-cols-2 lg:items-center">
         <div className="min-w-0 order-1">
           <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-accent">
             {SITE.address.region}
@@ -71,7 +69,7 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-        <div className="relative order-2 mx-auto aspect-square w-full max-w-md min-w-0 lg:max-w-none">
+        <div className="relative order-2 mx-auto aspect-[16/9] w-full max-w-md min-w-0 lg:max-w-none">
           <Image
             src="/images/coverlogo.png"
             alt="PixelNation electronics repair, trading cards, and gaming in Emporia, Kansas"
@@ -94,29 +92,15 @@ export function MeetPixelNationSection() {
       subtitle={MEET_PIXELNATION.subtitle}
       alt
     >
-      <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
-        <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
-          {MEET_PIXELNATION.paragraphs.map((paragraph) => (
-            <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-          ))}
-          <div className="cta-group pt-2">
-            <Button href="/about" variant="secondary">
-              Our story
-            </Button>
-            <Button href="/team" variant="outline">
-              Meet the team
-            </Button>
-          </div>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-          <PhotoPlaceholder
-            label="Repair Bench"
-            description="The workbench where devices get a second chance."
-          />
-          <PhotoPlaceholder
-            label="Trading Cards & Play"
-            description="Cards, tables, and the community side of PixelNation."
-          />
+      <div className="max-w-3xl">
+        <p className="text-base leading-relaxed text-muted sm:text-lg">
+          We help keep your devices working and bring people together around the
+          games they love. From board-level repairs to a seat at the Commander
+          table, PixelNation is a place to get help, learn something, and feel welcome.
+        </p>
+        <div className="cta-group mt-6">
+          <Button href="/about" variant="secondary">Our story</Button>
+          <Button href="/team" variant="outline">Meet the team</Button>
         </div>
       </div>
     </Section>
@@ -295,23 +279,20 @@ export function VisitPixelNationSection() {
         <span className="block">{SITE.address.streetLine1}</span>
         <span className="block">{SITE.address.cityStateZip}</span>
       </address>
-      <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {HOME_VISIT.items.map((item) => (
-          <li
-            key={item}
-            className="flex gap-2 rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted"
-          >
-            <span
-              className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
-              aria-hidden
-            />
-            {item}
-          </li>
-        ))}
-      </ul>
+      <div className="max-w-xl rounded-xl border border-card-border bg-card p-5 sm:p-6">
+        <h3 className="mb-4 font-semibold text-foreground">Store hours</h3>
+        <dl className="space-y-3 text-sm sm:text-base">
+          {SITE.businessHours.map(({ days, display }) => (
+            <div key={days} className="flex flex-wrap justify-between gap-x-6 gap-y-1">
+              <dt className="text-muted">{days}</dt>
+              <dd className="font-medium text-foreground">{display}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
       <div className="cta-group mt-8">
         <Button href={SITE.maps.directionsUrl} external>
-          Visit PixelNation
+          Get Directions
         </Button>
         <Button href="/events" variant="secondary">
           View Events
@@ -367,9 +348,6 @@ export function WhatWeRepairSection() {
                 <h3 className="font-semibold text-foreground group-hover:text-accent">
                   {service.title}
                 </h3>
-                <p className="mt-1 text-xs font-medium text-accent-secondary">
-                  {service.seoLabel}
-                </p>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
                   {service.description}
                 </p>
@@ -683,19 +661,34 @@ export function SoftwareDevelopmentHomeSection() {
   );
 }
 
-export function FAQSection() {
+export function MoreServicesHomeSection() {
+  const services = [
+    { title: "Mail-in repair", text: "Outside Emporia? Contact us about your device before shipping it to our repair bench.", href: "/contact", cta: "Ask about mail-in repair" },
+    { title: "Hands-on training", text: "Build practical skills in electronics diagnostics, microsoldering, and board-level repair.", href: "/training", cta: "Explore training" },
+    { title: "Software & websites", text: "Explore custom websites, business software, and automation services.", href: "/software-development", cta: "View software services" },
+  ];
   return (
-    <Section
-      id="faq"
-      title="Frequently asked questions"
-      subtitle="Answers about repair times, board work, data recovery, mail-in service, training, and appliances."
-      alt
-    >
-      <FaqPreview items={HOME_FAQS.slice(0, 4)} viewAllHref="#faq-full" />
-      <div id="faq-full" className="mt-10">
-        <FaqSectionBlock items={HOME_FAQS} initialVisible={6} showPeopleAlsoAsk />
+    <Section id="more-services" title="More ways we can help">
+      <div className="grid gap-5 md:grid-cols-3">
+        {services.map((service) => (
+          <article key={service.href} className="flex flex-col rounded-xl border border-card-border bg-card p-6">
+            <h3 className="text-lg font-semibold">{service.title}</h3>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{service.text}</p>
+            <Link href={service.href} className="mt-5 inline-flex min-h-11 items-center font-semibold text-accent-secondary hover:underline">{service.cta} →</Link>
+          </article>
+        ))}
       </div>
     </Section>
+  );
+}
+
+export function FAQSection() {
+  return (
+    <section className="bg-card py-12 sm:py-16">
+      <div className="mx-auto max-w-6xl min-w-0 px-4">
+        <FaqSectionBlock items={HOME_FAQS} initialVisible={6} />
+      </div>
+    </section>
   );
 }
 

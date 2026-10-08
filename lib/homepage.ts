@@ -12,15 +12,12 @@ export const HERO_HEADLINE =
   "Electronics Repair, Trading Cards & Gaming in Emporia, Kansas";
 
 export const HERO_SUPPORT =
-  "Professional device repair, trading cards, gaming products, community events, and advanced electronics services—all from one local PixelNation location.";
+  "Get your device fixed. Find your next deck. Join a game. Visit our downtown Emporia shop for electronics repair, trading cards, and community events.";
 
 export const HERO_BULLETS = [
-  "Phone, computer, console & appliance repair",
-  "Trading cards, sealed products & singles",
-  "Gaming community, weekly events & play space",
-  "Data recovery and board-level repair",
-  "Mail-in repair accepted nationwide",
-  "Training and software development available",
+  "Phones, computers, consoles & advanced board repair",
+  "Trading cards, sealed products, singles & accessories",
+  "Weekly gaming events & welcoming play space",
 ] as const;
 
 /** Broad product categories for the homepage "What we carry" strip. */
