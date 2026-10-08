@@ -15,6 +15,8 @@ import { breadcrumbListSchema } from "@/lib/seo/schema";
 import { buildCanonical } from "@/lib/seo/site-seo";
 import type { BreadcrumbItem } from "@/lib/seo/types";
 
+export const dynamic = "force-dynamic";
+
 type Props = {
   params: Promise<{ slug: string }>;
 };

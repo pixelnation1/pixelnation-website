@@ -118,7 +118,7 @@ export function capacityLabel(event: StoreEvent): string | null {
 
 export function registrationStatusLabel(event: StoreEvent): string {
   if (event.status === "cancelled") return "Registration closed";
-  if (event.status === "completed") return "Registration closed";
+  if (event.status === "completed" || isEventPast(event)) return "Registration closed";
   if (isSoldOut(event)) return "Sold out";
   if (event.registrationRequired) {
     const remaining = seatsRemaining(event);
@@ -277,12 +277,21 @@ export function sortKey(event: StoreEvent, now = new Date()): number {
   return Date.parse(`${iso}T00:00:00`);
 }
 
+/** Date-aware closure for one-off events, using the store's local time. */
+export function isEventPast(event: StoreEvent, now = new Date()): boolean {
+  if (event.recurring || !event.startDate) return false;
+  const endDate = event.endDate ?? event.startDate;
+  const today = todayIsoInChicago(now);
+  if (endDate !== today) return endDate < today;
+  const endMinutes = clockToMinutes(event.endTime ?? "");
+  return endMinutes !== null && chicagoMinutesNow(now) >= endMinutes;
+}
+
 export function isUpcoming(event: StoreEvent, now = new Date()): boolean {
   if (event.status === "cancelled" || event.status === "completed") return false;
   if (event.recurring) return true;
   if (!event.startDate) return true;
-  const end = event.endDate ?? event.startDate;
-  return end >= todayIsoInChicago(now);
+  return !isEventPast(event, now);
 }
 
 export function eventHref(event: StoreEvent): string {

@@ -26,6 +26,7 @@ export {
   getChicagoWeekday,
   getEventLocation,
   getEventLocationLines,
+  isEventPast,
   isFreeEntry,
   isSoldOut,
   isUpcoming,

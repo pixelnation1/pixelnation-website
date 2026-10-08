@@ -1,5 +1,5 @@
 import { checkRateLimit } from "@/lib/trade/rate-limit";
-import { getEventBySlug, isSoldOut, seatsRemaining } from "@/lib/events";
+import { getEventBySlug, isEventPast, isSoldOut, seatsRemaining } from "@/lib/events";
 import { isValidUsPhone } from "@/lib/legal/sms";
 import { SITE } from "@/lib/site";
 
@@ -78,7 +78,7 @@ export async function POST(request: Request) {
   if (event.status === "cancelled") {
     return Response.json({ error: "This event has been cancelled." }, { status: 400 });
   }
-  if (event.status === "completed") {
+  if (event.status === "completed" || isEventPast(event)) {
     return Response.json({ error: "This event has already finished." }, { status: 400 });
   }
   if (isSoldOut(event)) {

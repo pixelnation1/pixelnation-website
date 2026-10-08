@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { EventRegistrationForm } from "@/components/events/EventRegistrationForm";
 import { ShareEventButton } from "@/components/events/ShareEventButton";
 import { Button } from "@/components/ui/Button";
@@ -9,6 +10,7 @@ import {
   formatEventWhen,
   gameLabel,
   getEventLocationLines,
+  isEventPast,
   isFreeEntry,
   isSoldOut,
   registrationStatusLabel,
@@ -25,7 +27,7 @@ type EventDetailProps = {
 export function EventDetail({ event, shareUrl }: EventDetailProps) {
   const soldOut = isSoldOut(event);
   const cancelled = event.status === "cancelled";
-  const completed = event.status === "completed";
+  const completed = event.status === "completed" || isEventPast(event);
   const free = isFreeEntry(event);
   const showRegistration =
     event.registrationRequired && !soldOut && !cancelled && !completed;
@@ -61,6 +63,7 @@ export function EventDetail({ event, shareUrl }: EventDetailProps) {
           <h1 className="mt-3 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {event.title}
           </h1>
+          {completed ? <p className="mt-4 rounded-lg border border-card-border p-3 text-muted">This event has ended. Registration is closed. <Link href="/events" className="text-accent-secondary underline">See upcoming events</Link>.</p> : null}
           {event.subtitle ? (
             <p className="mt-2 text-lg font-medium text-accent">{event.subtitle}</p>
           ) : null}

@@ -16,6 +16,7 @@ import {
   formatEventTime,
   gameLabel,
   getEventLocationLines,
+  isEventPast,
   isFreeEntry,
   isSoldOut,
   registrationStatusLabel,
@@ -50,7 +51,7 @@ export function EventDetailModal({
   const accent = eventAccent(event);
   const soldOut = isSoldOut(event);
   const cancelled = event.status === "cancelled";
-  const completed = event.status === "completed";
+  const completed = event.status === "completed" || isEventPast({ ...event, recurring: false, startDate: occurrence.date, endDate: event.recurring ? occurrence.date : event.endDate });
   const remaining = seatsRemaining(event);
   const canRegister =
     event.registrationRequired && !soldOut && !cancelled && !completed;
@@ -63,7 +64,7 @@ export function EventDetailModal({
     <Modal open titleId={titleId} onClose={handleClose}>
       <div className="flex items-start justify-between gap-4 border-b border-card-border px-4 py-3 sm:px-6">
         <div className="min-w-0">
-          {mode === "register" ? (
+          {mode === "register" && canRegister ? (
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent-secondary">
               Register
             </p>
@@ -87,7 +88,7 @@ export function EventDetailModal({
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto px-4 py-5 sm:px-6">
-        {mode === "register" ? (
+        {mode === "register" && canRegister ? (
           <div>
             <h2 id={titleId} className="text-2xl font-bold tracking-tight">
               Register for {event.title}

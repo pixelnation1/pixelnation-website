@@ -73,18 +73,18 @@ export default async function EventsPage({ searchParams }: Props) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:py-10" aria-label="Event calendar">
-        <EventsCalendar todayIso={todayIso} initialEventId={initialEventId} />
-      </section>
-
       <Section
         id="weekly-nights"
-        title="Typical week"
-        subtitle="Recurring nights. Saturday is reserved for posted tournaments and specials."
+        title="Weekly gaming schedule"
+        subtitle="All times are local to Emporia (Central Time). Select an event for entry fees, registration, and what to bring."
         alt
       >
         <CompactWeeklySchedule />
       </Section>
+
+      <section id="special-events" className="mx-auto max-w-7xl px-4 py-8 sm:py-10" aria-label="Event calendar">
+        <EventsCalendar todayIso={todayIso} initialEventId={initialEventId} />
+      </section>
 
       <Section id="visit" title="Play at PixelNation">
         <VisitPixelNationEvents />
