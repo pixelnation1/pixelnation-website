@@ -1,6 +1,6 @@
 /**
  * SAMPLE / DEVELOPMENT TRADE VALUES ONLY (internal).
- * Public UI does not show sample badges or the development banner.
+ * Sample prices are hidden from the public site by default.
  * Prices remain estimates until staff review and approval in admin.
  */
 import type { TradeItem, TradeSettings } from "@/lib/trade/types";
@@ -11,7 +11,7 @@ export const SAMPLE_DATA_WARNING =
 export const DEFAULT_TRADE_SETTINGS: TradeSettings = {
   storeCreditMultiplier: 1.2,
   showSampleDataBanner: false,
-  publishSampleItems: true,
+  publishSampleItems: false,
 };
 
 function sampleItem(

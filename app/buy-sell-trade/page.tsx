@@ -68,12 +68,12 @@ export default function BuySellTradePage() {
             depend on inspection, condition, authenticity, and market demand.
           </p>
           <p className="mt-3 max-w-2xl text-sm text-muted">
-            Search estimated electronics trade values online, then request a final offer.
+            Call or visit for a current electronics trade-in quote.
             Final value always depends on in-store inspection. Trading-card collections are
             reviewed in person.
           </p>
           <div className="cta-group mt-8">
-            <Button href="/trade-values">Search Trade Values</Button>
+            <Button href="/trade-values">Trade-In Information</Button>
             <Button href="/sell-to-pixelnation" variant="secondary">
               Get a Final Offer
             </Button>

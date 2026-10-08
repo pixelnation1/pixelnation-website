@@ -29,7 +29,29 @@ export default async function TradeValuesPage() {
 
   return (
     <article>
-      <TradeSearchPanel items={items} settings={settings} />
+      {items.length > 0 ? (
+        <TradeSearchPanel items={items} settings={settings} />
+      ) : (
+        <section className="border-b border-card-border bg-gradient-to-b from-accent-muted to-background px-4 py-10 sm:py-16" aria-labelledby="trade-quote-heading">
+          <div className="mx-auto max-w-4xl">
+            <h1 id="trade-quote-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">Get a current trade-in quote</h1>
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
+              Have a console, handheld, phone, computer, or gaming accessory to sell?
+              Call PixelNation or bring it to our downtown Emporia shop for an evaluation.
+            </p>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+              Online price estimates are currently unavailable. Your offer depends on
+              the model, condition, included accessories, and current demand. Final offers
+              follow in-store inspection and testing.
+            </p>
+            <div className="cta-group mt-6">
+              <a href={SITE.phoneHref} className="inline-flex min-h-11 items-center justify-center rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-background hover:bg-accent-hover">Call {SITE.phone}</a>
+              <a href={SITE.maps.directionsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-xl border border-card-border px-5 py-3 text-sm font-semibold hover:border-accent-secondary">Get Directions</a>
+            </div>
+            <p className="mt-5 text-sm text-muted">{SITE.address.streetLine1}, {SITE.address.cityStateZip}</p>
+          </div>
+        </section>
+      )}
 
       {/* Secondary education — intentionally below the search app */}
       <div className="border-t border-card-border/70">
@@ -57,7 +79,7 @@ export default async function TradeValuesPage() {
         <Section
           id="how-trades-work"
           title="How It Works"
-          subtitle="Find an estimate, bring it in, get inspected, choose cash or store credit."
+          subtitle="Tell us what you have, bring it in, get inspected, choose cash or store credit."
           alt
         >
           <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

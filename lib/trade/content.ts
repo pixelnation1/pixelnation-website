@@ -72,8 +72,8 @@ export const CONDITION_LEVELS = [
 
 export const HOW_TRADES_WORK = [
   {
-    title: "Find Your Item",
-    body: "Search the PixelNation Trade Values page for an estimated offer.",
+    title: "Tell Us What You Have",
+    body: "Call or visit PixelNation with the model, condition, and accessories. Check the Trade Values page for any published estimates.",
   },
   {
     title: "Bring It In",
