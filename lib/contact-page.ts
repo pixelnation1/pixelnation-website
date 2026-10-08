@@ -70,7 +70,7 @@ export const CONTACT_FAQ = [
   {
     question: "How quickly will I receive a response?",
     answer:
-      `During business hours (${SITE.hours}), we aim to respond the same day. Messages received after hours or on weekends are answered on the next business day.`,
+      `During business hours (${SITE.hours}), we aim to respond the same day. Messages received after closing are answered during our next opening hours.`,
   },
   {
     question: "Can I track my repair online?",

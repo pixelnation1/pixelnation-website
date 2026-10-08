@@ -87,7 +87,12 @@ export function Footer() {
                   {SITE.email}
                 </a>
               </li>
-              <li>{SITE.hours}</li>
+              {SITE.businessHours.map(({ days, display }) => (
+                <li key={days}>
+                  <span className="block">{days}</span>
+                  <span>{display}</span>
+                </li>
+              ))}
             </ul>
           </div>
 

@@ -122,7 +122,11 @@ export default function ContactPage() {
                 <dt className="text-xs font-semibold uppercase text-accent-secondary">
                   Business hours
                 </dt>
-                <dd className="mt-1 text-muted">{SITE.hours}</dd>
+                <dd className="mt-1 space-y-1 text-muted">
+                  {SITE.businessHours.map(({ days, display }) => (
+                    <div key={days}>{days}: {display}</div>
+                  ))}
+                </dd>
               </div>
             </dl>
 

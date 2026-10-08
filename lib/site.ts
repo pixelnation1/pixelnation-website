@@ -1,5 +1,12 @@
 import { SOFTWARE_DEV_DROPDOWN_LINKS } from "@/lib/software/links";
 
+const BUSINESS_HOURS = [
+  { days: "Monday – Wednesday", dayOfWeek: ["Monday", "Tuesday", "Wednesday"], opens: "10:00", closes: "20:00", display: "10:00 AM – 8:00 PM" },
+  { days: "Thursday – Friday", dayOfWeek: ["Thursday", "Friday"], opens: "10:00", closes: "22:00", display: "10:00 AM – 10:00 PM" },
+  { days: "Saturday", dayOfWeek: ["Saturday"], opens: "12:00", closes: "22:00", display: "Noon – 10:00 PM" },
+  { days: "Sunday", dayOfWeek: ["Sunday"], opens: "15:00", closes: "22:00", display: "3:00 PM – 10:00 PM" },
+] as const;
+
 export const SITE = {
   name: "PixelNation",
   tagline: "Advanced Tech Repair Specialists",
@@ -25,11 +32,8 @@ export const SITE = {
     directionsUrl:
       "https://www.google.com/maps/search/?api=1&query=22+E.+5th+Ave,+Emporia,+KS+66801",
   },
-  hours: "Monday – Friday, 9:00 AM – 3:00 PM",
-  openingHours: {
-    opens: "09:00",
-    closes: "15:00",
-  },
+  hours: BUSINESS_HOURS.map(({ days, display }) => `${days}, ${display}`).join("; "),
+  businessHours: BUSINESS_HOURS,
 } as const;
 
 export const MAIN_MESSAGE =

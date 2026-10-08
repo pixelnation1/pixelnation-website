@@ -57,14 +57,12 @@ export function localBusinessSchema(overrides?: Record<string, unknown>) {
       name: SITE.address.city,
       containedInPlace: { "@type": "State", name: "Kansas" },
     },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: SITE.openingHours.opens,
-        closes: SITE.openingHours.closes,
-      },
-    ],
+    openingHoursSpecification: SITE.businessHours.map(({ dayOfWeek, opens, closes }) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek,
+      opens,
+      closes,
+    })),
     priceRange: "$$",
     knowsAbout: [
       "Phone Repair",
