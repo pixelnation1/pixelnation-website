@@ -59,7 +59,7 @@ export function resolveCityFaqs(city: CityData, limit = 8): FaqItem[] {
     },
     {
       question: `How long do repairs take for ${city.name} customers?`,
-      answer: `Turnaround depends on the device and fault. Many common repairs finish within a business day at our bench; board-level and data recovery may need longer—we confirm after diagnostics.`,
+      answer: `Turnaround depends on the device and fault. Parts availability and the repair queue affect timing. We confirm an estimated turnaround after diagnostics; board-level repair and data recovery may need longer.`,
     },
     {
       question: `Can I get board-level repair near ${city.name}?`,

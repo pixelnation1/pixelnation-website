@@ -1,3 +1,4 @@
+import { RepairExpectations } from "@/components/services/RepairExpectations";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -93,6 +94,8 @@ export default function BoardRepairPage() {
           </div>
         </div>
       </section>
+
+      <RepairExpectations />
 
       {/* What is board-level repair */}
       <Section

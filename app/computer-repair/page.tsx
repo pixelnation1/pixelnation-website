@@ -1,3 +1,4 @@
+import { RepairExpectations } from "@/components/services/RepairExpectations";
 import Image from "next/image";
 import Link from "next/link";
 import { RepairPageFaq } from "@/components/faq/RepairPageFaq";
@@ -81,6 +82,8 @@ export default function ComputerRepairPage() {
           </div>
         </div>
       </section>
+
+      <RepairExpectations />
 
       {/* Computers we repair */}
       <Section

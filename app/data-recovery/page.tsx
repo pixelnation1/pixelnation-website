@@ -1,3 +1,4 @@
+import { RepairExpectations } from "@/components/services/RepairExpectations";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -89,6 +90,8 @@ export default function DataRecoveryPage() {
           </div>
         </div>
       </section>
+
+      <RepairExpectations />
 
       {/* Devices */}
       <Section

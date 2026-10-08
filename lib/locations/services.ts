@@ -48,7 +48,7 @@ export const SERVICES: Record<ServiceSlug, ServiceData> = {
     ],
     relatedServiceSlugs: ["charging-port-repair", "liquid-damage-repair", "data-recovery", "board-repair"],
     relatedRepairPaths: ["/phone-repair", "/board-repair", "/data-recovery"],
-    turnaround: "Many iPhone screen and battery jobs complete within one business day when parts are in stock.",
+    turnaround: "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue.",
     mailInFriendly: true,
   },
   "ps5-hdmi-repair": {
@@ -70,7 +70,7 @@ export const SERVICES: Record<ServiceSlug, ServiceData> = {
     ],
     relatedServiceSlugs: ["hdmi-repair", "xbox-repair", "board-repair", "microsoldering"],
     relatedRepairPaths: ["/console-repair", "/board-repair"],
-    turnaround: "PS5 HDMI repairs typically take 3–7 business days depending on port condition and board health.",
+    turnaround: "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue.",
     mailInFriendly: true,
   },
   "xbox-repair": {
@@ -92,7 +92,7 @@ export const SERVICES: Record<ServiceSlug, ServiceData> = {
     ],
     relatedServiceSlugs: ["ps5-hdmi-repair", "hdmi-repair", "board-repair"],
     relatedRepairPaths: ["/console-repair", "/board-repair"],
-    turnaround: "Most Xbox HDMI and power faults are evaluated within 48 hours; repair time follows diagnostics.",
+    turnaround: "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue.",
     mailInFriendly: true,
   },
   "computer-repair": {
@@ -114,7 +114,7 @@ export const SERVICES: Record<ServiceSlug, ServiceData> = {
     ],
     relatedServiceSlugs: ["data-recovery", "board-repair", "microsoldering"],
     relatedRepairPaths: ["/computer-repair", "/data-recovery", "/board-repair"],
-    turnaround: "Common computer repairs often finish same-day or next business day when parts are available.",
+    turnaround: "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue.",
     mailInFriendly: true,
   },
   "data-recovery": {
@@ -136,7 +136,7 @@ export const SERVICES: Record<ServiceSlug, ServiceData> = {
     ],
     relatedServiceSlugs: ["liquid-damage-repair", "iphone-repair", "computer-repair", "board-repair"],
     relatedRepairPaths: ["/data-recovery", "/phone-repair", "/computer-repair"],
-    turnaround: "Data recovery timelines vary by media health—many cases receive an initial assessment within 2–3 business days.",
+    turnaround: "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue.",
     mailInFriendly: true,
   },
   microsoldering: {
@@ -158,7 +158,7 @@ export const SERVICES: Record<ServiceSlug, ServiceData> = {
     ],
     relatedServiceSlugs: ["board-repair", "charging-port-repair", "hdmi-repair", "liquid-damage-repair"],
     relatedRepairPaths: ["/board-repair", "/training"],
-    turnaround: "Microsoldering jobs are quoted after bench diagnostics—typically 5–10 business days for complex boards.",
+    turnaround: "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue.",
     mailInFriendly: true,
   },
   "board-repair": {
@@ -180,7 +180,7 @@ export const SERVICES: Record<ServiceSlug, ServiceData> = {
     ],
     relatedServiceSlugs: ["microsoldering", "hdmi-repair", "charging-port-repair", "liquid-damage-repair"],
     relatedRepairPaths: ["/board-repair", "/phone-repair", "/console-repair"],
-    turnaround: "Board repair starts with evaluation—many quotes are ready within 1–2 business days of receipt.",
+    turnaround: "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue.",
     mailInFriendly: true,
   },
   "liquid-damage-repair": {
@@ -202,7 +202,7 @@ export const SERVICES: Record<ServiceSlug, ServiceData> = {
     ],
     relatedServiceSlugs: ["data-recovery", "iphone-repair", "board-repair", "microsoldering"],
     relatedRepairPaths: ["/phone-repair", "/data-recovery", "/board-repair"],
-    turnaround: "Liquid damage cases need prompt evaluation—contact us quickly; mail-in within 24–48 hours is ideal.",
+    turnaround: "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue.",
     mailInFriendly: true,
   },
   "charging-port-repair": {
@@ -224,7 +224,7 @@ export const SERVICES: Record<ServiceSlug, ServiceData> = {
     ],
     relatedServiceSlugs: ["iphone-repair", "microsoldering", "board-repair"],
     relatedRepairPaths: ["/phone-repair", "/board-repair"],
-    turnaround: "Charging port repairs often complete in 1–3 business days; board-level cases may take longer.",
+    turnaround: "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue.",
     mailInFriendly: true,
   },
   "hdmi-repair": {
@@ -246,7 +246,7 @@ export const SERVICES: Record<ServiceSlug, ServiceData> = {
     ],
     relatedServiceSlugs: ["ps5-hdmi-repair", "xbox-repair", "board-repair", "microsoldering"],
     relatedRepairPaths: ["/console-repair", "/board-repair"],
-    turnaround: "HDMI port repairs usually take 3–7 business days including bench testing.",
+    turnaround: "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue.",
     mailInFriendly: true,
   },
 };

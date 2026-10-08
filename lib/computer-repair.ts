@@ -217,7 +217,7 @@ export const COMPUTER_FAQ = [
   {
     question: "How long does computer repair take?",
     answer:
-      "Many repairs finish within a business day when parts are on hand. Complex diagnostics, data recovery, or specialty parts may need additional time—we explain timing up front.",
+      "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue. Complex repairs may need additional time.",
   },
 ] as const;
 

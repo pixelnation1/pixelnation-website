@@ -137,7 +137,7 @@ export const APPLIANCE_FAQ = [
   {
     question: "How long do appliance repairs take?",
     answer:
-      "Many repairs finish within a few business days when parts are available. Complex diagnostics or specialty parts may need more time—we set expectations up front.",
+      "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue. Complex repairs may need additional time.",
   },
   {
     question: "Is it worth repairing an appliance?",

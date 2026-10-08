@@ -1,3 +1,4 @@
+import { RepairExpectations } from "@/components/services/RepairExpectations";
 import Link from "next/link";
 
 import { createPageMetadataFromLegacy } from "@/lib/seo/metadata";
@@ -58,6 +59,8 @@ export default function RepairsPage() {
           </div>
         </div>
       </section>
+
+      <RepairExpectations />
 
       {/* Overview */}
       <Section

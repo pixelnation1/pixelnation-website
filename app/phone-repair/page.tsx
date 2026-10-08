@@ -1,3 +1,4 @@
+import { RepairExpectations } from "@/components/services/RepairExpectations";
 import Image from "next/image";
 import Link from "next/link";
 import { FaqSection } from "@/components/faq/FaqSection";
@@ -201,6 +202,8 @@ export default function PhoneRepairPage() {
             </div>
           </div>
         </section>
+
+        <RepairExpectations />
 
         <Section
           title="Common Phone Problems We Fix"

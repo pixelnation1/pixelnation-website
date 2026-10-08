@@ -156,7 +156,7 @@ export function isNavLinkActive(pathname: string, href: string): boolean {
 
 export const TRUST_ITEMS = [
   "Local Emporia repair shop",
-  "Same-day repairs available on select services",
+  "Repair timing confirmed after diagnostics",
   "Board-level repair capability",
   "Data recovery services",
   "Warranty available on many repairs",
@@ -296,7 +296,7 @@ export const FAQ_ITEMS = [
   {
     question: "How long do repairs usually take?",
     answer:
-      "Many common repairs finish within a business day when parts are on hand. Board-level, data recovery, and specialty jobs may need additional time—we set expectations up front.",
+      "Timing depends on the fault, parts availability, and repair queue. We confirm an estimated turnaround after diagnostics. Board-level, data recovery, and specialty jobs may need additional time.",
   },
   {
     question: "Do you offer a warranty on repairs?",

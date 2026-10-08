@@ -147,7 +147,7 @@ export const CONSOLE_FAQ = [
   {
     question: "How long does console repair take?",
     answer:
-      "Many HDMI and common repairs finish within a few business days when parts are available. Board-level work may need additional time—we set expectations up front.",
+      "We confirm an estimated turnaround after diagnostics based on the fault, parts availability, and current repair queue. Complex repairs may need additional time.",
   },
 ] as const;
 
