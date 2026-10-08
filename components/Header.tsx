@@ -217,6 +217,8 @@ function MobileAccordion({
 
 export function Header() {
   const pathname = usePathname();
+  const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const repairsMenuId = useId();
   const tradingMenuId = useId();
   const gamingMenuId = useId();
@@ -265,17 +267,44 @@ export function Header() {
 
   useEffect(() => {
     if (!mobileOpen) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeMobile();
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const onResize = () => {
+      if (desktop.matches) closeMobile();
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMobile();
+        menuButtonRef.current?.focus();
+      }
+    };
+    const onOutsideInteraction = (event: Event) => {
+      if (!headerRef.current?.contains(event.target as Node)) closeMobile();
     };
     document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onOutsideInteraction);
+    document.addEventListener("focusin", onOutsideInteraction);
+    desktop.addEventListener("change", onResize);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onOutsideInteraction);
+      document.removeEventListener("focusin", onOutsideInteraction);
+      desktop.removeEventListener("change", onResize);
+    };
   }, [mobileOpen, closeMobile]);
+
+  function openMobileCategory(category: string, open: boolean) {
+    setMobileRepairsOpen(category === "repairs" && open);
+    setMobileTradingOpen(category === "trading" && open);
+    setMobileGamingOpen(category === "gaming" && open);
+    setMobileTrainingOpen(category === "training" && open);
+    setMobileSoftwareOpen(category === "software" && open);
+  }
 
   const contactLinks = PRIMARY_NAV_LINKS.filter((l) => l.href !== "/");
 
   return (
-    <header className="sticky top-0 z-50 border-b border-card-border bg-background/95 backdrop-blur print:hidden">
+    <header ref={headerRef} className="sticky top-0 z-50 border-b border-card-border bg-background/95 backdrop-blur print:hidden">
       <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 lg:gap-4">
         <Link
           href="/"
@@ -395,9 +424,10 @@ export function Header() {
             type="button"
             className="inline-flex min-h-11 min-w-11 flex-col items-center justify-center gap-1.5 rounded-lg border border-card-border p-2.5 lg:hidden"
             aria-expanded={mobileOpen}
+            ref={menuButtonRef}
             aria-controls="mobile-nav-menu"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMobileOpen((v) => !v)}
+            onClick={() => mobileOpen ? closeMobile() : setMobileOpen(true)}
           >
             <span
               className={`block h-0.5 w-5 bg-foreground transition ${mobileOpen ? "translate-y-2 rotate-45" : ""}`}
@@ -415,7 +445,7 @@ export function Header() {
       {mobileOpen ? (
         <nav
           id="mobile-nav-menu"
-          className="max-h-[min(80vh,640px)] overflow-y-auto border-t border-card-border px-4 py-4 lg:hidden"
+          className="absolute inset-x-0 top-full max-h-[calc(100dvh-73px)] overflow-y-auto overscroll-contain border-b border-t border-card-border bg-background px-4 py-4 shadow-xl lg:hidden"
           aria-label="Mobile"
         >
           <ul className="flex flex-col gap-1">
@@ -434,7 +464,7 @@ export function Header() {
               label="Repairs"
               active={repairsActive}
               open={mobileRepairsOpen}
-              setOpen={setMobileRepairsOpen}
+              setOpen={(open) => openMobileCategory("repairs", open)}
               menuId={`${repairsMenuId}-mobile`}
               links={REPAIRS_DROPDOWN_LINKS}
               pathname={pathname}
@@ -445,7 +475,7 @@ export function Header() {
               label="Trading Cards"
               active={tradingActive}
               open={mobileTradingOpen}
-              setOpen={setMobileTradingOpen}
+              setOpen={(open) => openMobileCategory("trading", open)}
               menuId={`${tradingMenuId}-mobile`}
               links={TRADING_CARDS_DROPDOWN_LINKS}
               pathname={pathname}
@@ -456,7 +486,7 @@ export function Header() {
               label="Gaming & Events"
               active={gamingActive}
               open={mobileGamingOpen}
-              setOpen={setMobileGamingOpen}
+              setOpen={(open) => openMobileCategory("gaming", open)}
               menuId={`${gamingMenuId}-mobile`}
               links={GAMING_EVENTS_DROPDOWN_LINKS}
               pathname={pathname}
@@ -467,7 +497,7 @@ export function Header() {
               label="Training"
               active={trainingActive}
               open={mobileTrainingOpen}
-              setOpen={setMobileTrainingOpen}
+              setOpen={(open) => openMobileCategory("training", open)}
               menuId={`${trainingMenuId}-mobile`}
               links={TRAINING_DROPDOWN_LINKS}
               pathname={pathname}
@@ -478,7 +508,7 @@ export function Header() {
               label="Software"
               active={softwareActive}
               open={mobileSoftwareOpen}
-              setOpen={setMobileSoftwareOpen}
+              setOpen={(open) => openMobileCategory("software", open)}
               menuId={`${softwareMenuId}-mobile`}
               links={SOFTWARE_DEV_DROPDOWN_LINKS}
               pathname={pathname}

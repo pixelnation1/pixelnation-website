@@ -146,7 +146,7 @@ export function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-sm font-semibold text-accent hover:underline"
+          className="mt-6 inline-flex min-h-11 items-center px-3 text-sm font-semibold text-accent hover:underline"
         >
           Send another message
         </button>
@@ -336,7 +336,7 @@ export function ContactForm() {
           {PREFERRED_CONTACT_OPTIONS.map((option) => (
             <label
               key={option}
-              className="flex cursor-pointer items-center gap-2 text-sm text-muted"
+              className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-2 py-2 text-sm text-muted"
             >
               <input
                 type="radio"

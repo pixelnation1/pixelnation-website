@@ -122,7 +122,7 @@ export function FAQ({
         <div className="mt-4 text-center">
           <button
             type="button"
-            className="text-sm font-medium text-accent-secondary hover:text-accent-secondary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="inline-flex min-h-11 items-center px-3 text-sm font-medium text-accent-secondary hover:text-accent-secondary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             aria-expanded={expanded}
             onClick={() => setExpanded((v) => !v)}
           >
