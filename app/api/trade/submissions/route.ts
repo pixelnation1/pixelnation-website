@@ -69,11 +69,17 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid request body." }, { status: 400 });
   }
 
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return Response.json({ error: "Invalid request body." }, { status: 400 });
+  }
+  if (body.website != null && typeof body.website !== "string") {
+    return Response.json({ error: "Invalid request body." }, { status: 400 });
+  }
   if (body.website?.trim()) {
     return Response.json({ ok: true });
   }
 
-  if (!body.consent) {
+  if (body.consent !== true) {
     return Response.json(
       { error: "Please confirm that online values are estimates." },
       { status: 400 },
@@ -93,7 +99,7 @@ export async function POST(request: Request) {
     body.includedAccessories,
     body.preferredPayment,
   ];
-  if (required.some((value) => !value?.trim())) {
+  if (required.some((value) => typeof value !== "string" || !value.trim() || value.length > 2000)) {
     return Response.json(
       { error: "Please complete all required fields." },
       { status: 400 },
@@ -109,9 +115,13 @@ export async function POST(request: Request) {
     );
   }
 
-  const photos = (body.photoDataUrls || []).slice(0, 3).filter((url) => {
-    return typeof url === "string" && url.startsWith("data:image/") && url.length < 1_800_000;
-  });
+  const photos = body.photoDataUrls ?? [];
+  if (!Array.isArray(photos) || photos.length > 3 || photos.some((url) =>
+    typeof url !== "string" || url.length >= 1_800_000 ||
+    !/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(url)
+  )) {
+    return Response.json({ error: "Please attach up to 3 JPEG, PNG, or WebP photos under 1.2 MB each." }, { status: 400 });
+  }
 
   const payload = {
     ...body,
@@ -125,10 +135,19 @@ export async function POST(request: Request) {
     created_at: new Date().toISOString(),
   };
 
-  const webhook = process.env.CONTACT_WEBHOOK_URL;
+  const webhook = process.env.CONTACT_WEBHOOK_URL?.trim();
+  const resendKey = process.env.RESEND_API_KEY?.trim();
+  const resendFrom = process.env.RESEND_FROM_EMAIL?.trim();
+  if (!webhook && (!resendKey || !resendFrom)) {
+    return Response.json(
+      { error: `Your request could not be sent. Please call ${SITE.phone} or visit us for a trade-in quote.` },
+      { status: 503 },
+    );
+  }
   if (webhook) {
     try {
-      await fetch(webhook, {
+      const response = await fetch(webhook, {
+        signal: AbortSignal.timeout(10_000),
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -136,13 +155,10 @@ export async function POST(request: Request) {
           to: SITE.email,
           subject: `Trade offer request: ${payload.brand} ${payload.model}`,
           ...payload,
-          photoDataUrls: photos.map((url, index) => ({
-            index,
-            bytes: url.length,
-            preview: url.slice(0, 64),
-          })),
+          photoDataUrls: photos,
         }),
       });
+      if (!response.ok) throw new Error("Webhook rejected request");
     } catch {
       return Response.json(
         { error: "Unable to send your request right now. Please call us." },
@@ -151,9 +167,7 @@ export async function POST(request: Request) {
     }
   }
 
-  const resendKey = process.env.RESEND_API_KEY;
-  const resendFrom = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
-  if (resendKey) {
+  if (!webhook && resendKey && resendFrom) {
     try {
       const attachments = photos.map((dataUrl, index) => {
         const [, meta, data] = dataUrl.match(/^data:(image\/[a-zA-Z0-9.+-]+);base64,(.+)$/) || [];
@@ -164,6 +178,7 @@ export async function POST(request: Request) {
       }).filter((file) => file.content);
 
       const res = await fetch("https://api.resend.com/emails", {
+        signal: AbortSignal.timeout(10_000),
         method: "POST",
         headers: {
           Authorization: `Bearer ${resendKey}`,
@@ -179,6 +194,8 @@ export async function POST(request: Request) {
         }),
       });
       if (!res.ok) throw new Error("Resend failed");
+      const receipt = await res.json();
+      if (typeof receipt?.id !== "string" || !receipt.id.trim()) throw new Error("Missing receipt");
     } catch {
       return Response.json(
         { error: "Unable to send your request right now. Please call us." },
@@ -187,9 +204,6 @@ export async function POST(request: Request) {
     }
   }
 
-  if (!webhook && !resendKey) {
-    console.info("[trade submission]", formatBody(payload));
-  }
 
   return Response.json({
     ok: true,

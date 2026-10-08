@@ -72,21 +72,33 @@ export function FinalOfferForm({ prefill = null }: FinalOfferFormProps) {
 
   async function onPhotosSelected(files: FileList | null) {
     if (!files?.length) return;
-    const selected = Array.from(files).slice(0, 3);
+    setPhotos([]);
+    const selected = Array.from(files);
+    if (selected.length > 3) {
+      setErrorMessage("Please choose up to 3 photos.");
+      setStatus("error");
+      return;
+    }
     const urls: string[] = [];
     for (const file of selected) {
-      if (!file.type.startsWith("image/")) continue;
-      if (file.size > 1_200_000) {
-        setErrorMessage("Each photo must be under about 1.2MB. Please compress and retry.");
+      if (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > 1_200_000) {
+        setErrorMessage("Choose JPEG, PNG, or WebP photos under 1.2 MB each.");
+        setStatus("error");
         return;
       }
-      const dataUrl = await new Promise<string>((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(String(reader.result));
-        reader.onerror = () => reject(new Error("read failed"));
-        reader.readAsDataURL(file);
-      });
-      urls.push(dataUrl);
+      try {
+        const dataUrl = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result));
+          reader.onerror = () => reject(new Error("read failed"));
+          reader.readAsDataURL(file);
+        });
+        urls.push(dataUrl);
+      } catch {
+        setErrorMessage("That photo could not be read. Please choose it again.");
+        setStatus("error");
+        return;
+      }
     }
     setPhotos(urls);
     setErrorMessage("");
@@ -129,7 +141,7 @@ export function FinalOfferForm({ prefill = null }: FinalOfferFormProps) {
         }),
       });
       const data = (await res.json()) as { ok?: boolean; error?: string };
-      if (!res.ok) {
+      if (!res.ok || data.ok !== true) {
         setStatus("error");
         setErrorMessage(data.error || "Unable to submit right now. Please try again or call us.");
         return;
@@ -162,7 +174,7 @@ export function FinalOfferForm({ prefill = null }: FinalOfferFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-5">
       {prefill ? (
         <div className="rounded-xl border border-card-border bg-card p-4 text-sm text-muted">
           <p className="font-semibold text-foreground">{prefill.name}</p>
@@ -390,7 +402,7 @@ export function FinalOfferForm({ prefill = null }: FinalOfferFormProps) {
         <input
           id="offer-photos"
           type="file"
-          accept="image/*"
+          accept="image/jpeg,image/png,image/webp"
           multiple
           onChange={(e) => void onPhotosSelected(e.target.files)}
           className="block w-full text-sm text-muted file:mr-3 file:rounded-lg file:border-0 file:bg-accent file:px-3 file:py-2 file:text-sm file:font-semibold file:text-background"
