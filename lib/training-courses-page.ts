@@ -80,7 +80,7 @@ export const REPAIR_TRACK_COURSES: readonly TrainingCourse[] = [
 
 /** Repair Track / Practical Board Repair Intensive only. Not used by Investigator Track. */
 export const PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING = {
-  url: "https://app.squareup.com/appointments/book/classes/ylpswjtvdqub0f/LRCKYM56QVYGP/classes",
+  url: "https://book.squareup.com/classes/ylpswjtvdqub0f/location/LRCKYM56QVYGP/classes",
   ctaLabel: "Reserve Your Seat — $1,500",
   paymentMessage:
     "Full tuition is required at registration to reserve your seat.",

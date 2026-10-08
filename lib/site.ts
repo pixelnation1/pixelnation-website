@@ -176,7 +176,7 @@ export const POPULAR_SERVICES = [
     title: "Computer & Laptop Repair",
     description:
       "Hardware, software, storage upgrades, and performance tuning for PCs and Macs.",
-    href: "/computer-repair-emporia-ks",
+    href: "/computer-repair",
     image: "/images/computerrepair.png",
     imageAlt:
       "Computer and laptop repair in Emporia, KS — hardware, software, and performance service",
@@ -185,7 +185,7 @@ export const POPULAR_SERVICES = [
     title: "Appliance Diagnostics & Repair",
     description:
       "Structured troubleshooting and repair for household and specialty appliances.",
-    href: "/appliance-repair-emporia-ks",
+    href: "/appliance-repair",
     image: "/images/appliancerepair.png",
     imageAlt:
       "Appliance diagnostics and repair at PixelNation in Emporia, Kansas",
@@ -194,7 +194,7 @@ export const POPULAR_SERVICES = [
     title: "Console Repair",
     description:
       "HDMI, power, overheating, and internal faults for major gaming consoles.",
-    href: "/console-repair-emporia-ks",
+    href: "/console-repair",
     image: "/images/consolerepair.png",
     imageAlt:
       "Game console repair in Emporia, KS — HDMI, power, and overheating issues",

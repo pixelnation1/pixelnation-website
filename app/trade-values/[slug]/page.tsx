@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { SAMPLE_TRADE_ITEMS } from "@/lib/trade/sample-items";
 import { TradeItemCard } from "@/components/trade/TradeItemCard";
 import { TradeProductImage } from "@/components/trade/TradeProductImage";
 import { accessoryBadges, conditionBadges } from "@/lib/trade/badges";
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }: Props) {
   const { items, settings } = await getPublicTradeItems();
   const item = items.find((row) => row.slug === slug);
   if (!item) {
+    if (SAMPLE_TRADE_ITEMS.some((sample) => sample.slug === slug)) redirect("/trade-values");
     return createPageMetadata({
       title: "Trade Value Not Found | PixelNation",
       description: "This trade value listing could not be found.",
@@ -42,7 +44,10 @@ export default async function TradeValueDetailPage({ params }: Props) {
   const { slug } = await params;
   const { items, settings } = await getPublicTradeItems();
   const match = items.find((row) => row.slug === slug);
-  if (!match) notFound();
+  if (!match) {
+    if (SAMPLE_TRADE_ITEMS.some((sample) => sample.slug === slug)) redirect("/trade-values");
+    notFound();
+  }
 
   const item = toPublicTradeItem(match, settings);
   const accessories = accessoryBadges(item.requiredAccessories);

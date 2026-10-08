@@ -22,6 +22,7 @@ import {
   WORKSHOP_CURRICULUM,
 } from "@/lib/training-page";
 import { SITE } from "@/lib/site";
+import { PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING } from "@/lib/training-courses-page";
 
 export const metadata = createPageMetadataFromLegacy(TRAINING_METADATA);
 
@@ -207,7 +208,7 @@ export default function TrainingPage() {
         <div className="cta-group mt-6">
           <Button href="/training-courses#repair-track">View Course Details & Policies</Button>
           <Button
-            href="https://app.squareup.com/appointments/book/classes/ylpswjtvdqub0f/LRCKYM56QVYGP/classes"
+            href={PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING.url}
             variant="secondary"
             external
           >
