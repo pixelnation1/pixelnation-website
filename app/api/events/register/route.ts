@@ -42,6 +42,7 @@ function formatEmailBody(data: {
     `Phone: ${data.phone || "n/a"}`,
     `Number of players: ${data.playerCount}`,
     `Payment: not collected`,
+    `Registration: request only; staff confirmation required`,
     `IP address: ${data.ip ?? "n/a"}`,
     `User agent: ${data.userAgent ?? "n/a"}`,
   ].join("\n");
@@ -57,13 +58,22 @@ export async function POST(request: Request) {
     );
   }
 
-  let body: RegistrationPayload;
+  let input: unknown;
   try {
-    body = (await request.json()) as RegistrationPayload;
+    input = await request.json();
   } catch {
     return Response.json({ error: "Invalid request body." }, { status: 400 });
   }
 
+  if (!input || typeof input !== "object" || Array.isArray(input)) {
+    return Response.json({ error: "Invalid request body." }, { status: 400 });
+  }
+  const body = input as RegistrationPayload;
+  if ([body.eventSlug, body.name, body.email].some(value => typeof value !== "string") ||
+      (body.phone !== undefined && typeof body.phone !== "string") ||
+      typeof body.playerCount !== "number") {
+    return Response.json({ error: "Invalid registration details." }, { status: 400 });
+  }
   const eventSlug = body.eventSlug?.trim() ?? "";
   const event = getEventBySlug(eventSlug);
   if (!event) {
@@ -93,10 +103,10 @@ export async function POST(request: Request) {
   if (!name || name.length > 120) {
     return Response.json({ error: "Please enter your name." }, { status: 400 });
   }
-  if (!email || !isValidEmail(email)) {
+  if (!email || email.length > 200 || !isValidEmail(email)) {
     return Response.json({ error: "Please enter a valid email address." }, { status: 400 });
   }
-  if (phone && !isValidUsPhone(phone)) {
+  if (phone.length > 30 || (phone && !isValidUsPhone(phone))) {
     return Response.json(
       { error: "Please enter a valid U.S. phone number, or leave it blank." },
       { status: 400 },
@@ -129,62 +139,61 @@ export async function POST(request: Request) {
   };
 
   const webhook =
-    process.env.EVENT_REGISTRATION_WEBHOOK_URL ?? process.env.CONTACT_WEBHOOK_URL;
-  if (webhook) {
-    try {
-      await fetch(webhook, {
+    process.env.EVENT_REGISTRATION_WEBHOOK_URL?.trim() || process.env.CONTACT_WEBHOOK_URL?.trim();
+  const resendKey = process.env.RESEND_API_KEY?.trim();
+  const resendFrom = process.env.RESEND_FROM_EMAIL?.trim();
+  const unavailable = () => Response.json(
+    { ok: false, error: `We couldn't confirm your request was sent. No spot has been reserved. Please call ${SITE.phone} before trying again.` },
+    { status: 503 },
+  );
+
+  // This endpoint delivers a request only. It does not persist a reservation or
+  // atomically allocate capacity; staff must confirm availability separately.
+  if (!webhook && !(resendKey && resendFrom)) return unavailable();
+  try {
+    if (webhook) {
+      const response = await fetch(webhook, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: AbortSignal.timeout(10_000),
         body: JSON.stringify({
           type: "event-registration",
           to: SITE.email,
           from: email,
-          subject: `Event registration: ${event.title} — ${name}`,
+          subject: `Event registration request: ${event.title} — ${name}`,
           ...payload,
           paymentStatus: "unpaid",
+          registrationStatus: "requested",
         }),
       });
-    } catch {
-      return Response.json(
-        { error: "Unable to submit registration right now. Please call us." },
-        { status: 503 },
-      );
-    }
-  }
-
-  const resendKey = process.env.RESEND_API_KEY;
-  const resendFrom = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
-  if (resendKey) {
-    try {
-      const res = await fetch("https://api.resend.com/emails", {
+      if (!response.ok) return unavailable();
+    } else {
+      const response = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${resendKey}`,
           "Content-Type": "application/json",
         },
+        signal: AbortSignal.timeout(10_000),
         body: JSON.stringify({
           from: resendFrom,
           to: [SITE.email],
           reply_to: email,
-          subject: `Event registration: ${event.title} — ${name}`,
+          subject: `Event registration request: ${event.title} — ${name}`,
           text: formatEmailBody(payload),
         }),
       });
-      if (!res.ok) throw new Error("Resend failed");
-    } catch {
-      return Response.json(
-        { error: "Unable to submit registration right now. Please call us." },
-        { status: 503 },
-      );
+      if (!response.ok) return unavailable();
+      const receipt = await response.json();
+      if (typeof receipt?.id !== "string" || !receipt.id.trim()) return unavailable();
     }
-  }
-
-  if (!webhook && !resendKey) {
-    console.info("[event registration]", formatEmailBody(payload));
+  } catch {
+    return unavailable();
   }
 
   return Response.json({
     ok: true,
-    message: `You're registered for ${event.title}. PixelNation will follow up if anything changes.`,
+    status: "requested",
+    message: `Your registration request for ${event.title} was sent. Your spot is not reserved until PixelNation confirms availability. No payment has been collected.`,
   });
 }

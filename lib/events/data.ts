@@ -275,7 +275,7 @@ export const STORE_EVENTS: readonly StoreEvent[] = [
     shortDescription:
       "A Magic: The Gathering draft at PixelNation on Saturday, August 29. Registration required.",
     description:
-      "Join PixelNation for a Magic: The Gathering draft. Seats are limited.\n\nBring sleeves if you have them. Product and pairings are handled in store.\n\nOnline registration holds your spot. Entry is collected at the shop—this form does not process payment.",
+      "Join PixelNation for a Magic: The Gathering draft. Seats are limited.\n\nBring sleeves if you have them. Product and pairings are handled in store.\n\nOnline registration sends a request. Your spot is reserved only after PixelNation confirms availability. Entry is collected at the shop—this form does not process payment.",
     game: "magic",
     eventType: "draft",
     startDate: "2026-08-29",
@@ -294,7 +294,7 @@ export const STORE_EVENTS: readonly StoreEvent[] = [
     playerInfo: "Players of all skill levels are welcome. Ask staff if you have not drafted before.",
     whatToBring: ["Sleeves if you have them", "A playmat if you use one"],
     registrationInfo:
-      "Register to hold a seat. Pay the $15 entry at PixelNation before the event starts.",
+      "Request registration; PixelNation must confirm your seat. Pay the $15 entry at PixelNation before the event starts.",
     weeklySlotId: "saturday-tournament",
   },
   {
@@ -305,7 +305,7 @@ export const STORE_EVENTS: readonly StoreEvent[] = [
     shortDescription:
       "Pokémon prerelease play at PixelNation on Saturday, September 5. Registration required.",
     description:
-      "Play the newest Pokémon set early at PixelNation's Tournament Saturday prerelease.\n\nBuild a deck from prerelease product and play a structured event. All ages and skill levels are welcome.\n\nOnline registration holds your spot. Entry is collected in store.",
+      "Play the newest Pokémon set early at PixelNation's Tournament Saturday prerelease.\n\nBuild a deck from prerelease product and play a structured event. All ages and skill levels are welcome.\n\nOnline registration sends a request. Your spot is reserved only after PixelNation confirms availability. Entry is collected in store.",
     game: "pokemon",
     eventType: "prerelease",
     image: TCG_IMAGES.pokemonPrismaticEtb,
@@ -325,7 +325,7 @@ export const STORE_EVENTS: readonly StoreEvent[] = [
     playerInfo: "All ages and skill levels are welcome. Product is provided with entry.",
     whatToBring: ["Sleeves if you have them", "Dice and a playmat if you use them"],
     registrationInfo:
-      "Register to hold a seat. Pay the $25 entry at PixelNation before the event starts.",
+      "Request registration; PixelNation must confirm your seat. Pay the $25 entry at PixelNation before the event starts.",
     weeklySlotId: "saturday-tournament",
   },
   {

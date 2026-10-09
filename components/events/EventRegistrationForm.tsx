@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SITE } from "@/lib/site";
 import { isValidUsPhone } from "@/lib/legal/sms";
 
 const fieldClass =
@@ -74,16 +75,16 @@ export function EventRegistrationForm({
           playerCount: players,
         }),
       });
-      const data = (await response.json()) as { error?: string; message?: string };
-      if (!response.ok) {
+      const data = (await response.json()) as { ok?: boolean; status?: string; error?: string; message?: string };
+      if (!response.ok || data?.ok !== true || data.status !== "requested") {
         setStatus("error");
-        setMessage(data.error ?? "Unable to submit registration. Please try again.");
+        setMessage(data?.error ?? "Unable to submit registration. Please try again.");
         return;
       }
       setStatus("success");
       setMessage(
         data.message ??
-          `You're registered for ${eventTitle}. We'll follow up if anything changes.`,
+          `Your request for ${eventTitle} was sent. Your spot is not reserved until PixelNation confirms availability.`,
       );
       setName("");
       setEmail("");
@@ -98,7 +99,7 @@ export function EventRegistrationForm({
   if (status === "success") {
     return (
       <div className="rounded-2xl border border-accent/40 bg-accent-muted p-6">
-        <h3 className="text-lg font-semibold text-foreground">Registration received</h3>
+        <h3 className="text-lg font-semibold text-foreground">Registration request sent</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted">{message}</p>
       </div>
     );
@@ -109,7 +110,6 @@ export function EventRegistrationForm({
       id={idPrefix === "event-reg" ? "register" : `${idPrefix}-form`}
       onSubmit={handleSubmit}
       className="space-y-4"
-      noValidate
     >
       <div>
         <label htmlFor={`${idPrefix}-name`} className="mb-1.5 block text-sm font-medium">
@@ -180,15 +180,16 @@ export function EventRegistrationForm({
         </p>
       ) : null}
       <p className="text-xs leading-relaxed text-muted">
-        Registration holds your spot. Paid checkout can be added later for ticketed
-        events—this form does not process payments.
+        This sends a registration request, not a confirmed reservation. PixelNation
+        must confirm availability before your spot is reserved. No payment is collected.
+        {" "}<a href={SITE.phoneHref} className="underline">Call {SITE.phone}</a> for help.
       </p>
       <button
         type="submit"
         disabled={status === "submitting"}
         className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-background shadow-lg shadow-accent/25 transition-colors hover:bg-accent-hover disabled:opacity-70 sm:w-auto"
       >
-        {status === "submitting" ? "Submitting…" : "Register Now"}
+        {status === "submitting" ? "Submitting…" : "Request Registration"}
       </button>
     </form>
   );
