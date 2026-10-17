@@ -90,7 +90,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col items-center gap-3 border-t border-card-border pt-5 text-center text-xs text-muted sm:flex-row sm:justify-between">
-          <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.{" "}<a href="https://hqxholdings.com/" className="inline-flex min-h-11 items-center underline underline-offset-4">An HQX Holdings company</a></p>
           <ul className="flex flex-wrap items-center justify-center gap-x-4">
             {FOOTER_LEGAL_LINKS.filter((link) => link.href !== "/contact").map((link) => (
               <li key={link.href}>
