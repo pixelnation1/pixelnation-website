@@ -43,6 +43,7 @@ export { SOFTWARE_DEV_DROPDOWN_LINKS };
 
 export const PRIMARY_NAV_LINKS = [
   { label: "Home", href: "/" },
+  { label: "Shop", href: "/shop" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
