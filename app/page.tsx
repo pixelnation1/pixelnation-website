@@ -1,12 +1,8 @@
 import {
-  BuySellTradeHomeSection,
-  EventsPreviewHomeSection,
   VisitPixelNationSection,
   FAQSection,
   HeroSection,
-  MeetPixelNationSection,
-  MoreServicesHomeSection,
-  TradingCardsHomeSection,
+  MailInRepairSection,
   TrustBar,
   WhatWeRepairSection,
 } from "@/components/home/HomePageSections";
@@ -27,12 +23,8 @@ export default function HomePage() {
       <HomeStructuredData />
       <HeroSection />
       <TrustBar />
-      <EventsPreviewHomeSection />
       <WhatWeRepairSection />
-      <TradingCardsHomeSection />
-      <BuySellTradeHomeSection />
-      <MeetPixelNationSection />
-      <MoreServicesHomeSection />
+      <MailInRepairSection />
       <FAQSection />
       <VisitPixelNationSection />
     </>

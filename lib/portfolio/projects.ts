@@ -27,7 +27,7 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
     logoAlt: "RepairForge logo",
     status: "in-development",
     featured: true,
-    relatedSlugs: ["reviewforge", "tcgkingdoms"],
+    relatedSlugs: ["reviewforge"],
     caseStudy: {
       challenge:
         "Repair shops often run on a mix of paper tickets, spreadsheets, and generic POS tools that were never designed for device diagnostics, parts sourcing, or technician handoffs. Shop owners lose visibility into open jobs, repeat customers fall through the cracks, and inventory counts drift out of sync with reality.",
@@ -91,7 +91,7 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
     logoAlt: "ReviewForge logo",
     status: "in-development",
     featured: true,
-    relatedSlugs: ["repairforge", "tcgkingdoms"],
+    relatedSlugs: ["repairforge"],
     caseStudy: {
       challenge:
         "Local and multi-location businesses struggle to collect reviews consistently, respond quickly across platforms, and see reputation health clearly enough to act—especially when locations, campaigns, and response workflows live in separate tools.",
@@ -134,113 +134,6 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
     },
   },
   {
-    slug: "tcgkingdoms",
-    name: "TCGKingdoms",
-    tagline: "Marketplace platform for trading card game buyers and sellers.",
-    description:
-      "TCGKingdoms is a marketplace platform connecting trading card game buyers and sellers with listings, seller discovery, and category-driven search across Pokémon, Magic, Yu-Gi-Oh!, Lorcana, One Piece, and more.",
-    category: "custom-applications",
-    categoryLabel: "Marketplace Platform",
-    industry: "Gaming & E-commerce",
-    filters: ["saas"],
-    features: [
-      "Marketplace search",
-      "Seller listings",
-      "Category-driven discovery",
-      "Buyer and seller paths",
-      "Cart and join flows",
-    ],
-    technologies: ["Next.js", "React", "TypeScript", "Supabase", "Stripe", "Tailwind CSS"],
-    screenshot: "/images/portfolio/tcgkingdoms.png",
-    screenshotAlt:
-      "TCGKingdoms marketplace homepage with Buy and sell TCG cards faster headline and marketplace search",
-    logo: "/images/tcgkingdomslogo.png",
-    logoAlt: "TCGKingdoms logo",
-    status: "in-development",
-    featured: true,
-    relatedSlugs: ["repairforge", "midwest-pixelfest"],
-    caseStudy: {
-      challenge:
-        "Trading card game communities often buy and sell through fragmented social channels and generic marketplaces that lack category-specific discovery, seller trust signals, and community-focused browsing experiences.",
-      solution:
-        "TCGKingdoms focuses marketplace discovery around TCG categories with search for cards, sets, and sellers, plus clear paths to shop the marketplace or start selling.",
-      featuresBuilt: [
-        "Marketplace homepage with buyer and seller CTAs",
-        "Search across cards, sets, and sellers",
-        "Category coverage across major TCG product lines",
-        "Sell, scanner, and dashboard navigation for marketplace operations",
-        "Join and cart flows for marketplace participation",
-      ],
-      screenshots: [],
-      results: [
-        {
-          label: "Category focus",
-          text: "Discovery flows designed around how TCG collectors actually search for products.",
-        },
-        {
-          label: "Two-sided marketplace",
-          text: "Clear Shop Marketplace and Start Selling paths support both sides of the market.",
-        },
-        {
-          label: "Platform foundation",
-          text: "Demonstrates PixelNation's ability to build multi-sided marketplace platforms.",
-        },
-      ],
-      lessonsLearned: [
-        "Marketplace products need trust and discovery solved together—not listings alone.",
-        "Category taxonomy is a product decision as much as a technical one in niche commerce.",
-        "MVP marketplace builds should prioritize search and seller onboarding before payments complexity.",
-      ],
-    },
-  },
-  {
-    slug: "midwest-pixelfest",
-    name: "Midwest PixelFest",
-    tagline:
-      "Convention website for gaming, cosplay, guests, vendors, sponsors, schedule, travel, and tickets.",
-    description:
-      "A convention and event website designed around the gaming, cosplay, collectibles, and pop-culture experience—with clear navigation for attendees, guests, vendors, sponsors, schedule, travel, tickets, and convention information.",
-    category: "websites",
-    categoryLabel: "Event Website",
-    industry: "Gaming & Entertainment",
-    filters: ["websites"],
-    features: [
-      "Gaming and cosplay convention navigation",
-      "Guest, vendor, and sponsor information paths",
-      "Schedule and travel guidance",
-      "Ticket and convention information sections",
-      "Multi-audience content structure",
-      "Mobile-friendly event browsing",
-    ],
-    technologies: [],
-    screenshot: "/images/midwestpixelfest.png",
-    screenshotAlt:
-      "Midwest PixelFest convention website homepage showing gaming, cosplay, guests, vendors, sponsors, schedule, travel, and tickets navigation",
-    status: "in-development",
-    featured: true,
-    relatedSlugs: ["monique-a-wish", "flint-hills-outdoor-co"],
-    caseStudy: {
-      challenge:
-        "A convention site has to serve attendees, gamers, cosplayers, guests, vendors, sponsors, and travelers at once. Without clear information architecture, visitors struggle to find schedules, tickets, travel details, guest lineups, and vendor or sponsor paths that match their role.",
-      solution:
-        "Midwest PixelFest is structured as a multi-audience convention website with navigation and content sections that route each visitor type toward the information they need—gaming and cosplay experience, guests, vendors, sponsors, schedule, travel, tickets, and general convention details.",
-      featuresBuilt: [
-        "Homepage and primary navigation for convention audiences",
-        "Paths for gaming, cosplay, and pop-culture content",
-        "Guest, vendor, and sponsor information sections",
-        "Schedule and travel guidance for attendees",
-        "Ticket and convention information entry points",
-      ],
-      screenshots: [],
-      results: [],
-      lessonsLearned: [
-        "Convention websites succeed when audience paths are explicit—attendees, guests, vendors, and sponsors should not compete for the same page real estate.",
-        "Schedule, travel, and tickets are high-intent destinations and need first-class navigation.",
-        "Event sites should lead with experience and clarity rather than dense institutional copy.",
-      ],
-    },
-  },
-  {
     slug: "monique-a-wish",
     name: "Monique A Wish",
     tagline: "Nonprofit website for mission storytelling and community engagement.",
@@ -263,7 +156,7 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
       "Monique A Wish community impact section titled Love in Action Across Emporia with Strength in Community content",
     status: "live",
     featured: true,
-    relatedSlugs: ["midwest-pixelfest", "flint-hills-outdoor-co"],
+    relatedSlugs: ["flint-hills-outdoor-co"],
     caseStudy: {
       challenge:
         "Nonprofits need websites that communicate mission clearly, showcase program impact, and make it easy for supporters to donate or get involved—without overwhelming volunteers with complex content management.",
@@ -323,7 +216,7 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
       "Flint Hills Outdoor Co. local business website showing outdoor services, Emporia service area, and estimate, call, and text contact options",
     status: "live",
     featured: true,
-    relatedSlugs: ["monique-a-wish", "midwest-pixelfest"],
+    relatedSlugs: ["monique-a-wish"],
     caseStudy: {
       challenge:
         "Local service businesses lose leads when visitors cannot quickly tell what the company does, where it operates, or how to request an estimate, call, or text. Friction between discovery and contact costs real jobs.",

@@ -4,30 +4,15 @@ import { FaqSection as FaqSectionBlock } from "@/components/faq/FaqSection";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
 import {
-  ADVANCED_REPAIR_ITEMS,
-  COMMON_PROBLEMS,
-  DATA_RECOVERY_DEVICES,
   HERO_BULLETS,
   HERO_HEADLINE,
   HERO_SUPPORT,
-  HOME_CARRY_CATEGORIES,
-  HOME_DIVISIONS,
   HOME_VISIT,
   HOME_FAQS,
   HOME_SERVICES,
   HOME_TRUST_ITEMS,
   MAIL_IN_STEPS,
-  WHY_CHOOSE,
 } from "@/lib/homepage";
-import {
-  HOME_CLOSING_CTA,
-  MEET_PIXELNATION,
-  OUR_MISSION,
-} from "@/lib/brand-story";
-import { TCG_GAME_LIST } from "@/lib/tcg/games";
-import { TCG_IMAGES } from "@/lib/tcg/images";
-import { TCG_LAUNCH } from "@/lib/tcg/launch";
-import { GameCardGrid } from "@/components/tcg/GameCard";
 import { SITE } from "@/lib/site";
 
 export function HeroSection() {
@@ -61,18 +46,13 @@ export function HeroSection() {
           </ul>
           <div className="cta-group mt-8">
             <Button href="/contact">Start a Repair</Button>
-            <Button href="/trading-cards" variant="secondary">
-              Explore Trading Cards
-            </Button>
-            <Button href="/events" variant="outline">
-              View Gaming Events
-            </Button>
+            <Button href={SITE.phoneHref} variant="secondary" external>Call {SITE.phone}</Button>
           </div>
         </div>
         <div className="relative order-2 mx-auto aspect-[16/9] w-full max-w-md min-w-0 lg:max-w-none">
           <Image
-            src="/images/coverlogo.png"
-            alt="PixelNation electronics repair, trading cards, and gaming in Emporia, Kansas"
+            src="/images/microsoldering.png"
+            alt="Microsoldering and electronics repair at PixelNation"
             fill
             className="object-contain"
             priority
@@ -81,189 +61,6 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  );
-}
-
-export function MeetPixelNationSection() {
-  return (
-    <Section
-      id="meet-pixelnation"
-      title={MEET_PIXELNATION.title}
-      subtitle={MEET_PIXELNATION.subtitle}
-      alt
-    >
-      <div className="max-w-3xl">
-        <p className="text-base leading-relaxed text-muted sm:text-lg">
-          We help keep your devices working and bring people together around the
-          games they love. From board-level repairs to a seat at the Commander
-          table, PixelNation is a place to get help, learn something, and feel welcome.
-        </p>
-        <div className="cta-group mt-6">
-          <Button href="/about" variant="secondary">Our story</Button>
-          <Button href="/team" variant="outline">Meet the team</Button>
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-export function OurMissionSection() {
-  return (
-    <Section
-      id="our-mission"
-      title={OUR_MISSION.title}
-      subtitle={OUR_MISSION.subtitle}
-      alt
-    >
-      <p className="-mt-2 mb-8 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
-        {OUR_MISSION.body}
-      </p>
-      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {OUR_MISSION.pillars.map((pillar) => (
-          <li
-            key={pillar.title}
-            className="rounded-xl border border-card-border bg-card p-5"
-          >
-            <h3 className="font-semibold text-foreground">{pillar.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">{pillar.text}</p>
-          </li>
-        ))}
-      </ul>
-    </Section>
-  );
-}
-
-export function DivisionSelectorSection() {
-  return (
-    <Section
-      id="explore-pixelnation"
-      title="Explore PixelNation"
-      subtitle="Two primary divisions—professional repairs and trading cards & gaming—under one local Emporia brand."
-    >
-      <div className="grid gap-6 md:grid-cols-2">
-        {HOME_DIVISIONS.map((division) => (
-          <article
-            key={division.href}
-            className="flex flex-col rounded-2xl border border-card-border bg-card p-6 sm:p-8"
-          >
-            <h3 className="text-xl font-semibold text-foreground">
-              {division.title}
-            </h3>
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-muted sm:text-base">
-              {division.description}
-            </p>
-            <div className="mt-6">
-              <Button href={division.href}>{division.cta}</Button>
-            </div>
-          </article>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-export function TradingCardsHomeSection() {
-  return (
-    <Section
-      id="trading-cards"
-      title="Trading Cards & Gaming in Emporia"
-      subtitle="Trading cards, sealed products, singles, accessories, weekly events, and community play at our downtown Emporia shop."
-      alt
-    >
-      <div className="relative mb-8 aspect-[1024/412] w-full overflow-hidden rounded-2xl border border-card-border">
-        <Image
-          src={TCG_IMAGES.shopBanner.src}
-          alt={TCG_IMAGES.shopBanner.alt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 1152px) 100vw, 1120px"
-          loading="lazy"
-        />
-      </div>
-      <GameCardGrid games={TCG_GAME_LIST} />
-      <div className="cta-group mt-8">
-        <Button href="/trading-cards">Explore Trading Cards</Button>
-        <Button href="/buy-sell-trade" variant="secondary">
-          Buy, Sell &amp; Trade
-        </Button>
-      </div>
-    </Section>
-  );
-}
-
-export function WhatWeCarryHomeSection() {
-  return (
-    <Section
-      id="what-we-carry"
-      title="What we carry"
-      subtitle="Broad product categories at PixelNation. Selection and availability vary."
-    >
-      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {HOME_CARRY_CATEGORIES.map((category) => (
-          <li key={category.label}>
-            <Link
-              href={category.href}
-              className="flex h-full flex-col rounded-xl border border-card-border bg-card p-5 transition hover:border-accent-secondary/50"
-            >
-              <span className="font-semibold text-foreground">
-                {category.label}
-              </span>
-              <span className="mt-2 text-sm leading-relaxed text-muted">
-                {category.description}
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <div className="mt-8">
-        <Button href="/what-we-carry">Full product guide</Button>
-      </div>
-    </Section>
-  );
-}
-
-export function EventsPreviewHomeSection() {
-  return (
-    <Section
-      id="events-preview"
-      title="Events & play space"
-      subtitle={TCG_LAUNCH.eventsComing}
-      alt
-    >
-      <p className="-mt-4 mb-8 max-w-3xl text-muted leading-relaxed">
-        PixelNation runs a weekly gaming schedule in downtown Emporia—Pokémon Night,
-        Commander, Friday Night Magic, retro gaming, tournaments, and Sunday trade
-        & play. Bring a deck, a binder, or just show up.
-      </p>
-      <div className="cta-group">
-        <Button href="/events">View Events</Button>
-        <Button href="/gaming" variant="secondary">
-          Explore Gaming
-        </Button>
-      </div>
-    </Section>
-  );
-}
-
-export function BuySellTradeHomeSection() {
-  return (
-    <Section
-      id="buy-sell-trade"
-      title="Buy, sell & trade"
-      subtitle="Bring in trading cards, collections, sealed products, video games, and consoles for review."
-    >
-      <p className="-mt-4 mb-8 max-w-3xl text-muted leading-relaxed">
-        Search estimated trade values for gaming systems and electronics, or bring in
-        trading cards and collections for review. Offers may be cash or higher-value
-        store credit after inspection. No obligation—you can always decline.
-      </p>
-      <div className="cta-group">
-        <Button href="/trade-values">Search Trade Values</Button>
-        <Button href="/buy-sell-trade" variant="secondary">
-          Buy, Sell &amp; Trade
-        </Button>
-      </div>
-    </Section>
   );
 }
 
@@ -293,9 +90,6 @@ export function VisitPixelNationSection() {
       <div className="cta-group mt-8">
         <Button href={SITE.maps.directionsUrl} external>
           Get Directions
-        </Button>
-        <Button href="/events" variant="secondary">
-          View Events
         </Button>
         <Button href="/contact" variant="outline">
           Start a Repair
@@ -363,147 +157,6 @@ export function WhatWeRepairSection() {
   );
 }
 
-export function CommonProblemsSection() {
-  return (
-    <Section
-      id="common-problems"
-      title="Common problems we solve"
-      subtitle="If your device matches one of these issues, we can help you understand repair options."
-      alt
-    >
-      <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {COMMON_PROBLEMS.map((problem) => (
-          <li key={problem.label}>
-            <Link
-              href={problem.href}
-              className="block rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted transition hover:border-accent/40 hover:text-accent"
-            >
-              {problem.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </Section>
-  );
-}
-
-export function WhyChooseSection() {
-  return (
-    <Section
-      id="why-pixelnation"
-      title="Why choose PixelNation"
-      subtitle="Repair depth, honest guidance, and a local community worth visiting—whether you need a device fixed or a place to play."
-    >
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {WHY_CHOOSE.map((item) => (
-          <article
-            key={item.title}
-            className="rounded-xl border border-card-border bg-card p-5"
-          >
-            <h3 className="font-semibold text-foreground">{item.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
-          </article>
-        ))}
-      </div>
-      <div className="cta-group mt-8">
-        <Button href="/why-choose-pixelnation">Why choose PixelNation</Button>
-        <Button href="/about" variant="secondary">
-          Read our story
-        </Button>
-      </div>
-    </Section>
-  );
-}
-
-export function EducationalSection() {
-  return (
-    <Section
-      id="repair-vs-replace"
-      title="Not every device needs to be replaced"
-      subtitle="Understanding your options can save money and recover data you thought was lost."
-      alt
-    >
-      <div className="max-w-3xl space-y-4 text-muted leading-relaxed">
-        <p>
-          Many people assume a phone with a dead charging port, a laptop that will
-          not power on, or a PS5 with no HDMI signal is beyond help. In practice,
-          issues like charging failures, power rail faults, HDMI damage, and storage
-          errors are often repairable—or recoverable—when diagnosed correctly.
-        </p>
-        <p>
-          At PixelNation, we start with structured diagnostics: confirming symptoms,
-          testing power and data paths, and explaining what failed before quoting
-          repair. That approach helps you decide whether board-level work, part
-          replacement, or data recovery is the right path instead of replacing a
-          device unnecessarily.
-        </p>
-        <p>
-          Whether you need{" "}
-          <Link href="/phone-repair" className="text-accent hover:underline">
-            iPhone repair in Emporia
-          </Link>
-          ,{" "}
-          <Link href="/console-repair-emporia-ks" className="text-accent hover:underline">
-            PS5 HDMI repair
-          </Link>
-          , or{" "}
-          <Link href="/data-recovery" className="text-accent hover:underline">
-            data recovery
-          </Link>
-          , you get honest guidance based on the condition of your device.
-        </p>
-      </div>
-    </Section>
-  );
-}
-
-export function AdvancedRepairSection() {
-  return (
-    <Section
-      id="advanced-repair"
-      title="Advanced repair & board-level work"
-      subtitle="Microsoldering and precision diagnostics when parts alone cannot fix the fault."
-    >
-      <div className="grid items-center gap-10 lg:grid-cols-2">
-        <div>
-          <p className="mb-6 text-muted leading-relaxed">
-            Board-level repair addresses the root cause on the logic board—ideal for
-            charging IC failures, damaged HDMI ports, corroded connectors, and shorted
-            power rails. PixelNation combines microscopy, microsoldering, and methodical
-            testing for phones, consoles, and computers.
-          </p>
-          <ul className="grid gap-2 sm:grid-cols-2">
-            {ADVANCED_REPAIR_ITEMS.map((item) => (
-              <li
-                key={item}
-                className="rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-          <div className="cta-group mt-8">
-            <Button href="/board-repair">Board repair in Emporia</Button>
-            <Button href="/board-repair" variant="secondary">
-              Microsoldering services
-            </Button>
-          </div>
-        </div>
-        <div className="relative flex aspect-[4/3] min-h-[220px] items-center justify-center overflow-hidden rounded-2xl border border-card-border bg-background p-2 sm:min-h-[260px]">
-          <Image
-            src="/images/microsoldering.png"
-            alt="Microsoldering and board-level repair bench at PixelNation, Emporia KS"
-            fill
-            className="object-contain object-center"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </Section>
-  );
-}
-
 export function MailInRepairSection() {
   return (
     <Section
@@ -536,184 +189,11 @@ export function MailInRepairSection() {
   );
 }
 
-export function DataRecoveryHomeSection() {
-  return (
-    <Section
-      id="data-recovery"
-      title="Data recovery"
-      subtitle="Recover important files when storage fails or devices stop responding."
-    >
-      <div className="grid items-center gap-10 lg:grid-cols-2">
-        <div>
-          <p className="text-muted leading-relaxed">
-            Data loss is stressful whether it involves family photos, business files,
-            or a phone that will not boot. We evaluate media health and recommend the
-            safest recovery path—software access, drive transplant, or board work to
-            restore power to storage.
-          </p>
-          <h3 className="mt-6 text-sm font-semibold uppercase tracking-wide text-foreground">
-            Recoverable devices
-          </h3>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {DATA_RECOVERY_DEVICES.map((device) => (
-              <li
-                key={device}
-                className="rounded-full border border-card-border bg-card px-4 py-2 text-sm text-muted"
-              >
-                {device}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8">
-            <Button href="/data-recovery">Data recovery services</Button>
-          </div>
-        </div>
-        <div className="relative flex aspect-[4/3] min-h-[220px] items-center justify-center overflow-hidden rounded-2xl border border-card-border bg-background p-2 sm:min-h-[260px]">
-          <Image
-            src="/images/datarecovery.png"
-            alt="Data recovery from phones, SSDs, and hard drives at PixelNation Emporia KS"
-            fill
-            className="object-contain object-center"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-export function TrainingHomeSection() {
-  return (
-    <Section
-      id="training"
-      title="Repair & board-level training"
-      subtitle="Hands-on courses for technicians who want practical microsoldering and diagnostics skills."
-      alt
-    >
-      <p className="-mt-6 max-w-3xl text-muted leading-relaxed">
-        PixelNation offers training focused on real bench work—device teardown,
-        multimeter use, soldering fundamentals, charging circuit troubleshooting, and
-        board-level repair workflows. Courses are designed for learners who want
-        usable skills, not theory-only lectures.
-      </p>
-      <div className="mt-8">
-        <Button href="/training">View training courses</Button>
-      </div>
-    </Section>
-  );
-}
-
-export function SoftwareDevelopmentHomeSection() {
-  return (
-    <Section
-      id="software-development"
-      title="Software & web development"
-      subtitle="Custom websites, SaaS platforms, business automation, client portals, and dashboards for businesses nationwide."
-    >
-      <div className="grid items-center gap-10 lg:grid-cols-2">
-        <div>
-          <p className="text-muted leading-relaxed">
-            PixelNation builds modern technology solutions—not just repair benches.
-            From high-performance business websites to subscription platforms and
-            internal automation tools, we help operators replace manual workflows with
-            software built around how their business actually runs.
-          </p>
-          <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-            {[
-              { label: "Website development", href: "/software-development/website-development" },
-              { label: "Custom SaaS platforms", href: "/software-development/custom-saas-development" },
-              { label: "Business automation", href: "/software-development/business-automation" },
-              { label: "Client portals & dashboards", href: "/software-development/custom-saas-development" },
-            ].map((item) => (
-              <li key={item.href + item.label}>
-                <Link
-                  href={item.href}
-                  className="block rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-muted transition hover:border-accent/40 hover:text-accent"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="cta-group mt-8">
-            <Button href="/software-development">Software development services</Button>
-            <Button href="/portfolio" variant="secondary">
-              View portfolio
-            </Button>
-            <Button href="/contact" variant="outline">
-              Request a consultation
-            </Button>
-          </div>
-        </div>
-        <div className="relative flex aspect-[4/3] min-h-[220px] items-center justify-center overflow-hidden rounded-2xl border border-card-border bg-background p-2 sm:min-h-[260px]">
-          <Image
-            src="/images/computerrepair.png"
-            alt="Custom software development, SaaS platforms, and website design by PixelNation"
-            fill
-            className="object-contain object-center"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-export function MoreServicesHomeSection() {
-  const services = [
-    { title: "Mail-in repair", text: "Outside Emporia? Contact us about your device before shipping it to our repair bench.", href: "/contact", cta: "Ask about mail-in repair" },
-    { title: "Hands-on training", text: "Build practical skills in electronics diagnostics, microsoldering, and board-level repair.", href: "/training", cta: "Explore training" },
-    { title: "Software & websites", text: "Explore custom websites, business software, and automation services.", href: "/software-development", cta: "View software services" },
-  ];
-  return (
-    <Section id="more-services" title="More ways we can help">
-      <div className="grid gap-5 md:grid-cols-3">
-        {services.map((service) => (
-          <article key={service.href} className="flex flex-col rounded-xl border border-card-border bg-card p-6">
-            <h3 className="text-lg font-semibold">{service.title}</h3>
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{service.text}</p>
-            <Link href={service.href} className="mt-5 inline-flex min-h-11 items-center font-semibold text-accent-secondary hover:underline">{service.cta} →</Link>
-          </article>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
 export function FAQSection() {
   return (
     <section className="bg-card py-12 sm:py-16">
       <div className="mx-auto max-w-6xl min-w-0 px-4">
         <FaqSectionBlock items={HOME_FAQS} initialVisible={6} />
-      </div>
-    </section>
-  );
-}
-
-export function FinalCTASection() {
-  return (
-    <section
-      className="border-t border-card-border bg-gradient-to-r from-accent-muted to-accent-secondary-muted py-12 sm:py-16 md:py-20"
-      aria-labelledby="final-cta-heading"
-    >
-      <div className="mx-auto max-w-3xl px-4 text-center">
-        <h2 id="final-cta-heading" className="text-2xl font-bold sm:text-3xl">
-          {HOME_CLOSING_CTA.title}
-        </h2>
-        <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-          {HOME_CLOSING_CTA.body}
-        </p>
-        <div className="cta-group mt-8 justify-center">
-          <Button href="/contact">Start a Repair</Button>
-          <Button href="/trading-cards" variant="secondary">
-            Explore Trading Cards
-          </Button>
-          <Button href="/contact" variant="outline">
-            Contact Us
-          </Button>
-        </div>
       </div>
     </section>
   );

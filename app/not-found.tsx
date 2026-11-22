@@ -4,8 +4,6 @@ import { SITE } from "@/lib/site";
 const destinations = [
   { href: "/", label: "Home" },
   { href: "/repairs", label: "Repair Services" },
-  { href: "/events", label: "Gaming & Events" },
-  { href: "/trade-values", label: "Trade-In Information" },
 ];
 
 export default function NotFound() {

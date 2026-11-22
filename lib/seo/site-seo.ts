@@ -3,7 +3,7 @@ import { SITE } from "@/lib/site";
 /** Preferred canonical origin (www). */
 export const CANONICAL_ORIGIN = "https://www.pixelnation.co";
 
-export const DEFAULT_OG_IMAGE = "/images/coverlogo.png";
+export const DEFAULT_OG_IMAGE = "/images/microsoldering.png";
 
 export const SEO_DEFAULTS = {
   siteName: SITE.name,

@@ -53,10 +53,6 @@ export function isRepairInquiry(service: string): boolean {
 
 export const FORM_SERVICE_OPTIONS = [
   ...REPAIR_SERVICE_OPTIONS,
-  "Cards / Products",
-  "Events",
-  "Birthday Parties",
-  "Trade-Ins",
   "Training",
   "General Question",
 ] as const;

@@ -45,7 +45,7 @@ export const PRIVACY_POLICY_SECTIONS: readonly LegalSection[] = [
     bullets: [
       "Contact details such as your name, email address, and mobile or other phone number",
       "Repair and service details such as device type, symptoms, photos you choose to send, and appointment preferences",
-      "Retail and product inquiry details related to trading cards, collectibles, games, consoles, and related products",
+      "Product inquiry details, including past purchases and related correspondence",
       "Messages you send through our contact form, email, phone, or text",
       "SMS consent status and related disclosure records when you affirmatively opt in to text messages",
       "Technical information such as browser type, device type, referring pages, and general usage data collected through cookies or similar technologies",

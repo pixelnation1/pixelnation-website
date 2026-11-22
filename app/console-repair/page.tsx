@@ -71,9 +71,6 @@ export default function ConsoleRepairPage() {
             </ul>
             <div className="cta-group mt-8">
               <Button href="/contact">Start a Repair</Button>
-              <Button href="/trade-values" variant="outline">
-                Trade Values
-              </Button>
               <Button href={SITE.phoneHref} variant="secondary" external>
                 Call {SITE.phone}
               </Button>

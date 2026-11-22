@@ -45,36 +45,11 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
           PIXELNATION ACCOUNT
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted">
-          One account for your PixelNation community experience. Sign in with
+          Sign in to your PixelNation account with
           your email — no password to remember.
         </p>
 
-        <ul className="mt-6 space-y-2 text-sm text-muted">
-          <li className="flex gap-2">
-            <span className="text-accent" aria-hidden>
-              •
-            </span>
-            <span>Check in when you play</span>
-          </li>
-          <li className="flex gap-2">
-            <span className="text-accent" aria-hidden>
-              •
-            </span>
-            <span>
-              Support your favorite game communities{" "}
-              <span className="text-foreground/70">(coming soon)</span>
-            </span>
-          </li>
-          <li className="flex gap-2">
-            <span className="text-accent" aria-hidden>
-              •
-            </span>
-            <span>
-              Track Community activity, Support Points, and Top Supporters{" "}
-              <span className="text-foreground/70">(coming soon)</span>
-            </span>
-          </li>
-        </ul>
+
 
         <div className="mt-8">
           <LoginForm nextPath={nextPath} initialError={params.error ?? null} />

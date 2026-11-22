@@ -15,12 +15,6 @@ import {
   TRAINING_DROPDOWN_LINKS,
   SITE,
 } from "@/lib/site";
-import {
-  GAMING_EVENTS_DROPDOWN_LINKS,
-  isGamingEventsNavActive,
-  isTradingCardsNavActive,
-  TRADING_CARDS_DROPDOWN_LINKS,
-} from "@/lib/tcg/links";
 import { AccountNavLink } from "@/components/auth/AccountNavLink";
 
 function ChevronIcon({ open }: { open?: boolean }) {
@@ -220,34 +214,24 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const repairsMenuId = useId();
-  const tradingMenuId = useId();
-  const gamingMenuId = useId();
   const trainingMenuId = useId();
   const softwareMenuId = useId();
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileRepairsOpen, setMobileRepairsOpen] = useState(false);
-  const [mobileTradingOpen, setMobileTradingOpen] = useState(false);
-  const [mobileGamingOpen, setMobileGamingOpen] = useState(false);
   const [mobileTrainingOpen, setMobileTrainingOpen] = useState(false);
   const [mobileSoftwareOpen, setMobileSoftwareOpen] = useState(false);
   const [desktopRepairsOpen, setDesktopRepairsOpen] = useState(false);
-  const [desktopTradingOpen, setDesktopTradingOpen] = useState(false);
-  const [desktopGamingOpen, setDesktopGamingOpen] = useState(false);
   const [desktopTrainingOpen, setDesktopTrainingOpen] = useState(false);
   const [desktopSoftwareOpen, setDesktopSoftwareOpen] = useState(false);
 
   const repairsActive = isRepairsNavActive(pathname);
-  const tradingActive = isTradingCardsNavActive(pathname);
-  const gamingActive = isGamingEventsNavActive(pathname);
   const trainingActive = isTrainingNavActive(pathname);
   const softwareActive = isSoftwareNavActive(pathname);
 
   const closeMobile = useCallback(() => {
     setMobileOpen(false);
     setMobileRepairsOpen(false);
-    setMobileTradingOpen(false);
-    setMobileGamingOpen(false);
     setMobileTrainingOpen(false);
     setMobileSoftwareOpen(false);
   }, []);
@@ -256,8 +240,6 @@ export function Header() {
     const timeout = window.setTimeout(() => {
       closeMobile();
       setDesktopRepairsOpen(false);
-      setDesktopTradingOpen(false);
-      setDesktopGamingOpen(false);
       setDesktopTrainingOpen(false);
       setDesktopSoftwareOpen(false);
     }, 0);
@@ -295,8 +277,6 @@ export function Header() {
 
   function openMobileCategory(category: string, open: boolean) {
     setMobileRepairsOpen(category === "repairs" && open);
-    setMobileTradingOpen(category === "trading" && open);
-    setMobileGamingOpen(category === "gaming" && open);
     setMobileTrainingOpen(category === "training" && open);
     setMobileSoftwareOpen(category === "software" && open);
   }
@@ -344,29 +324,7 @@ export function Header() {
             pathname={pathname}
           />
 
-          <DesktopDropdown
-            label="Trading Cards"
-            href="/trading-cards"
-            active={tradingActive}
-            open={desktopTradingOpen}
-            setOpen={setDesktopTradingOpen}
-            menuId={tradingMenuId}
-            ariaLabel="Show trading cards menu"
-            links={TRADING_CARDS_DROPDOWN_LINKS}
-            pathname={pathname}
-          />
 
-          <DesktopDropdown
-            label="Gaming & Events"
-            href="/gaming"
-            active={gamingActive}
-            open={desktopGamingOpen}
-            setOpen={setDesktopGamingOpen}
-            menuId={gamingMenuId}
-            ariaLabel="Show gaming and events menu"
-            links={GAMING_EVENTS_DROPDOWN_LINKS}
-            pathname={pathname}
-          />
 
           <DesktopDropdown
             label="Training"
@@ -471,27 +429,7 @@ export function Header() {
               onNavigate={closeMobile}
             />
 
-            <MobileAccordion
-              label="Trading Cards"
-              active={tradingActive}
-              open={mobileTradingOpen}
-              setOpen={(open) => openMobileCategory("trading", open)}
-              menuId={`${tradingMenuId}-mobile`}
-              links={TRADING_CARDS_DROPDOWN_LINKS}
-              pathname={pathname}
-              onNavigate={closeMobile}
-            />
 
-            <MobileAccordion
-              label="Gaming & Events"
-              active={gamingActive}
-              open={mobileGamingOpen}
-              setOpen={(open) => openMobileCategory("gaming", open)}
-              menuId={`${gamingMenuId}-mobile`}
-              links={GAMING_EVENTS_DROPDOWN_LINKS}
-              pathname={pathname}
-              onNavigate={closeMobile}
-            />
 
             <MobileAccordion
               label="Training"

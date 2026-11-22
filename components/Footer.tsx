@@ -7,11 +7,9 @@ const footerGroups = [
   {
     title: "Explore",
     links: [
-      { label: "Repairs", href: "/repairs" },
-      { label: "Trading Cards", href: "/trading-cards" },
-      { label: "Gaming & Events", href: "/events" },
-      { label: "Buy, Sell & Trade", href: "/buy-sell-trade" },
-      { label: "Birthday Parties", href: "/birthday-parties" },
+      { label: "Repair services", href: "/repairs" },
+      { label: "Board repair", href: "/board-repair" },
+      { label: "Data recovery", href: "/data-recovery" },
     ],
   },
   {
@@ -39,7 +37,7 @@ export function Footer() {
               className="mb-4 h-10 w-auto"
             />
             <p className="max-w-sm text-sm leading-relaxed text-muted">
-              Electronics repair, trading cards, and community gaming in downtown Emporia.
+              Electronics repair and data recovery in downtown Emporia.
             </p>
             <Link
               href="/contact"

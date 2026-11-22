@@ -104,7 +104,7 @@ export const INDUSTRIES = [
   "Nonprofits",
   "Retail Stores",
   "Service Businesses",
-  "Gaming Stores",
+  "Repair Shops",
   "Small Businesses",
   "Startups",
 ] as const;

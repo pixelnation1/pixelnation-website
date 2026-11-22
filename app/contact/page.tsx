@@ -30,7 +30,7 @@ export default function ContactPage() {
             Contact PixelNation
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-            Have a repair question? Looking for cards, an event, or a birthday party?
+            Need a repair estimate or an update on your device?
             Call, send us a message, or visit our downtown Emporia shop.
           </p>
           <div className="cta-group mt-6">

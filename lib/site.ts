@@ -37,7 +37,7 @@ export const SITE = {
 } as const;
 
 export const MAIN_MESSAGE =
-  "PixelNation provides electronics repair, trading cards, and gaming in Emporia, KS—phones, computers, consoles, appliances, data recovery, board-level repair, TCG products, and community events.";
+  "PixelNation provides electronics repair in Emporia, Kansas, including phones, computers, consoles, appliances, board repair and data recovery.";
 
 export { SOFTWARE_DEV_DROPDOWN_LINKS };
 

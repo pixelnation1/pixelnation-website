@@ -6,7 +6,6 @@ import { CITY_SLUGS } from "@/lib/locations/cities";
 import { SERVICE_SLUGS } from "@/lib/locations/services";
 import { getAllCityServiceParams } from "@/lib/locations/content";
 import { LOCAL_LANDING_SLUGS } from "@/lib/seo/local-landings";
-import { getEventSlugs } from "@/lib/events";
 import { buildCanonical } from "@/lib/seo/site-seo";
 
 export type SitemapEntry = {
@@ -32,46 +31,6 @@ export const PUBLIC_ROUTES: SitemapEntry[] = [
   { path: "/software-development/custom-saas-development", changeFrequency: "monthly", priority: 0.86 },
   { path: "/software-development/business-automation", changeFrequency: "monthly", priority: 0.86 },
   { path: "/portfolio", changeFrequency: "monthly", priority: 0.87 },
-  { path: "/trading-cards", changeFrequency: "weekly", priority: 0.92 },
-  { path: "/trading-cards/pokemon", changeFrequency: "weekly", priority: 0.9 },
-  {
-    path: "/trading-cards/magic-the-gathering",
-    changeFrequency: "weekly",
-    priority: 0.9,
-  },
-  { path: "/trading-cards/yu-gi-oh", changeFrequency: "weekly", priority: 0.9 },
-  { path: "/trading-cards/lorcana", changeFrequency: "weekly", priority: 0.9 },
-  {
-    path: "/trading-cards/one-piece",
-    changeFrequency: "weekly",
-    priority: 0.9,
-  },
-  { path: "/buy-sell-trade", changeFrequency: "weekly", priority: 0.88 },
-  { path: "/trade-values", changeFrequency: "weekly", priority: 0.9 },
-  { path: "/sell-to-pixelnation", changeFrequency: "weekly", priority: 0.86 },
-  { path: "/what-we-carry", changeFrequency: "weekly", priority: 0.88 },
-  {
-    path: "/preorders-new-releases",
-    changeFrequency: "weekly",
-    priority: 0.86,
-  },
-  { path: "/gaming", changeFrequency: "weekly", priority: 0.9 },
-  { path: "/events", changeFrequency: "weekly", priority: 0.9 },
-  { path: "/gaming-community", changeFrequency: "monthly", priority: 0.85 },
-  { path: "/communities", changeFrequency: "weekly", priority: 0.86 },
-  { path: "/communities/pokemon", changeFrequency: "daily", priority: 0.84 },
-  {
-    path: "/communities/magic-the-gathering",
-    changeFrequency: "daily",
-    priority: 0.84,
-  },
-  { path: "/communities/one-piece", changeFrequency: "daily", priority: 0.84 },
-  { path: "/commander-nights", changeFrequency: "monthly", priority: 0.85 },
-  { path: "/learn-to-play", changeFrequency: "monthly", priority: 0.85 },
-  { path: "/weekly-events", changeFrequency: "weekly", priority: 0.88 },
-  { path: "/family-gaming", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/what-to-expect", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/trading-card-philosophy", changeFrequency: "monthly", priority: 0.8 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
   { path: "/team", changeFrequency: "monthly", priority: 0.65 },
   { path: "/why-choose-pixelnation", changeFrequency: "monthly", priority: 0.7 },
@@ -136,14 +95,6 @@ function portfolioSitemapEntries(): SitemapEntry[] {
   }));
 }
 
-function eventSitemapEntries(): SitemapEntry[] {
-  return getEventSlugs().map((slug) => ({
-    path: `/events/${slug}`,
-    changeFrequency: "weekly" as const,
-    priority: 0.86,
-  }));
-}
-
 export function getAllSitemapEntries(): SitemapEntry[] {
   const blogEntries: SitemapEntry[] = BLOG_POSTS.map((post) => ({
     path: `/blog/${post.slug}`,
@@ -156,7 +107,6 @@ export function getAllSitemapEntries(): SitemapEntry[] {
     ...locationSitemapEntries(),
     ...knowledgeSitemapEntries(),
     ...portfolioSitemapEntries(),
-    ...eventSitemapEntries(),
     ...blogEntries,
   ];
 }

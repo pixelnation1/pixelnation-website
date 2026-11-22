@@ -1,92 +1,26 @@
-import { SITE } from "@/lib/site";
-
 export const HOME_METADATA = {
-  title:
-    "PixelNation | Electronics Repair, Trading Cards & Gaming in Emporia, KS",
-  description:
-    "Professional device repair, trading cards, gaming products, community events, and advanced electronics services in Emporia, Kansas—all from one local PixelNation location.",
+  title: "PixelNation | Electronics Repair in Emporia, KS",
+  description: "Phone, computer, console and appliance repair in downtown Emporia. Get help with damaged HDMI ports, motherboard faults and data recovery.",
   path: "/",
 } as const;
 
-export const HERO_HEADLINE =
-  "Electronics Repair, Trading Cards & Gaming in Emporia, Kansas";
-
-export const HERO_SUPPORT =
-  "Get your device fixed. Find your next deck. Join a game. Visit our downtown Emporia shop for electronics repair, trading cards, and community events.";
-
+export const HERO_HEADLINE = "Electronics repair in Emporia, Kansas";
+export const HERO_SUPPORT = "Cracked phone screen? PS5 turns on with no picture? Tell us what happened. We’ll diagnose the fault and walk you through your repair options.";
 export const HERO_BULLETS = [
-  "Phones, computers, consoles & advanced board repair",
-  "Trading cards, sealed products, singles & accessories",
-  "Weekly gaming events & welcoming play space",
-] as const;
-
-/** Broad product categories for the homepage "What we carry" strip. */
-export const HOME_CARRY_CATEGORIES = [
-  {
-    label: "Sealed products",
-    href: "/what-we-carry#sealed",
-    description: "Booster packs, boxes, bundles, decks, and special releases.",
-  },
-  {
-    label: "Singles",
-    href: "/what-we-carry#singles",
-    description: "Playable and collectible cards—availability varies.",
-  },
-  {
-    label: "Accessories",
-    href: "/what-we-carry#supplies",
-    description: "Sleeves, deck boxes, binders, playmats, and storage.",
-  },
-  {
-    label: "Video games",
-    href: "/what-we-carry#gaming",
-    description:
-      "Video games, retro titles, and accessories—selection changes frequently.",
-  },
-  {
-    label: "Consoles",
-    href: "/what-we-carry#gaming",
-    description:
-      "Consoles and related hardware when available. Eligible systems may be bought or traded.",
-  },
+  "Phone screens, batteries and charging ports",
+  "Console HDMI ports and computer diagnostics",
+  "Microsoldering and data recovery",
 ] as const;
 
 export const HOME_VISIT = {
-  title: "Visit PixelNation",
-  body: "Electronics repair, trading cards, gaming, events, buy/sell/trade and community — all under one roof in downtown Emporia.",
-  items: [
-    "Electronics repair",
-    "Trading cards",
-    "Gaming & play space",
-    "Weekly events",
-    "Buy, sell & trade",
-    "Community hangout",
-  ],
+  title: "Visit our repair shop",
+  body: "Bring your device to our downtown Emporia shop. For appliance service or a mail-in repair, call ahead so we can help you plan the next step.",
 } as const;
 
-export const HOME_DIVISIONS = [
-  {
-    title: "Electronics Repair",
-    description:
-      "Phone, computer, game console, appliance, data recovery, and board-level repair.",
-    href: "/repairs",
-    cta: "Explore Repairs",
-  },
-  {
-    title: "Trading Cards & Gaming",
-    description:
-      "Trading cards, sealed products, singles, accessories, organized play, and community gaming.",
-    href: "/trading-cards",
-    cta: "Explore Trading Cards",
-  },
-] as const;
-
 export const HOME_TRUST_ITEMS = [
-  "Located in Emporia, Kansas",
-  "Electronics repair & trading cards",
-  "Same-day repairs available on select services",
-  "Mail-in repair accepted nationwide",
-  "Weekly events at 22 E. 5th Ave",
+  "Downtown Emporia",
+  "Board-level diagnostics",
+  "Nationwide mail-in repair",
 ] as const;
 
 export const HOME_SERVICES = [
@@ -152,80 +86,6 @@ export const HOME_SERVICES = [
   },
 ] as const;
 
-export const COMMON_PROBLEMS = [
-  { label: "iPhone not charging", href: "/phone-repair" },
-  { label: "Cracked screens", href: "/phone-repair" },
-  { label: "Laptop running slow", href: "/computer-repair-emporia-ks" },
-  { label: "Computer not turning on", href: "/computer-repair-emporia-ks" },
-  { label: "Refrigerator not cooling", href: "/appliance-repair-emporia-ks" },
-  { label: "Dryer not heating", href: "/appliance-repair-emporia-ks" },
-  { label: "PS5 no display", href: "/console-repair-emporia-ks" },
-  { label: "Xbox HDMI damage", href: "/console-repair-emporia-ks" },
-  { label: "Lost files", href: "/data-recovery" },
-  { label: "Liquid damage", href: "/phone-repair" },
-  { label: "Devices with no power", href: "/board-repair" },
-] as const;
-
-export const WHY_CHOOSE = [
-  {
-    title: "Experienced Repair Specialists",
-    text: "Years of hands-on repair across phones, computers, consoles, appliances, and boards—not guesswork.",
-  },
-  {
-    title: "Board-Level Repair",
-    text: "Microsoldering, HDMI rework, and power-rail repair when a simple part swap is not enough.",
-  },
-  {
-    title: "Local Business",
-    text: `Rooted in ${SITE.address.region}—real people, real conversations, and service that stays local.`,
-  },
-  {
-    title: "Fast Turnaround",
-    text: "Same-day options on select repairs, with clear timelines when deeper diagnostics are needed.",
-  },
-  {
-    title: "Honest Diagnostics",
-    text: "We reproduce the symptom, explain what failed, and quote options before work begins.",
-  },
-  {
-    title: "Data Recovery",
-    text: "Structured recovery paths for phones, drives, and devices that will not power on.",
-  },
-  {
-    title: "Gaming Community",
-    text: "A welcoming place for play, events, and people who love cards, consoles, and gathering together.",
-  },
-  {
-    title: "Trading Card Selection",
-    text: "Pokémon, Magic, Yu-Gi-Oh!, Lorcana, One Piece, sealed products, singles, and accessories. Selection and availability vary.",
-  },
-  {
-    title: "Friendly Support",
-    text: "Questions are welcome. Whether you are new to repair or deep into a collection, we meet you where you are.",
-  },
-  {
-    title: "No Pressure Recommendations",
-    text: "We would rather tell you the truth than upsell a repair you do not need.",
-  },
-  {
-    title: "Quality Parts",
-    text: "We prioritize parts and materials that support lasting repairs—not the cheapest shortcut.",
-  },
-  {
-    title: "Transparent Pricing",
-    text: "You understand the options and cost before work proceeds. No mystery charges after the fact.",
-  },
-] as const;
-
-export const ADVANCED_REPAIR_ITEMS = [
-  "Charging port rework",
-  "HDMI replacement",
-  "Trace and pad repair",
-  "Short circuit diagnosis",
-  "Liquid damage recovery",
-  "Power rail troubleshooting",
-] as const;
-
 export const MAIL_IN_STEPS = [
   {
     title: "Start a repair online",
@@ -245,18 +105,4 @@ export const MAIL_IN_STEPS = [
   },
 ] as const;
 
-export const DATA_RECOVERY_DEVICES = [
-  "Phones",
-  "Hard drives",
-  "SSDs",
-  "USB drives",
-  "Tablets",
-  "Consoles",
-] as const;
-
-import { HOME_FAQS as HOME_FAQS_DATA } from "@/lib/faq/global";
-
-export { HOME_FAQS_DATA as HOME_FAQS };
-
-/** @deprecated Import HOME_FAQS from @/lib/faq */
-export const HOME_FAQ = HOME_FAQS_DATA;
+export { HOME_FAQS } from "@/lib/faq/global";
