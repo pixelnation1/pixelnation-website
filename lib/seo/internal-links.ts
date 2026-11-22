@@ -172,8 +172,5 @@ export function getRelatedRepairLinks(path: string): InternalLink[] {
   if (path.startsWith("/portfolio/")) {
     return RELATED_REPAIR_LINKS["/portfolio"] ?? [];
   }
-  if (path.startsWith("/trading-cards/")) {
-    return RELATED_REPAIR_LINKS["/trading-cards"] ?? [];
-  }
   return RELATED_REPAIR_LINKS[path] ?? RELATED_REPAIR_LINKS["/repairs"] ?? [];
 }

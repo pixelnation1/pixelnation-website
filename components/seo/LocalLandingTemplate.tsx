@@ -2,7 +2,6 @@ import Link from "next/link";
 import { FAQ } from "@/components/FAQ";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
-import { TcgPageStructuredData } from "@/components/tcg/TcgStructuredData";
 import { PageStructuredData } from "@/components/seo/PageStructuredData";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/Button";
@@ -22,11 +21,9 @@ export function LocalLandingTemplate({ page }: LocalLandingTemplateProps) {
   ];
 
   const faqSchema = toSchemaFaqs(page.faqs);
-  const isRepair = page.schemaKind === "repair";
 
   return (
     <article>
-      {isRepair ? (
         <PageStructuredData
           breadcrumbs={breadcrumbs}
           faq={faqSchema}
@@ -37,16 +34,6 @@ export function LocalLandingTemplate({ page }: LocalLandingTemplateProps) {
             path: page.path,
           }}
         />
-      ) : (
-        <TcgPageStructuredData
-          breadcrumbs={breadcrumbs}
-          faq={page.faqs}
-          pagePath={page.path}
-          pageName={page.h1}
-          pageDescription={page.metaDescription}
-          includeHobbyFocus={page.schemaKind !== "service"}
-        />
-      )}
 
       <section
         className="border-b border-card-border bg-gradient-to-b from-accent-muted via-accent-secondary-muted to-background py-12 sm:py-16 md:py-24"
