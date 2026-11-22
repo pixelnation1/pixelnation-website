@@ -19,14 +19,8 @@ export type LocalLandingPage = {
   primaryCta: { label: string; href: string };
   secondaryCta: { label: string; href: string };
   relatedLinks: readonly { label: string; href: string; description?: string }[];
-  /** Optional schema hint for repair-oriented landings */
-  schemaKind?: "hobby" | "repair" | "service";
 };
 
-/**
- * Unique local SEO landings. Each page has its own angle and must not clone
- * /trading-cards/[game], /console-repair, /buy-sell-trade, or /preorders-new-releases.
- */
 export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
   "game-console-repair-emporia-ks": {
     slug: "game-console-repair-emporia-ks",
@@ -72,7 +66,6 @@ export const LOCAL_LANDING_PAGES: Record<string, LocalLandingPage> = {
       { label: "Board Repair", href: "/board-repair" },
       { label: "PS5 HDMI knowledge", href: "/knowledge/why-ps5-hdmi-ports-fail" },
     ],
-    schemaKind: "repair",
   },
 
 };

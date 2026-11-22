@@ -149,8 +149,6 @@ export function isNavLinkActive(pathname: string, href: string): boolean {
   }
   if (href === "/repairs") return pathname === "/repairs";
   if (href === "/training") return pathname === "/training";
-  if (href === "/trading-cards") return pathname === "/trading-cards";
-  if (href === "/gaming") return pathname === "/gaming";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

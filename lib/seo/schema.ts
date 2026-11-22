@@ -77,29 +77,6 @@ export function localBusinessSchema(overrides?: Record<string, unknown>) {
   };
 }
 
-/** Breadcrumbs for Trading Cards & Gaming routes */
-export function tradingCardsBreadcrumbs(
-  pageName: string,
-  path: string,
-): BreadcrumbItem[] {
-  return [
-    { name: "Home", path: "/" },
-    { name: "Trading Cards", path: "/trading-cards" },
-    { name: pageName, path },
-  ];
-}
-
-export function gamingBreadcrumbs(
-  pageName: string,
-  path: string,
-): BreadcrumbItem[] {
-  return [
-    { name: "Home", path: "/" },
-    { name: "Gaming", path: "/gaming" },
-    { name: pageName, path },
-  ];
-}
-
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
