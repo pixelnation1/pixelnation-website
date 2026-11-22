@@ -49,7 +49,7 @@ export default async function AccountSetupPage({ searchParams }: SetupPageProps)
           Choose your display name
         </h1>
         <p className="mt-3 text-base leading-relaxed text-muted">
-          Pick a name for your PixelNation community profile. You can change it
+          Pick a name for your PixelNation profile. You can change it
           later from your account page.
         </p>
 

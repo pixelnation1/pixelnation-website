@@ -4,20 +4,8 @@ import {
   isCommunityParticipationAllowed,
   requireUserForPage,
 } from "@/lib/communities/auth";
-import { formatChicagoBusinessDateDisplay } from "@/lib/communities/business-date";
-import { fetchOwnCheckInHistory } from "@/lib/communities/check-ins";
-import { fetchActiveCommunities } from "@/lib/communities/communities";
 import { DEFAULT_DISPLAY_NAME } from "@/lib/communities/constants";
-import { fetchOwnPeriodStandings } from "@/lib/communities/leaderboard";
 import { needsDisplayNameSetup } from "@/lib/communities/profile";
-import {
-  fetchPublicCompetitionPeriod,
-  getCompetitionPhase,
-} from "@/lib/communities/reward-periods";
-import {
-  fetchOwnRecentSupportActivity,
-  fetchOwnSupportPointSummary,
-} from "@/lib/communities/support-points";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { redirect } from "next/navigation";
 
@@ -25,7 +13,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = createPageMetadata({
   title: "Your Account | PixelNation",
-  description: "Manage your PixelNation community account and display name.",
+  description: "Manage your PixelNation account and display name.",
   path: "/account",
   noIndex: true,
   titleAbsolute: true,
@@ -45,29 +33,6 @@ export default async function AccountPage() {
 
   const suspended = !isCommunityParticipationAllowed(profile);
   const email = user.email ?? "";
-  const [checkInHistory, supportPoints, recentSupportActivity, period, communities] =
-    await Promise.all([
-      fetchOwnCheckInHistory(profile.id, 10),
-      fetchOwnSupportPointSummary(profile.id),
-      fetchOwnRecentSupportActivity(profile.id, 8),
-      fetchPublicCompetitionPeriod(),
-      fetchActiveCommunities(),
-    ]);
-
-  const phase = period ? getCompetitionPhase(period) : "upcoming";
-  const eligibleCommunities = communities.filter((c) => c.topSupportersEnabled);
-  const ownPeriodStandings =
-    period && phase !== "upcoming"
-      ? await fetchOwnPeriodStandings({
-          profileId: profile.id,
-          displayName: profile.displayName,
-          periodId: period.id,
-        })
-      : [];
-  const standingBySlug = new Map(
-    ownPeriodStandings.map((row) => [row.communitySlug, row]),
-  );
-
   return (
     <div className="relative overflow-hidden">
       <div
@@ -82,7 +47,7 @@ export default async function AccountPage() {
           PIXELNATION ACCOUNT
         </h1>
         <p className="mt-3 text-base text-muted">
-          Your PixelNation community profile.
+          Your PixelNation profile.
         </p>
 
         {suspended ? (
@@ -122,182 +87,6 @@ export default async function AccountPage() {
             </dd>
           </div>
         </dl>
-
-        <section className="mt-8" aria-labelledby="support-points-heading">
-          <h2
-            id="support-points-heading"
-            className="text-lg font-semibold text-foreground"
-          >
-            Support Points
-          </h2>
-          <p className="mt-2 text-sm text-muted">
-            Total Support Points:{" "}
-            <span className="font-semibold text-foreground">
-              {supportPoints.totalPoints}
-            </span>
-          </p>
-
-          {supportPoints.byCommunity.length > 0 ? (
-            <ul className="mt-4 space-y-2">
-              {supportPoints.byCommunity.map((row) => (
-                <li
-                  key={row.communityName}
-                  className="flex min-h-11 items-center justify-between gap-3 rounded-xl border border-card-border/70 bg-card/60 px-4 py-3 text-sm"
-                >
-                  <span className="font-medium text-foreground">
-                    {row.communityName}
-                  </span>
-                  <span className="shrink-0 font-semibold text-foreground">
-                    {row.points}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-4 text-sm text-muted">
-              No Support Points yet. Check in at PixelNation to start earning.
-            </p>
-          )}
-
-          {recentSupportActivity.length > 0 ? (
-            <div className="mt-6">
-              <h3 className="text-sm font-semibold text-foreground">
-                Recent Support Activity
-              </h3>
-              <ul className="mt-3 space-y-2">
-                {recentSupportActivity.map((row, index) => {
-                  const signed =
-                    row.points > 0 ? `+${row.points}` : String(row.points);
-                  let when = row.createdAt;
-                  try {
-                    when = new Intl.DateTimeFormat("en-US", {
-                      timeZone: "America/Chicago",
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    }).format(new Date(row.createdAt));
-                  } catch {
-                    /* keep iso */
-                  }
-                  return (
-                    <li
-                      key={`${row.createdAt}-${row.communityName}-${index}`}
-                      className="text-sm text-muted"
-                    >
-                      <span className="font-semibold text-foreground">
-                        {signed}
-                      </span>{" "}
-                      {row.communityName} / {row.sourceLabel} / {when}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ) : null}
-        </section>
-
-        <section className="mt-8" aria-labelledby="check-ins-heading">
-          <h2
-            id="check-ins-heading"
-            className="text-lg font-semibold text-foreground"
-          >
-            Community Check-Ins
-          </h2>
-          <p className="mt-2 text-sm text-muted">
-            Total check-ins:{" "}
-            <span className="font-semibold text-foreground">
-              {checkInHistory.totalCount}
-            </span>
-          </p>
-
-          {checkInHistory.recent.length > 0 ? (
-            <ul className="mt-4 space-y-2">
-              {checkInHistory.recent.map((row, index) => (
-                <li
-                  key={`${row.communityName}-${row.businessDate}-${index}`}
-                  className="flex min-h-11 items-center justify-between gap-3 rounded-xl border border-card-border/70 bg-card/60 px-4 py-3 text-sm"
-                >
-                  <span className="font-medium text-foreground">
-                    {row.communityName}
-                  </span>
-                  <span className="shrink-0 text-muted">
-                    {formatChicagoBusinessDateDisplay(row.businessDate)}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-4 text-sm text-muted">
-              No check-ins yet. When you play at PixelNation, check in from the
-              store QR code.
-            </p>
-          )}
-        </section>
-
-        <section className="mt-8" aria-labelledby="top-supporters-standing-heading">
-          <h2
-            id="top-supporters-standing-heading"
-            className="text-lg font-semibold text-foreground"
-          >
-            Your Top Supporters standing
-          </h2>
-          {period && phase === "upcoming" ? (
-            <div className="mt-4 rounded-xl border border-accent-secondary/40 bg-accent-secondary-muted/40 p-4">
-              <p className="text-sm font-semibold uppercase tracking-wide text-accent-secondary">
-                {period.name} Top Supporters
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                Starts October 1. Lifetime Support Points above stay on your
-                account. October standings only count points earned during that
-                reward period — they begin October 1.
-              </p>
-            </div>
-          ) : period ? (
-            <>
-              <p className="mt-2 text-sm text-muted">
-                {period.name} points only — separate from your lifetime Support
-                Points total above.
-              </p>
-              <ul className="mt-4 space-y-2">
-                {eligibleCommunities.map((community) => {
-                  const standing = standingBySlug.get(community.slug);
-                  const periodPoints = standing?.periodPoints ?? 0;
-                  const rank = standing?.rank ?? null;
-                  return (
-                    <li
-                      key={community.slug}
-                      className="rounded-xl border border-card-border/70 bg-card/60 px-4 py-3 text-sm"
-                    >
-                      <p className="font-medium text-foreground">
-                        {community.name}
-                      </p>
-                      {periodPoints > 0 && rank != null ? (
-                        <p className="mt-1 text-muted">
-                          <span className="font-semibold text-foreground">
-                            {periodPoints}
-                          </span>{" "}
-                          {period.name} Points · Current Rank:{" "}
-                          <span className="font-semibold text-accent">
-                            #{rank}
-                          </span>
-                        </p>
-                      ) : (
-                        <p className="mt-1 text-muted">
-                          No {period.name} points yet.
-                        </p>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </>
-          ) : (
-            <p className="mt-4 text-sm text-muted">
-              Top Supporters standings will appear here when a reward period is
-              available.
-            </p>
-          )}
-        </section>
 
         <section className="mt-10" aria-labelledby="edit-name-heading">
           <h2

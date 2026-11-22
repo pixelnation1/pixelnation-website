@@ -321,7 +321,7 @@ export function ContactForm() {
           rows={5}
           placeholder={isRepair
             ? "Describe symptoms, damage, and what you need recovered or repaired."
-            : "Tell us what you need help with. For events or parties, include your preferred date and group size."}
+            : "Tell us what you need help with."}
           value={form.description}
           onChange={(e) => updateField("description", e.target.value)}
           className={`${fieldClass} resize-y min-h-[120px]`}

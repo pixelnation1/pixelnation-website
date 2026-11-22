@@ -19,7 +19,7 @@ export type TermsSection = {
 };
 
 export const TERMS_OF_SERVICE_INTRO = [
-  `These Terms of Service (“Terms”) govern your use of the ${SITE.name} website at ${SITE.domain} and your interactions with PixelNation for electronics repair, diagnostics, retail products, trading cards, collectibles, and related services in ${SITE.address.region}.`,
+  `These Terms of Service (“Terms”) govern your use of the ${SITE.name} website at ${SITE.domain} and your interactions with PixelNation for electronics repair, diagnostics, retail products, and related services in ${SITE.address.region}.`,
   "By accessing the website, submitting a form, purchasing products, or requesting services, you agree to these Terms. If you do not agree, do not use the website or our services.",
 ] as const;
 
@@ -35,7 +35,7 @@ export const TERMS_OF_SERVICE_SECTIONS: readonly TermsSection[] = [
     id: "services",
     title: "Description of services",
     paragraphs: [
-      "PixelNation provides electronics repair, device diagnostics, computer, smartphone, tablet, and game console services, appliance repair, data recovery, microsoldering and board-level repair, trading card games, collectibles, and related retail products and community gaming offerings as available.",
+      "PixelNation provides electronics repair, device diagnostics, computer, smartphone, tablet, and game console services, appliance repair, data recovery, microsoldering and board-level repair, and related services.",
       "Service availability, timelines, and inventory can change. Website descriptions are informational and do not guarantee that a particular repair, part, or product is available at any given time.",
     ],
   },
@@ -89,7 +89,7 @@ export const TERMS_OF_SERVICE_SECTIONS: readonly TermsSection[] = [
     id: "retail",
     title: "Retail purchases and product availability",
     paragraphs: [
-      "Trading cards, games, consoles, collectibles, and other retail products are subject to availability, condition descriptions, and store policies. Preorders and new-release availability are not guaranteed until confirmed by PixelNation.",
+      "Retail purchases are subject to availability, condition descriptions, and store policies. Preorders and new-release availability are not guaranteed until confirmed by PixelNation.",
       "Product images and descriptions on the website are illustrative and may not reflect current stock.",
     ],
   },

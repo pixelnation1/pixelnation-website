@@ -46,7 +46,7 @@ export function localBusinessSchema(overrides?: Record<string, unknown>) {
     "@id": `${CANONICAL_ORIGIN}/#localbusiness`,
     name: SITE.name,
     description:
-      "Electronics repair, trading cards, and gaming in Emporia, Kansas—phones, computers, consoles, appliances, data recovery, board-level repair, and TCG products.",
+      "Electronics repair and data recovery in Emporia, Kansas.",
     telephone: SITE.phoneSchema,
     email: SITE.email,
     url: CANONICAL_ORIGIN,
@@ -72,8 +72,6 @@ export function localBusinessSchema(overrides?: Record<string, unknown>) {
       "Data Recovery",
       "Microsoldering",
       "Board-Level Repair",
-      "Trading Card Games",
-      "Local Gaming",
     ],
     ...overrides,
   };
@@ -125,7 +123,7 @@ export function webSiteSchema() {
     name: SITE.name,
     url: CANONICAL_ORIGIN,
     description:
-      "Electronics repair, trading cards, and gaming in Emporia, Kansas.",
+      "Electronics repair and data recovery in Emporia, Kansas.",
     publisher: { "@id": `${CANONICAL_ORIGIN}/#organization` },
     inLanguage: "en-US",
   };
