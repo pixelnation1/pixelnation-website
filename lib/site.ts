@@ -1,10 +1,10 @@
 import { SOFTWARE_DEV_DROPDOWN_LINKS } from "@/lib/software/links";
 
 const BUSINESS_HOURS = [
-  { days: "Monday – Wednesday", dayOfWeek: ["Monday", "Tuesday", "Wednesday"], opens: "10:00", closes: "20:00", display: "10:00 AM – 8:00 PM" },
+  { days: "Monday – Wednesday", dayOfWeek: ["Monday", "Tuesday", "Wednesday"], opens: "10:00", closes: "15:00", display: "10:00 AM – 3:00 PM" },
   { days: "Thursday – Friday", dayOfWeek: ["Thursday", "Friday"], opens: "10:00", closes: "22:00", display: "10:00 AM – 10:00 PM" },
-  { days: "Saturday", dayOfWeek: ["Saturday"], opens: "12:00", closes: "22:00", display: "Noon – 10:00 PM" },
-  { days: "Sunday", dayOfWeek: ["Sunday"], opens: "15:00", closes: "22:00", display: "3:00 PM – 10:00 PM" },
+  { days: "Saturday", dayOfWeek: ["Saturday"], opens: "15:00", closes: "22:00", display: "3:00 PM – 10:00 PM" },
+  { days: "Sunday", dayOfWeek: ["Sunday"], opens: "00:00", closes: "00:00", display: "Closed" },
 ] as const;
 
 export const SITE = {
