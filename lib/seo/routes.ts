@@ -32,7 +32,6 @@ export const PUBLIC_ROUTES: SitemapEntry[] = [
   { path: "/software-development/business-automation", changeFrequency: "monthly", priority: 0.86 },
   { path: "/portfolio", changeFrequency: "monthly", priority: 0.87 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/team", changeFrequency: "monthly", priority: 0.65 },
   { path: "/why-choose-pixelnation", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.8 },
   { path: "/privacy-policy", changeFrequency: "yearly", priority: 0.4 },

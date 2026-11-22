@@ -65,7 +65,6 @@ export const REPAIRS_DROPDOWN_LINKS = [
 
 export const FOOTER_COMPANY_LINKS = [
   { label: "About", href: "/about" },
-  { label: "Meet the Team", href: "/team" },
   { label: "Why Choose PixelNation", href: "/why-choose-pixelnation" },
   { label: "Software Development", href: "/software-development" },
   { label: "Portfolio", href: "/portfolio" },

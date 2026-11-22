@@ -38,6 +38,7 @@ const retiredStorefrontPaths = [
 
 const nextConfig: NextConfig = {
   redirects: async () => [
+    { source: "/team", destination: "/about", permanent: true },
     ...retiredStorefrontPaths.map((source) => ({ source, destination: "/", permanent: true })),
     { source: "/phone-repair-emporia-ks", destination: "/phone-repair", permanent: true },
     { source: "/computer-repair-emporia-ks", destination: "/computer-repair", permanent: true },

@@ -16,7 +16,6 @@ const footerGroups = [
     title: "PixelNation",
     links: [
       { label: "About Us", href: "/about" },
-      { label: "Meet the Team", href: "/team" },
       { label: "Training", href: "/training" },
       { label: "Software & Websites", href: "/software-development" },
     ],
