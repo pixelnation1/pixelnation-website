@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { isTradeAdminAuthenticated } from "@/lib/trade/auth";
 import { buybackDb, listCatalog } from "@/lib/buyback/store";
 import { formatOffer, panelClass, type Quote, type Resale } from "@/lib/buyback/model";
-import { CatalogForm, PriceLookup, PricingCalculator, QuoteUpdateForm, ResaleForm } from "./StaffForms";
+import { CatalogForm, PricingCalculator, QuoteUpdateForm, ResaleForm } from "./StaffForms";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Buyback queue", robots: { index: false, follow: false } };
@@ -29,13 +29,10 @@ export default async function AdminBuybackPage() {
     <div className="mx-auto max-w-6xl space-y-6 px-4 py-12">
       <h1 className="text-3xl font-bold">Buyback queue</h1>
       <section className={panelClass}>
-        <h2 className="text-xl font-semibold">Price guide lookup</h2>
-        <PriceLookup />
-      </section>
-      <section className={panelClass}>
         <h2 className="text-xl font-semibold">Buy price calculator</h2>
         <p className="text-sm text-muted">Use eBay sold comps for the exact edition and condition. Enter the costs for the way you plan to list it.</p>
         <PricingCalculator />
+        <a href="https://myquickflips.com/sell" target="_blank" rel="noreferrer" className="mt-3 inline-block text-sm text-accent">Compare QuickFlips cash offers</a>
       </section>
       <section className={panelClass}>
         <h2 className="text-xl font-semibold">Buy list</h2>

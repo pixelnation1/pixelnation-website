@@ -1,7 +1,6 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { lookupPriceCharting } from "@/lib/buyback/pricecharting";
 import { isTradeAdminAuthenticated } from "@/lib/trade/auth";
 import { CONDITIONS, type Category } from "@/lib/buyback/model";
 import { buybackDb, quoteTokenPattern } from "@/lib/buyback/store";
@@ -97,13 +96,4 @@ export async function saveResale(_: string, form: FormData) {
   }
   revalidatePath("/admin/buyback");
   return "Resale details saved.";
-}
-
-export async function lookUpPrice(_: Awaited<ReturnType<typeof lookupPriceCharting>> | null, form: FormData) {
-  if (!(await isTradeAdminAuthenticated())) return { error: "Sign in again to look up prices." };
-  const identifier = readText(form, "identifier");
-  const kind = readText(form, "kind");
-  if (kind === "upc" && /^\d{8,14}$/.test(identifier)) return lookupPriceCharting(identifier, kind);
-  if (kind === "id" && /^\d{1,12}$/.test(identifier)) return lookupPriceCharting(identifier, kind);
-  return { error: "Enter a UPC or an exact PriceCharting product ID." };
 }
