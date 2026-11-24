@@ -34,7 +34,33 @@ export type TrainingCourse = {
   };
 };
 
+export const INTRO_SOLDERING_WORKSHOP = {
+  id: "intro-to-soldering",
+  name: "Intro to Soldering & Microscope Work",
+  track: "Repair Track",
+  skillLevel: "Beginner",
+  duration: "3 hours",
+  schedule: "Saturday, December 12, 2026 · 11 a.m.–2 p.m. Central · 6 seats",
+  price: 149,
+  priceDisplay: "$149",
+  priceNote: "Per student, including tools for class and a take-home practice board",
+  audience: "First-time solderers, hobbyists, and anyone curious about electronics repair. No experience required.",
+  summary: "Spend a Saturday at the PixelNation bench with Nathan Jobe. Make your first solder joints under a microscope, replace a small component, and check your work before you take your board home.",
+  learn: [
+    "30 minutes · Set up your microscope and learn to handle a soldering iron safely.",
+    "60 minutes · Tin the tip, solder through-hole parts, and inspect your joints.",
+    "60 minutes · Remove and replace a surface-mount component with guidance.",
+    "30 minutes · Check continuity with a multimeter and troubleshoot your board.",
+  ],
+  comparison: {
+    topicsCovered: "Soldering, microscope use, continuity",
+    handsOnPractice: "Through-hole joints and surface-mount rework",
+    recommendedExperience: "None required",
+  },
+} satisfies TrainingCourse;
+
 export const REPAIR_TRACK_COURSES: readonly TrainingCourse[] = [
+  INTRO_SOLDERING_WORKSHOP,
   {
     id: "practical-board-repair-intensive",
     name: "Practical Board Repair Intensive",

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE } from "@/lib/site";
 import type { TrainingCourse } from "@/lib/training-courses-page";
 import { PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING } from "@/lib/training-courses-page";
 
@@ -15,7 +16,8 @@ export function CoursePricingCard({
   const booking = squareBooking ? PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING : null;
   return (
     <article
-      className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card ${
+      id={course.id}
+      className={`scroll-mt-24 relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card ${
         course.featured
           ? "border-accent shadow-lg shadow-accent/10"
           : "border-card-border"
@@ -166,12 +168,16 @@ export function CoursePricingCard({
           </div>
         ) : (
           <div className="mt-8">
-            <Link
-              href="/contact"
+            <a
+              href={`${SITE.emailHref}?subject=${encodeURIComponent("Seat request: " + course.name)}`}
               className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-background transition hover:bg-accent-hover"
             >
-              Book This Course
-            </Link>
+              Email to request a seat
+            </a>
+            <p className="mt-3 text-sm text-muted">
+              Ask about availability by email or call <a className="underline" href={SITE.phoneHref}>{SITE.phone}</a>.
+              PixelNation will confirm your seat and payment details. Class meets at {SITE.address.singleLine}.
+            </p>
           </div>
         )}
       </div>

@@ -13,6 +13,7 @@ import {
   AEO_ANSWERS,
   ALL_COURSES,
   INVESTIGATOR_TRACK_COURSES,
+  INTRO_SOLDERING_WORKSHOP,
   PAYMENT_POLICY,
   REPAIR_TRACK_COURSES,
   TRAINING_COURSES_METADATA,
@@ -81,7 +82,7 @@ export default function TrainingCoursesPage() {
               ))}
             </ul>
             <div className="cta-group mt-8">
-              <Button href="/contact">Book Training</Button>
+              <Button href={`#${INTRO_SOLDERING_WORKSHOP.id}`}>$149 beginner workshop</Button>
               <Button href="/contact" variant="secondary">
                 Request Custom Training
               </Button>
@@ -109,14 +110,14 @@ export default function TrainingCoursesPage() {
       <Section
         id="repair-track"
         title="Repair track courses"
-        subtitle="Hands-on microsoldering for repair shops and technicians."
+        subtitle="Hands-on classes for first-time solderers and working repair technicians."
       >
         <div className="grid max-w-2xl gap-8">
           {REPAIR_TRACK_COURSES.map((course) => (
             <CoursePricingCard
               key={course.id}
               course={course}
-              squareBooking
+              squareBooking={course.id === "practical-board-repair-intensive"}
             />
           ))}
         </div>
@@ -371,7 +372,7 @@ export default function TrainingCoursesPage() {
             repair skills.
           </p>
           <div className="cta-group mt-8 justify-center">
-            <Button href="/contact">Book Training</Button>
+            <Button href={`#${INTRO_SOLDERING_WORKSHOP.id}`}>$149 beginner workshop</Button>
             <Button href="/contact" variant="secondary">
               Request Custom Training
             </Button>

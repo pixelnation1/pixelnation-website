@@ -23,7 +23,7 @@ import {
   WORKSHOP_CURRICULUM,
 } from "@/lib/training-page";
 import { SITE } from "@/lib/site";
-import { PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING } from "@/lib/training-courses-page";
+import { INTRO_SOLDERING_WORKSHOP, PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING } from "@/lib/training-courses-page";
 
 export const metadata = createPageMetadataFromLegacy(TRAINING_METADATA);
 
@@ -72,8 +72,8 @@ export default function TrainingPage() {
             </ul>
             <div className="cta-group mt-8">
               <Button href="/training-courses">View Courses & Pricing</Button>
-              <Button href="/training-courses#repair-track" variant="secondary">
-                Book Training
+              <Button href={`/training-courses#${INTRO_SOLDERING_WORKSHOP.id}`} variant="secondary">
+                Beginner workshop · {INTRO_SOLDERING_WORKSHOP.priceDisplay}
               </Button>
               <Button href="#course-options" variant="outline">
                 Course Topics
@@ -99,6 +99,15 @@ export default function TrainingPage() {
       </section>
 
       {/* Why train */}
+      <Section title={INTRO_SOLDERING_WORKSHOP.name} subtitle={INTRO_SOLDERING_WORKSHOP.schedule}>
+        <p className="max-w-2xl text-muted">{INTRO_SOLDERING_WORKSHOP.summary}</p>
+        <div className="cta-group mt-5">
+          <Button href={`/training-courses#${INTRO_SOLDERING_WORKSHOP.id}`}>
+            Workshop details &amp; seat requests · {INTRO_SOLDERING_WORKSHOP.priceDisplay}
+          </Button>
+        </div>
+      </Section>
+
       <Section
         id="why-train"
         title="Learn practical skills you can use immediately"
