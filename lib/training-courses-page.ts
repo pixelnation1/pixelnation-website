@@ -1,3 +1,4 @@
+import { GROUP_CLASS_CAPACITY } from "@/lib/training-page";
 import { SITE } from "@/lib/site";
 
 export const TRAINING_COURSES_METADATA = {
@@ -91,7 +92,7 @@ export const PRACTICAL_BOARD_REPAIR_INTENSIVE_BOOKING = {
     "10:00 AM–3:00 PM",
     "15 Hours of Hands-On Training",
     "$1,500 Per Student",
-    "Limited to 6 Students",
+    `Limited to ${GROUP_CLASS_CAPACITY} students`,
   ],
   includesNote: "One registration includes all three days of training.",
 } as const;
@@ -241,7 +242,7 @@ export const ALL_COURSES = [
 ] as const;
 
 export const TRAINING_FORMAT_NOTES = [
-  "Small group instruction (maximum 4 students)",
+  `Small group instruction (maximum ${GROUP_CLASS_CAPACITY} students)`,
   "Hands-on, guided repair work",
   "Individual workstation provided",
   "Real devices and boards used for training",
@@ -252,7 +253,7 @@ export const PAYMENT_POLICY = {
     "Payment is required in full at the time of registration. Tuition includes training only unless otherwise specified.",
   government:
     "Government agencies: please call to arrange payment via check or money order.",
-  cancellation:
+  investigatorCancellation:
     "One-week grace period for a full refund when the course date is more than 4 weeks away. After the grace period, cancellations may be refunded only if the seat can be filled; a $100 cancellation fee may apply. Rescheduling may be available based on availability if you cannot attend due to unforeseen circumstances.",
   afterRegistration:
     "After registering, you receive a confirmation email with schedule, location, and preparation information.",

@@ -247,8 +247,8 @@ export default function TrainingCoursesPage() {
               <p className="mt-2 leading-relaxed">{PAYMENT_POLICY.government}</p>
             </div>
             <div>
-              <h3 className="font-semibold text-foreground">Cancellation policy</h3>
-              <p className="mt-2 leading-relaxed">{PAYMENT_POLICY.cancellation}</p>
+              <h3 className="font-semibold text-foreground">Investigator Track cancellation policy</h3>
+              <p className="mt-2 leading-relaxed">{PAYMENT_POLICY.investigatorCancellation}</p>
             </div>
             <div>
               <h3 className="font-semibold text-foreground">After registration</h3>

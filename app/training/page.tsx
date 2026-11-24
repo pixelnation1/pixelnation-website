@@ -10,6 +10,7 @@ import {
   AEO_ANSWERS,
   COURSE_OBJECTIVES,
   COURSE_TOPICS,
+  GROUP_CLASS_CAPACITY,
   HERO_BULLETS,
   SKILL_LEVELS,
   STUDENT_LEARNING,
@@ -151,7 +152,7 @@ export default function TrainingPage() {
       <Section
         id="workshop"
         title="Hands-on microsoldering & diagnostics workshop"
-        subtitle="Practical Board Repair Intensive — November 13–15, 2026. 3 days / 15 hours, Friday–Sunday, 10:00 AM–3:00 PM. Limited to 6 students."
+        subtitle={`Practical Board Repair Intensive — November 13–15, 2026. 3 days / 15 hours, Friday–Sunday, 10:00 AM–3:00 PM. Limited to ${GROUP_CLASS_CAPACITY} students.`}
       >
         <p className="-mt-6 max-w-3xl text-muted leading-relaxed">
           This flagship workshop provides practical, hands-on training in board-level
@@ -199,7 +200,7 @@ export default function TrainingPage() {
           <span className="font-medium text-foreground">Duration:</span> 3 days / 15 hours,
           Friday–Sunday, 10:00 AM–3:00 PM ·{" "}
           <span className="font-medium text-foreground">Tuition:</span> $1,500 per student ·{" "}
-          <span className="font-medium text-foreground">Capacity:</span> Limited to 6 students
+          <span className="font-medium text-foreground">Capacity:</span> Limited to {GROUP_CLASS_CAPACITY} students
         </p>
         <p className="mt-3 text-sm font-medium text-foreground">
           One registration includes all three days of training. Full tuition is required at

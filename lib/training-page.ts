@@ -1,3 +1,5 @@
+export const GROUP_CLASS_CAPACITY = 10;
+
 export const TRAINING_METADATA = {
   title:
     "Microsoldering & Board Repair Training | Hands-On Repair Courses | PixelNation",
@@ -22,7 +24,7 @@ export const WHY_TRAIN_BENEFITS = [
   "Hands-on practical instruction",
   "Real devices and real fault scenarios",
   "Structured diagnostics methodology",
-  "Small class sizes (maximum 6 students)",
+  `Small class sizes (maximum ${GROUP_CLASS_CAPACITY} students)`,
   "Personalized guidance",
   "Business and workflow insights",
 ] as const;
@@ -194,7 +196,7 @@ export const TRAINING_FORMATS = [
   {
     title: "Small group classes",
     description:
-      "Hands-on workshop with a maximum of 4 students for individual workstation time.",
+      `Hands-on workshop with a maximum of ${GROUP_CLASS_CAPACITY} students for individual workstation time.`,
   },
   {
     title: "Custom shop training",
