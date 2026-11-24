@@ -43,6 +43,7 @@ export { SOFTWARE_DEV_DROPDOWN_LINKS };
 
 export const PRIMARY_NAV_LINKS = [
   { label: "Home", href: "/" },
+  { label: "Sell Games & Consoles", href: "/sell-games-consoles" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
