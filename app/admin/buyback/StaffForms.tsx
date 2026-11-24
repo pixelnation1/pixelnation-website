@@ -2,7 +2,7 @@
 
 import { useActionState, useState } from "react";
 import { buttonClass, CONDITIONS, fieldClass, formatOffer, type CatalogEntry, type Category, type Resale } from "@/lib/buyback/model";
-import { saveCatalogEntry, saveResale, updateQuote } from "./actions";
+import { lookUpPrice, saveCatalogEntry, saveResale, updateQuote } from "./actions";
 
 export function CatalogForm({ entry }: { entry?: CatalogEntry }) {
   const [category, setCategory] = useState<Category>(entry?.category ?? "Game");
@@ -86,5 +86,45 @@ export function ResaleForm({ token, index, record }: { token: string; index: num
       <button className={buttonClass} disabled={pending}>Save resale details</button>
       {message && <p role="status">{message}</p>}
     </form>
+  );
+}
+
+export function PriceLookup() {
+  const [result, action, pending] = useActionState(lookUpPrice, null);
+  return (
+    <div className="mt-3 space-y-3">
+      <form action={action} className="grid items-end gap-3 sm:grid-cols-[auto_1fr_auto]">
+        <label>Lookup by
+          <select className={fieldClass} name="kind">
+            <option value="upc">UPC</option>
+            <option value="id">PriceCharting product ID</option>
+          </select>
+        </label>
+        <label>UPC or product ID
+          <input className={fieldClass} name="identifier" inputMode="numeric" pattern="[0-9]{1,14}" maxLength={14} required />
+        </label>
+        <button className={buttonClass} disabled={pending}>{pending ? "Looking up…" : "Look up prices"}</button>
+      </form>
+      {result?.error && <p role="status">{result.error}</p>}
+      {result?.prices && (
+        <div className="overflow-x-auto" aria-live="polite">
+          <p className="mb-2 font-semibold">{result.title} · {result.platform}</p>
+          <table className="w-full text-left text-sm">
+            <thead><tr><th scope="col">Condition</th><th scope="col">Guide value</th><th scope="col">Suggested retailer buy</th></tr></thead>
+            <tbody>
+              {result.prices.map(({ condition, market, buy }) => (
+                <tr key={condition} className="border-t border-white/10">
+                  <th scope="row" className="py-2 font-medium">{condition}</th>
+                  <td>{market === null ? "Unavailable" : formatOffer(market)}</td>
+                  <td>{buy === null ? "Unavailable" : formatOffer(buy)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className="mt-2 text-sm text-muted">Confirm the exact edition and condition. Use the calculator below before saving a PixelNation offer.</p>
+        </div>
+      )}
+      <a href="https://myquickflips.com/sell" target="_blank" rel="noreferrer" className="inline-block text-sm text-accent">Compare with QuickFlips’ public cash offers</a>
+    </div>
   );
 }
