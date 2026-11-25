@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { TradeAdminDashboard } from "@/components/trade/admin/TradeAdminDashboard";
 import { isTradeAdminAuthenticated } from "@/lib/trade/auth";
@@ -27,6 +28,7 @@ export default async function TradeAdminPage() {
       <p className="mt-2 text-sm text-muted">
         Add, edit, archive, import, and export trade listings without changing source code.
       </p>
+      <Link className="mt-4 inline-block text-accent" href="/admin/buyback">Open buyback queue</Link>
       <div className="mt-8">
         <TradeAdminDashboard
           initialItems={snapshot.items}
